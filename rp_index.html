@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Rico Pay</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+  <link rel="stylesheet" href="css/jquery.tablesorter.pager.css">
+  <link rel="stylesheet" href="css/select2.css" />
+  <link rel="stylesheet" href="css/prettyCheckable.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript">
+  function drawTable() {
+
+  }
+
+  google.load("visualization", "1", {packages:["table"]});
+  </script>
+
+  <script src="js/libs/require.js" data-main="app"></script>
+</head>
+<body>
+  <header id="page-header">
+    <div id="base-ps-menu" class="navcontainer">
+      <ul class="navlist">
+        <li><a  id="home-link" href="#">Home</a>
+           </li>
+        <li><a  id="log-out-link" href="#">Sign out</a>
+           </li>
+        <li><a id="work-list-refresh" href="#">Refresh</a>
+        </li>
+        <li><a  id="new-window-link" href="#">New Window</a>
+          </li>
+        <li><a  id="help-link" href="#">Help</a>
+        </li>
+      </ul>
+
+    </div>
+    <div id="work-list-menu" class="navcontainer">
+    </div>
+    <div  id="processing"><img src="images/PT_PROCESSING_1.gif" alt="processing" ></div>
+  </header>
+  <div id="body-anchor">
+    <section id="work-lists" class="work-lists">
+      <div class="wlHeader">
+          <div class="pager"
+          Page:
+          <select class="gotoPage"></select>
+          <img src="img/first.png" class="first" alt="First" title="First page" />
+          <img src="img/prev.png" class="prev" alt="Prev" title="Previous page" />
+          <span class="pagedisplay"></span>
+          <img src="img/next.png" class="next" alt="Next" title="Next page" />
+          <img src="img/last.png" class="last" alt="Last" title="Last page" />
+          <select class="pagesize">
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+          </select>
+        </div>
+        <a href="#close" title="Close Worklist" class="wlClose">X</a>
+      </div>
+    </section>
+    <section id="content">
+        <a href="#close" title="Show/Hide Image Now" class="close-image-now">X</a>
+      <section id="image-now">
+      </section>
+      <section id="component-data">
+      </section>
+    </section>
+  </div>
+  <div id="popModal">
+  </div>
+</body>
+
+</html>

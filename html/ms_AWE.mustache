@@ -1,0 +1,158 @@
+<label>Workflow Information</label>
+<table class="AWE tablesorter">
+
+    <tbody>
+        <tr class="summary">
+            <td colspan="1" style="padding: 0 0px 0 0px;">
+                <table class="tablesorter-child">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td>Invoice Received from Vendor</td>
+                            <td>10/10/2015</td>
+                            <td>110:25</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>Invoice Sent to First Approver</td>
+                            <td>10/10/2015</td>
+                            <td>110:25</td>
+                            <td>4</td>
+                        </tr>
+                                                <tr>
+                            <td>Invoice Financially Approved</td>
+                            <td>10/10/2015</td>
+                            <td>110:25</td>
+                            <td>4</td>
+                        </tr
+                    </tbody>
+
+                </table>
+            </td>
+
+
+        </tr>
+        <tr class="tablesorter-childRow">
+            <td colspan="4" style="padding: 0 0px 0 0px;">
+                {{#isSAS}}
+                <h3>SAS</h3>
+                <table class="tablesorter-child">
+                    <thead>
+                        <tr>
+
+                            <th>User</th>
+
+                            <th>Opened</th>
+                            <th>Saved</th>
+                            <th>Entered DTTM</th>
+                            <th>Exit DTTM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#workflowLines}}
+
+
+                        {{#hasComment}}
+                        <tr>
+
+                            <td></td>
+                            <td colspan="4" style="padding: 0 0px 0 0px;">
+                                <table class="tablesorter-child">
+
+                                    <tbody>
+
+                                        <tr>
+
+                                            <td>{{fld_comments_254.text}}</td>
+                            </tr>
+                                        </tbody>
+
+                                    </table>
+                                </td>
+
+
+                            </tr>
+
+                            <tr>
+
+                                <td>{{fld_oprdefndesc.text}}</td>
+
+                                <td>{{OpenedStatusDescr}}</td>
+                                <td>{{SavedStatusDescr}}</td>
+                                <td>{{Created_Date}}</td>
+                                <td>{{Saved_Date}}</td>
+
+                            </tr>
+
+
+                            {{/hasComment}}
+
+                        {{/workflowLines}}
+                    </tbody>
+                </table>
+                {{/isSAS}}
+                <h3>Approver</h3>
+
+                <table class="tablesorter-child">
+                    <thead>
+                        <tr>
+
+                            <th>User</th>
+                            <th>Action</th>
+                            <th>from</th>
+                            <th>Saved</th>
+                            <th>Entered DTTM </th>
+                            <th>Exit DTTM </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#workflowLines}}
+                        {{#isApprover}}
+                        {{#hasComment}}
+                        <tr>
+                            <td></td>
+                            <td>Comment Entered on:</td>
+                            <td>{{fld_xx_dttm_char.text}}</td>
+
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>{{fld_comments_254.text}}</td>
+
+                        </tr>
+
+                        {{else}}
+
+
+                        <tr>
+
+                            <td>{{fld_oprdefndesc.text}}</td>
+                            <td>{{ActionDescr}}</td>
+                            <td>{{fld_adhoc_by.text}}</td>
+                            <td>{{SavedStatusDescr}}</td>
+                            <td>{{Created_Date}}</td>
+                            <td>{{Saved_Date}}</td>
+                        </tr>
+
+                        {{/hasComment}}
+
+                        {{/isApprover}}
+                        {{/workflowLines}}
+                    </tbody>
+                </table>
+
+
+            </td>
+        </tr>
+
+    </tbody>
+</table>
