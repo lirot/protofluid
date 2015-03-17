@@ -1,17 +1,19 @@
 /*  filename: server.js */
 /* description: program proxies traffic to ps PIA (peoplesoft web servers) allowing for the local development of CSS and javascript */
 {
-    var RICOCHET_SERVER = 'http://nyc0fscqarwb03.na.corp.jwt.com:16102';
-    var PING_HOST = "nyc0fscqarwb03.na.corp.jwt.com";
-    var RICOCHET_LOGIN = '/psc/fsdev/EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_CONTAINER.GBL?Page=%20XX_CONTAINER&&cmd=login&languageCd=ENG';
-    var RICOCHET_LOGOUT = '/psc/fsdev/EMPLOYEE/ERP/?cmd=logout';
-    var USER_AGENT = '	Mozilla/5.0 (Windows NT 6.1; WOW64; rv:33.0) Gecko/20100101 Firefox/33.0';
-    var PORT = 3001;
-    var host = RICOCHET_SERVER;
+    var conn = require('./connection.js');
+    var c = new conn();
+    var RICOCHET_SERVER = c.RICOCHET_SERVER;
+    var PING_HOST = c.PING_HOST;
+    var RICOCHET_LOGIN = c.RICOCHET_LOGIN;
+    var RICOCHET_LOGOUT = c.RICOCHET_LOGOUT;
+    var USER_AGENT = c.USER_AGENT;
+    var PORT = c.PORT;
+    var host =  c.host ;
     //RCHANNER the default user without invoice administrator privelages
-    var user = 'RCHANNER',
-        pass = 'fsdev14!',
-        timezoneOffset = 420;
+    var user = c.user,
+        pass = c.pass,
+        timezoneOffset = c.timezoneOffset;
     var ping = require('ping'),
         util = require('util'),
         bodyParser = require('body-parser'),
@@ -84,7 +86,6 @@ function login() {
                     console.log('Failed Ricochet Login:', error);
                     process.exit();
                 }
-
             })
 
     }
