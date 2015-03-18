@@ -11,7 +11,7 @@ var jwt = (function() {
 
   var url_xx = document.URL.replace(/\/\s*$/, '').split('/');
 
-  var logoutLink = "http://" + location.host + "/psc/" + url_xx[4] +  "?cmd=logout" ;
+  var logoutLink = "http://" + location.host + "/psp/" + url_xx[4] +  "?cmd=logout" ;
 
   var homeLink = "http://" + location.host + "/psp/" + url_xx[4] +  "/EMPLOYEE/ERP/h/?tab=DEFAULT" ;
 
