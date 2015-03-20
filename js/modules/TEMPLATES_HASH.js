@@ -176,6 +176,7 @@ jwt.templates = (function() {
                                 jQuery(this).addClass('modal-result');
                                 if ( ! obj.hasOwnProperty("userCancel") ){
                                     jQuery("#user-pop-up").hide();
+                                    jwt.jwtWorkList.reset_Tabs();
                                 }
                                 var result = jQuery(this);
                                 obj.popCallback(result);

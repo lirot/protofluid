@@ -170,7 +170,7 @@ jwt.jwtWorkList = (function() {
                         tabSelected = "6"
                     }
                     if (wlhash == 7) {
-                        tabSelected = "7"
+                        tabSelected = "2"
                     }
                 }
                 jQuery("#work-lists table").tablesorter({

@@ -82,15 +82,22 @@ jwt.routes = (function() {
 
                             if (route.hasOwnProperty("updateImageNow")) {
                                 if (route.updateImageNow) {
-                                    jQuery("#image-now").html("<iframe id='INiframe' class='imageNowIframe' src='" + jwt.constants.imgNowURL + jQuery(this).data("imgnowkey") + "'  ></iframe>");
-                                    jwt.user.oldimageNowDocID = jwt.user.imageNowDocID;
+
+                                    if ( jwt.user.oldimageNowDocID != jwt.user.imageNowDocID){
+                                         jQuery("#image-now").html("<iframe id='INiframe' class='imageNowIframe' src='" + jwt.constants.imgNowURL + jQuery(this).data("imgnowkey") + "'  ></iframe>");
+                                         jwt.user.oldimageNowDocID = jwt.user.imageNowDocID;
+                                    }
                                 }
                             }
                         } else {
                             jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, route.serverFunction);
                             if (route.hasOwnProperty("blankImageNow")) {
-                                if (route.blankImageNow) {
-                                    jQuery("#image-now").html("");
+                                if (route.blankImageNow
+                                      && 
+                                        ( jwt.user.oldimageNowDocID != jwt.user.imageNowDocID )
+                                        )
+                                    {
+                                    //jQuery("#image-now").html("");
                                 }
                             }
                         }
