@@ -125,7 +125,12 @@ jwt.jwtWorkList = (function() {
                 var def = new jQuery.Deferred();
                 jqXHRoptions = {
                     type: "POST",
-                    url: worklist.urlBase + worklist.iScript + worklist.qrystring.replace("%USER%", jwt.user.operID),
+                    //Invoice admins get the full list of invoices:
+                    if (  jwt.user.isIA && worklist.wlID == '1' )  {
+                       var qrystring =  'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA","CoumnList":[]}',
+                    }else{
+                       url: worklist.urlBase + worklist.iScript + worklist.qrystring.replace("%USER%", jwt.user.operID),
+                    }
                     contentType: "application/json"
                 };
                 jQuery.ajax(jqXHRoptions).done(
