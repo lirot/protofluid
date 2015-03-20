@@ -123,14 +123,20 @@ jwt.jwtWorkList = (function() {
 
             jQuery.each(wlArray, function(index, worklist) {
                 var def = new jQuery.Deferred();
+
+                    //Invoice admins get the full list of invoices:
+                    var xlink, xqrystring
+                    if (  jwt.user.isIA && worklist.wlID == '1' ) 
+                     {
+                       var qrystring =  'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA","CoumnList":[]}'
+                       xlink =   worklist.urlBase + worklist.iScript + qrystring; 
+                    }else{
+                       xlink =  worklist.urlBase + worklist.iScript + worklist.qrystring.replace("%USER%", jwt.user.operID);
+                    }
+
                 jqXHRoptions = {
                     type: "POST",
-                    //Invoice admins get the full list of invoices:
-                    if (  jwt.user.isIA && worklist.wlID == '1' )  {
-                       var qrystring =  'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA","CoumnList":[]}',
-                    }else{
-                       url: worklist.urlBase + worklist.iScript + worklist.qrystring.replace("%USER%", jwt.user.operID),
-                    }
+                    url : xlink , 
                     contentType: "application/json"
                 };
                 jQuery.ajax(jqXHRoptions).done(
