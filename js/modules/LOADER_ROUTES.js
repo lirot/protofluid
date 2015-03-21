@@ -38,7 +38,7 @@ jwt.routes = (function() {
     };
 
     var xx_bind_buttons = function(row) {
-        var routes = jQuery("[data-route-id]", row || jQuery('#content') ),
+        var routes = jQuery("[data-route-id]", row || jQuery('#content , #popModal') ),
             pageConfig;
 
         _.each(routes, function(obj) {
@@ -93,7 +93,7 @@ jwt.routes = (function() {
                             jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, route.serverFunction);
                             if (route.hasOwnProperty("blankImageNow")) {
                                 if (route.blankImageNow
-                                      && 
+                                      &&
                                         ( jwt.user.oldimageNowDocID != jwt.user.imageNowDocID )
                                         )
                                     {
