@@ -124,6 +124,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
                           jQuery(".vl-check").removeClass("displayHidden");
                           jQuery('.NL-check').prop('checked', false);
                           jQuery('#XX_HDR_VI').val(data.VENDOR_ID);
+                          jQuery('.NL-check').prettyCheckable('uncheck');
                           jQuery('#XX_HDR_VL').val(decodeURIComponent(data.VNDR_LOC));
                           if (jwt.jwtWorkList.sActivePage == 'jwt.jwtComponentConfigFull') {
                             var outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
@@ -428,7 +429,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
                                         if (data.RESOURCE_SUB_CAT != $elem.next().val()) {
                                           $elem.next().val(data.RESOURCE_SUB_CAT);
                                           if ($elem.parent().next().find("input[id^='XX_LIN_LD']").val() == "") {
-                                            $elem.parent().next().find("input[id^='XX_LIN_LD']").val(decodeURIComponent(data.RES_CAT_DESCR));
+                                            $elem.parent().next().find("input[id^='XX_LIN_LD']").val(decodeURIComponent(data.RES_SUB_CAT_DESCR));
                                           }
                                         }
                                       }
@@ -484,7 +485,7 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
                                         return
                                       }
                                       var outofofficevar = data.REASSIGNOPRID ? ' <font color="red"><b> ! office </b></font>' + decodeURIComponent(data.DESCR120) : ' ';
-                                      return decodeURIComponent("<div><div>" + data.OPRDEFNDESC) + ' - ' + decodeURIComponent(data.STATUS_DESCR) + ' - ' + decodeURIComponent(data.BUSINESS_UNIT) + outofofficevar + "</div></div>";
+                                      return decodeURIComponent("<div><div>" + data.PERSON_NAME) + ' - ' + decodeURIComponent(data.STATUS_DESCR) + ' - ' + decodeURIComponent(data.BUSINESS_UNIT) + outofofficevar + "</div></div>";
                                     },
                     select2setKeys  : function(data) {
                                       return (data) ? jQuery("input[name='XX_HDR_FA']").val(data.OPRID) : jQuery("input[name='XX_HDR_FA']").val("");
@@ -494,7 +495,7 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
                                         return
                                       }
                                       var outofofficevar = data.REASSIGNOPRID ? ' <font color="red"><b> out of office  </b></font>' + decodeURIComponent(data.DESCR120) : ' ';
-                                      return decodeURIComponent(data.OPRDEFNDESC) + ' - ' + decodeURIComponent(data.STATUS_DESCR) + ' - ' + decodeURIComponent(data.BUSINESS_UNIT);
+                                      return decodeURIComponent(data.PERSON_NAME) + ' - ' + decodeURIComponent(data.STATUS_DESCR) + ' - ' + decodeURIComponent(data.BUSINESS_UNIT);
                                     },
 
                     loc_S2_XX_HDR_FA: function() {

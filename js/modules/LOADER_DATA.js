@@ -195,7 +195,10 @@ jwt.jwtData = (function() {
 
         var xhr = jQuery.ajax(jqXHRoptions2).done(
             function(data, textStatus, jqXHR) {
-                parse.call(that, config, data, value, jqXHR)
+                function func_process(){
+                parse.call(that, config, data, value, jqXHR);
+            }
+            setTimeout( func_process , 1500);
             },
             function(data, textStatus, jqXHR) {
                 if (typeof def == 'object') {

@@ -322,6 +322,9 @@ jwt.jwtComponent = (function() {
                 jwt.user.oldimageNowDocID = jwt.user.imageNowDocID;
                 jQuery("#image-now").html("<iframe id='INiframe' class='imageNowIframe' src='" + jwt.constants.imgNowURL + jwt.user.imageNowDocID + "'  ></iframe>");
             }
+        }else{
+          jQuery('#processing').trigger('hide.processing');
+          jQuery('#image-now').html('');
         }
 
       }
