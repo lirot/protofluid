@@ -82,7 +82,7 @@ jwt.functions = (function() {
               function() {
                 jwt.invoice.user.hasApproverOnChain = true;
                 var elem = jQuery(this)
-                if (elem.data('can-approve')) {
+                if (elem.data('can-approve') == "Y" ) {
                     jwt.invoice.user.isAddFinAppr = true;
                 }
                 approverArray.push(jQuery(this).attr("id"));

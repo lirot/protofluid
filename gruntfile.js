@@ -39,7 +39,7 @@ module.exports = function(grunt) {
     mustache: {
         files : {
             src: 'html',
-            dest: 'js/modules/templates.js',
+            dest: 'js/html/templates.js',
             options: {
                 prefix: 'jwt.templates = ',
                 postfix: ';',

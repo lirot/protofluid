@@ -556,7 +556,8 @@ jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
 
                                       var obj = {
                                         'name': decodeURIComponent(data.OPRDEFNDESC),
-                                        'id': data.OPRID
+                                        'id': data.OPRID,
+                                        'canApprove' : data.canApprove
                                       }
                                       var template = jwt.templates["APPROVER_ADD_LIST"];
                                       var outHTML = jwt.Mustache.to_html(template, obj);

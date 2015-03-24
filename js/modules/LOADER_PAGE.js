@@ -48,7 +48,7 @@ jwt.jwtComponent = (function() {
 
     if (jQInvComp.find('#XX_HDR_SA').val() == 'F') {
         //server sends instructios to blank page
-        jQuery(window).scrollTop(0);
+        //jQuery(window).scrollTop(0);
         config.f_return = false;
         jQuery('#component-data .component').remove();
         return false;
@@ -99,7 +99,7 @@ jwt.jwtComponent = (function() {
 
       window.unlock = false;
       jQuery(".focusedInput").focus();
-      jQuery(window).scrollTop(0);
+     // jQuery(window).scrollTop(0);
       return false;
 
     };

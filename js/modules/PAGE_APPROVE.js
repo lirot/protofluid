@@ -31,8 +31,10 @@ jwt.jwtComponentConfigApprove = (function() {
                     //go through the list of approvers and determine if they can approve
                       _.each( jwt.jwtData['XX_APPROVERS'] , function(obj) {
                           if( jwt.invoice.user.validApprovers.indexOf( obj.OPRID ) > 0 ) {
-                              var field = {};
+                              //var field = {};
                               obj.canApprove = "Y"
+                          }else{
+                          //obj.canApprove = "N";
                           }
                           jwt.jwtData.add_fields_lunr_search(  jwt.jwtData.Configs['XX_APPROVERS'] , obj)
                           })

@@ -59,7 +59,8 @@ var createError =  function(obj) {
           //message is list on the page
           jQuery(".messages ul").append(outHTML);
           jQuery('.content').animate({
-                    scrollTop: 0},
+                    scrollTop: 0
+                    },
                     'slow');
           return false;
   } else {
