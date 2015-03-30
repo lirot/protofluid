@@ -1,5 +1,8 @@
+
+
 conn= function(){
-	    this.RICOCHET_SERVER = "http://nyc0fscqarwb03.na.corp.jwt.com:16102";
+    /* test */
+    this.RICOCHET_SERVER = "http://nyc0fscqarwb03.na.corp.jwt.com:16102";
 	        this.PING_HOST = "nyc0fscqarwb03.na.corp.jwt.com";
 		    this.RICOCHET_LOGIN = "/psc/fsdev/EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_CONTAINER.GBL?Page=%20XX_CONTAINER&&cmd=login&languageCd=ENG";
 		        this.RICOCHET_LOGOUT = "/psc/fsdev/EMPLOYEE/ERP/?cmd=logout";
