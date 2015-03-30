@@ -31,8 +31,10 @@ require.config({
         tablesorterPager: "js/libs/jquery.tablesorter.pager.min",
         tablesorterWidgets: "js/libs/jquery.tablesorter.widgets",
         //      tablesorterWidgets   : "libs/jquery.tablesorter.widgets.min",
-        tablesorterFilterFormatter: "js/libs/jquery.tablesorter.widgets-filter-formatter.min",
-        tablesorterFilterFormatterSelect2: "js/libs/jquery.tablesorter.widgets-filter-formatter-select2",
+        tablesorterFilterFormatter:
+	   "js/libs/jquery.tablesorter.widgets-filter-formatter.min",
+        tablesorterFilterFormatterSelect2:
+	   "js/libs/jquery.tablesorter.widgets-filter-formatter-select2",
         moment: "js/libs/moment",
         lunr: "js/libs/lunr",
         underscore: "js/libs/underscore",
