@@ -1,0 +1,83 @@
+#quick-section {
+    display:none;
+    height:1000px;
+    .qf-hdr-ii {
+        @include span( 12 );
+        label{
+            display: inline;
+            margin-right: 10px;
+        }
+    }
+    .qf-hdr-bu {
+        @include span( 6 );
+    }
+    .qf-hdr-id {
+        @include span( 6 );
+    }
+    .qf-hdr-in {
+        @include span( 6 );
+    }
+    .qf-hdr-ga {
+        @include span( 6 );
+        input {
+            text-align:right;
+        }
+    }
+    .qf-hdr-st {
+        @include span( 6 );
+        input {
+            text-align:right;
+        }
+    }
+    .qf-hdr-po {
+        @include span( 12 );
+    }
+    .qf-hdr-vi {
+        @include span( 12 );
+    }
+    .qf-hdr-so {
+        @include span( 6 );
+    }
+    .qf-hdr-fa {
+        @include span( 6 );
+    }
+    .loc-ps-approver-buttons {
+        @include span( 12 );
+    }
+
+  label {
+
+    display: block;
+
+  }
+  .loc_vendorInfoQuick {
+      @include span( 12 );
+
+      position: relative;
+      min-height : 8em;
+      margin-top:20px;
+      border-radius: 10px;
+      background: #fff;
+      background: -moz-linear-gradient(#fff, #999);
+      background: -webkit-linear-gradient(#fff, #999);
+      background: -o-linear-gradient(#fff, #999);
+
+      .vl-check{ float: right;
+        margin-bottom: 0px;
+        height: 25px;
+        margin-right: -9px;
+
+    }
+
+      input.NL-check{
+          @include span( 4 omega ) ;
+      }
+  }
+  input {
+    @include border-radius( 6px);
+    height: 26px !important;
+    display: block;
+    font-size: 1.2rem;
+
+  }
+}

@@ -1,0 +1,51 @@
+<div id="approveModal" class="modalDialog">
+  <div class="PAGE_APPROVE">
+      <a href="#close" title="Close" class="approve-close">X</a>
+    <section class="header3">
+      <section id="rf-hdr-messages" class="messages">
+        <ul>
+          {{#errors}}
+            <li id="{{id}}" class="{{class}}"><i class="{{type}}"></i> <span> {{id}}</span> <span>{{text}}</span>
+            </li>
+          {{/errors}}
+        </ul>
+      </section>
+
+      <section id="comment" class="comment">
+        <div class="div-header">
+          <label> Add a comment</label>
+        </div>
+        <div class="textareaBackground xx-comment-approver">
+          <textarea id="temp-comment" ></textarea>
+        </div>
+      </section>
+
+    </section>
+    <section class="approver">
+      <div class="af-add-approver">
+        <label> Add approver</label>
+        <input type="hidden" class="select2-offscreen" data-ps-tbl-name="XX_APPROVERS" id="loc_S2_APPROVER" placeholder="Add approver">
+      </div>
+    </section>
+
+    <section class="approvers-list">
+      <div class="DivListofApprovers">
+        <ul id="APPROVER_ADD_LIST"></ul>
+      </div>
+    </section>
+
+    <section class="btn-bar approver-modal">
+        {{#user.canView.loc_XX_HPB_500}}
+        <button id="loc_XX_HPB_500" data-route-id="loc_XX_HPB_500" type="button"  tabindex="11"></button>
+        {{/user.canView.loc_XX_HPB_500}}
+        {{#user.canView.loc_XX_HPB_501}}
+        <button id="loc_XX_HPB_501" data-route-id="loc_XX_HPB_501" type="button"  tabindex="11"></button>
+        {{/user.canView.loc_XX_HPB_501}}
+        {{#user.canView.loc_XX_HPB_410}}
+        <button id="loc_XX_HPB_410" data-route-id="loc_XX_HPB_410" type="button"  tabindex="11"></button>
+        {{/user.canView.loc_XX_HPB_410}}
+
+        <button id="modal-cancel" type="button" class="graphite-flat-button" tabindex="11">Cancel</button>
+    </section>
+  </div>
+</div>
