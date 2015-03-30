@@ -1,0 +1,31 @@
+{
+  "name": "rPay",
+  "project": "rPay",
+  "version": "0.0.1",
+  "description" : "Invoicing app",
+  "author" : "andrew p lirot",
+  "private" : true ,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.9.3",
+    "cors": "^2.5.2",
+    "express": "^4.10.4",
+    "fs": "0.0.2",
+    "grunt": "~0.4.5",
+    "grunt-contrib-compass": "~1.0.1",
+    "grunt-contrib-copy": "~0.7.0",
+    "grunt-contrib-concat": "~0.5.1",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-mustache": "^0.1.7",
+    "http": "0.0.0",
+    "matchdep": "~0.1.2",
+    "moment": "^2.8.4",
+    "ping": "^0.1.9",
+    "request": "^2.49.0",
+    "underscore": "^1.7.0",
+    "util": "^0.10.3"
+  }
+}

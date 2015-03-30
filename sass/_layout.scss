@@ -1,0 +1,150 @@
+@include border-box-sizing;
+
+$small: 30em;
+$medium: 47em;
+$large: 75em;
+
+$susy: (
+    columns: 12,
+    gutters: .05,
+);
+
+@include border-box-sizing;
+
+#processing{
+    float:right;
+    width:80px;
+    height:20px;
+    position:fixed;
+    top:30px;
+    right:40px;
+}
+
+body {
+  overflow: hidden;
+  @include layout($susy float inside);
+}
+#page-header {
+
+  background: rgba( $paleryellow, .7 );
+  #base-ps-menu{
+      @include span(6 );
+      .navlist{}
+  }
+  .header-timing-data{
+      @include span(2 omega);
+  }
+
+}
+#body-anchor {
+
+  #work-lists {
+
+    @include span(12 );
+
+    height: 100%;
+    position: absolute;
+    padding-left:30px!important;
+    text-align: center;
+    max-height: $page-height;
+    background-color: fade-out($lightgray, .3);
+    z-index: 10;
+
+    .wlHeader {
+      display: none;
+      .wlClose {
+      }
+      .pager {
+        height: 2em;
+        display: none;
+      }
+      .tablesorter-default {
+      }
+    }
+  }
+  #content {
+    @include span(12 );
+    height: $page-height;
+    #image-now {
+      @include span(6 );
+      background: rgba( $yellow , .7 );
+      height: 100%;
+      iframe{ height:100%;
+              width:100%;
+              }
+    }
+    #component-data {
+      @include span( 6 );
+      background: rgba( $purple , .9 );
+      height: 100%;
+      overflow: scroll;
+      float:right!important;
+
+      #XX_HDR_VL,
+      #XX_HDR_VI,
+      #XX_HDR_FA,
+      #XX_HDR_BU,
+      #XX_HDR_SO,
+      #XX_LIN_PO,
+      #XX_HDR_HF,
+      #XX_HDR_MU,
+      #XX_HDR_SB,
+      #XX_HDR_PY,
+      #XX_HDR_SC,
+      #XX_HDR_IP,
+      #XX_HDR_LO,
+      #XX_HDR_WI{
+          display: none;
+      }
+      .actions {
+        @include span( 12 );
+      }
+
+
+    }
+  }
+
+}
+.has-error input{
+
+    background-color: fade-out($red, .3);
+}
+
+.highlight {
+    background-color: #FFFF88;
+}
+
+.select2-container {
+    width: 100%;
+
+}
+.loc-ps-approver-buttons button {
+  width: 23% !important;
+  height: 30px;
+  font-size: small !important;
+  margin-top: 20px;
+}
+.ps-sas-actions button {
+    width: 23% !important;
+    height: 30px;
+    font-size: small !important;
+    margin-top: 20px;
+}
+.btn-bar{
+    padding-bottom:300px;
+
+}
+.btn-bar button {
+    width: 20% !important;
+    height: 30px;
+    font-size: small !important;
+    margin-top: 20px;
+}
+#toggle-left i {
+  color: green;
+  cursor: hand;
+}
+#divider2:hover {
+  border: white 1px solid;
+  cursor: w-resize;
+}

@@ -1,0 +1,64 @@
+.select2-drop-mask {
+
+  opacity: 0.5!important;
+  background-color: darkgrey;
+
+}
+.xx-select2-match {
+  background-color: yellow;
+
+}
+.s2-vendor-drop {
+  .Inactive {
+    color: red;
+  }
+  .Active {
+    color: green;
+  }
+
+}
+.po-drop1 {
+  margin-top: 5px;
+  overflow-x: scroll;
+  position: fixed;
+  top: 60px !important;
+  /*left:15px !important; */
+  /*width : 65% !important;*/
+
+}
+.po-drop1 span {
+  line-height: 40%;
+  font-size: 12px;
+  margin-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+
+}
+.po-drop1 .select2-results {
+  width: 1300px;
+  overflow-x: scroll!important;
+}
+.po-drop1 .select2-result-label {
+  line-height: 17px !important;
+  overflow-x: scroll;
+
+}
+.s2-drop-subcat {
+  width: 300px !important;
+  margin-top: 5px;
+  overflow-x: scroll;
+  position: fixed;
+  top: 60px !important;
+
+}
+.s2-drop-shipto {
+  width: 300px !important;
+  margin-top: 5px;
+
+}
+.select2-container .select2-choice {
+  height: 100% !important;
+}
+.select2-results {
+  max-height: 500px;
+}

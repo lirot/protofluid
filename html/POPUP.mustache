@@ -1,0 +1,13 @@
+<div id="user-pop-up" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">X</a>
+        <p>{{message}}</p>
+        <div>{{{subTemplate}}}</div>
+        {{#cancel}}
+        <input id="cancel" type="submit" value="Cancel" class="btn-cancel graphite-flat-button">
+        {{/cancel}}
+        {{#ok}}
+        <input id="ok" type="submit" value="OK" class="btn-ok nephritis-flat-button">
+        {{/ok}}
+    </div>
+</div>
