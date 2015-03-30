@@ -1,12 +1,6 @@
 jwt.o = {};
 jwt.o.fieldStore = [ ]
-jwt.constants.FIELDS = {};
 
-(function () {
-        for (i = 0; i < jwt.o.fieldStore.length; i++) {
-            jwt.constants.FIELDS[ jwt.o.fieldStore[i].id ] = jwt.o.fieldStore[i];
-        }
-})()
 
 jwt.o.ErrorStoreFunctions = (function() {
     return {
@@ -90,7 +84,7 @@ jwt.o.ErrorStore =  [
             text        : 'You do not have financial autority to approve the invoice.  Please select an additional approver.',
             test        : function(  ){
                             //cant approve without a valid approver
-                            if ( jwt.invoice.user.isAddedUserFinanceApprover ||
+                            if ( jwt.invoice.user.isAddFinAppr ||
                                 jwt.invoice.user.isANYUserFinanceApprover  ||
                                 jwt.invoice.user.isPNDUserFinanceApprover ||
                                 jwt.invoice.user.isPOInvoice )

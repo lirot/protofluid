@@ -12,7 +12,6 @@ jwt.functions = (function() {
         }
         for (i = 0; i < strlen; i++) {
           c = this.charCodeAt(i);
-          // hash = ((hash << 5) � hash) + c;
           hash = ((hash << 5) - hash) + c;
           hash = hash & hash;
           hash = hash + 2147483647;
@@ -28,7 +27,9 @@ jwt.functions = (function() {
           s = n < 0 ? "-" : "",
           i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
           j = (j = i.length) > 3 ? j % 3 : 0;
-        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+          return s + (j ? i.substr(0, j) + t : "")
+	      + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t)
+	      + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
       };
 
       jQuery(function() {
@@ -43,7 +44,8 @@ jwt.functions = (function() {
 
       function stopRKey(evt) {
         var evt = (evt) ? evt : ((event) ? event : null);
-        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+          var node = (evt.target) ? evt.target : ((evt.srcElement)
+						  ? evt.srcElement : null);
         if ((evt.keyCode == 13)) {
           return false;
         }
@@ -52,29 +54,23 @@ jwt.functions = (function() {
       jQuery.extend(jwt.functions,
 
         {
-
-    hasVendor: function() {
-
+   hasVendor: function() {
             var vendorID = jQuery('#XX_HDR_VI').val();
-
-            if ( !vendorID) {
-                vendorID =     jwt.invoice.header.XX_HDR_VI ;
-                }
-
+            if (!vendorID) {
+              vendorID = jwt.invoice.header.XX_HDR_VI;
+            }
             return vendorID
           },
-
-    padout: function(number) {
+   padout: function(number) {
             return (number < 10) ? '0' + number : number;
           },
-
-     pad  :  function(n, width, z) {
-                       z = z || '0';
-                       n = n + '';
-                       return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
-               },
-
-    editApproverList: function() {
+   pad: function(n, width, z) {
+            z = z || '0';
+            n = n + '';
+              return n.length >= width ? n :
+		  new Array(width - n.length + 1).join(z) + n;
+          },
+   editApproverList: function() {
             jwt.invoice.user.isAddFinAppr = false;
             jwt.invoice.user.hasApproverOnChain = false;
             var approverArray = [];
@@ -82,8 +78,8 @@ jwt.functions = (function() {
               function() {
                 jwt.invoice.user.hasApproverOnChain = true;
                 var elem = jQuery(this)
-                if (elem.data('can-approve') == "Y" ) {
-                    jwt.invoice.user.isAddFinAppr = true;
+                if (elem.data('can-approve') == "Y") {
+                  jwt.invoice.user.isAddFinAppr = true;
                 }
                 approverArray.push(jQuery(this).attr("id"));
               }
@@ -94,114 +90,136 @@ jwt.functions = (function() {
             jwt.invoice.user.approverList = approverArray;
           },
 
-    cleanWorkFlowData: function(xml) {
+   cleanWorkFlowData: function(xml) {
 
-        //function builds the table show to the user
+            //function builds the table show to the user
 
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Area');
-        data.addColumn('string', 'User');
-        data.addColumn('string', 'Action');
-        if ( jwt.user.isSAS ) {
-            data.addColumn('string', 'Open Status');
-            data.addColumn('string', 'End Status');
-        }
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Area');
+            data.addColumn('string', 'User');
+            data.addColumn('string', 'Action');
+            if (jwt.user.isSAS) {
+              data.addColumn('string', 'Open Status');
+              data.addColumn('string', 'End Status');
+            }
 
-        data.addColumn('string', 'Entered Date/Time');
-        data.addColumn('string', 'End Date/Time');
-        data.addColumn('string', 'Comment');
+            data.addColumn('string', 'Entered Date/Time');
+            data.addColumn('string', 'End Date/Time');
+            data.addColumn('string', 'Comment');
 
 
-        var table = new google.visualization.Table(document.getElementById('workflow'));
-        var moreRows = [];
-        var userType , action , startDate , status , EndDate , action , comment, area;
-        var comments = [];
+       var table = new google.visualization
+	   .Table(document.getElementById('workflow'));
+            var moreRows = [];
+       var userType, action, startDate, status, EndDate, action
+       , comment, area;
+            var comments = [];
 
-            _.each(jwt.invoice.workflowLines, function(Obj, index) {
+       _.each(jwt.invoice.workflowLines, function(Obj, index) {
 
-            var tempRow = [];
+           var tempRow = [];
 
-              if (Obj.fld_oprid.text == "XX_SAS_START")
-                return
+           if (Obj.fld_oprid.text == "XX_SAS_START")
+               return
+		
+           var m = moment(Obj.fld_dttm_created.text, "YYYY-MM-DD[T]hh:mm:ss");
+              Obj.Created_Date = m.format("MMMM Do YYYY hh:mm:ss").toString();
+           var n = moment(Obj.fld_ptafdttm_modified.text,
+			  "YYYY-MM-DD[T]hh:mm:ss");
+              Obj.Saved_Date = n.format("MMMM Do YYYY hh:mm:ss").toString();
 
-                // Obj.DatePart = moment(Obj.fld_dttm_created.text, moment.ISO_8601).format();
-                var m = moment(Obj.fld_dttm_created.text, "YYYY-MM-DD[T]hh:mm:ss");
-                Obj.Created_Date = m.format("MMMM Do YYYY hh:mm:ss").toString();
-                var n = moment(Obj.fld_ptafdttm_modified.text, "YYYY-MM-DD[T]hh:mm:ss");
-                Obj.Saved_Date = n.format("MMMM Do YYYY hh:mm:ss").toString();
+              if (Obj.fld_ptafstep_status.text == 'P') {
+                Obj.Saved_Date = ""
+              }
 
-                if (Obj.fld_ptafstep_status.text == 'P'   )
-                 { Obj.Saved_Date = ""}
-
-                 if (Obj.fld_ptafstep_status.text == 'N'   )
-                  { Obj.Saved_Date = "";
-                    Obj.Created_Date = ""}
+              if (Obj.fld_ptafstep_status.text == 'N') {
+                Obj.Saved_Date = "";
+                Obj.Created_Date = ""
+              }
 
               if (Obj.fld_comments_254.text) {
-                    comments.push( Obj.Saved_Date + " " + Obj.fld_comments_254.text );
-                    return
+                comments.push(Obj.Saved_Date + " " + Obj.fld_comments_254.text);
+                return
               }
               // these are SAS rows
-              if (Obj.fld_ptafstage_nbr.text == "10"  && jwt.user.isSAS ) {
-                  action = "Complete";
+              if (Obj.fld_ptafstage_nbr.text == "10" && jwt.user.isSAS) {
+                action = "Complete";
                 status = jwt.constants.keys[Obj.fld_ptaforig_oprid.text];
-                if (Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text ){
-                    status = "Forced Unlock"
+                if (Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text) {
+                  status = "Forced Unlock"
                 }
-                if (Obj.fld_ptafstep_status.text == 'P'   ){
-                    status = " ";
-                    action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
-                }else{
+                if (Obj.fld_ptafstep_status.text == 'P') {
+                  status = " ";
+                  action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
+                } else {
 
 
                 }
 
-                  moreRows.push(  [ "SAS" ,   Obj.fld_oprdefndesc.text , action , jwt.constants.keys[Obj.fld_ptafadhoc_by.text]  , status  , Obj.Created_Date  , Obj.Saved_Date , comments.join() ] );
+		  moreRows.push(["SAS", Obj.fld_oprdefndesc.text, action,
+		           jwt.constants.keys[Obj.fld_ptafadhoc_by.text], status
+			 , Obj.Created_Date, Obj.Saved_Date, comments.join()]);
 
-                  comments = [];
+                comments = [];
 
               } else {
                 Obj.isSAS = false;
               }
 
               if (Obj.fld_ptafstage_nbr.text == "20") {
-                  area = "Approver"
+                area = "Approver"
 
-                  if ( Obj.fld_ptafadhoc_by.text == "RET" || Obj.fld_ptafadhoc_by.text == "ADM" )
-                   { area = "SAS"}
+		  if (Obj.fld_ptafadhoc_by.text == "RET"
+		      || Obj.fld_ptafadhoc_by.text == "ADM") {
+                  area = "SAS"
+                }
 
-                  action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
+                action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
 
-                  if (Obj.fld_ptafadhoc_by.text == "ADM"  && Obj.fld_ptafstep_status.text == "M"  )
-                  { action = "Rerouted"}
+                  if (Obj.fld_ptafadhoc_by.text
+		      == "ADM" && Obj.fld_ptafstep_status.text == "M") {
+                  action = "Rerouted"
+                }
 
-                 if (Obj.fld_ptafadhoc_by.text != "ADM"  && Obj.fld_ptafadhoc_by.text != "ROUTE"  && Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text && Obj.fld_ptafstep_status.text !== "F" && Obj.fld_ptafstep_status.text !== "P" && Obj.fld_ptafstep_status.text !== "I" ){
-                     action = "Forced Unlock"
-                  }
+                  if (Obj.fld_ptafadhoc_by.text != "ADM"
+		      && Obj.fld_ptafadhoc_by.text != "ROUTE"
+		      && Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text
+		      && Obj.fld_ptafstep_status.text !== "F"
+		      && Obj.fld_ptafstep_status.text !== "P"
+		      && Obj.fld_ptafstep_status.text !== "I") {
+                  action = "Forced Unlock"
+                }
 
-                    if ( Obj.fld_ptaforig_oprid.text == "RET" ){
-                        action = "Returned to SAS"
-                    }
-                    if (  Obj.fld_ptafustep_inst_id.text.indexOf(  jwt.invoice.user.aAweID )){
-                        action = "Fincially Approved!"
-                    }
-                    if ( jwt.user.isSAS ) {
-                      moreRows.push(  [ area ,   Obj.fld_oprdefndesc.text , action , '' , ''   , Obj.Created_Date  , Obj.Saved_Date ,comments.join() ] );
-                    }else{
-                      moreRows.push(  [ area ,   Obj.fld_oprdefndesc.text , action   , Obj.Created_Date  , Obj.Saved_Date , comments.join() ] );
-                    }
-                    comments = [];
+                if (Obj.fld_ptaforig_oprid.text == "RET") {
+                  action = "Returned to SAS"
+                }
+                  if (Obj.fld_ptafustep_inst_id.text.indexOf(
+		      jwt.invoice.user.aAweID)) {
+                  action = "Fincially Approved!"
+                }
+                if (jwt.user.isSAS) {
+                    moreRows.push([area, Obj.fld_oprdefndesc.text
+				   , action, '', '', Obj.Created_Date
+				   , Obj.Saved_Date, comments.join()]);
+                } else {
+                    moreRows.push([area, Obj.fld_oprdefndesc.text
+				   , action, Obj.Created_Date
+				   , Obj.Saved_Date, comments.join()]);
+                }
+                comments = [];
               } else {
                 Obj.isApprover = false;
               }
 
             })
-            data.addRows( moreRows );
+            data.addRows(moreRows);
 
-            table.draw(data, {showRowNumber: true});
+            table.draw(data, {
+              showRowNumber: true
+            });
           },
 
-    xmlToJson: function(xml) {
+  xmlToJson: function(xml) {
 
             // Create the return object
             var obj = {};
@@ -223,7 +241,8 @@ jwt.functions = (function() {
             if (xml.hasChildNodes()) {
               for (var i = 0; i < xml.childNodes.length; i++) {
                 var item = xml.childNodes.item(i);
-                var nodeName = item.nodeName == "#text" ? "text" : item.nodeName;
+                  var nodeName = item.nodeName == "#text" ? "text"
+		      : item.nodeName;
                 if (typeof(obj[nodeName]) == "undefined") {
                   obj[nodeName] = jwt.functions.xmlToJson(item);
                 } else {
@@ -239,17 +258,19 @@ jwt.functions = (function() {
             return obj;
           },
 
-    setupNLCheck: function(config) {
+          setupNLCheck: function(config) {
 
             jQuery('.NL-check').change(function() {
               cb = jQuery(this);
               cb.val(cb.prop('checked'));
               if (jQuery("#XX_HDR_VI").val()) {
                 if (cb.prop('checked')) {
-                  config.oldAddress = jQuery('#loc_vendorInfo #addressInfo').html();
+                    config.oldAddress = jQuery('#loc_vendorInfo #addressInfo')
+			.html();
                   jQuery('#loc_vendorInfo #addressInfo').html("REMOVED ")
                 } else {
-                  jQuery('#loc_vendorInfo #addressInfo').html(config.oldAddress);
+                    jQuery('#loc_vendorInfo #addressInfo')
+			.html(config.oldAddress);
                 }
               } else {
                 jQuery('#loc_vendorInfo #addressInfo').html("")
@@ -260,27 +281,29 @@ jwt.functions = (function() {
 
           },
 
-    getHashValue: function(key) {
-            if (window.location.hash.indexOf("WL") != -1) {
-              return window.location.hash.match(new RegExp(key + '=([^&]*)'))[1];
+   getHashValue: function(key) {
+       if (window.location.hash.indexOf("WL") != -1) {
+           return window.location.hash.match(new RegExp(key + '=([^&]*)'))[1];
             } else {
               return "999";
             }
           },
 
-    formatNumbersQF: function() {
+   formatNumbersQF: function() {
 
             var elem = jQuery("#XX_HDR_ST");
-            var initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+       var initial_value = elem.val()
+	   .replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_ST").val(initial_value);
 
             elem = jQuery("#XX_HDR_GA");
-            initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+       initial_value = elem.val().replace(/,/g, "")
+	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_GA").val(initial_value);
 
           },
 
-    isValidDate: function(dateString) {
+   isValidDate: function(dateString) {
             var date = moment(dateString, ["MM-DD-YYYY", "YYYY-MM-DD"]);
 
             if (date._i) {
@@ -290,11 +313,12 @@ jwt.functions = (function() {
 
           },
 
-    addlines: function() {
+   addlines: function() {
 
             var $summands = jQuery("[id^='XX_LIN_MA']");
             var $sumDisplay = jQuery("#XX_HDR_LT");
-            var invTotalAmt = Number(jQuery("#XX_HDR_GA").val().replace(/,/g, ""));
+       var invTotalAmt = Number(jQuery("#XX_HDR_GA")
+				.val().replace(/,/g, ""));
             var sum = 0;
 
             $summands.each(function() {
@@ -302,14 +326,18 @@ jwt.functions = (function() {
               if (!isNaN(value)) {
                 sum += value;
                 var elem = jQuery(this);
-                var initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                  var initial_value = elem.val()
+		      .replace(/,/g, "")
+		      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
                 jQuery(this).val(initial_value);
               }
             });
 
             $sumDisplay.val(sum.toFixed(2));
 
-            var netAmt = Number(jQuery("#XX_HDR_GA").val().replace(/,/g, "")) - Number(jQuery("#XX_HDR_ST").val().replace(/,/g, ""));
+       var netAmt = Number(jQuery("#XX_HDR_GA").val()
+			   .replace(/,/g, "")) - Number(jQuery("#XX_HDR_ST")
+				.val().replace(/,/g, ""));
 
             var difference = netAmt - $sumDisplay.val();
 
@@ -323,7 +351,8 @@ jwt.functions = (function() {
             }
 
             var elem = jQuery($sumDisplay);
-            var initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+       var initial_value = elem.val().replace(/,/g, "")
+	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             $sumDisplay.val(initial_value);
 
             elem = jQuery("#XX_HDR_GA");
@@ -331,15 +360,18 @@ jwt.functions = (function() {
             jQuery("#XX_HDR_GA").val(initial_value);
 
             elem = jQuery("#XX_HDR_RA");
-            initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+       initial_value = elem.val().replace(/,/g, "")
+	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_RA").val(initial_value);
 
             elem = jQuery("#XX_HDR_ST");
-            initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+       initial_value = elem.val().replace(/,/g, "")
+	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_ST").val(initial_value);
 
             elem = jQuery("#XX_HDR_UT");
-            initial_value = elem.val().replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+       initial_value = elem.val().replace(/,/g, "")
+	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_UT").val(initial_value);
 
           },
@@ -351,7 +383,8 @@ jwt.functions = (function() {
               var parms = {
                 cancel: true,
                 ok: true,
-                message: "You have unsaved data on this page. Click OK to go back and save, or Cancel to continue.",
+		  message: "You have unsaved data on this page. "
+		     + "Click OK to go back and save, or Cancel to continue.",
                 loadTemplate: jwt.templates.loadPopUp,
                 popCallback: function(elem) {
                   if (jQuery(elem).hasClass('btn-cancel')) {
@@ -367,7 +400,7 @@ jwt.functions = (function() {
             }
           },
 
-          getDateFormatted: function(datestring) {
+    getDateFormatted: function(datestring) {
 
             var separator = "/";
             var val = datestring;
@@ -395,7 +428,9 @@ jwt.functions = (function() {
               if (yr < 50) {
                 yr = 2000 + yr
               }
-              var formattedDate = '' + jwt.functions.padout(mnt) + separator + jwt.functions.padout(day) + separator + jwt.functions.padout(yr);
+		var formattedDate = '' + jwt.functions.padout(mnt)
+		    + separator + jwt.functions.padout(day) + separator
+		    + jwt.functions.padout(yr);
               return formattedDate;
             }
 
@@ -403,7 +438,5 @@ jwt.functions = (function() {
           }
         })
     }
-
-
   }
 })();

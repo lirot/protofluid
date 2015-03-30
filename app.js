@@ -1,5 +1,10 @@
 require.config({
     paths: {
+
+        CONSTANTS: "js/modules/CONSTANTS",
+        ERRORS: "js/modules/ERRORS",
+        FIELDS: "js/modules/FIELDS",
+
         jwt: "js/modules/APPLICATION_INIT",
         jwtWorkListConfig_SAS: "js/modules/TABS_SAS",
         jwtWorkListConfig_APP: "js/modules/TABS_APPROVERS",
@@ -12,9 +17,7 @@ require.config({
         ROUTES: "js/modules/ROUTES",
         quickPage: "js/modules/PAGE_QUICK",
         fullPage: "js/modules/PAGE_FULL",
-        CONSTANTS: "js/modules/CONSTANTS",
-        ERRORS: "js/modules/ERRORS",
-        FIELDS: "js/modules/FIELDS",
+
         approvePage: "js/modules/PAGE_APPROVE",
         jwtChat: "js/modules/inichat",
         templates: "js/modules/TEMPLATES_HASH",
@@ -78,7 +81,7 @@ require.config({
             deps: ["jquery"]
         },
         ERRORS: {
-            deps: ["jquery"]
+            deps: ["jquery" ,"CONSTANTS"]
         },
         FIELDS: {
             deps: ["jquery"]
@@ -129,7 +132,7 @@ require.config({
             deps: ["jquery", "underscore", "select2"],
         },
         S2: {
-            deps: ["jquery", "underscore", "select2", "highlighter"],
+            deps: ["jquery", "underscore", "select2", "highlighter" , "ERRORS"],
         },
         loader_data: {
             deps: ["jquery", "lunr", "S2"],

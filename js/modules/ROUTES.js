@@ -1,6 +1,8 @@
 jwt.routes['loc_WL_OPEN_SAS_FULL'] = (function() {
-  return {
-    //for page buttons this flag will force the page to run the error array configured on the page object
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ return {
+     //for page buttons this flag will force the page to run the error array
+     //configured on the page object
     runPageEdit    : false,
     //refresh tells the route processor to run the worklist refresh routine
     runRefresh     : true,
@@ -9,13 +11,16 @@ jwt.routes['loc_WL_OPEN_SAS_FULL'] = (function() {
     Definition     : 'Click to view a new invoice',
     showProcess    : true,
     Description    : "Open Invoice Button",
-    //these edits will run on the click stopping the user in cases were the edit fails
+     //these edits will run on the click stopping the user in cases
+     //were the edit fails
     editArray      : ["msg-isDirty"],
-    //the user can code this method to process on a pass of the edit routine and before the ajax call
+     // the user can code this method to process on a pass of the
+     // edit routine and before the ajax call
     beforeFunction : function(data) {},
     //this si the server call when the system passes the edit routine
     serverFunction : function(elem){
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', jQuery(elem).data("key") + "&UNLOCK=Y" );
+        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
+				 , jQuery(elem).data("key") + "&UNLOCK=Y" );
                         },
     afterFunction  : function() {
                         },
@@ -36,13 +41,14 @@ jwt.routes['loc_WL_UNLOCK_SAS_FULL'] = (function() {
     editArray      : ["msg-isDirty"],
     beforeFunction : function(data) {},
     serverFunction : function(elem){
-                            window.unlock = true;
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', jQuery(elem).data("key") );
+                       window.unlock = true;
+        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
+				 , jQuery(elem).data("key") );
                         },
     afterFunction  : function() {    },
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel    : "Unlock" }
-
+      buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
+			 : "Unlock" }
   }
 })();
 
@@ -67,14 +73,14 @@ jwt.routes['loc_WL_UNLOCK_SAS_QUICK'] = (function() {
 
                         window.unlock = true;
 
-                        var pageConfig =
-                        jwt.jwtComponent.getData('jwt.jwtComponentConfigQuick', id  );
-
+              var pageConfig =
+              jwt.jwtComponent.getData('jwt.jwtComponentConfigQuick', id  );
                       },
 
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "alizarin-flat-button", buttonLabel    : "Unlock" }
+      buttonDefn     : { buttonClass : "alizarin-flat-button"
+			 , buttonLabel    : "Unlock" }
 
   }
 })();
@@ -90,7 +96,6 @@ jwt.routes['loc_WL_OPEN_SAS_QUICK'] = (function() {
     editArray      : ["msg-isDirty"],
     beforeFunction : function(data) {},
     serverFunction : function( id ){
-
                         if ( typeof id == "object"){
                             id = jQuery( id ).data("key");
                         }
@@ -98,14 +103,14 @@ jwt.routes['loc_WL_OPEN_SAS_QUICK'] = (function() {
                             id = jwt.activeRouteContinuationID
                         }
 
-                        jwt.jwtComponent.getData('jwt.jwtComponentConfigQuick', id + "&UNLOCK=Y" );
-
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigQuick', id + "&UNLOCK=Y" );
                      },
 
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel    : "Open" }
-
+      buttonDefn     : { buttonClass
+			 : "sun-flower-button", buttonLabel    : "Open" }
   }
 })();
 
@@ -120,12 +125,14 @@ jwt.routes['loc_WL_VIEW_SAS_FULL'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : function(elem){
                             window.view = true;
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', jQuery(elem).data("key") + "&UNLOCK=N");
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigFull', jQuery(elem).data("key")
+		+ "&UNLOCK=N");
                         },
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "alizarin-flat-button", buttonLabel    : "View" }
-
+      buttonDefn     : { buttonClass : "alizarin-flat-button"
+			 , buttonLabel    : "View" }
   }
 })();
 
@@ -139,12 +146,15 @@ jwt.routes['loc_WL_OPEN_APPROVER'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : function(elem){
                             window.view = true;
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', jQuery(elem).data("key") + "&UNLOCK=N");
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigFull', jQuery(elem)
+		.data("key") + "&UNLOCK=N");
                         },
 
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "alizarin-flat-button", buttonLabel    : "Open" }
+      buttonDefn     : { buttonClass : "alizarin-flat-button"
+			 , buttonLabel    : "Open" }
 
   }
 })();
@@ -160,15 +170,17 @@ jwt.routes['loc_WL_VIEW_APPROVER'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : function(elem){
                             window.view = true;
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', jQuery(elem).data("key") + "&UNLOCK=N");
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigFull',
+	    jQuery(elem).data("key") + "&UNLOCK=N");
                         },
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel    : "View" }
+      buttonDefn     : { buttonClass : "sun-flower-button"
+			 , buttonLabel    : "View" }
 
   }
 })();
-
 
 jwt.routes['XX_HPB_200'] = (function() {
   return {
@@ -178,27 +190,25 @@ jwt.routes['XX_HPB_200'] = (function() {
     editArray      : [],
     beforeFunction : function(data) {},
     serverFunction : function(){
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigQuick', null, this.form, 'XX_HPB_200');
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigQuick', null, this.form, 'XX_HPB_200');
                         },
     afterFunction  : function() {},
-
-
   }
 })();
 
 jwt.routes['XX_HPB_201'] = (function() {
   return {
-
     Definition     : 'XX_HPB_201',
     Description    : "Unlock Full Page",
     editArray      : [],
     beforeFunction : function(data) {},
     serverFunction : function(){
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, 'XX_HPB_200');
+        jwt.jwtComponent
+	    .getData('jwt.jwtComponentConfigFull', null,
+		     this.form, 'XX_HPB_200');
                         },
     afterFunction  : function() {},
-
-
   }
 })();
 
@@ -213,7 +223,8 @@ jwt.routes['loc_XX_HPB_001'] = (function() {
     serverFunction : "XX_HPB_001",
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel    : "Save" }
+      buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
+			 : "Save" }
 
   }
 })();
@@ -231,7 +242,8 @@ jwt.routes['loc_XX_HPB_310'] = (function() {
     serverFunction : "XX_HPB_310",
     canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
     afterFunction  : function() {},
-    buttonDefn     : { buttonClass : "concrete-flat-button", buttonLabel    : "Add" }
+      buttonDefn     : { buttonClass : "concrete-flat-button"
+			 , buttonLabel    : "Add" }
   }
 })();
 
@@ -248,7 +260,8 @@ jwt.routes['loc_XX_HPB_320'] = (function() {
     serverFunction : "XX_HPB_320",
     canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
     afterFunction  : function() {},
-    buttonDefn     : { buttonClass : "alizarin-flat-button", buttonLabel    : "Invalid Vendor" }
+      buttonDefn     : { buttonClass : "alizarin-flat-button"
+			 , buttonLabel    : "Invalid Vendor" }
   }
 })();
 
@@ -265,7 +278,8 @@ jwt.routes['loc_XX_HPB_330'] = (function() {
     serverFunction : "XX_HPB_330",
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
     afterFunction  : function() {},
-    buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel    : "Use Tax" }
+      buttonDefn     : { buttonClass : "peter-river-flat-button"
+			 , buttonLabel    : "Use Tax" }
   }
 })();
 
@@ -282,7 +296,8 @@ jwt.routes['loc_XX_HPB_340'] = (function() {
     serverFunction : "XX_HPB_340",
     afterFunction  : function() {},
     canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
-    buttonDefn     : { buttonClass : "wet-asphalt-flat-button", buttonLabel    : "Pending" }
+      buttonDefn     : { buttonClass : "wet-asphalt-flat-button"
+			 , buttonLabel    : "Pending" }
   }
 })();
 
@@ -314,8 +329,11 @@ jwt.routes['loc_XX_HPB_400'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_400",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isSAS  && !jwt.invoice.user.isRET },
-    buttonDefn     : { buttonClass : "concrete-flat-button", buttonLabel    : "Route" }
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+				   && jwt.invoice.user.isSAS
+				   && !jwt.invoice.user.isRET },
+      buttonDefn     : { buttonClass : "concrete-flat-button"
+			 , buttonLabel    : "Route" }
   }
 })();
 
@@ -329,38 +347,51 @@ jwt.routes['loc_XX_HPB_600'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_600",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return  (   jwt.invoice.user.isRET && jwt.invoice.user.isFinApproved  && jwt.invoice.user.isSAS && jwt.invoice.user.isValidforSASRelease )},
-    buttonDefn     : { buttonClass : "wet-asphalt-flat-button", buttonLabel    : "Release" }
+      canViewFunc    : function(){ return  (
+	  jwt.invoice.user.isRET && jwt.invoice.user.isFinApproved
+	      && jwt.invoice.user.isSAS
+	      && jwt.invoice.user.isValidforSASRelease )},
+      buttonDefn     : { buttonClass : "wet-asphalt-flat-button"
+			 , buttonLabel    : "Release" }
   }
 })();
 
 jwt.routes['loc_XX_HPB_520'] = (function() {
   return {
     Definition     : 'loc_XX_HPB_520',
-    Description    : "Approve Pass button for invoice end users routes to approve pass page where they can add more users on the approval chain, approve and add a comment ",
+      Description    : "Approve Pass button for invoice end users routes"
+	  + "to approve pass page where they can add more users on the approval"
+      +  "chain, approve and add a comment ",
     editArray      : [],
     beforeFunction : function() {
-                            jwt.jwtComponentConfigFull.useAlternateCallback = true;
+                    jwt.jwtComponentConfigFull.useAlternateCallback = true;
                         },
     serverFunction : "XX_HPB_001",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isApprover },
-    buttonDefn     : { buttonClass : "pumpkin-flat-button", buttonLabel    : "Approve / Pass" }
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+				   && jwt.invoice.user.isApprover },
+      buttonDefn     : { buttonClass : "pumpkin-flat-button", buttonLabel
+			 : "Approve / Pass" }
   }
 })();
 
 jwt.routes['loc_XX_HPB_521'] = (function() {
   return {
     Definition     : 'loc_XX_HPB_521',
-    Description    : "Reroute Button on main page -- this button pops up the reoute approval modal used by SAS ",
+      Description    : "Reroute Button on main page -- this button pops up"
+     +  "the reoute approval modal used by SAS ",
     editArray      : [],
     beforeFunction : function() {
-                            jwt.jwtComponentConfigFull.useAlternateCallback = true;
+        jwt.jwtComponentConfigFull.useAlternateCallback
+	    = true;
                         },
     serverFunction : "XX_HPB_520",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isSAS && jwt.invoice.user.isRET },
-    buttonDefn     : { buttonClass : "pomegranate-flat-button", buttonLabel    : "Reroute" }
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+				   && jwt.invoice.user.isSAS
+				   && jwt.invoice.user.isRET },
+      buttonDefn     : { buttonClass : "pomegranate-flat-button"
+			 , buttonLabel : "Reroute" }
   }
 })();
 
@@ -374,14 +405,15 @@ jwt.routes['loc_XX_HPB_530'] = (function() {
     blankImageNow  : true,
     serverFunction : "XX_HPB_530",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isSAS  },
-    buttonDefn     : { buttonClass : "emerald-flat-button", buttonLabel    : "Deny" }
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+				   && jwt.invoice.user.isSAS  },
+      buttonDefn     : { buttonClass : "emerald-flat-button", buttonLabel
+			 : "Deny" }
   }
 })();
 
 jwt.routes['loc_XX_HPB_540'] = (function() {
   return {
-
     Definition     : 'loc_XX_HPB_540',
     Description    : "Send to SAS",
     blankImageNow  : true,
@@ -390,9 +422,10 @@ jwt.routes['loc_XX_HPB_540'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_540",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isApprover },
-    buttonDefn     : { buttonClass : "wisteria-flat-button", buttonLabel    : "Send to SAS" }
-
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+				   && jwt.invoice.user.isApprover },
+      buttonDefn     : { buttonClass : "wisteria-flat-button", buttonLabel
+			 : "Send to SAS" }
   }
 })();
 
@@ -406,13 +439,15 @@ jwt.routes['loc_XX_HPB_500'] = (function() {
     editArray      : ["msg-valFA-Approve"],
     beforeFunction : function(data) {
                      jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
-                     jQuery( "#XX_HDR_LO" ).val( jwt.invoice.user.approverList.join(",") );
+        jQuery( "#XX_HDR_LO" ).val(
+	    jwt.invoice.user.approverList.join(",") );
                      },
     serverFunction : "XX_HPB_500",
     afterFunction  : function() {},
-    canViewFunc    :  function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isApprover },
-    buttonDefn     : { buttonClass : "nephritis-flat-button", buttonLabel    : "Approve" }
-
+      canViewFunc    :  function(){ return !jwt.invoice.user.isLocked
+				    && jwt.invoice.user.isApprover },
+      buttonDefn     : { buttonClass : "nephritis-flat-button", buttonLabel
+			 : "Approve" }
   }
 })();
 
@@ -425,18 +460,19 @@ jwt.routes['loc_XX_HPB_501'] = (function() {
     runRefresh     : true,
     editArray      : ["msg-valFA-Pass"],
     beforeFunction : function(data) {
-                        jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
-                        jQuery( "#XX_HDR_IP" ).val( "Y" );
-                        jQuery( "#XX_HDR_LO" ).val( jwt.invoice.user.approverList.join(",") );
+        jQuery( "#XX_HDR_CT" )
+	    .val( jQuery("#temp-comment").val());
+                 jQuery( "#XX_HDR_IP" ).val( "Y" );
+        jQuery( "#XX_HDR_LO" ).val(
+	    jwt.invoice.user.approverList.join(",") );
                         },
     serverFunction : "XX_HPB_500",
     afterFunction  : function() {
-
-
     },
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isApprover },
-    buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel    : "Pass" }
-
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+				   && jwt.invoice.user.isApprover },
+      buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel
+			 : "Pass" }
   }
 })();
 
@@ -449,13 +485,18 @@ jwt.routes['loc_XX_HPB_410'] = (function() {
     destroyPopUp   : true,
     editArray      : ["msg-requires-Comment-no-pop","msg-val-approver-reroute"],
     beforeFunction : function(data) {
-                        jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
-                        jQuery( "#XX_HDR_LO" ).val( jwt.invoice.user.approverList.join(",") );
+        jQuery( "#XX_HDR_CT" )
+	    .val( jQuery("#temp-comment").val());
+        jQuery( "#XX_HDR_LO" )
+	    .val( jwt.invoice.user.approverList.join(",") );
                      },
     serverFunction : "XX_HPB_410",
     afterFunction  : function() {},
-    canViewFunc    :  function(){ return !jwt.invoice.user.isLocked  && jwt.invoice.user.isSAS && jwt.invoice.user.isRET },
-    buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel    : "Re-route" }
+      canViewFunc    :  function(){ return !jwt.invoice.user.isLocked
+				    && jwt.invoice.user.isSAS
+				    && jwt.invoice.user.isRET },
+      buttonDefn     : { buttonClass : "peter-river-flat-button"
+			 , buttonLabel    : "Re-route" }
 
   }
 })();
@@ -469,10 +510,16 @@ jwt.routes['loc_S2_XX_LIN_PO'] = (function() {
     editArray      : ["msg-requires-Comment"],
     beforeFunction : function(data) {},
     serverFunction : function(data){
-                        jQuery("<input name='XX_LIN_PO$" + jwt.invoice.lineNumberAdd + "'   value='" + data.PO_ID + "' >").appendTo(jwt.form);
-                        jQuery("<input name='XX_LIN_BU$" + jwt.invoice.lineNumberAdd + "'   value='" + data.BUSINESS_UNIT + "' >").appendTo(jwt.form);
+        jQuery("<input name='XX_LIN_PO$"
+	       + jwt.invoice.lineNumberAdd + "'   value='"
+	       + data.PO_ID + "' >").appendTo(jwt.form);
+        jQuery("<input name='XX_LIN_BU$"
+	       + jwt.invoice.lineNumberAdd + "'   value='"
+	       + data.BUSINESS_UNIT + "' >").appendTo(jwt.form);
                         if (jwt.activePageConfig == "jwtComponentConfigFull"){
-                          jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, 'XX_HDR_PX_PB');
+                            jwt.jwtComponent.getData(
+				'jwt.jwtComponentConfigFull', null
+				, this.form, 'XX_HDR_PX_PB');
                           }
                      },
     afterFunction  : function() {},
@@ -488,8 +535,11 @@ jwt.routes['loc_S2_XX_LIN_PI'] = (function() {
     editArray      : [],
     beforeFunction : function(data) {                },
     serverFunction : function(data){
-                            jQuery("<input name='XX_LIN_PI$" + jwt.invoice.lineNumberAdd + "'   value='" + data.PROJECT_ID + "' >").appendTo(jwt.form);
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, 'XX_HDR_PY_PB');
+        jQuery("<input name='XX_LIN_PI$"
+	       + jwt.invoice.lineNumberAdd + "'   value='"
+	       + data.PROJECT_ID + "' >").appendTo(jwt.form);
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigFull', null, this.form, 'XX_HDR_PY_PB');
                         },
     afterFunction  : function() {},
   }
@@ -497,14 +547,14 @@ jwt.routes['loc_S2_XX_LIN_PI'] = (function() {
 
 jwt.routes['loc_row_delete'] = (function() {
   return {
-
-
     Description    : "User deletes row",
     editArray      : [],
     showProcess    : true,
     beforeFunction : function(data) {    },
     serverFunction : function(data){
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, jQuery(data).attr("name") );
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigFull', null, this.form,
+	    jQuery(data).attr("name") );
                         },
     afterFunction  : function() {},
   }
@@ -519,7 +569,9 @@ jwt.routes['loc_row_new'] = (function() {
     showProcess    : true,
     beforeFunction : function(data) {                    },
     serverFunction : function(data){
-                            jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, jQuery(data).attr("name") );
+        jwt.jwtComponent.getData(
+	    'jwt.jwtComponentConfigFull', null, this.form
+	    , jQuery(data).attr("name") );
                         },
     afterFunction  : function() {},
   }
@@ -534,7 +586,7 @@ jwt.routes['loc_XX_HPB_PRI'] = (function() {
     serverFunction : "",
     afterFunction  : function() {},
     canViewFunc    : function(){ return true},
-    buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel    : "Print" }
-
+      buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel
+			 : "Print" }
   }
 })();
