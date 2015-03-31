@@ -27,14 +27,13 @@ jwt.o.S2Functions = (function() {
 		      jwt.jwtData[tblName]["_" + lookup], this.element);
               }
             }
-
             return display || "."
           },
-    formatRes: function(result, container, query, escapeMarkup) {
+
+   formatRes: function(result, container, query, escapeMarkup) {
             var markup = [];
               jwt.functions.mymarkMatch(
 		  result.text, query.term, markup, escapeMarkup);
-
             return markup.join("");
           },
 
@@ -127,12 +126,11 @@ jwt.o.S2Functions = (function() {
 
             })
 
-            //the select continues with the data
+            //the S2 select continues with the data
             query.callback(data);
           },
 
-          createS2_header: function() {
-
+    createS2_header: function() {
             var elemArray = [];
 
             //the user quick with the mouse the system data objects wont be ready
@@ -161,14 +159,15 @@ jwt.o.S2Functions = (function() {
 		jQuery("#loc_XX_HDR_HC")
 		    .select2("val", jwt.invoice.header.XX_HDR_HC);
             }
-            // builds all the custom select2 objects marked with data attribute
-            function dothis() {
-              elemArray = jQuery("input.select2-offscreen[data-ps-tbl-name]");
+
+      // builds all the custom select2 objects marked with data attribute
+      function dothis() {
+          elemArray = jQuery("input.select2-offscreen[data-ps-tbl-name]");
           //when this build loop is entered it is safe to show the page however
-		// for certain actions the page is hidden and in these cases
-		//the page continue to be display none
-              // a common use case is for the approval moodal
-		(!jwt.invoice.keepHidden)
+	  // for certain actions the page is hidden and in these cases
+	  //the page continue to be display none
+          // a common use case is for the approval moodal
+	  (!jwt.invoice.keepHidden)
 		    ? jQuery("#full-section , #quick-section")
 		    .css('display', 'block'): null;
 
@@ -188,11 +187,11 @@ jwt.o.S2Functions = (function() {
             }
           }
 
-        }); /* this ends the extend */
+   }); /* this ends the extend */
 
-      var s2optionsDO = {};
-
-      s2optionsDO.s2optionsDO = {
+      //defaults for select2 objects 
+   var s2optionsDO = {};
+    s2optionsDO.s2optionsDO = {
         dropdownCssClass: function() {
           return jQuery(this).data("s2-drop-class");
         },
@@ -207,7 +206,7 @@ jwt.o.S2Functions = (function() {
         query: jwt.functions.select2query
       };
 
-      //put the defualts on the data object
+      //copy the  defualts on the data object
       jQuery.extend(jwt.jwtData, s2optionsDO);
 
     }
