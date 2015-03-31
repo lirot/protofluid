@@ -194,10 +194,11 @@
                 <label>Open Amount:</label> 0.00</div>
             {{/SectionHeader.po}}
           </section>
-          <div class="line1-header"> <span class="hdr1">Line#</span> <span class="hdr2">Subcat</span> <span class="hdr3">Description</span> <span class="hdr4">Ship To</span> <span class="hdr5">Amt</span>  <span class="hdr6">Qty / Asset</span>
+          <div class="line1-header"> <span class="hdr1">Line#</span> <span class="hdr2">Subcat</span> <span class="hdr3">Description</span> <span class="hdr4">Ship To</span><span class="hdr5">Amt</span><span class="hdr6"></span>
           </div>
           {{#lines}}
             <section class="line line1" data-can-edit="{{XX_LIN_CE}}">
+	      <div class="rf-lin-pl">{{XX_LIN_PL}}</div>
               <div class="rf-lin-sc">
                 <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SC" data-s2-drop-class="s2-drop-subcat" {{Locked}} data-ps-tbl-name="XX_289_D_SC_01" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SC" placeholder="Subcat">
                 <input class="XX_LIN_SC" id="XX_LIN_SC{{ROW}}" name="XX_LIN_SC{{ROW}}" value="{{XX_LIN_SC}}" />
@@ -218,16 +219,16 @@
                         <i class="fa fa-lock"></i>
                     </span>
                     {{^user.isLocked}}
-                      <a href="#" title="show asset information" class="show-asset"  data-row-id="{{ROW}}"   ><i class="fa fa-caret-down"></i></a>
-                      <a href="#" title="show quantity PO inforation" class="show-qty"  data-row-id="{{ROW}}"  ><i class="fa fa-caret-down"></i></a>
+                      <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}"   ><i class="fa fa-check-square-o"></i>Asset</a>
+                      <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}"  ><i class="fa fa-square-o"></i>Qty</a>
                     {{/user.isLocked}}
               </span>
               {{/SectionHeader.section_ce}}
               {{#SectionHeader.section_ce}}
                   {{^user.isLocked}}
                     <div class="row-buttons">
-                    <a href="#" title="show asset information"  data-row-id="{{ROW}}" class="show-asset"><i class="fa fa-caret-down"></i></a>
-                    <a href="#" title="show quantity PO inforation"  data-row-id="{{ROW}}" class="show-qty"><i class="fa fa-caret-down"></i></a>
+                      <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}"   ><i class="fa fa-check-square-o"></i>Asset</a>
+                      <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}"  ><i class="fa fa-square-o"></i>Qty</a>
                       <a href="#" id="loc_XX_ACTIVE_GRID$new${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$new{{ROW}}$$0" data-route-id="loc_row_new" class="ps-new"><i class="fa fa-plus-square"></i></a>
                       <a href="#" id="loc_XX_ACTIVE_GRID$delete${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$delete{{ROW}}$$0" data-route-id="loc_row_delete" class="ps-delete"><i class="fa fa-minus-square"></i></a>
                     </div>

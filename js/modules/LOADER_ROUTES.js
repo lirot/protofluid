@@ -1,4 +1,5 @@
 jwt.routes = (function() {
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 /*
 File : LOADER_ROUTES.js
 Descr: xx_bind_buttons method iterates over a set of elements defined as routes
@@ -22,7 +23,6 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
     var url_xx = document.URL.replace(/\/\s*$/, '').split('/');
 
     var run_Edits = function( obj) {
-	
         var error_Array = obj.editArray;
         var ret = [];
         var that = this;
@@ -38,7 +38,7 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
             ret.push(jwt.error.createError.call(that, errorObject))
         });
 	
-//        jQuery(".messages").trigger("hasError");
+        jQuery(".messages").trigger("hasError");
         return !_.contains(ret, !true);
     };
 
@@ -51,7 +51,6 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
    xx_bind_buttons handles the creation of the click object 
    facitiliy for routes
 */
-
       /* route binding is done on the row for a worklist tab table when
          the table is created or at the end of the call back for a page
       */
@@ -126,10 +125,9 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
 			  with the server function string on the route object*/
                          jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
 			       , null, this.form, routeObj.serverFunction);
-				
-			  
                       }
-		      /* routes called from the approval page need to do
+
+			/* routes called from the approval page need to do
 			 clean up here */
 		      if (routeObj.hasOwnProperty("destroyPopUp")) {
                             if (routeObj.destroyPopUp) {
