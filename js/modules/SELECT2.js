@@ -151,7 +151,9 @@ jwt.o.S2Functions = (function() {
             // session
         function f() {
 		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
-		    || jwt.jwtData.hasOwnProperty('XX_APPROVERS')) {
+		    || jwt.jwtData.hasOwnProperty('XX_APPROVERS')
+    		    || jwt.jwtData.hasOwnProperty('XX_289_D_PRJ_01')
+		  ) {
                 dothis();
               } else {
                 setTimeout(f, 1000)

@@ -40,7 +40,7 @@ jwt.jwtData = (function() {
 
     //lunr search is used to search the drop downs
     //the system will build a lunr search this mehtod and properties from the
-    //data objects
+    //config is a data object data objects
     var create_Lunr_search = function(config) {
 
         var that = config,
@@ -55,6 +55,8 @@ jwt.jwtData = (function() {
         }
 
         //pipeline functions on the data objects handle dependencies
+        //between drop downs eg if a vendor is chosen only show po for
+	//the vendor
         if (config.hasOwnProperty("lunrPipelineFunction")) {
             var pipelinefunction = config.lunrPipelineFunction;
             config.lunr_index.pipeline.add(pipelinefunction)
@@ -75,11 +77,9 @@ jwt.jwtData = (function() {
     //when the ajax data is process the system will use this method to add
     //fields to the lunr search index
     var add_fields_lunr_search = function(config, data) {
-
         var that = config;
         var vals;
         var field = {};
-
         var str = "";
 
         field[that.reference] = data[that.reference];
@@ -105,7 +105,6 @@ jwt.jwtData = (function() {
 
     //the main ajax callback for the data objects
     var parse = function(config, response, key, jqXHR) {
-
         var jsonObj = {},
             hashKey, totalKeys,
             indexKey, jsonObj = response,

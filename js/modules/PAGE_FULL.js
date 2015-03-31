@@ -66,21 +66,13 @@ jwt.jwtComponentConfigFull = (function() {
 	    //pop up data is ready or can be called for
        jQuery.when.apply(undefined, promises).promise().done(
               function() {
-                  _.each(jwt.invoice.sections, function(obj) {
+                  function f() {
+                       dothis();
+                    }
+                  setTimeout(f, 2000)
 
-/*		      
-        function f() {
-		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
-		    || jwt.jwtData.hasOwnProperty('XX_APPROVERS')) {
-                dothis();
-              } else {
-                setTimeout(f, 1000)
-              }
-         }
-            setTimeout(f, 1000)
-      function dothis() {
-*/
-		      
+		  function dothis() {
+                  _.each(jwt.invoice.sections, function(obj) {
                     var piData = jwt.jwtData
 			    .xx_proj_attrtbl["_"
 					     + obj.SectionHeader.pi.hashCode()];
@@ -143,7 +135,8 @@ jwt.jwtComponentConfigFull = (function() {
                              });
 		      
                     });
-                }); /*end the done for all the project data */
+		  } /*end the do this function*/
+                  }); /*end the done for all the project data */
         }/*end the sub cat method*/ ,
 
    controller: function(elem) {
@@ -421,5 +414,3 @@ jwt.jwtComponentConfigFull = (function() {
     }
     }
 })();
-
-			      
