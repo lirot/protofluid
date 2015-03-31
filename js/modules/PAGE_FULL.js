@@ -405,7 +405,7 @@ jwt.jwtComponentConfigFull = (function() {
 		    .find(".rf-lin-ii > div , .rf-lin-um > div")
 		    .select2("enable", true);
         });
-	
+    }
     }
 })();
 
