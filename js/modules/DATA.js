@@ -46,10 +46,8 @@ jwt.jwtData.Configs['XX_289_D_VND_LC_SINGLE'] = (function() {
 
 jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
   return {
-
     Definition: 'XX_289_D_VND_LC',
     xxData: jQuery({}),
-
     /* properties used by lunr search library
     * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not
     // as bright - 0.5.7
@@ -57,23 +55,36 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
     */
     reference: "KEY1",
     is_lunr_search: true,
+
     //used to pad leading zeros if number is entered to the search
     LunrNumKey: "VENDOR_ID:10",
+
     // key fields used to create lunr searchable keys...the boost value is
     // the second split value
-    keyfields: ['VENDOR_ID:100', 'NAME1:100', 'VENDOR_NAME_SHORT', 'VNDR_LOC', 'CITY', 'STATE', 'ADDRESS1', 'POSTAL'],
-
-    // a drict key will allow direct access to a value with the prefix...to find an esact match on vendor id type 'v:'' and the vednor id
+      keyfields: [
+	  'VENDOR_ID:100',
+	  'NAME1:100',
+	  'VENDOR_NAME_SHORT',
+	  'VNDR_LOC',
+	  'CITY',
+	  'STATE',
+	  'ADDRESS1',
+	  'POSTAL'],
+      
+      // a drict key will allow direct access to a value with the
+      //prefix...to find an esact match on vendor id type 'v:'' and the vednor id
     directkeyfields: ['VENDOR_ID:v'],
 
-    // object set with default values in the parse routine and those values used by s2 constructor on page build
-    // options will instruct constructor to use a data query for the source of the drop down
-    // the lunar config will aid in seraching the indexes for the live searches
-
+      // object set with default values in the parse routine and those
+      //values used by s2 constructor on page build
+      // options will instruct constructor to use a data query for the
+      //source of the drop down
+      // the lunar config will aid in seraching the indexes for the live searches
     s2optionsDO: {},
 
-    // used by xxAJAX function column list can have two column_Name objects and or use a function see  XX_289_D_PRJ_01 for
-    // a two field query string
+      // used by xxAJAX function column list can have two column_Name
+      //objects and or use a function see  XX_289_D_PRJ_01 for
+      // a two field query string
     qryString1: {
       "ViewName": "XX_289_D_VND_LC",
       "CoumnList": [{
@@ -83,17 +94,20 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       }]
     },
 
-    //select 2 will call this method after the query results are known when the user is typeing in to the input field
-    // the data returned by the search will pass through the template before being displayed to the user
+      //select 2 will call this method after the query results are known when
+      //the user is typeing in to the input field
+      //the data returned by the search will pass through the template
+      //before being displayed to the user
     select2Callback: function(data) {
-      jwt.jwtData.decode(data);
-      data.VENDOR_STATUS = (data.VENDOR_STATUS == "I") ? "Inactive" : "Active"
+         jwt.jwtData.decode(data);
+        data.VENDOR_STATUS = (data.VENDOR_STATUS == "I") ? "Inactive" : "Active"
       var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_VENDOR'], data);
       return outHTML
-    },
-
-    //after the user selects a value from the select2 list this function is called the return value is placed in the
-    // select box and displayed to the userd
+     },
+      
+      //after the user selects a value from the select2 list this function is
+      //called the return value is placed in the
+      //select box and displayed to the userd
     select2Display: function(data) {
       if (jwt.jwtWorkList.isFullPage) {
         jQuery('.ps-no-loc').removeClass("ps-hidden");
@@ -131,39 +145,59 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       }
     },
 
-    // the framework will call this funtion to build the S@ control if the hidden input on the page has an id
-    // with the same name as this method
-    // this method must also set the value of the field on the drop down and set the clear event on the page
-    //  to call the clear method on this object
-    // the select2-open event will run the select@PreQuery method which will allow for eventing when the user
-    // first clicks on a drop down for cases like dislaying all the values to a user, or showing only PO for a
-    // specific vendor...the drict keys as wel as code added to the pipeline funtion makes this functionality
-    // easier to implement
+      /* the framework will call loc_S2* method to build the S2 control if
+     the hidden input on the page has an id
+     with the same name as this method
+     this method must also set the value of the field on the drop down and
+      set the clear event on the page
+      to call the clear method on this object
+     the select2-open event will run the select@PreQuery method which will
+      allow for eventing when the user
+     first clicks on a drop down for cases like dislaying all the
+      values to a user, or showing only PO for a
+     specific vendor...the drict keys as wel as code added to the
+      pipeline funtion makes this functionality
+     easier to implement */
 
-    loc_S2_XX_HDR_VI: function() {
+  loc_S2_XX_HDR_VI: function() {
       //create the select2 with defaults
       var config = jwt.jwtData.Configs['XX_289_D_VND_LC'];
-      jQuery("#loc_S2_XX_HDR_VI").select2(config.s2optionsDO).on("select2-open",
-          function(e) {
+
+      jQuery("#loc_S2_XX_HDR_VI")
+	  .select2(config.s2optionsDO)
+	  .on("select2-open",  function(e) {
             jwt.functions.select2PreQuery(this);
           }).on("select2-removed", function(e) {
           jwt.jwtData.Configs['XX_289_D_VND_LC'].clear();
-        })
-        //now add data source dependent on the elements configuration
-      if (jwt.invoice.header.XX_HDR_VI && jwt.invoice.header.XX_HDR_VL) {
-        jQuery("#loc_S2_XX_HDR_VI").select2("data", jwt.jwtData.setPromptVal(encodeURIComponent(jwt.invoice.header.XX_HDR_VI + jwt.invoice.header.XX_HDR_VL), 'XX_289_D_VND_LC'));
+          })
+      
+      //now add data source dependent on the elements configuration
+      if (jwt.invoice.header.XX_HDR_VI
+	  && jwt.invoice.header.XX_HDR_VL) {
+          jQuery("#loc_S2_XX_HDR_VI")
+	      .select2("data",
+		       jwt.jwtData.setPromptVal(
+			   encodeURIComponent(jwt.invoice.header.XX_HDR_VI
+					      + jwt.invoice.header.XX_HDR_VL),
+			   'XX_289_D_VND_LC'));
       }
+
       //trick to hide the clear abbr element
       if (jwt.user.hasPO) {
-        jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close").css("right", "0px");
+          jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
+	      .css("right", "0px");
       } else {
-        jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close").css("right", "24px");
+          jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
+	      .css("right", "24px");
       }
     },
 
     select2lunrPreQuery: function(config, elem) {
-      //at this point the user has just clicked the drop down.  these conditions are then checked
-      if ((config.Definition == "XX_289_D_VND_LC" || config.Definition == "XX_289_D_PO_02") && jwt.functions.hasVendor) {
+	//at this point the user has just clicked the drop down.
+	// these conditions are then checked
+	if ((config.Definition == "XX_289_D_VND_LC"
+	     || config.Definition == "XX_289_D_PO_02")
+	    && jwt.functions.hasVendor) {
         //run a quick function to pre populate the drop down
         jQuery(".select2-input").val("all:all");
         jQuery(elem).select2("updateResults", true);
@@ -174,18 +208,25 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
 
     lunrPipelineFunction: function(token) {
       // lunar will run this function
-      //lunr
+	// adding a funtction with this name on any data object will create
+	// a call from within the lunr pipeline
+	//in this function values in the elements list are bypassed
       var elements = '000000 00000 000 00 0 0000'.split(' ');
       if (elements.indexOf(token) !== -1) {
         return undefined;
       }
+
+      //for vendor location searches zeros are padded to numbers
       config = jwt.jwtData.Configs['XX_289_D_VND_LC'];
       if (!isNaN(+token) && isFinite(token)) {
         if (config.LunrNumKey) {
           return jwt.functions.pad(token, config.LunrNumKey.split(':')[1]);
         }
       }
+
+      
       if (token.length <= 2) return undefined; //tokens of length less then 3
+
       return token;
     }
   }
@@ -196,20 +237,25 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
   return {
 
     Definition: 'XX_289_D_PRJ_01',
-
     xxData: jQuery({}),
-
     reference: "PROJECT_ID",
     is_lunr_search: true,
-
     LunrNumKey: "",
-
-    keyfields: ['PROJECT_ID:100', 'XX_CUST_NAME_LONG:100', 'XX_CUST_NAME_SHORT', 'XX_PRODUCT', 'PROJECT_TYPE', 'XX_MEDIA_TYPE_ID', 'PROJ_DESCR', 'XX_PRJ_OWNER_NAME', 'DEPTID', 'DEPTID_DESCR', 'BUSINESS_UNIT'],
+      keyfields: ['PROJECT_ID:100',
+		  'XX_CUST_NAME_LONG:100',
+		  'XX_CUST_NAME_SHORT',
+		  'XX_PRODUCT',
+		  'PROJECT_TYPE',
+		  'XX_MEDIA_TYPE_ID',
+		  'PROJ_DESCR',
+		  'XX_PRJ_OWNER_NAME',
+		  'DEPTID',
+		  'DEPTID_DESCR',
+		  'BUSINESS_UNIT'],
 
     s2optionsDO: {},
 
-
-    qryString1: function() {
+  qryString1: function() {
       if (jwt.jwtWorkList.glbUserType == 'S') {
         return {
           "ViewName": "XX_289_D_PRJ_01",
@@ -240,40 +286,50 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
       var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_PROJECT'], data);
       return outHTML
     },
-    select2Display: function(data) {
+
+   select2Display: function(data) {
       return data.PROJECT_ID
     },
 
-    select2setKeys: function(data) {
+   select2setKeys: function(data) {
       jwt.routes['loc_S2_XX_LIN_PI'].serverFunction(data);
     },
-    loc_S2_XX_LIN_PI: function() {
+
+   loc_S2_XX_LIN_PI: function() {
       var config = jwt.jwtData.Configs['XX_289_D_PRJ_01'];
       jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO);
     }
 
   }
-
 })();
 
 jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
   return {
 
     Definition: 'XX_289_D_PO_02',
-
     xxData: jQuery({}),
-
     reference: "PO_ID",
     is_lunr_search: true,
-
     LunrNumKey: "",
 
-    keyfields: ['PO_ID:100', 'VENDOR_ID:100', 'NAME1', 'XX_PO_ENTERED_BY', 'XX_DTTM_CHAR', 'XX_PO_STATUS_DESCR', 'XX_CUST_NAME_LONG', 'XX_CUST_NAME_SHORT', 'XX_PRODUCT', 'XX_MEDIA_TYPE_ID', 'PROJECT_ID', 'PROJ_DESCR', 'XX_PRJ_OWNER_NAME', 'DEPTID', 'DEPTID_DESCR'],
-
+      keyfields: ['PO_ID:100',
+		  'VENDOR_ID:100',
+		  'NAME1',
+		  'XX_PO_ENTERED_BY',
+		  'XX_DTTM_CHAR',
+		  'XX_PO_STATUS_DESCR',
+		  'XX_CUST_NAME_LONG',
+		  'XX_CUST_NAME_SHORT',
+		  'XX_PRODUCT',
+		  'XX_MEDIA_TYPE_ID',
+		  'PROJECT_ID',
+		  'PROJ_DESCR',
+		  'XX_PRJ_OWNER_NAME',
+		  'DEPTID',
+		  'DEPTID_DESCR'],
+      
     directkeyfields: ['VENDOR_ID:v'],
-
     s2optionsDO: {},
-
     qryString1: {
       "ViewName": "XX_289_D_PO_02",
       "CoumnList": [{
@@ -297,31 +353,49 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
       jwt.jwtData.Configs['XX_289_D_VND_LC'].clear()
       jQuery('#loc_XX_HDR_FA').select2("val", "");
       jQuery('#loc_XX_HDR_SO').select2("val", "");
-      jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close").css("right", "24px");
-
+	jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
+	    .css("right", "24px");
     },
+
     select2setKeys: function(data) {
 
-      jwt.routes['loc_S2_XX_LIN_PO'].serverFunction(data);
+      //the change of the po id will call a server function	
+	jwt.routes['loc_S2_XX_LIN_PO'].serverFunction(data);
 
-      jQuery('#loc_XX_HDR_FA').select2();
-      jQuery('#loc_S2_XX_HDR_BU').select2("data", jwt.jwtData.setPromptVal(data.BUSINESS_UNIT, 'XX_289_D_BU_SEC'));
-      jQuery('#loc_S2_XX_HDR_SO').select2("data", jwt.jwtData.setPromptVal(data.SHIPTO_ID, 'XX_289_D_SHIPTO'));
+	//the first approver value is set
+	jQuery('#loc_XX_HDR_FA').select2();
 
-      if (jwt.jwtData['XX_289_D_APPROV'].hasOwnProperty("_" + data.XX_BILL_TO_CONTACT.hashCode().toString())) {
-        jQuery('#loc_S2_XX_HDR_FA').select2("data", jwt.jwtData.setPromptVal(data.XX_BILL_TO_CONTACT, 'XX_289_D_APPROV', 'OPRID'));
+	//the header bu is set
+	jQuery('#loc_S2_XX_HDR_BU')
+	    .select2("data", jwt.jwtData.setPromptVal(
+		data.BUSINESS_UNIT, 'XX_289_D_BU_SEC'));
+	//the header ship to is set
+	jQuery('#loc_S2_XX_HDR_SO')
+	    .select2("data", jwt.jwtData.setPromptVal(
+		data.SHIPTO_ID, 'XX_289_D_SHIPTO'));
+
+     if (jwt.jwtData['XX_289_D_APPROV']
+	    .hasOwnProperty("_"
+		+ data.XX_BILL_TO_CONTACT.hashCode().toString())) {
+            jQuery('#loc_S2_XX_HDR_FA')
+		.select2("data",
+			 jwt.jwtData.setPromptVal(
+			     data.XX_BILL_TO_CONTACT,
+			     'XX_289_D_APPROV', 'OPRID'));
       }
 
-      jQuery('#loc_S2_XX_HDR_VI').select2("data", jwt.jwtData.setPromptVal(encodeURIComponent(data.VENDOR_ID + data.VNDR_LOC), 'XX_289_D_VND_LC'));
-      jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close").css("right", "0px");
+      jQuery('#loc_S2_XX_HDR_VI')
+	    .select2("data", jwt.jwtData.setPromptVal(
+		encodeURIComponent(data.VENDOR_ID
+				   + data.VNDR_LOC), 'XX_289_D_VND_LC'));
+	
+      jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
+	    .css("right", "0px");
 
     },
 
-
     loc_S2_XX_LIN_PO: function() {
-
       var config = jwt.jwtData.Configs['XX_289_D_PO_02'];
-
       jQuery("#loc_S2_XX_LIN_PO").select2(config.s2optionsDO)
         .off("select2-open")
         .on("select2-open",
@@ -331,9 +405,13 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
             jQuery(".po-drop1").css("left", "10%");
             jQuery(".po-drop1").css("width", "90%");
             jQuery(".select2-drop-mask").css("opacity", ".95")
-            var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_ADD_HEADER'], config);
+              var outHTML =
+		  jwt.Mustache.to_html(
+		      jwt.templates['SELECT2_ADD_HEADER'], config);
             jQuery('.select2-input').before(outHTML);
-            var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_ADD_FOOTER'], config);
+              var outHTML =
+		  jwt.Mustache.to_html(
+		      jwt.templates['SELECT2_ADD_FOOTER'], config);
             jQuery('.select2-input').after(outHTML);
             jwt.functions.select2PreQuery(this);
             jQuery(".select2-input").focus();
@@ -350,17 +428,16 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     },
 
     select2lunrPreQuery: function(config, elem) {
-
-      if ((config.Definition == "XX_289_D_VND_LC" || config.Definition == "XX_289_D_PO_02") && jwt.functions.hasVendor()) {
+	if ((config.Definition == "XX_289_D_VND_LC"
+	     || config.Definition == "XX_289_D_PO_02")
+	    && jwt.functions.hasVendor()) {
         jQuery(".select2-input").val("v:" + jwt.functions.hasVendor());
         jQuery(elem).select2("updateResults", true);
         jQuery(".select2-input").val("");
       }
-
     },
 
     lunrPipelineFunction: function(token) {
-
       var config = jwt.jwtData.Configs['XX_289_D_PO_02'];
       var elements = '000000 00000 000 00 0 0000'.split(' ');
       if (elements.indexOf(token) !== -1) {
@@ -380,24 +457,20 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
 
 jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
   return {
-
     Definition: 'XX_289_D_SC_01',
-
     xxData: jQuery({}),
-
     reference: "RESOURCE_SUB_CAT",
-
     is_lunr_search: true,
-
     LunrNumKey: "",
-
-    keyfields: ['RESOURCE_SUB_CAT:100', 'RES_SUB_CAT_DESCR:100', 'RESOURCE_CATEGORY', 'RES_CAT_DESCR'],
-
-
-    s2optionsDO: {},
-
+      keyfields: ['RESOURCE_SUB_CAT:100',
+		  'RES_SUB_CAT_DESCR:100',
+		  'RESOURCE_CATEGORY',
+		  'RES_CAT_DESCR'],
+      
+      s2optionsDO: {},
+      
     qryString1: {
-      "ViewName": "XX_289_D_SC_01",
+	"ViewName": "XX_289_D_SC_01",
       "CoumnList": [{
         "Column_Name": "BUSINESS_UNIT",
         "Column_Value": "",
@@ -405,18 +478,22 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
       }]
     },
 
-
-
     clear: function(elem) {
       jQuery(elem).next().val("")
     },
 
     select2Display: function(data, $elem) {
-      return (data) ? decodeURIComponent(data.RESOURCE_SUB_CAT) : $elem.next().val();
+	return (data)
+	    ? decodeURIComponent(data.RESOURCE_SUB_CAT) : $elem.next().val();
     },
 
     select2Callback: function(data) {
-      return decodeURIComponent("<div><div>" + data.RESOURCE_CATEGORY + data.RES_CAT_DESCR + data.RESOURCE_SUB_CAT + data.RES_SUB_CAT_DESCR + "</div></div>")
+	return decodeURIComponent(
+	    "<div><div>" + data.RESOURCE_CATEGORY
+		+ data.RES_CAT_DESCR
+		+ data.RESOURCE_SUB_CAT
+		+ data.RES_SUB_CAT_DESCR
+		+ "</div></div>");
     },
 
     select2setKeys: function(data, $elem) {
@@ -424,7 +501,9 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
         if (data.RESOURCE_SUB_CAT != $elem.next().val()) {
           $elem.next().val(data.RESOURCE_SUB_CAT);
           if ($elem.parent().next().find("input[id^='XX_LIN_LD']").val() == "") {
-            $elem.parent().next().find("input[id^='XX_LIN_LD']").val(decodeURIComponent(data.RES_SUB_CAT_DESCR));
+              $elem.parent().next()
+		  .find("input[id^='XX_LIN_LD']")
+		  .val(decodeURIComponent(data.RES_SUB_CAT_DESCR));
           }
         }
       }
@@ -441,12 +520,11 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
         })
       if (obj.next().val()) {
         obj.select2("data",
-          jwt.jwtData.setPromptVal(encodeURIComponent(obj.next().val()), 'XX_289_D_SC_01')
-        );
-      }
-
-
+		    jwt.jwtData.setPromptVal(encodeURIComponent(
+			obj.next().val()), 'XX_289_D_SC_01')
+        );}
     }
+      
   }
 })();
 
@@ -454,16 +532,19 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
   return {
 
     Definition: 'XX_289_D_APPROV',
-
     xxData: jQuery({}),
-
     reference: "OPRID",
     is_lunr_search: true,
     LunrNumKey: "",
-    keyfields: ['OPRID:100', 'OPRDEFNDESC', 'PERSON_NAME', 'BUSINESS_UNIT', 'LAST_NAME', 'FIRST_NAME', 'STATUS_DESCR'],
+      keyfields: ['OPRID:100',
+		  'OPRDEFNDESC',
+		  'PERSON_NAME',
+		  'BUSINESS_UNIT',
+		  'LAST_NAME',
+		  'FIRST_NAME',
+		  'STATUS_DESCR'],
 
     s2optionsDO: {},
-
     qryString1: {
       "ViewName": "XX_289_D_APPROV",
       "CoumnList": [{
@@ -472,29 +553,44 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
         "Operator": "="
       }]
     },
-    clear: function() {
+
+   clear: function() {
       jQuery("input[name='XX_HDR_FA']").val("");
-    },
+   },
+      
     select2Callback: function(data) {
       if (!data) {
         return
       }
-      var outofofficevar = data.REASSIGNOPRID ? ' <font color="red"><b> ! office </b></font>' + decodeURIComponent(data.DESCR120) : ' ';
-      return decodeURIComponent("<div><div>" + data.PERSON_NAME) + ' - ' + decodeURIComponent(data.STATUS_DESCR) + ' - ' + decodeURIComponent(data.BUSINESS_UNIT) + outofofficevar + "</div></div>";
+	var outofofficevar = data.REASSIGNOPRID
+	    ? ' <font color="red"><b> ! office </b></font>'
+	    + decodeURIComponent(data.DESCR120) : ' ';
+	return decodeURIComponent("<div><div>"
+	    + data.PERSON_NAME) + ' - '
+	    + decodeURIComponent(data.STATUS_DESCR)
+	    + ' - ' + decodeURIComponent(data.BUSINESS_UNIT)
+	    + outofofficevar + "</div></div>";
     },
+      
     select2setKeys: function(data) {
-      return (data) ? jQuery("input[name='XX_HDR_FA']").val(data.OPRID) : jQuery("input[name='XX_HDR_FA']").val("");
+	return (data)
+	    ? jQuery("input[name='XX_HDR_FA']").val(data.OPRID)
+	    : jQuery("input[name='XX_HDR_FA']").val("");
     },
+      
     select2Display: function(data) {
       if (!data) {
         return
       }
-      var outofofficevar = data.REASSIGNOPRID ? ' <font color="red"><b> out of office  </b></font>' + decodeURIComponent(data.DESCR120) : ' ';
-      return decodeURIComponent(data.PERSON_NAME) + ' - ' + decodeURIComponent(data.STATUS_DESCR) + ' - ' + decodeURIComponent(data.BUSINESS_UNIT);
+	var outofofficevar = data.REASSIGNOPRID
+	    ? ' <font color="red"><b> out of office  </b></font>'
+	    + decodeURIComponent(data.DESCR120) : ' ';
+	return decodeURIComponent(data.PERSON_NAME)
+	    + ' - ' + decodeURIComponent(data.STATUS_DESCR)
+	    + ' - ' + decodeURIComponent(data.BUSINESS_UNIT);
     },
 
     loc_S2_XX_HDR_FA: function() {
-
       var config = jwt.jwtData.Configs['XX_289_D_APPROV']
 
       jQuery('#loc_S2_XX_HDR_FA').select2(config.s2optionsDO)
@@ -504,32 +600,33 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
           })
 
       if (jwt.invoice.header.XX_HDR_FA) {
-        jQuery("#loc_S2_XX_HDR_FA").select2("data", jwt.jwtData.setPromptVal(encodeURIComponent(jwt.invoice.header.XX_HDR_FA), 'XX_289_D_APPROV'));
-      } else {
-
+          jQuery("#loc_S2_XX_HDR_FA")
+	      .select2("data", jwt.jwtData.setPromptVal(
+		  encodeURIComponent(jwt.invoice.header.XX_HDR_FA),
+		  'XX_289_D_APPROV'));
       }
     }
   }
 })();
 
 // approver drop down is on the approval modal page
-
 jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
   return {
-
     Definition: 'XX_APPROVERS',
-
     xxData: jQuery({}),
-
     reference: "OPRID",
     is_lunr_search: true,
     LunrNumKey: "",
-    keyfields: ['OPRID:100', 'OPRDEFNDESC', 'PERSON_NAME', 'BUSINESS_UNIT', 'LAST_NAME', 'FIRST_NAME', 'STATUS_DESCR'],
+      keyfields: ['OPRID:100',
+		  'OPRDEFNDESC',
+		  'PERSON_NAME',
+		  'BUSINESS_UNIT',
+		  'LAST_NAME',
+		  'FIRST_NAME',
+		  'STATUS_DESCR'],
 
     directkeyfields: ['canApprove:CA'],
-
     s2optionsDO: {},
-
     qryString1: {
       "ViewName": "XX_289_D_APPROV",
       "CoumnList": [{
@@ -544,11 +641,12 @@ jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
         return
       }
       jwt.jwtData.decode(data);
-      var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_XX_APPROVER'], data);
+	var outHTML = jwt.Mustache
+	    .to_html(jwt.templates['SELECT2_XX_APPROVER'], data);
       return outHTML
     },
+      
     select2setKeys: function(data) {
-
       var obj = {
         'name': decodeURIComponent(data.OPRDEFNDESC),
         'id': data.OPRID,
@@ -558,37 +656,28 @@ jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
       var outHTML = jwt.Mustache.to_html(template, obj);
       jQuery("#APPROVER_ADD_LIST").append(outHTML);
       jwt.functions.editApproverList();
-
-
     },
+      
     select2Display: function(data) {
       return '<font color="blue"><b> Add another approver  </b></font>'
-
     },
 
     loc_S2_APPROVER: function() {
-
       var config = jwt.jwtData.Configs['XX_APPROVERS'];
-
       jQuery('#loc_S2_APPROVER').select2(config.s2optionsDO).on("select2-open",
         function(e) {
           jwt.functions.select2PreQuery(this);
         })
 
-
     }
   }
 })();
-
-
 
 jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
   return {
 
     Definition: 'XX_289_D_BU_SEC',
-
     xxData: jQuery({}),
-
     reference: "BUSINESS_UNIT",
     is_lunr_search: true,
     is_lunr_show_all: true,
@@ -599,12 +688,12 @@ jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
     // the data controller callback after the ajax post
     callback: function(config) {
       //on the return gets the projects
-
       var buArray = [];
       for (p in jwt.jwtData['XX_289_D_BU_SEC']) {
         buArray.push(jwt.jwtData['XX_289_D_BU_SEC'][p].BUSINESS_UNIT);
       }
-      jwt.jwtData.init('XX_289_D_PRJ_01', jwt.jwtData.Configs['XX_289_D_PRJ_01'], buArray);
+	jwt.jwtData.init('XX_289_D_PRJ_01',
+			 jwt.jwtData.Configs['XX_289_D_PRJ_01'], buArray);
     },
 
     qryString1: {
@@ -619,19 +708,22 @@ jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
     clear: function() {
       jQuery("input[name='XX_HDR_BU']").val("");
     },
+      
     select2Display: function(data) {
-      return (data) ? decodeURIComponent(data.DESCR) : jwt.invoice.header.XX_HDR_BU;
+	return (data)
+	    ? decodeURIComponent(data.DESCR) : jwt.invoice.header.XX_HDR_BU;
     },
+      
     select2setKeys: function(data) {
       if (data) {
         jQuery("input[name='XX_HDR_BU']").val(data.BUSINESS_UNIT);
-      } else {
-        //jQuery("input[name='XX_HDR_BU']").val(data.BUSINESS_UNIT)
       }
     },
+      
     select2Callback: function(data) {
       return decodeURIComponent("<div><div>" + data.DESCR + "</div></div>")
     },
+      
     loc_S2_XX_HDR_BU: function() {
       var config = jwt.jwtData.Configs['XX_289_D_BU_SEC'];
       config.s2optionsDO.allowClear = false;
@@ -642,11 +734,12 @@ jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
         function(e) {
           jwt.jwtData.Configs['XX_289_D_BU_SEC'].clear();
         })
-
       if (jwt.invoice.header.XX_HDR_BU) {
-        jQuery("#loc_S2_XX_HDR_BU").select2("data", jwt.jwtData.setPromptVal(encodeURIComponent(jwt.invoice.header.XX_HDR_BU), 'XX_289_D_BU_SEC'));
+          jQuery("#loc_S2_XX_HDR_BU")
+	      .select2("data", jwt.jwtData.setPromptVal(
+		  encodeURIComponent(jwt.invoice.header.XX_HDR_BU),
+		  'XX_289_D_BU_SEC'));
       }
-
     }
 
   }
@@ -654,7 +747,6 @@ jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
 
 jwt.jwtData.Configs['XX_289_D_SHIPTO'] = (function() {
   return {
-
     Definition: 'XX_289_D_SHIPTO',
     xxData: jQuery({}),
     reference: "SHIPTO_ID",
@@ -671,28 +763,33 @@ jwt.jwtData.Configs['XX_289_D_SHIPTO'] = (function() {
         "Operator": "="
       }]
     },
+
     clear: function() {
       jQuery("input[name='XX_HDR_SO']").val("");
     },
+      
     select2setKeysSOLine: function(data, $elem) {
       return (data) ? $elem.next().val(data.SHIPTO_ID) : $elem.next().val("");
     },
+      
     select2setKeys: function(data) {
-      return (data) ? jQuery("input[name='XX_HDR_SO']").val(data.SHIPTO_ID) : jQuery("input[name='XX_HDR_SO']").val("");
+	return (data) ? jQuery("input[name='XX_HDR_SO']").val(
+	    data.SHIPTO_ID) : jQuery("input[name='XX_HDR_SO']").val("");
     },
 
     select2Display: function(data) {
-      return (data) ? decodeURIComponent(data.SHIPTO_ID) : jwt.invoice.header.XX_HDR_SO;
+	return (data)
+	    ? decodeURIComponent(data.SHIPTO_ID) : jwt.invoice.header.XX_HDR_SO;
     },
 
     select2Callback: function(data) {
-      return "<div><div>" + data.SHIPTO_ID + ' - ' + decodeURIComponent(data.DESCR50) + "</div></div>"
+	return "<div><div>" + data.SHIPTO_ID
+	    + ' - ' + decodeURIComponent(data.DESCR50) + "</div></div>"
     },
+      
     // the header has a ship to
     loc_S2_XX_HDR_SO: function() {
-
       var config = jwt.jwtData.Configs['XX_289_D_SHIPTO'];
-
       jQuery("#loc_S2_XX_HDR_SO").select2(config.s2optionsDO).on("select2-open",
         function(e) {
           jwt.functions.select2PreQuery(this);
@@ -702,10 +799,13 @@ jwt.jwtData.Configs['XX_289_D_SHIPTO'] = (function() {
         })
 
       if (jwt.invoice.header.XX_HDR_SO) {
-        jQuery("#loc_S2_XX_HDR_SO").select2("data", jwt.jwtData.setPromptVal(encodeURIComponent(jwt.invoice.header.XX_HDR_SO), 'XX_289_D_SHIPTO'));
+          jQuery("#loc_S2_XX_HDR_SO")
+	      .select2("data", jwt.jwtData
+		       .setPromptVal(encodeURIComponent(
+			   jwt.invoice.header.XX_HDR_SO), 'XX_289_D_SHIPTO'));
       }
-
     },
+      
     //the line has a ship to
     lin_S2_XX_LIN_SO: function(obj) {
       var config = jwt.jwtData.Configs['XX_289_D_SHIPTO'];
@@ -716,16 +816,14 @@ jwt.jwtData.Configs['XX_289_D_SHIPTO'] = (function() {
         function(e) {
           jwt.jwtData.Configs['XX_289_D_SHIPTO'].clear(this);
         }).select2("data",
-        jwt.jwtData.setPromptVal(encodeURIComponent(obj.next().val()), 'XX_289_D_SHIPTO')
+		   jwt.jwtData.setPromptVal(
+		       encodeURIComponent(obj.next().val()), 'XX_289_D_SHIPTO')
       );
-
     }
   }
 })();
 
-
 jwt.jwtData.Configs['xx_po_rpt'] = (function() {
-
   return {
     callback: function(jsonObj, config) {
       var poid = unescape(jsonObj.VIEW[0].LINE[0]['PO_ID']);
@@ -735,7 +833,6 @@ jwt.jwtData.Configs['xx_po_rpt'] = (function() {
       jwt.jwtData.decode(data);
       var outHTML = jwt.Mustache.to_html(jwt.templates['TOOLTIP_PO_INFO'], data);
       jQuery('[data-link-id="' + poid + '"]').html(outHTML);
-
     },
     Definition: 'xx_po_rpt',
     xxData: jQuery({}),
@@ -753,7 +850,6 @@ jwt.jwtData.Configs['xx_po_rpt'] = (function() {
 
 jwt.jwtData.Configs['xx_proj_attrtbl'] = (function() {
   return {
-
     Definition: 'xx_proj_attrtbl',
     xxData: jQuery({}),
     qryString1: {
@@ -769,7 +865,6 @@ jwt.jwtData.Configs['xx_proj_attrtbl'] = (function() {
 
 jwt.jwtData.Configs['ASSET'] = (function() {
   return {
-
     Definition: 'ASSET',
     xxData: jQuery({}),
     reference: "ASSET_ID",
@@ -786,12 +881,13 @@ jwt.jwtData.Configs['ASSET'] = (function() {
       }]
     },
 
-    select2setKeys: function(data, $elem) {
+      select2setKeys: function(data, $elem) {
       $elem.next().val(data.ASSET_ID);
     },
 
     select2Callback: function(data) {
-      return "<div><div>" + data.ASSET_ID + ' - ' + decodeURIComponent(data.DESCR) + "</div></div>"
+	return "<div><div>" + data.ASSET_ID
+	    + ' - ' + decodeURIComponent(data.DESCR) + "</div></div>"
     },
 
     select2Display: function(data) {
@@ -805,16 +901,15 @@ jwt.jwtData.Configs['ASSET'] = (function() {
         function(e) {
           jQuery(this).next().val("")
         });
-
       if (obj.next().val()) {
         obj.select2("data",
-          jwt.jwtData.setPromptVal(encodeURIComponent(obj.next().val()), 'ASSET'))
+		    jwt.jwtData.setPromptVal(encodeURIComponent(
+			obj.next().val()), 'ASSET'))
       }
     }
 
   }
 })();
-
 
 jwt.jwtData.Configs['PROFILE_TBL'] = (function() {
   return {
@@ -840,19 +935,20 @@ jwt.jwtData.Configs['PROFILE_TBL'] = (function() {
       return data.PROFILE_ID
     },
     select2Callback: function(data) {
-      return "<div><div>" + data.PROFILE_ID + ' - ' + decodeURIComponent(data.DESCR) + "</div></div>"
+	return "<div><div>" + data.PROFILE_ID
+	    + ' - ' + decodeURIComponent(data.DESCR) + "</div></div>"
     },
+      
     loc_S2_XX_LIN_AP: function(obj) {
-
       var config = jwt.jwtData.Configs['PROFILE_TBL'];
       obj.select2(config.s2optionsDO).on("select2-clearing",
         function(e) {
           jQuery(this).next().val("")
         });
-
       if (obj.next().val()) {
         obj.select2("data",
-          jwt.jwtData.setPromptVal(encodeURIComponent(obj.next().val()), 'PROFILE_TBL'))
+		    jwt.jwtData.setPromptVal(encodeURIComponent(obj.next()
+				.val()), 'PROFILE_TBL'))
       }
     }
   }
@@ -860,7 +956,6 @@ jwt.jwtData.Configs['PROFILE_TBL'] = (function() {
 
 jwt.jwtData.Configs['XX_289_D_UNIT'] = (function() {
   return {
-
     Definition: 'XX_289_D_UNIT',
     reference: "UNIT_OF_MEASURE",
     is_lunr_search: true,
@@ -883,13 +978,13 @@ jwt.jwtData.Configs['XX_289_D_UNIT'] = (function() {
       $elem.next().val(data.UNIT_OF_MEASURE);
     },
     select2Callback: function(data) {
-      return "<div><div>" + data.UNIT_OF_MEASURE + ' - ' + decodeURIComponent(data.DESCRSHORT) + "</div></div>"
+	return "<div><div>" + data.UNIT_OF_MEASURE
+	    + ' - ' + decodeURIComponent(data.DESCRSHORT) + "</div></div>"
     },
     select2Display: function(data) {
       return data.UNIT_OF_MEASURE
     },
     loc_S2_XX_LIN_UM: function(obj) {
-
       var config = jwt.jwtData.Configs['XX_289_D_UNIT'];
       obj.select2(config.s2optionsDO).on("select2-open",
         function(e) {
@@ -901,7 +996,8 @@ jwt.jwtData.Configs['XX_289_D_UNIT'] = (function() {
 
       if (obj.next().val()) {
         obj.select2("data",
-          jwt.jwtData.setPromptVal(encodeURIComponent(obj.next().val()), 'XX_289_D_UNIT'))
+		    jwt.jwtData.setPromptVal(
+			encodeURIComponent(obj.next().val()), 'XX_289_D_UNIT'))
       }
     }
   }
@@ -909,7 +1005,6 @@ jwt.jwtData.Configs['XX_289_D_UNIT'] = (function() {
 
 jwt.jwtData.Configs['MASTER_ITEM_TBL'] = (function() {
   return {
-
     Definition: 'MASTER_ITEM_TBL',
     reference: "INV_ITEM_ID",
     is_lunr_search: true,
@@ -930,15 +1025,15 @@ jwt.jwtData.Configs['MASTER_ITEM_TBL'] = (function() {
     select2setKeys: function(data, $elem) {
       $elem.next().val(data.INV_ITEM_ID);
     },
-
     select2Callback: function(data) {
-      return "<div><div>" + data.INV_ITEM_ID + ' - ' + decodeURIComponent(data.DESCR) + "</div></div>"
+	return "<div><div>" + data.INV_ITEM_ID
+	    + ' - ' + decodeURIComponent(data.DESCR) + "</div></div>"
     },
     select2Display: function(data) {
       return data.INV_ITEM_ID
     },
+      
     loc_S2_XX_LIN_II: function(obj) {
-
       var config = jwt.jwtData.Configs['MASTER_ITEM_TBL'];
       obj.select2(config.s2optionsDO).on("select2-open",
         function(e) {
@@ -947,11 +1042,10 @@ jwt.jwtData.Configs['MASTER_ITEM_TBL'] = (function() {
         function(e) {
           jQuery(this).next().val("")
         })
-
-
       if (obj.next().val()) {
         obj.select2("data",
-          jwt.jwtData.setPromptVal(encodeURIComponent(obj.next().val()), 'MASTER_ITEM_TBL'))
+		    jwt.jwtData.setPromptVal(
+			encodeURIComponent(obj.next().val()), 'MASTER_ITEM_TBL'))
       }
     }
 

@@ -67,8 +67,19 @@ jwt.jwtComponentConfigFull = (function() {
        jQuery.when.apply(undefined, promises).promise().done(
               function() {
                   _.each(jwt.invoice.sections, function(obj) {
-                     //get the porject id and project level data
-		      //fix to wait for data user is to eager on first load
+
+/*		      
+        function f() {
+		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
+		    || jwt.jwtData.hasOwnProperty('XX_APPROVERS')) {
+                dothis();
+              } else {
+                setTimeout(f, 1000)
+              }
+         }
+            setTimeout(f, 1000)
+      function dothis() {
+*/
 		      
                     var piData = jwt.jwtData
 			    .xx_proj_attrtbl["_"

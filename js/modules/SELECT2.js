@@ -90,7 +90,6 @@ jwt.o.S2Functions = (function() {
             var config = jwt.jwtData.Configs[tblName];
             var dataObject = jwt.jwtData[config.Definition];
 
-            //  this logic should be externalized...place on the data object
             // only show vendor locations for a prarticular vendor on the page
               if (config.Definition == "XX_289_D_VND_LC"
 		  && jwt.functions.hasVendor()) {
@@ -105,8 +104,7 @@ jwt.o.S2Functions = (function() {
               query.term = "v:" + vendorID.toString();
             }
 
-            //if the data object is give the property all  will show when the
-            //drop down is selected
+            //if the data object is has  all property  show all values
             if (config.hasOwnProperty("is_lunr_show_all") && query.term == "") {
               query.term = "all:all"
             }
@@ -128,39 +126,41 @@ jwt.o.S2Functions = (function() {
 
             //the S2 select continues with the data
             query.callback(data);
-          },
-
+   },
+	    
+	    //d is the build wrapper for all the select2 on the header for
+	    //both pages
     createS2_header: function() {
-            var elemArray = [];
+        var elemArray = [];
+
+	//select2 for payment and handling  create the object
+	//then set the values
+	    jQuery("#loc_XX_HDR_PY").select2()
+            if (jwt.invoice.header.XX_HDR_PY) {
+		jQuery("#loc_XX_HDR_PY")
+		    .select2("val", jwt.invoice.header.XX_HDR_PY);
+            }
+            jQuery("#loc_XX_HDR_HC").select2();
+            if (jwt.invoice.header.XX_HDR_HC) {
+		jQuery("#loc_XX_HDR_HC")
+		    .select2("val", jwt.invoice.header.XX_HDR_HC);
+            }
 
             //the user quick with the mouse the system data objects wont be ready
             //this is a wait check protection only relevant for the first  on a
             // session
-            function f() {
+        function f() {
 		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
 		    || jwt.jwtData.hasOwnProperty('XX_APPROVERS')) {
                 dothis();
               } else {
                 setTimeout(f, 1000)
               }
-            }
+         }
 
             setTimeout(f, 1000)
 
-            jQuery("#loc_XX_HDR_PY").select2()
-            if (jwt.invoice.header.XX_HDR_PY) {
-		jQuery("#loc_XX_HDR_PY")
-		    .select2("val", jwt.invoice.header.XX_HDR_PY);
-            }
-
-            jQuery("#loc_XX_HDR_HC").select2();
-
-            if (jwt.invoice.header.XX_HDR_HC) {
-		jQuery("#loc_XX_HDR_HC")
-		    .select2("val", jwt.invoice.header.XX_HDR_HC);
-            }
-
-      // builds all the custom select2 objects marked with data attribute
+	// builds all the custom select2 objects marked with data attribute
       function dothis() {
           elemArray = jQuery("input.select2-offscreen[data-ps-tbl-name]");
           //when this build loop is entered it is safe to show the page however
