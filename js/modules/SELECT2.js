@@ -1,11 +1,11 @@
 jwt.o.S2Functions = (function() {
-  return {
-    init: function() {
-      //add all the methods to the functions object
-      jQuery.extend(jwt.functions,
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    return {
+  init: function() {
+       //add all the methods to the functions object
+       jQuery.extend(jwt.functions,
 
-        {
-          formatVal: function(item) {
+           {formatVal: function(item) {
 
             var tblName = jQuery(this.element).data('ps-tbl-name');
             var isLine = jQuery(this.element).data('line');
@@ -13,40 +13,43 @@ jwt.o.S2Functions = (function() {
             var lookup = item.id;
 
             if (typeof dataDefn.select2Display === 'function') {
-              var display = dataDefn.select2Display(jwt.jwtData[tblName]["_" + lookup], this.element);
+		var display = dataDefn.select2Display(
+		    jwt.jwtData[tblName]["_" + lookup], this.element);
             }
 
             if (isLine == "SO") {
               /* the ship to is on the header and line */
-              dataDefn.select2setKeysSOLine(jwt.jwtData[tblName]["_" + lookup], this.element);
+		dataDefn.select2setKeysSOLine(
+		    jwt.jwtData[tblName]["_" + lookup], this.element);
             } else {
               if (typeof dataDefn.select2setKeys === 'function') {
-                dataDefn.select2setKeys(jwt.jwtData[tblName]["_" + lookup], this.element);
+                  dataDefn.select2setKeys(
+		      jwt.jwtData[tblName]["_" + lookup], this.element);
               }
             }
 
             return display || "."
           },
-
-          formatRes: function(result, container, query, escapeMarkup) {
+    formatRes: function(result, container, query, escapeMarkup) {
             var markup = [];
-            jwt.functions.mymarkMatch(result.text, query.term, markup, escapeMarkup);
+              jwt.functions.mymarkMatch(
+		  result.text, query.term, markup, escapeMarkup);
 
             return markup.join("");
           },
 
-          mymarkMatch: function(text, term, markup, escapeMarkup) {
+    mymarkMatch: function(text, term, markup, escapeMarkup) {
             //wrapper to handle highlighing text
             var wordArray = term.split(" ");
             wordArray.push(term);
             markup.push(jQuery(text).children().highlight(wordArray).html());
           },
 
-          format: function(item) {
+    format: function(item) {
             return item.tag
           },
 
-          select2PreQuery: function(that) {
+    select2PreQuery: function(that) {
             var tblName = jQuery(that).data('ps-tbl-name');
             var config = jwt.jwtData.Configs[tblName];
 
@@ -76,7 +79,7 @@ jwt.o.S2Functions = (function() {
           // the vendor drop down can only show vendor location for
           // the vendor associated with the PO.
 
-          select2query: function(query) {
+   select2query: function(query) {
             var elem = jQuery(this.element);
             var tblName = elem.data('ps-tbl-name');
             var data = {
@@ -89,20 +92,21 @@ jwt.o.S2Functions = (function() {
             var dataObject = jwt.jwtData[config.Definition];
 
             //  this logic should be externalized...place on the data object
-
             // only show vendor locations for a prarticular vendor on the page
-            if (config.Definition == "XX_289_D_VND_LC" && jwt.functions.hasVendor()) {
+              if (config.Definition == "XX_289_D_VND_LC"
+		  && jwt.functions.hasVendor()) {
               var vendorID = jwt.functions.hasVendor();
               query.term = "v:" + vendorID.toString();
             }
 
             //only show po for the vendor on the page
-            if (config.Definition == "XX_289_D_PO_02" && jwt.functions.hasVendor()) {
+              if (config.Definition == "XX_289_D_PO_02"
+		  && jwt.functions.hasVendor()) {
               var vendorID = jwt.functions.hasVendor();
               query.term = "v:" + vendorID.toString();
             }
 
-            //if the data object is give the property all values will show when the
+            //if the data object is give the property all  will show when the
             //drop down is selected
             if (config.hasOwnProperty("is_lunr_show_all") && query.term == "") {
               query.term = "all:all"
@@ -113,7 +117,6 @@ jwt.o.S2Functions = (function() {
             var hashkey = "";
 
             //  the user inputs are feed to the lunr search routine
-
             _.each(newArray, function(obj) {
               hashkey = obj.ref.hashCode().toString();
               s = config.select2Callback(dataObject["_" + hashkey]);
@@ -132,11 +135,12 @@ jwt.o.S2Functions = (function() {
 
             var elemArray = [];
 
-            //if the user is quick with the mouse the system data objects wont be ready
-            //this is a wait check protection only relevant for the first invoice on a
+            //the user quick with the mouse the system data objects wont be ready
+            //this is a wait check protection only relevant for the first  on a
             // session
             function f() {
-              if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV') || jwt.jwtData.hasOwnProperty('XX_APPROVERS')) {
+		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
+		    || jwt.jwtData.hasOwnProperty('XX_APPROVERS')) {
                 dothis();
               } else {
                 setTimeout(f, 1000)
@@ -147,29 +151,35 @@ jwt.o.S2Functions = (function() {
 
             jQuery("#loc_XX_HDR_PY").select2()
             if (jwt.invoice.header.XX_HDR_PY) {
-              jQuery("#loc_XX_HDR_PY").select2("val", jwt.invoice.header.XX_HDR_PY);
+		jQuery("#loc_XX_HDR_PY")
+		    .select2("val", jwt.invoice.header.XX_HDR_PY);
             }
 
             jQuery("#loc_XX_HDR_HC").select2();
 
             if (jwt.invoice.header.XX_HDR_HC) {
-              jQuery("#loc_XX_HDR_HC").select2("val", jwt.invoice.header.XX_HDR_HC);
+		jQuery("#loc_XX_HDR_HC")
+		    .select2("val", jwt.invoice.header.XX_HDR_HC);
             }
             // builds all the custom select2 objects marked with data attribute
             function dothis() {
-              // elemArray = jQuery("input.select2-offscreen[id^='loc'] , input.select2-offscreen#lin_S2_XX_LIN_SC[id^='lin'] , input.select2-offscreen#lin_S2_XX_LIN_SO[id^='lin']");
               elemArray = jQuery("input.select2-offscreen[data-ps-tbl-name]");
-              //when this build loop is entered it is safe to show the page however..
-              // for certain actions the page is hidden...and in these cases the page continue to be display none
-              // a common use case is for the approval moodal.
-              (!jwt.invoice.keepHidden) ? jQuery("#full-section , #quick-section").css('display', 'block'): null;
+          //when this build loop is entered it is safe to show the page however
+		// for certain actions the page is hidden and in these cases
+		//the page continue to be display none
+              // a common use case is for the approval moodal
+		(!jwt.invoice.keepHidden)
+		    ? jQuery("#full-section , #quick-section")
+		    .css('display', 'block'): null;
 
-              //loop builds select2 for elements with data objects driven off database views
+		//loop builds select2 for elements with data objects driven off
+		// database views
               _.each(elemArray, function(obj) {
                 var $obj = jQuery(obj);
                 var tblName = $obj.data('ps-tbl-name');
                 var config = jwt.jwtData.Configs[tblName];
-                //  the id is used as the method name which is used to build the object
+                  //the id is used as the method name which is used to build the
+		  //object
                 if (config.hasOwnProperty($obj.attr('id'))) {
                   var funName = $obj.attr('id');
                   config[funName]($obj);

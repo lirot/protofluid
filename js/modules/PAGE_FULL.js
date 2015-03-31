@@ -36,7 +36,7 @@ jwt.jwtComponentConfigFull = (function() {
 	//get subcat is called from the main callback.
 	//first it must make calls for project attributes once returned the
 	//the links to the po and project jacket are bound to the elements along
-	//witht the pop up data.  another call is made to retrieve po data used in
+	//witht the pop up data another call is made to retrieve po data used in
 	//the pop up
 	
    getPO_SubCat_Data_Add_Links: function(config) {
@@ -46,7 +46,7 @@ jwt.jwtComponentConfigFull = (function() {
 
        _.each(jwt.invoice.sections, function(obj) {
            var def = new jQuery.Deferred();
-	      //the system via the initial parse callback has determined this value
+	   //the system via the initial parse callback has determined this value
               if (obj.SectionHeader.po) {
                   jwt.user.hasPO = true
 		  //lock down any vendor canges when PO exists
@@ -68,12 +68,14 @@ jwt.jwtComponentConfigFull = (function() {
               function() {
                   _.each(jwt.invoice.sections, function(obj) {
                      //get the porject id and project level data
-                     var piData = jwt.jwtData
+		      //fix to wait for data user is to eager on first load
+		      
+                    var piData = jwt.jwtData
 			    .xx_proj_attrtbl["_"
 					     + obj.SectionHeader.pi.hashCode()];
 		      
-		      //these data are what was needed to populate the iScripts for
-		      //the clikcs on the links below
+		//these data are what was needed to populate the iScripts for
+	        //the clikcs on the links below
                      obj.SectionHeader.bu = piData.BUSINESS_UNIT;
                      obj.SectionHeader.ou = piData.OPERATING_UNIT;
                      obj.SectionHeader.pt = piData.PROJECT_TYPE;
