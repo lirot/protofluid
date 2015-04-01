@@ -36,7 +36,6 @@ jwt.jwtWorkList = (function() {
         jsondata = jsondata.VIEW[0].LINE;
 
       var elem = jQuery(" [data-count-wlid= '" + worklist.id + "']");
-
       elem.text(jsondata.length.toString())
 
       jQuery.each(worklist.fldlist, function(index, field) {
@@ -45,17 +44,17 @@ jwt.jwtWorkList = (function() {
       });
 
       var flag, important, locked, buttonHTML;
-      jQuery.each(jsondata, function(index, item) {
+  jQuery.each(jsondata, function(index, item) {
 
 	  locked = decodeURIComponent(item[worklist.wlLockField])
 	      == jwt.user.operDescr ? 'N' : 'Y';
         locked = item[worklist.wlLockField] == '' ? 'N' : locked;
-
         important = item['XX_FLAG'] == 'Y' ? 'Y' : 'N';
         buttonHTML = "";
-  if (jwt.user.isSAS) {
-     if (worklist.id != "1") {
-       if (worklist.id != "0") {
+
+     if (jwt.user.isSAS) {
+       if (worklist.id != "1") {
+         if (worklist.id != "0") {
            buttonHTML = "<button class='loc_WL_UNLOCK_SAS_FULL' data-wl="
 	       + worklist.id + "  data-imgNowKey=" + item[worklist.imgNowKey]
 	       + " data-route-id='loc_WL_UNLOCK_SAS_FULL' type='button'"
@@ -115,7 +114,8 @@ jwt.jwtWorkList = (function() {
 		  + " data-locked=" + locked + "></button>";
           }
         }
-        if (jwt.user.isApprover) {
+
+      if (jwt.user.isApprover) {
             buttonHTML = "<button class='loc_WL_OPEN_APPROVER' data-wl="
 		+ worklist.id + "  data-imgNowKey="
 		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_OPEN_"
@@ -129,11 +129,12 @@ jwt.jwtWorkList = (function() {
 		+ " data-imgNowKey=" + item[worklist.imgNowKey]
 		+ " data-locked=" + locked + "></button>";
         }
-          wlRow = wlRow + '<tr data-imgNowKey=' + item[worklist.imgNowKey]
+
+       wlRow = wlRow + '<tr data-imgNowKey=' + item[worklist.imgNowKey]
 	      + ' data-locked=' + locked + '  data-class=' + worklist.class
 	      + ' data-key=' + item[worklist.key] + ' data-wl='
 	      + worklist.id + ' ><td>' + buttonHTML + '</td>';
-
+	  
         if (worklist.wlID == "1") {
             wlRow += "<td class='icon-td' >"
 		+ ((important == "Y")
@@ -141,7 +142,8 @@ jwt.jwtWorkList = (function() {
 		     + "lity:hidden'>" + important + "</span>") : "")
 		+ " </td>";
         }
-        for (p in item) {
+
+       for (p in item) {
           if (rowtmplt.indexOf(p) != -1) {
               flag = p == 'INSTANCEID' && worklist.id == '0'
 		  && important == 'Y' ? "Y" : "N";
@@ -151,7 +153,7 @@ jwt.jwtWorkList = (function() {
           }
         }
         wlRow = wlRow + '</tr>';
-      });
+      });  /* end each row returned from parse data */
 
       if (worklist.wlID == "1") {
           hdricon = "<th ><i class='fa fa-flag'></i></th>";
@@ -184,9 +186,12 @@ jwt.jwtWorkList = (function() {
       jQuery.each(wlArray, function(index, worklist) {
         var def = new jQuery.Deferred();
 
-        //Invoice admins get the full list of invoices:
+          //Invoice admins not SAS get the full list of invoices
+	  //SAS invoice admins will already have the full list from the SAS9
+	  //view the differnce is the SAS IA will have edit privelages on
+	  //all invoice from the SAS9 view
         var xlink, xqrystring
-        if (jwt.user.isIA && worklist.wlID == '1') {
+        if ( !jwt.user.isSAS && jwt.user.isIA && worklist.wlID == '1') {
             var qrystring = 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA"'
 	          + ',"CoumnList":[]}'
           xlink = worklist.urlBase + worklist.iScript + qrystring;
