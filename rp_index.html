@@ -10,14 +10,10 @@
   <link rel="stylesheet" href="css/select2.css" />
   <link rel="stylesheet" href="css/prettyCheckable.css">
   <link rel="stylesheet" href="css/styles.css">
-
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
   <script type="text/javascript">
-  function drawTable() {
-
-  }
-
-  google.load("visualization", "1", {packages:["table"]});
+        function drawTable() {  }
+        google.load("visualization", "1", {packages:["table"]});
   </script>
 
   <script src="js/libs/require.js" data-main="app"></script>
@@ -41,20 +37,22 @@
     </div>
     <div id="work-list-menu" class="navcontainer">
     </div>
-    <div  id="processing"><img src="images/PT_PROCESSING_1.gif" alt="processing" ></div>
+    <div  id="processing">
+      <img src="images/PT_PROCESSING_1.gif" alt="processing" >
+    </div>
   </header>
   <div id="body-anchor">
     <section id="work-lists" class="work-lists">
       <div class="wlHeader">
           <div class="pager"
           Page:
-          <select class="gotoPage"></select>
-          <img src="img/first.png" class="first" alt="First" title="First page" />
-          <img src="img/prev.png" class="prev" alt="Prev" title="Previous page" />
-          <span class="pagedisplay"></span>
-          <img src="img/next.png" class="next" alt="Next" title="Next page" />
-          <img src="img/last.png" class="last" alt="Last" title="Last page" />
-          <select class="pagesize">
+        <select class="gotoPage"></select>
+        <img src="img/first.png" class="first" alt="First" title="First page" />
+        <img src="img/prev.png" class="prev" alt="Prev" title="Previous page" />
+        <span class="pagedisplay"></span>
+        <img src="img/next.png" class="next" alt="Next" title="Next page" />
+        <img src="img/last.png" class="last" alt="Last" title="Last page" />
+        <select class="pagesize">
               <option value="10">10</option>
               <option value="20">20</option>
               <option value="30">30</option>
@@ -65,7 +63,7 @@
       </div>
     </section>
     <section id="content">
-        <a href="#close" title="Show/Hide Image Now" class="close-image-now">X</a>
+      <a href="#close" title="Show/Hide Image Now" class="close-image-now">X</a>
       <section id="image-now">
       </section>
       <section id="component-data">
