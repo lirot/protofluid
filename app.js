@@ -31,8 +31,10 @@ require.config({
         tablesorterPager: "js/libs/jquery.tablesorter.pager.min",
         tablesorterWidgets: "js/libs/jquery.tablesorter.widgets",
         //      tablesorterWidgets   : "libs/jquery.tablesorter.widgets.min",
-        tablesorterFilterFormatter: "js/libs/jquery.tablesorter.widgets-filter-formatter.min",
-        tablesorterFilterFormatterSelect2: "js/libs/jquery.tablesorter.widgets-filter-formatter-select2",
+        tablesorterFilterFormatter:
+        "js/libs/jquery.tablesorter.widgets-filter-formatter.min",
+        tablesorterFilterFormatterSelect2:
+        "js/libs/jquery.tablesorter.widgets-filter-formatter-select2",
         moment: "js/libs/moment",
         lunr: "js/libs/lunr",
         underscore: "js/libs/underscore",
@@ -110,10 +112,12 @@ require.config({
         },
 
         tablesorterFilterFormatter: {
-            deps: ["jquery", "tablesorter", "tablesorterWidgets", "tablesorterPager", "select2"],
+            deps: ["jquery", "tablesorter", "tablesorterWidgets"
+                   , "tablesorterPager", "select2"],
         },
         tablesorterFilterFormatterSelect2: {
-            deps: ["jquery", "tablesorter", "tablesorterWidgets", "tablesorterPager", "select2"],
+            deps: ["jquery", "tablesorter", "tablesorterWidgets"
+                   , "tablesorterPager", "select2"],
         },
         jwt: {
             exports: "jwt"
@@ -126,7 +130,8 @@ require.config({
 
         },
         worklist: {
-            deps: ["jquery", "tablesorter", "tablesorterWidgets", "tablesorterPager", "select2"],
+            deps: ["jquery", "tablesorter"
+                   , "tablesorterWidgets", "tablesorterPager", "select2"],
         },
         misfunc: {
             deps: ["jquery", "underscore", "select2"],
@@ -164,8 +169,17 @@ require.config({
 });
 
 require(
-    ["handlebars", "lunr", "tablesorter", "jwt", "jwtWorkListConfig_SAS", "templates", "Mustache", "loader_data", "worklist", "jwtData", "loader_page", "misfunc", "tablesorterPager", "moment", "CONSTANTS", "ROUTES", "loader_routes", "quickPage", "fullPage", "jqueryui", "prettyCheck", "select2", "highlighter", "tablesorterWidgets", "tablesorterFilterFormatter", "tablesorterFilterFormatterSelect2", "jwtWorkListConfig_APP", "approvePage", "ERRORS", "loader_errors", "FIELDS"],
-    function(handlebars, lunr, tablesorter, jwt, jwtWorkListConfig_SAS, templates, Mustache, _, _, _, _, _) {
+    ["handlebars", "lunr", "tablesorter", "jwt", "jwtWorkListConfig_SAS"
+     , "templates", "Mustache", "loader_data", "worklist", "jwtData"
+     , "loader_page", "misfunc", "tablesorterPager", "moment", "CONSTANTS"
+     , "ROUTES", "loader_routes", "quickPage", "fullPage", "jqueryui"
+     , "prettyCheck", "select2", "highlighter", "tablesorterWidgets"
+     , "tablesorterFilterFormatter", "tablesorterFilterFormatterSelect2"
+     , "jwtWorkListConfig_APP", "approvePage", "ERRORS", "loader_errors"
+     , "FIELDS"],
+    
+    function(handlebars, lunr, tablesorter, jwt
+             , jwtWorkListConfig_SAS, templates, Mustache, _, _, _, _, _) {
 
         var url_jwt = document.URL.replace(/\/\s*$/, '').split('/');
 
@@ -177,7 +191,9 @@ require(
         jwt.o.ErrorStoreFunctions.init();
         jwt.o.S2Functions.init();
 
-        var tourl = "http://" + location.host + "/psc/" + url_jwt[4] + '/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.FieldFormula.iScript_xxGetInitObject_289';
+        var tourl = "http://" + location.host + "/psc/" + url_jwt[4]
+            + '/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.'
+            + 'FieldFormula.iScript_xxGetInitObject_289';
         var jqXHRoptions2 = {
             type: "POST",
             url: tourl,
@@ -191,8 +207,10 @@ require(
                 jwt.init();
                 jwt.jwtWorkList.init();
                 jwt.jwtData.initAllData();
-                jwt.jwtComponent.init('jwt.jwtComponentConfigQuick', jwt.jwtComponentConfigQuick);
-                jwt.jwtComponent.init('jwt.jwtComponentConfigFull', jwt.jwtComponentConfigFull);
+                jwt.jwtComponent.init('jwt.jwtComponentConfigQuick'
+                                      , jwt.jwtComponentConfigQuick);
+                jwt.jwtComponent.init('jwt.jwtComponentConfigFull'
+                                      , jwt.jwtComponentConfigFull);
             })
 
     },
