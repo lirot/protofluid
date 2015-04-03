@@ -1,16 +1,10 @@
 #full-section {
-
   .detail {
-
     @include span( 12 );
     @include bleed($grid-padding);
-
     input {
       @include border-radius( 0px);
-
-
     }
-
     .line1-header {
       .hdr1 {
         @include span( 3 );
@@ -37,7 +31,6 @@
         @include span( 3 );
         @include bleed($grid-padding);
       }
-
     }
     .line2 {
         .hdr0 {
@@ -76,11 +69,9 @@
       .line1 {
         @include span( 12 );
         @include bleed($grid-padding);
-
         .XX_LIN_SC,
         .XX_LIN_SO {
           display: none !important;
-
         }
         .rf-lin-pn{
             display:inline;
@@ -103,12 +94,12 @@
         .rf-lin-so {
           @include span( 2 no-gutters);
           @include bleed($grid-padding);
-
         }
         .row-buttons {
           @include span( 1 no-gutters omega);
-          width:12%!important;
+          width:19%!important;
           @include bleed($grid-padding);
+          padding:0em!important;
         }
 
       }

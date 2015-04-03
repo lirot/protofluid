@@ -153,7 +153,7 @@ ul.navlist {
 
 /* line 97, ../sass/_base.scss */
 .nav-action {
-  font-size: 12px; }
+  font-size: 10px; }
 
 /* line 102, ../sass/_base.scss */
 .wlClose {
@@ -2182,7 +2182,7 @@ a:hover {
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
 
-/* line 3, ../sass/_PAGE_FULL_LINE.scss */
+/* line 2, ../sass/_PAGE_FULL_LINE.scss */
 #full-section .detail {
   width: 100%;
   float: left;
@@ -2193,12 +2193,12 @@ a:hover {
   box-sizing: content-box;
   margin: -1em;
   padding: 1em; }
-  /* line 8, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 5, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail input {
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px; }
-  /* line 15, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 9, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line1-header .hdr1 {
     width: 25%;
     float: left;
@@ -2210,7 +2210,7 @@ a:hover {
     margin: -1em;
     padding: 1em;
     display: none; }
-  /* line 20, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 14, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line1-header .hdr2 {
     width: 16.66667%;
     float: left;
@@ -2221,7 +2221,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 24, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 18, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line1-header .hdr3 {
     width: 33.33333%;
     float: left;
@@ -2232,7 +2232,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 28, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 22, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line1-header .hdr4 {
     width: 16.66667%;
     float: left;
@@ -2243,7 +2243,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 32, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 26, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line1-header .hdr5 {
     width: 8.33333%;
     float: left;
@@ -2254,7 +2254,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 36, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 30, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line1-header .hdr6 {
     width: 25%;
     float: left;
@@ -2265,7 +2265,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 43, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 36, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr0 {
     width: 8.33333%;
     float: left;
@@ -2276,7 +2276,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 47, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 40, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr1 {
     width: 16.66667%;
     float: left;
@@ -2287,7 +2287,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 51, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 44, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr2 {
     width: 16.66667%;
     float: left;
@@ -2298,7 +2298,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 55, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 48, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr3 {
     width: 16.66667%;
     float: left;
@@ -2309,7 +2309,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 59, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 52, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr4 {
     width: 8.33333%;
     float: left;
@@ -2320,7 +2320,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 63, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 56, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr5 {
     width: 8.33333%;
     float: left;
@@ -2331,7 +2331,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 67, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 60, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 .hdr6 {
     width: 25%;
     float: left;
@@ -2342,7 +2342,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-  /* line 73, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 66, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .group {
     width: 100%;
     float: left;
@@ -2353,7 +2353,7 @@ a:hover {
     box-sizing: content-box;
     margin: -1em;
     padding: 1em; }
-    /* line 76, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 69, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 {
       width: 100%;
       float: left;
@@ -2364,14 +2364,14 @@ a:hover {
       box-sizing: content-box;
       margin: -1em;
       padding: 1em; }
-      /* line 80, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 72, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .XX_LIN_SC,
       #full-section .detail .group .line1 .XX_LIN_SO {
         display: none !important; }
-      /* line 85, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 76, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .rf-lin-pn {
         display: inline; }
-      /* line 88, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 79, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .rf-lin-ma {
         width: 16.66667%;
         float: left;
@@ -2382,10 +2382,10 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-        /* line 91, ../sass/_PAGE_FULL_LINE.scss */
+        /* line 82, ../sass/_PAGE_FULL_LINE.scss */
         #full-section .detail .group .line1 .rf-lin-ma input {
           text-align: right; }
-      /* line 95, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 86, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .rf-lin-ld {
         width: 33.33333%;
         float: left;
@@ -2394,7 +2394,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 99, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 90, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .rf-lin-sc {
         width: 16.66667%;
         float: left;
@@ -2403,7 +2403,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 103, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 94, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .rf-lin-so {
         width: 16.66667%;
         float: left;
@@ -2412,17 +2412,18 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 108, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 98, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .row-buttons {
         width: 8.33333%;
         float: right;
-        width: 12% !important;
+        width: 19% !important;
         -moz-box-sizing: content-box;
         -webkit-box-sizing: content-box;
         box-sizing: content-box;
         margin: -1em;
-        padding: 1em; }
-    /* line 115, ../sass/_PAGE_FULL_LINE.scss */
+        padding: 1em;
+        padding: 0em !important; }
+    /* line 106, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line2 {
       width: 100%;
       float: left;
@@ -2433,17 +2434,17 @@ a:hover {
       box-sizing: content-box;
       margin: -1em;
       padding: 1em; }
-      /* line 119, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 110, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .XX_LIN_AB,
       #full-section .detail .group .line2 .XX_LIN_II,
       #full-section .detail .group .line2 .XX_LIN_UM,
       #full-section .detail .group .line2 .XX_LIN_AP,
       #full-section .detail .group .line2 .XX_LIN_AI {
         display: none !important; }
-      /* line 126, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 117, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-ab {
         display: none !important; }
-      /* line 130, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 121, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-indent {
         width: 8.33333%;
         float: left;
@@ -2452,10 +2453,10 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-        /* line 133, ../sass/_PAGE_FULL_LINE.scss */
+        /* line 124, ../sass/_PAGE_FULL_LINE.scss */
         #full-section .detail .group .line2 .rf-lin-indent i {
           padding-left: 20px; }
-      /* line 137, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 128, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-ap {
         width: 16.66667%;
         float: left;
@@ -2464,7 +2465,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 141, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 132, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-ai {
         width: 16.66667%;
         float: left;
@@ -2473,7 +2474,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 145, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 136, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-ii {
         width: 16.66667%;
         float: left;
@@ -2482,7 +2483,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 150, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 141, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-um {
         width: 8.33333%;
         float: left;
@@ -2491,7 +2492,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 154, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 145, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-lq {
         width: 8.33333%;
         float: left;
@@ -2500,7 +2501,7 @@ a:hover {
         box-sizing: content-box;
         margin: -1em;
         padding: 1em; }
-      /* line 158, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 149, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line2 .rf-lin-up {
         width: 16.66667%;
         float: left;

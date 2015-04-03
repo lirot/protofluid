@@ -2,6 +2,7 @@ jwt.functions = (function() {
   return {
     init: function() {
 
+
       String.prototype.hashCode = function() {
         var hash = 0,
           strlen = this.length,
@@ -32,6 +33,7 @@ jwt.functions = (function() {
 	      + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
       };
 
+	  //runs immeiately
       jQuery(function() {
         jQuery('form').submit(function() {
           return false;
@@ -50,9 +52,8 @@ jwt.functions = (function() {
           return false;
         }
       }
-
+//functions are available off the namespace jwt.functions
       jQuery.extend(jwt.functions,
-
         {
    hasVendor: function() {
             var vendorID = jQuery('#XX_HDR_VI').val();
@@ -61,6 +62,7 @@ jwt.functions = (function() {
             }
             return vendorID
           },
+
    padout: function(number) {
             return (number < 10) ? '0' + number : number;
           },
@@ -70,7 +72,8 @@ jwt.functions = (function() {
               return n.length >= width ? n :
 		  new Array(width - n.length + 1).join(z) + n;
           },
-   editApproverList: function() {
+
+    editApproverList: function() {
             jwt.invoice.user.isAddFinAppr = false;
             jwt.invoice.user.hasApproverOnChain = false;
             var approverArray = [];
@@ -107,7 +110,6 @@ jwt.functions = (function() {
             data.addColumn('string', 'End Date/Time');
             data.addColumn('string', 'Comment');
 
-
        var table = new google.visualization
 	   .Table(document.getElementById('workflow'));
             var moreRows = [];
@@ -142,7 +144,7 @@ jwt.functions = (function() {
                 return
               }
               // these are SAS rows
-              if (Obj.fld_ptafstage_nbr.text == "10" && jwt.user.isSAS) {
+  if (Obj.fld_ptafstage_nbr.text == "10" && jwt.user.isSAS) {
                 action = "Complete";
                 status = jwt.constants.keys[Obj.fld_ptaforig_oprid.text];
                 if (Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text) {
@@ -151,20 +153,16 @@ jwt.functions = (function() {
                 if (Obj.fld_ptafstep_status.text == 'P') {
                   status = " ";
                   action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
-                } else {
-
-
-                }
-
-		  moreRows.push(["SAS", Obj.fld_oprdefndesc.text, action,
+                  }
+          moreRows.push(["SAS", Obj.fld_oprdefndesc.text, action,
 		           jwt.constants.keys[Obj.fld_ptafadhoc_by.text], status
 			 , Obj.Created_Date, Obj.Saved_Date, comments.join()]);
 
-                comments = [];
+          comments = [];
 
-              } else {
+   } else {
                 Obj.isSAS = false;
-              }
+   }
 
               if (Obj.fld_ptafstage_nbr.text == "20") {
                 area = "Approver"

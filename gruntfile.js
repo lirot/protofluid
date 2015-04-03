@@ -48,23 +48,23 @@ module.exports = function(grunt) {
         }
     },
     watch: {
-      options: { livereload: true },
-      scripts: {
-        files: ['_/components/js/*.js' , '*.js' ],
+        scripts: {
+        files: ['_'],
         tasks: ['concat','uglify']
-      }, //script
-      sass: {
+      },
+         sass: {
         files: ['sass/*.scss'],
         tasks: ['compass:dev']
-      }, //sass
+      },
       mustache: {
           files: ['html/*.*'],
           tasks: ['mustache']
-      }, //mustache
+      },
       html: {
-        files: ['*.html' , '*.js']
+        files: ['*.2html' , '*2.js']
       }
+     
     } //watch
   }) //initConfig
-  grunt.registerTask('default', 'watch' );
+    grunt.registerTask('default',"watch" );
 } //exports

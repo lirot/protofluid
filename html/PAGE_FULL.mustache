@@ -1,16 +1,18 @@
 <section id="full-section" class="component">
   <form name="component">
 <div class="header remove-add">
-      <section class="add remove-add">
+
+<section class="add remove-add">
           <label  >Add Section</label>
-          {{#user.isSAS}}
+{{#user.isSAS}}
         <div class="rf-hdr-vi">
             <label for="XX_HDR_VI" style="display:none">Vendor</label>
             <input type="hidden" tabindex="4" class="select2-offscreen" {{Locked}} data-ps-tbl-name="XX_289_D_VND_LC" data-s2-drop-class="s2-vendor-drop" data-ps-tbl-id="KEY1" id="loc_S2_XX_HDR_VI" placeholder="Click to add a Vendor" />
             <input id="XX_HDR_VL" name="XX_HDR_VL" value="{{header.XX_HDR_VL}}" />
             <input id="XX_HDR_VI" name="XX_HDR_VI" value="{{header.XX_HDR_VI}}" />
         </div>
-        {{/user.isSAS}}
+{{/user.isSAS}}
+
         <div class="rf-lin-po">
           <label for="loc_XX_LIN_PO"  style="display:none">Add PO</label>
           <input type="hidden" tabindex="12" class="select2-offscreen" {{Locked}} data-ps-tbl-name="XX_289_D_PO_02" data-s2-drop-class="po-drop1" data-ps-tbl-id="PO_ID" id="loc_S2_XX_LIN_PO" placeholder="Click to add a Purchase Order">
@@ -36,7 +38,7 @@
         <label for="XX_HDR_BU ">Business Unit</label>
         <input type="hidden" class="select2-offscreen" data-ps-tbl-name="XX_289_D_BU_SEC" data-s2-drop-class="s2-drop-bu" {{user.canEdit.rf_hdr_bu}} {{isBULocked}} {{Locked}} {{header.Approverdisabled}} data-linked-field="XX_HDR_BU" tabindex="1" id="loc_S2_XX_HDR_BU" />
         <input id="XX_HDR_BU" name="XX_HDR_BU" value="{{header.XX_HDR_BU}}" />
-      </div>
+</div>
 
       <div class="rf-hdr-so">
         <label for="XX_HDR_SO">Ship To</label>
@@ -143,27 +145,22 @@
         <label for="XX_HDR_UT">Use Tax</label>
         <input id="XX_HDR_UT" name="XX_HDR_UT" tabindex="11" disabled="disabled" value="{{header.XX_HDR_UT}}" />
       </div>
-
     </section>
 
-    <section class="detail">
-
-      {{#sections}}
-
-        <section class="group" data-key="{{SectionHeader.key}}" data-project_id="{{SectionHeader.pi}}" data-po_id="{{SectionHeader.po}}" data-can_edit="{{SectionHeader.section_ce}}">
-          <section class="group-header">
-
-
-            <div id="row-header-menu" class="navcontainer nav-action">
-              <ul class="navlist">
-                <li>
-                  <a href="#" class="xx-link-pj" data-script-id="xxViewProjJacket">
-                    <span>Project Jacket</span> </a>
-                </li>
-
-                <li>
-                  <a href="#" class="xx-link-estimate" data-script-id="xxViewProjEstimate"> <span>View Estimate</span> </a>
-                </li>
+<section class="detail">
+  {{#sections}}
+    <section class="group" data-key="{{SectionHeader.key}}" data-project_id="{{SectionHeader.pi}}" data-po_id="{{SectionHeader.po}}" data-can_edit="{{SectionHeader.s
+ection_ce}}" >
+      <section class="group-header">
+        <div id="row-header-menu" class="navcontainer nav-action">
+          <ul class="navlist">
+            <li>
+              <a href="#" class="xx-link-pj" data-script-id="xxViewProjJacket">
+                <span>Project Jacket</span> </a>
+            </li>
+            <li>
+              <a href="#" class="xx-link-estimate" data-script-id="xxViewProjEstimate"> <span>View Estimate</span> </a>
+            </li>
                 {{#SectionHeader.po}}
                   <li>
                     <a href="#" class="xx-link-po-view" data-script-id="XX_LIN_PRNT_PO{{ROW}}"> <span>Print PO</span> </a>
@@ -185,93 +182,126 @@
                 {{/SectionHeader.po}}
               </ul>
             </div>
-            <div>
-              <label>Projet ID:</label> {{SectionHeader.pi}}</div>
+
+<div>
+    <label>Projet ID:</label> {{SectionHeader.pi}}</div>
             {{#SectionHeader.po}}
               <div>
                 <label>PO ID:</label> {{SectionHeader.po}}</div>
               <div class="open-po">
                 <label>Open Amount:</label> 0.00</div>
-            {{/SectionHeader.po}}
-          </section>
-          <div class="line1-header"> <span class="hdr1">Line#</span> <span class="hdr2">Subcat</span> <span class="hdr3">Description</span> <span class="hdr4">Ship To</span><span class="hdr5">Amt</span><span class="hdr6"></span>
-          </div>
-          {{#lines}}
-            <section class="line line1" data-can-edit="{{XX_LIN_CE}}">
-	      <div class="rf-lin-pl">{{XX_LIN_PL}}</div>
-              <div class="rf-lin-sc">
-                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SC" data-s2-drop-class="s2-drop-subcat" {{Locked}} data-ps-tbl-name="XX_289_D_SC_01" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SC" placeholder="Subcat">
-                <input class="XX_LIN_SC" id="XX_LIN_SC{{ROW}}" name="XX_LIN_SC{{ROW}}" value="{{XX_LIN_SC}}" />
+  {{/SectionHeader.po}}
+</section>
+
+<div class="line1-header">
+  <span class="hdr1">Line#</span>
+    <span class="hdr2">Subcat</span>
+    <span class="hdr3">Description</span>
+    <span class="hdr4">Ship To</span>
+    <span class="hdr5">Amt</span>
+    <span class="hdr6"></span>
+</div>
+
+{{#lines}}
+  <section class="line line1" data-can-edit="{{XX_LIN_CE}}">
+    <div class="rf-lin-pl">{{XX_LIN_PL}}</div>
+
+<div class="rf-lin-sc">
+        <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SC" data-s2-drop-class="s2-drop-subcat" {{Locked}} data-ps-tbl-name="XX_289_D_SC_01" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SC" placeholder="Subcat">
+        <input class="XX_LIN_SC" id="XX_LIN_SC{{ROW}}" name="XX_LIN_SC{{ROW}}" value="{{XX_LIN_SC}}" />
+      </div>
+
+<div class="rf-lin-ld">
+        <input id="XX_LIN_LD{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_LD{{ROW}}" {{Locked}} value="{{XX_LIN_LD}}" placeholder="Description" />
+      </div>
+
+<div class="rf-lin-so">
+        <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO" {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
+        <input class="XX_LIN_SO" id="XX_LIN_SO{{ROW}}" name="XX_LIN_SO{{ROW}}" value="{{XX_LIN_SO}}" />
+       </div>
+
+<div class="rf-lin-ma">
+         <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" />
               </div>
-              <div class="rf-lin-ld">
-                <input id="XX_LIN_LD{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_LD{{ROW}}" {{Locked}} value="{{XX_LIN_LD}}" placeholder="Description" />
-              </div>
-              <div class="rf-lin-so">
-                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO" {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
-                <input class="XX_LIN_SO" id="XX_LIN_SO{{ROW}}" name="XX_LIN_SO{{ROW}}" value="{{XX_LIN_SO}}" />
-              </div>
-              <div class="rf-lin-ma">
-                <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" />
-              </div>
-              {{^SectionHeader.section_ce}}
-                  <span class="row-buttons">
-                      <span class="lockDialog-line">
+
+{{^SectionHeader.section_ce}}
+     <span class="row-buttons">
+              <span class="lockDialog-line">
                         <i class="fa fa-lock"></i>
-                    </span>
-                    {{^user.isLocked}}
-                      <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}"   ><i class="fa fa-check-square-o"></i>Asset</a>
-                      <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}"  ><i class="fa fa-square-o"></i>Qty</a>
-                    {{/user.isLocked}}
               </span>
-              {{/SectionHeader.section_ce}}
-              {{#SectionHeader.section_ce}}
-                  {{^user.isLocked}}
-                    <div class="row-buttons">
+        {{^user.isLocked}}
                       <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}"   ><i class="fa fa-check-square-o"></i>Asset</a>
                       <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}"  ><i class="fa fa-square-o"></i>Qty</a>
-                      <a href="#" id="loc_XX_ACTIVE_GRID$new${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$new{{ROW}}$$0" data-route-id="loc_row_new" class="ps-new"><i class="fa fa-plus-square"></i></a>
-                      <a href="#" id="loc_XX_ACTIVE_GRID$delete${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$delete{{ROW}}$$0" data-route-id="loc_row_delete" class="ps-delete"><i class="fa fa-minus-square"></i></a>
-                    </div>
-                  {{/user.isLocked}}
-              {{/SectionHeader.section_ce}}
-            </section>
-            <section class="line line2" data-row-id="{{ROW}}" data-can-edit="{{XX_LIN_CE}}">
-                <div> <span class="hdr0">-</span><span class="hdr1"> Profile</span> <span class="hdr2">Asset ID</span> <span class="hdr3">Item</span> <span class="hdr4">Unit</span><span class="hdr5">Qty</span><span class="hdr6">Price</span>
-                </div>
-              <div class="rf-lin-ab">
-                  <input class="XX_LIN_AB" id="XX_LIN_AB{{ROW}}" name="XX_LIN_AB{{ROW}}" value="{{XX_LIN_AB}}" />
-              </div>
-              <div class="rf-lin-indent">
+        {{/user.isLocked}}
+     </span>
+     {{/SectionHeader.section_ce}}
+
+{{#SectionHeader.section_ce}}
+  {{^user.isLocked}}
+    <div class="row-buttons">
+    <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}">
+      <i class="fa fa-square-o"></i>Asset</a>
+    <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}">
+      <i class="fa fa-square-o"></i>Qty </a>
+    <a href="#" id="loc_XX_ACTIVE_GRID$new${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$new{{ROW}}$$0" data-route-id="loc_row_new" class="ps-new">
+      <i class="fa fa-plus-square"></i>
+    </a>
+    <a href="#" id="loc_XX_ACTIVE_GRID$delete${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$delete{{ROW}}$$0" data-route-id="loc_row_delete" class="ps-delete">
+      <i class="fa fa-minus-square"></i>
+    </a>
+   </div>
+{{/user.isLocked}}
+{{/SectionHeader.section_ce}}
+
+</section>
+<section class="line line2" data-row-id="{{ROW}}" data-can-edit="{{XX_LIN_CE}}">
+  <div>
+    <span class="hdr0">-</span>
+    <span class="hdr1">Profile</span>
+    <span class="hdr2">Asset ID</span>
+    <span class="hdr3">Item</span>
+    <span class="hdr4">Unit</span>
+    <span class="hdr5">Qty</span>
+    <span class="hdr6">Price</span>
+  </div>
+
+   <div class="rf-lin-ab">
+      <input class="XX_LIN_AB" id="XX_LIN_AB{{ROW}}" name="XX_LIN_AB{{ROW}}" value="{{XX_LIN_AB}}" />
+   </div>
+   <div class="rf-lin-indent">
                   <i class="fa fa-level-down"></i>
-              </div>
-              <div class="rf-lin-ap">
-                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_AP" data-s2-drop-class="s2-drop-subcat" disabled="disabled" data-ps-tbl-name="PROFILE_TBL" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_AP" placeholder="Profile">
-                <input class="XX_LIN_AP" id="XX_LIN_AP{{ROW}}" name="XX_LIN_AP{{ROW}}" value="{{XX_LIN_AP}}" />
-              </div>
-              <div class="rf-lin-ai">
+   </div>
+   <div class="rf-lin-ap">
+      <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_AP" data-s2-drop-class="s2-drop-subcat" disabled="disabled" data-ps-tbl-name="PROFILE_TBL" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_AP" placeholder="Profile">
+      <input class="XX_LIN_AP" id="XX_LIN_AP{{ROW}}" name="XX_LIN_AP{{ROW}}" value="{{XX_LIN_AP}}" />
+    </div>
+
+<div class="rf-lin-ai">
                 <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_AI" disabled="disabled" data-ps-tbl-name="ASSET" data-s2-drop-class="s2-drop-shipto"  data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_AI" placeholder="Asset ID">
                 <input class="XX_LIN_AI" id="XX_LIN_AI{{ROW}}" name="XX_LIN_AI{{ROW}}" value="{{XX_LIN_AI}}" />
-              </div>
-              <div class="rf-lin-ii">
+</div>
+
+<div class="rf-lin-ii">
                 <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_II" disabled="disabled" data-ps-tbl-name="MASTER_ITEM_TBL" data-s2-drop-class="s2-drop-shipto" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_II" placeholder="item">
                 <input class="XX_LIN_II" id="XX_LIN_II{{ROW}}" name="XX_LIN_II{{ROW}}" value="{{XX_LIN_II}}" />
-              </div>
-              <div class="rf-lin-um">
+</div>
+
+<div class="rf-lin-um">
                 <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_UM" disabled="disabled" data-ps-tbl-name="XX_289_D_UNIT" data-s2-drop-class="s2-drop-shipto" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_UM" placeholder="Unit">
                 <input class="XX_LIN_UM" id="XX_LIN_UM{{ROW}}" name="XX_LIN_UM{{ROW}}" value="{{XX_LIN_UM}}" />
               </div>
-              <div class="rf-lin-lq">
+
+<div class="rf-lin-lq">
                 <input id="XX_LIN_PQ{{ROW}}" data-row-id="{{ROW}}" autocomplete="off" disabled="disabled" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_PQ{{ROW}}"  {{Locked}} value="{{XX_LIN_PQ}}" placeholder="Qty" />
               </div>
-              <div class="rf-lin-up">
+
+<div class="rf-lin-up">
                 <input id="XX_LIN_UP{{ROW}}" data-row-id="{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_UP{{ROW}}" disabled="disabled" {{Locked}} value="{{XX_LIN_UP}}" placeholder="Unit Price" />
               </div>
-            </section>
-          {{/lines}}
-        </section>
-      {{/sections}}
-    </section>
-    <section class="payment">
+
+</section>{{/lines}}</section>{{/sections}}</section>
+
+<section class="payment">
       <label> Payment Information</label>
         <div class="rf-hdr-pm">
           <label for="XX_HDR_PM">Message</label>
@@ -291,7 +321,8 @@
         </div>
         <div class="rf-hdr-hc">
           <label for="XX_HDR_HC">Handling</label>
-          <select id="loc_XX_HDR_HC" data-ps-id="XX_HDR_HC" {{Locked}} title="Select" name="XX_HDR_HC" placeholder="select">
+	  
+<select id="loc_XX_HDR_HC" data-ps-id="XX_HDR_HC" {{Locked}} title="Select" name="XX_HDR_HC" placeholder="select">
             <option> None </option>
             <option value="HD">High Dollar Payment</option>
             <option value="LO">Local Office Pickup </option>
@@ -314,7 +345,8 @@
           <input id="XX_HDR_PN" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" {{Locked}} name="XX_HDR_PN" value="{{header.XX_HDR_PN}}" />
         </div>
     </section>
-    <section class="header0">
+
+<section class="header0">
       <section id="comment" class="comment">
         <label> Add a comment</label>
         <div class="textareaBackground xx-comment">
@@ -337,13 +369,14 @@
       </section>
       {{/user.isRET}}
     {{/user.isSAS}}
-    <section class="actions">
+
+<section class="actions">
       <span class="x-split-button">
           {{#user.canView.loc_XX_HPB_001}}
                     <button id="loc_XX_HPB_001" data-route-id="loc_XX_HPB_001" class="x-button x-button-main"></button>
            {{/user.canView.loc_XX_HPB_001}}
            {{#user.canView.loc_XX_HPB_350}}
-                    <button class="x-button x-button-drop sun-flower-button">&#9660;</button>
+<button class="x-button x-button-drop sun-flower-button">&#9660;</button>
                     <ul class="x-button-drop-menu" id="loc_XX_HPB_350">
                         {{#user.isSAS}}
                         <li>
@@ -359,7 +392,8 @@
                             <a href="#"  data-route-id="loc_XX_HPB_350"  data-value="PEN">Pending</a>
                         </li>
                         {{/user.isSAS}}
-                        {{#user.isApprover}}
+
+{{#user.isApprover}}
                         <li>
                             <a href="#"  data-route-id="loc_XX_HPB_350" data-value="SFL">Save for Later</a>
                         </li>
@@ -378,11 +412,13 @@
                         <li>
                             <a href="#" data-route-id="loc_XX_HPB_350" data-value="OTH">Other</a>
                         </li>
-                        {{/user.isApprover}}
+{{/user.isApprover}}
+
                     </ul>
             {{/user.canView.loc_XX_HPB_350}}
       </span>
-      <div class="btn-bar">
+
+<div class="btn-bar">
        {{#user.canView.loc_XX_HPB_520}}
              <button id="loc_XX_HPB_520" data-route-id="loc_XX_HPB_520" type="button" ></button>
        {{/user.canView.loc_XX_HPB_520}}
@@ -405,7 +441,9 @@
              <button id="loc_XX_HPB_PRI" data-route-id="loc_XX_HPB_PRI" type="button" ></button>
        {{/user.canView.loc_XX_HPB_PRI}}
       </div>
-    </section>
+
+</section>
+
     <input id="XX_HDR_SC" name="XX_HDR_SC" value="{{header.XX_HDR_SC}}" />
     <input id="XX_HDR_IP" name="XX_HDR_IP" value="" />
     <input id="XX_HDR_LO" name="XX_HDR_LO" value="" />

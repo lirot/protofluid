@@ -121,7 +121,8 @@ jwt.jwtComponentConfigFull = (function() {
 			      window.open("http://" + location.host + "/psc/"
 		              + url_jwt[4]
 		 + "_newwin/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION."
-		 + "FieldFormula.iScript_"
+					  + "FieldFormula.iScript_"
+		//the html has the name of the script we call on the server
 		 + jQuery(this).attr("data-script-id") + urlqryString, '', '');
                                 });
 		      //po link click event
@@ -329,7 +330,7 @@ jwt.jwtComponentConfigFull = (function() {
 		    obj.XX_LIN_AO == "N"
 		    //asset flag is on
 			|| obj.XX_LIN_AF == "Y"
-		    //asset profile and asset id will also display lines
+                    //asset profile and asset id will also display lines
 			|| obj.XX_LIN_AP
 			|| obj.XX_LIN_AI)
             });
@@ -345,22 +346,34 @@ jwt.jwtComponentConfigFull = (function() {
 		// editable inputs
                 // also disable the line one ma field..monetary amount
                 if (obj.XX_LIN_AO == "N") {
-                  jQuery(".line2[data-row-id='" + rowID + "']")
+                      //change the icon used
+		      jQuery(".show-qty[data-row-id'" + rowID + "']")
+		      .children().removeClass("fa-check-square-o")
+		      .addClass("fa-check-square");
+                    //display fields
+                    jQuery(".line2[data-row-id='" + rowID + "']")
 			.find(".rf-lin-ii > input , .rf-lin-um > input , "
 			      + ".rf-lin-lq > input , .rf-lin-up > input")
                         .attr("disabled", false);
                     jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
 			.prop("disabled", true);
                 }
+
                 // af is asset only flag.  show the asset fields
                 if (jwt.user.isSAS) {
                   if (obj.XX_LIN_AF == "Y" ||
-                      jQuery(".line2[data-row-id='" + rowID + "']")
+                      //display fields
+		      jQuery(".line2[data-row-id='" + rowID + "']")
 		      .find(".rf-lin-ai > input,  .rf-lin-ap > input")
 		      .filter(function() {
                             return this.value
                         }).length > 0) {
-                        jQuery(".line2[data-row-id='" + rowID + "']")
+                      //change the icon used
+		      jQuery(".show-asset[data-row-id'" + rowID + "']")
+		      .children().removeClass("fa-check-square-o")
+		      .addClass("fa-check-square");
+		      //enable
+                      jQuery(".line2[data-row-id='" + rowID + "']")
                             .find(".rf-lin-ai > input,  .rf-lin-ap > input")
                             .prop("disabled", false);
                     }
@@ -388,7 +401,13 @@ jwt.jwtComponentConfigFull = (function() {
               jQuery(".show-asset").on("click", function() {
                 var obj = jQuery(this);
                 var rowID = obj.data("row-id");
-                jQuery(".line2[data-row-id='" + rowID + "']").show();
+
+                      //change the icon used
+		      jQuery(".show-asset[data-row-id='" + rowID + "']")
+		      .children().removeClass("fa-square-o")
+		      .addClass("fa-check-square");
+
+                  jQuery(".line2[data-row-id='" + rowID + "']").show();
                   jQuery(".line2[data-row-id='" + rowID + "']")
 		      .find(".rf-lin-ai > input,  .rf-lin-ap > input")
 		      .prop("disabled", false);
@@ -400,8 +419,13 @@ jwt.jwtComponentConfigFull = (function() {
 	
 	//show sub line and enable fields on lick of quantity
         jQuery(".show-qty").on("click", function() {
-              var obj = jQuery(this);
+            var obj = jQuery(this);
               var rowID = obj.data("row-id");
+                      //change the icon used
+		      jQuery(".show-qty[data-row-id='" + rowID + "']")
+		      .children().removeClass("fa-square-o")
+		      .addClass("fa-check-square");
+
               jQuery(".line2[data-row-id='" + rowID + "']").show();
 	      jQuery(".line2[data-row-id='" + rowID + "']")
 		    .find(".rf-lin-ii > input , .rf-lin-um > input , "

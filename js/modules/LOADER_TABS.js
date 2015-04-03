@@ -192,7 +192,7 @@ jwt.jwtWorkList = (function() {
 	  //all invoice from the SAS9 view
         var xlink, xqrystring
         if ( !jwt.user.isSAS && jwt.user.isIA && worklist.wlID == '1') {
-            var qrystring = 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA"'
+           var qrystring = 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA"'
 	          + ',"CoumnList":[]}'
           xlink = worklist.urlBase + worklist.iScript + qrystring;
         } else {
