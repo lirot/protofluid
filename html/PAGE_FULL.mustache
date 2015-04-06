@@ -209,32 +209,32 @@ ection_ce}}" >
 <div class="rf-lin-sc">
         <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SC" data-s2-drop-class="s2-drop-subcat" {{Locked}} data-ps-tbl-name="XX_289_D_SC_01" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SC" placeholder="Subcat">
         <input class="XX_LIN_SC" id="XX_LIN_SC{{ROW}}" name="XX_LIN_SC{{ROW}}" value="{{XX_LIN_SC}}" />
-      </div>
+</div>
 
 <div class="rf-lin-ld">
         <input id="XX_LIN_LD{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_LD{{ROW}}" {{Locked}} value="{{XX_LIN_LD}}" placeholder="Description" />
-      </div>
+</div>
 
 <div class="rf-lin-so">
-        <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO" {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
-        <input class="XX_LIN_SO" id="XX_LIN_SO{{ROW}}" name="XX_LIN_SO{{ROW}}" value="{{XX_LIN_SO}}" />
-       </div>
+    <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO" {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
+    <input class="XX_LIN_SO" id="XX_LIN_SO{{ROW}}" name="XX_LIN_SO{{ROW}}" value="{{XX_LIN_SO}}" />
+</div>
 
 <div class="rf-lin-ma">
-         <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" />
-              </div>
+    <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}" {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+</div>
 
 {{^SectionHeader.section_ce}}
-     <span class="row-buttons">
-              <span class="lockDialog-line">
+    <span class="row-buttons">
+    <span class="lockDialog-line">
                         <i class="fa fa-lock"></i>
               </span>
         {{^user.isLocked}}
                       <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}"   ><i class="fa fa-check-square-o"></i>Asset</a>
                       <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}"  ><i class="fa fa-square-o"></i>Qty</a>
         {{/user.isLocked}}
-     </span>
-     {{/SectionHeader.section_ce}}
+    </span>
+{{/SectionHeader.section_ce}}
 
 {{#SectionHeader.section_ce}}
   {{^user.isLocked}}
@@ -250,7 +250,7 @@ ection_ce}}" >
       <i class="fa fa-minus-square"></i>
     </a>
    </div>
-{{/user.isLocked}}
+  {{/user.isLocked}}
 {{/SectionHeader.section_ce}}
 
 </section>
@@ -296,8 +296,8 @@ ection_ce}}" >
               </div>
 
 <div class="rf-lin-up">
-                <input id="XX_LIN_UP{{ROW}}" data-row-id="{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_UP{{ROW}}" disabled="disabled" {{Locked}} value="{{XX_LIN_UP}}" placeholder="Unit Price" />
-              </div>
+                <input name="XX_LIN_UP{{ROW}}" id="XX_LIN_UP{{ROW}}" data-row-id="{{ROW}}" value="{{XX_LIN_UP}}"  {{Locked}} autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" disabled="disabled" placeholder="Unit Price" />
+</div>
 
 </section>{{/lines}}</section>{{/sections}}</section>
 

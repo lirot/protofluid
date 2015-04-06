@@ -1,4 +1,4 @@
- jwt.jwtData.Configs = {};
+jwt.jwtData.Configs = {};
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 jwt.jwtData.Configs['XX_289_WL_SAS9'] = (function() {

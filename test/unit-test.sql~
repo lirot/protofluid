@@ -1,0 +1,1 @@
+select a.business_unit , a.po_id , p.vendor_id , p.name1 , p.po_status , p.xx_po_entered_by ,  a.project_id , b.project_type , a.resource_sub_cat , a.merch_amt_bse from sysadm.ps_xx_fcm289_ln a left outer join sysadm.ps_xx_289_d_po_02 p on a.business_unit = p.business_unit and a.po_id = p.po_id , sysadm.ps_xx_289_d_prj_01 b where a.project_id = b.project_id;
