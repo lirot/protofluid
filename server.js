@@ -1,5 +1,7 @@
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 /*  filename: server.js */
-/* description: program proxies traffic to ps PIA (peoplesoft web servers) allowing for the local development of CSS and javascript */
+/* description: program proxies traffic to ps PIA (peoplesoft web servers)
+ allowing for the local development of CSS and javascript */
 {
     var conn = require('./connection.js');
     var c = new conn();
@@ -25,16 +27,19 @@
         fs = require('fs'),
         inShutdown = false;
 }
+
 // First arg identifies User  "A" indicates an approver user type NREAD is used
-// Approvers get a different set of tabs and the page is displayed with different defaults and
-// actions. refer to doc/FUNC_SPEC.md for more details.
+// Approvers get a different set of tabs and the page is displayed with different
+//defaults and  actions. refer to doc/FUNC_SPEC.md for more details.
 if (process.argv[2] === 'A') {
     (user = 'NREAD')
 }
+
 // DMCGEE user carries credentials for a Finance approver
 if (process.argv[2] === 'F') {
     (user = 'DMCGEE')
 }
+
 // JSUFFEL is a SAS user and a invoice Administrator 
 if (process.argv[2] === 'J') {
     (user = 'JSUFFEL')

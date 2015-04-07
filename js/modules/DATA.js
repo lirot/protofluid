@@ -411,10 +411,10 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
         .on("select2-open",
           function(e) {
             jQuery("#image-now").css("width", "0%");
-            jQuery("#component-data").css("width", "90%");
+           // jQuery("#component-data").css("width", "90%");
             jQuery(".po-drop1").css("left", "10%");
             jQuery(".po-drop1").css("width", "90%");
-            jQuery(".select2-drop-mask").css("opacity", ".95")
+           // jQuery(".select2-drop-mask").css("opacity", ".95")
               var outHTML =
 		  jwt.Mustache.to_html(
 		      jwt.templates['SELECT2_ADD_HEADER'], config);

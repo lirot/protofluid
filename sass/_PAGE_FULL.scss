@@ -1,76 +1,66 @@
 #full-section {
   .content {
-    position: absolute;
-    overflow: scroll;
-    height: 570px;
-
+//    position: absolute;
+//    overflow: scroll;
+//    height: 570px;
   }
 
   input {
     @include border-radius( 6px);
-    height: 26px !important;
+    height: 30px !important;
     display: block;
-    font-size: 1.2rem;
     width: 100%;
-
+    padding-top:7px;
+    padding-bottom:10px;
   }
 
+  .header1{
+
+  line-height: 35px;
+  display: inline-block;
+  width: 100%;
+
+
+
+  }
 
   .header1,
   .header2,
   .approver,
   .payment {
-
-    @include span( 12 omega);
-    position: relative;
-    margin-top: 20px;
-    padding: 5px 20px 13px 0;
-    border-radius: 10px;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-
+  //  position: relative;
+  //  margin-top: 20px;
+  //  padding: 5px 20px 13px 0;
+  //  border-radius: 10px;
+  //  background: -moz-linear-gradient(#fff, #999);
+  //  background: -o-linear-gradient(#fff, #999);
+  //  background: -webkit-linear-gradient(#fff, #999);
   }
+
   .header {
-    min-height: 120px;
+
 
   }
-  .add {
-    @include span( 12 );
-    .rf-hdr-vi {
-      @include span( 12 );
-    }
-    .rf-lin-po {
-      @include span( 12 );
-    }
-    .rf-lin-pi {
-      @include span( 12 );
-    }
+  .header0{
 
+      display:block;
+  }
+
+  .payment{
+      display:inline-block;
   }
   .comment {
-
-    @include span( 12 omega);
     position: relative;
-
     margin-top: 20px;
     margin-bottom: 10px;
     padding: 5px 20px 13px 0;
-    border-radius: 10px;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
-
   }
+
   .workflow {
-    @include span( 12 omega);
     position: relative;
     margin-top: 20px;
     padding: 5px 20px 13px 0;
-    border-radius: 10px;
-    background: -moz-linear-gradient(#fff, #999);
-    background: -o-linear-gradient(#fff, #999);
-    background: -webkit-linear-gradient(#fff, #999);
+ 
     table {
       display: block;
     }
@@ -81,20 +71,22 @@
     span {
       padding: 10px;
     }
-
   }
 
   .header3 {
+      
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  width: 100%;
     .rf-hdr-vendor {
-      @include span( 4.8 );
-      position: relative;
+        width: 50%;
+        position: relative;
       min-height: 8em;
       margin-top: 20px;
       margin-right: -20px;
-      border-radius: 10px;
-      background: -moz-linear-gradient(#fff, #999);
-      background: -o-linear-gradient(#fff, #999);
-      background: -webkit-linear-gradient(#fff, #999);
+      display:inline-block;
+    
       input.NL-check {
         @include span( 4 omega );
       }
@@ -107,36 +99,29 @@
         height: 25px;
         margin-right: -9px;
       }
-
     }
+
     .messages {
-      @include span( 7 omega);
       position: relative;
       min-height: 8em;
       margin-top: 20px;
+      display:inline-block;
       padding: 5px 20px 13px 0;
-      border-radius: 10px;
-      background: -moz-linear-gradient(#fff, #999);
-      background: -o-linear-gradient(#fff, #999);
-      background: -webkit-linear-gradient(#fff, #999);
       div {
-        font-size: 14px !important;
+        font-size: 12px !important;
         line-height: 100%;
       }
     }
   }
-
 }
+
 #full-section {
   display: none;
-
-
   .rf-hdr-sc {
     @include span( 4 );
-
   }
   .rf-hdr-ii {
-    @include span( 12 );
+    @include span( 4 );
     label {
       display: inline;
       margin-right: 5px;
@@ -145,56 +130,54 @@
       font-size: 12px;
       margin-right: 3px;
     }
-
   }
+
   .rf-hdr-bu {
-    @include span( 6 );
+      line-height:30px;
+    @include span( 4 );
   }
   .rf-hdr-id {
     @include span( 3 );
     input {
       width: 80%;
     }
-
   }
   .rf-hdr-in {
     @include span( 6 );
-
   }
   .rf-hdr-ga {
     @include span( 4 omega);
     input {
       text-align: right;
     }
-
   }
   .rf-hdr-st {
     @include span( 3 omega);
     input {
       text-align: right;
     }
-
   }
   .rf-hdr-so {
-    @include span( 6 );
+      line-height:30px;
+    @include span( 4 );
   }
   .rf-hdr-fa {
     @include span( 12 );
-
+  }
+  .rf-hdr-fa > div{
+      line-height:30px;
   }
   .rf-hdr-ra {
     @include span( 4 omega);
     input {
       text-align: right;
     }
-
   }
   .rf-hdr-lt {
     @include span( 4 omega);
     input {
       text-align: right;
     }
-
   }
   .rf-hdr-cc {
     @include span( 2 );
@@ -204,17 +187,18 @@
     input {
       text-align: right;
     }
-
   }
+
   .rf-hdr-wi {
     @include span( 2 );
-
   }
   .rf-hdr-sb {
     @include span( 3 );
   }
   .rf-hdr-hc {
-    @include span( 4 );
+      line-height:30px;
+      float:left;
+    @include span( 6 );
   }
   .rf-hdr-mu {
     @include span( 2 );
@@ -223,15 +207,15 @@
     @include span( 2 );
   }
   .rf-hdr-py {
-    @include span( 4 );
+      line-height:30px;
+      float:right;
+    @include span( 6 );
   }
   .rf-hdr-pn {
-    @include span( 4 );
-
+      float:right;  
+    @include span( 12 );
   }
   .rf-hdr-wf {
     @include span( 12 );
-
   }
-
 }

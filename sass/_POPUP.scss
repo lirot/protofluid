@@ -50,7 +50,6 @@
     pointer-events: none;
 }
 
-
 .modalPop {
     opacity:1;
     pointer-events: auto;
@@ -70,8 +69,8 @@
 }
 .close-image-now
 {
-    background: #606061;
-    color: #FFFFFF;
+
+    color: red;
     line-height: 25px;
     position: absolute;
     left: 5px;
@@ -79,13 +78,6 @@
     float:right;
     width: 24px;
     text-decoration: none;
-    font-weight: bold;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 1px 1px 3px #000;
-    -webkit-box-shadow: 1px 1px 3px #000;
-    box-shadow: 1px 1px 3px #000;
     &:hover {
         color: $blue;
     }

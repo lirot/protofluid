@@ -1,111 +1,116 @@
 #full-section {
   .detail {
-    @include span( 12 );
-    @include bleed($grid-padding);
+
+  display: inline-block;
+  border-width: 1px;
+  border-style: solid;
+   margin: 4px; 
+   #row-key-menu ul li {
+       background-color: initial;
+   }
+      #row-key-menu ul li:nth-child(1) div{
+          width:160px;
+
+      }
+      #row-key-menu ul li:nth-child(2) div{
+          width:160px;
+        }
+      #row-key-menu ul li:nth-child(3) div{
+          width:100px;
+      }
+       #row-key-menu ul li:nth-child(3) div{
+          width:127px;
+      }
+    input, a , div , span, li
+           {
+              font-size: 10pt;
+                           }
     input {
       @include border-radius( 0px);
     }
-    .line1-header {
-      .hdr1 {
-        @include span( 3 );
-        @include bleed($grid-padding);
-        display: none;
+    #line1-header {
+        .hdr1 {
+            width:19px;
       }
       .hdr2 {
-        @include span( 2 );
-        @include bleed($grid-padding);
+          width: 75px;
       }
       .hdr3 {
-        @include span( 4 );
-        @include bleed($grid-padding);
+          width:180px;
+          
       }
       .hdr4 {
-        @include span( 2 );
-        @include bleed($grid-padding);
+          width:85px;
       }
       .hdr5 {
-        @include span( 1 );
-        @include bleed($grid-padding);
+          text-align:right;
+          width: 90px;
       }
       .hdr6 {
-        @include span( 3 );
-        @include bleed($grid-padding);
+          width:125px;
       }
     }
     .line2 {
-        .hdr0 {
-          @include span( 1 );
-          @include bleed($grid-padding);
+
+            padding-top:10px;
+            padding-left:10px;
+            margin-left:20px;
+            border:solid;
+            border-color:yellow;
+            border-width:1px;
+
+            li {
+                padding-bottom:4px;
+                line-height:30px;
+            }
+            li > div{
+                width: 90px;
+            display:inline-block;
         }
-      .hdr1 {
-        @include span( 2 );
-        @include bleed($grid-padding);
-      }
-      .hdr2 {
-        @include span( 2 );
-        @include bleed($grid-padding);
-      }
-      .hdr3 {
-        @include span( 2 );
-        @include bleed($grid-padding);
-      }
-      .hdr4 {
-        @include span( 1 );
-        @include bleed($grid-padding);
-      }
-      .hdr5 {
-        @include span( 1 );
-        @include bleed($grid-padding);
-      }
-      .hdr6 {
-        @include span( 3 );
-        @include bleed($grid-padding);
-      }
 
     }
+
+       .line2  > div >  div {
+            display:inline-block;
+        }
     .group {
-      @include span( 12 );
-      @include bleed($grid-padding);
+
       .line1 {
-        @include span( 12 );
-        @include bleed($grid-padding);
+          line-height:30px;
         .XX_LIN_SC,
         .XX_LIN_SO {
           display: none !important;
         }
-        .rf-lin-pn{
-            display:inline;
+        .rf-lin-pl{
+            width:19px;
+
+            background-color:initial;
+                                 color:initial;
         }
         .rf-lin-ma {
-          @include span( 2 );
-          @include bleed($grid-padding);
-          input {
-            text-align: right;
+              width:90px;
+            input {
+
+              text-align: right;
           }
         }
         .rf-lin-ld {
-          @include span( 4 no-gutters);
-          @include bleed($grid-padding);
+            width:180px;
         }
         .rf-lin-sc {
-          @include span( 2 no-gutters);
-          @include bleed($grid-padding);
+            width:75px;
         }
         .rf-lin-so {
-          @include span( 2 no-gutters);
-          @include bleed($grid-padding);
+            width:85px;
         }
         .row-buttons {
-          @include span( 1 no-gutters omega);
-          width:19%!important;
-          @include bleed($grid-padding);
-          padding:0em!important;
+            background-color:initial;
+            width:125px;
         }
 
       }
       .line2 {
-        @include span( 12 );
-        @include bleed($grid-padding);
+
 
         .XX_LIN_AB,
         .XX_LIN_II,
@@ -118,37 +123,24 @@
           display: none !important;
 
         }
-        .rf-lin-indent {
-            @include span( 1 no-gutters);
-            @include bleed($grid-padding);
-            i {
-                padding-left:20px;
-            }
-        }
         .rf-lin-ap {
-          @include span( 2 no-gutters);
-          @include bleed($grid-padding);
+
         }
         .rf-lin-ai {
-          @include span( 2 no-gutters);
-          @include bleed($grid-padding);
+
         }
         .rf-lin-ii {
-          @include span( 2 no-gutters);
-          @include bleed($grid-padding);
+
 
         }
         .rf-lin-um {
-          @include span( 1 no-gutters);
-          @include bleed($grid-padding);
+
         }
         .rf-lin-lq {
-          @include span( 1 no-gutters);
-          @include bleed($grid-padding);
+
         }
         .rf-lin-up {
-          @include span( 2 no-gutters);
-          @include bleed($grid-padding);
+
         }
       }
     }

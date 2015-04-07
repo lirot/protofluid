@@ -2,13 +2,13 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
 
 html{
-background: url(grid.gif) 5px 5px;
+//background: url(grid.gif) 5px 5px;
 }
 
 body {
   font-family: $font-primary;
-  font-size: 1.2rem;
-  line-height: 160%;
+ // font-size: 1.2rem;
+ // line-height: 160%;
   color: $blue;
 }
 
@@ -42,7 +42,6 @@ h3 {
 }
 
 td{
-
     font-size:10px;
 }
 div{color:black}
@@ -63,13 +62,14 @@ p {
   margin-bottom: 10px;
 }
 
-label{
-    color:black;
-    font-size:12px;
-    display: block;
+label {
+  color: black;
+  display: block;
+  font-size: 12px;
+  padding: 4px;
+  font-weight: bold;
 }
 i {
-
     margin-right:6px;
 }
 
@@ -80,7 +80,7 @@ i {
 ul.navlist
 {
     margin-left: 0;
-    padding: 0 16px;
+    padding: 0 6px;
     white-space: nowrap;
     clear:both;
 }
@@ -94,33 +94,24 @@ ul.navlist
                 color:#207cca;
 }
 
-.nav-action {
-
+#row-header-menu .nav-action {
     font-size:10px;
 }
 
 .wlClose {
-    background: #606061;
-    color: #FFFFFF;
-    line-height: 25px;
+
+    color: blue;
     position: absolute;
-    right: 22px;
+    right: 0px;
     text-align: center;
-    top: 8px;
+    top: 4px;
     width: 18px;
     text-decoration: none;
-    font-weight: bold;
-    -webkit-border-radius: 12px;
-    -moz-border-radius: 12px;
-    border-radius: 12px;
-    -moz-box-shadow: 1px 1px 3px #000;
-    -webkit-box-shadow: 1px 1px 3px #000;
-    box-shadow: 1px 1px 3px #000;
+
     &:hover {
-        color: $blue;
+        color: red;
     }
 }
-
 
 section table { display : none }
 
@@ -130,26 +121,41 @@ section.approvers-table table { display : block }
 
 .displayHidden{ display :none }
 
-.navlist a { padding: 3px 10px; }
+.navlist li >  a { padding: 3px 10px; }
 
-.navlist a:link, .navlist a:visited
+.select2-chose{
+    padding-left:6px;
+
+}
+.navlist >  a:link, .navlist > a:visited
 {
     color: #fff;
     background-color: #036;
     text-decoration: none;
 }
+
+.navlist  li >  div
+{
+    width:30%;
+    display:inline-block;
+    color: #fff;
+    background-color: #036;
+    text-decoration: none;
+}
+
 .navlist a:hover{
     color: #fff !important;
     background-color: red !important;
     text-decoration: none !important;
 }
+
 .active-tab{
     color: #fff;
     background-color: red;
     text-decoration: none;
 }
-.ps-hidden{
 
+.ps-hidden{
     display:none;
 }
 
@@ -159,8 +165,9 @@ section.approvers-table table { display : block }
     position: relative;
     padding:0px 10px 2px 15px;
 }
+
 .textareaBackground textarea {
-    width: inherit;
+    width: 80%;
     height: inherit;
     border-radius: 10px;
     height:83px;
@@ -176,6 +183,7 @@ section#rf-hdr-messages   {
 h1{
     line-height:1.4em;
 }
+
 li{
 /*    padding:0.15em 0 0.5em 1.5em; */
     margin-bottom:0.0em;
@@ -186,11 +194,11 @@ li{
     background-repeat:no-repeat;
 
 }
+
 .bold-green{
     font-size:20px;
     font-weight:bold;
     color:green;
-
 }
 
 .fa-exclamation
@@ -201,11 +209,13 @@ li{
    margin-right: 10px;
    margin-left: 7px;
 }
+
 .fa-exclamation-triangle {
     color: rgba( $red, .7 );
     text-shadow: 1px 1px 1px #ccc;
     font-size: 1.5em;
 }
+
 .fa-check{
     color: rgba( green    , .7 );
     text-shadow: 1px 1px 1px #ccc;

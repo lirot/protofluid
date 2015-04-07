@@ -14,12 +14,15 @@ jwt.jwtWorkList = (function() {
     var wlActiveTabFirst = true;
 
     var reset_Tabs = function(response, worklist) {
-      jQuery("#image-now").css("width", "50%");
+        jQuery(".close-image-now").show();
+        jQuery(".component").css("display" , "block");
+        
+      jQuery("#image-now").css("width", "40%");
       jQuery("section#work-lists table").addClass('displayHidden');
       jQuery("section#work-lists table").removeClass('displayBlock');
-	jQuery('#work-list-menu  a , .SearchInput')
-	    .css('background-color', 'darkblue');
-      jQuery('#work-list-menu  a, .SearchInput').css('color', 'white');
+      jQuery('#work-list-menu  li , .SearchInput')
+	    .css('background-color', 'yellow');
+    //  jQuery('#work-list-menu  a, .SearchInput').css('color', 'white');
       jQuery('.wlHeader').css('display', 'none');
       jQuery('section#work-lists').css('display', 'none');
       jwt.stopCount();

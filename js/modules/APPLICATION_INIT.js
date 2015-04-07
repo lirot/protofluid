@@ -143,6 +143,8 @@ var jwt = (function() {
         //tab clicks
         jQuery('#work-list-menu li  a').on('click', function(event) {
             var resetTo = jQuery("#image-now").css("display");
+            jQuery(".component").css("display","none");
+            jQuery(".close-image-now").hide();
             jQuery(".wlClose").off("click.xx").on("click.xx", function() {
                 // jQuery("#image-now").css("display" , resetTo );
                 // jQuery("#image-now").width('50%') ;
@@ -153,10 +155,11 @@ var jwt = (function() {
             jQuery("section#work-lists  table#wl-tbl-"
 		   + (jQuery(this).parent().index())).addClass('displayBlock')
 		.tablesorterPager(pagerOptions);
-            jQuery('#work-list-menu  a').css('background-color', 'darkblue')
+            jQuery('#work-list-menu  li')
+                .css('background-color', 'yellow')
 		.css('color', 'white');
-            jQuery(this).css('background-color', 'white')
-		.css('color', 'darkblue');
+            jQuery(this).parent().css('background-color', 'blue')
+		.css('color', 'white');
             jQuery('section#work-lists , .wlHeader').css('display', 'block');
         });
         var that = this;
