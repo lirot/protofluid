@@ -5,7 +5,15 @@ font-size: 14px;
 
 div{ line-height:18px}
 
-.Active{ float:right; color:green ; font-weight:bold; font-size:14px; margin-right: 10px;}
-.Inactive{ float:right; color:red ; font-weight:bold; font-size:14px; margin-right: 10px;}
+.Active{ float:right; color:green ;
+
+         font-size:14px;
+         margin-right: 30px;}
+.Inactive{
+    float:right;
+    color:red ;
+
+    font-size:14px;
+    margin-right: 30px;}
 
 }

@@ -21,7 +21,7 @@ jwt.jwtWorkList = (function() {
       jQuery("section#work-lists table").addClass('displayHidden');
       jQuery("section#work-lists table").removeClass('displayBlock');
       jQuery('#work-list-menu  li , .SearchInput')
-	    .css('background-color', 'yellow');
+	    .css('background-color', 'yellow').find('a').css('color','blue');
     //  jQuery('#work-list-menu  a, .SearchInput').css('color', 'white');
       jQuery('.wlHeader').css('display', 'none');
       jQuery('section#work-lists').css('display', 'none');

@@ -35,7 +35,7 @@ body {
 
 
   position: fixed;
-  top: 26px;
+  top: 23px;
   left: 7px;
         float:left;
         .navlist li {
@@ -76,6 +76,7 @@ a {
 .remove-add{
     z-index:9;
     background:white;
+    
     padding-bottom:4px;
     position:fixed;
   border-width: 1px;
@@ -92,7 +93,7 @@ li {
   #work-lists {
      // @include span(12 );
       display:none;
-    height: inherent;
+    height: auto;
     position: absolute;
     padding-left:15px!important;
     padding-right:15px!important;
@@ -170,7 +171,8 @@ li {
 }
 
 .highlight {
-    background-color: #FFFF88;
+    color : red;
+   // background-color: #FFFF88;
 }
 
 .select2-container {

@@ -119,6 +119,7 @@
           <input id="XX_HDR_IN" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="5" {{Locked}} autocomplete="off" name="XX_HDR_IN" disabled="disabled" value="{{header.XX_HDR_IN}}" />
         </div>
 
+        
         <div class="rf-hdr-ga">
           <label for="XX_HDR_GA">Invoice Amount</label>
           <input id="XX_HDR_GA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="6" {{Locked}} autocomplete="off" name="XX_HDR_GA" disabled="disabled" value="{{header.XX_HDR_GA}}" /></input>
@@ -161,6 +162,15 @@
       <section class="group-header">
         <div id="row-header-menu" class="navcontainer nav-action">
           <ul class="navlist">
+                <li>
+                  <a href="#" class="xx-pop-pi tooltip" data-link-id="{{SectionHeader.pi}}"> Pop PJ </a>
+                </li>
+                {{#SectionHeader.po}}
+                  <li>
+                    <a href="#" class="xx-pop-po tooltip" data-link-id="{{SectionHeader.po}}"> Pop PO </a>
+                  </li>
+                {{/SectionHeader.po}}
+
             <li>
               <a href="#" class="xx-link-pj" data-script-id="xxViewProjJacket">
                 <span>Project Jacket</span> </a>
@@ -179,14 +189,6 @@
                 <li>
                   <a href="#" class="xx-link-pi-setup" data-script-id="xxViewProjSetup"> <span>View Setup</span> </a>
                 </li>
-                <li>
-                  <a href="#" class="xx-pop-pi tooltip" data-link-id="{{SectionHeader.pi}}"> Pop PJ </a>
-                </li>
-                {{#SectionHeader.po}}
-                  <li>
-                    <a href="#" class="xx-pop-po tooltip" data-link-id="{{SectionHeader.po}}"> Pop PO </a>
-                  </li>
-                {{/SectionHeader.po}}
               </ul>
             </div>
 
@@ -461,6 +463,7 @@
             {{/user.canView.loc_XX_HPB_350}}
       </span>
 
+      
 <div class="btn-bar">
        {{#user.canView.loc_XX_HPB_520}}
              <button id="loc_XX_HPB_520" data-route-id="loc_XX_HPB_520" type="button" ></button>

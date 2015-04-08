@@ -1,6 +1,6 @@
  jwt.jwtData.Configs = {};
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 jwt.jwtData.Configs['XX_289_WL_SAS9'] = (function() {
   return {
     Definition: 'XX_289_WL_SAS9',
@@ -121,7 +121,8 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
     select2Display: function(data) {
       if (jwt.jwtWorkList.isFullPage) {
         jQuery('.ps-no-loc').removeClass("ps-hidden");
-        return 'Vendor ID: ' + data.VENDOR_ID;
+          return 'Location';
+          // return 'Vendor ID: ' + data.VENDOR_ID;
       } else {
         return 'Vendor ID: ' + data.VENDOR_ID + ' ' + decodeURIComponent(data.NAME1);
       }
@@ -428,8 +429,8 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
           })
         .on("select2-close",
           function(e) {
-            jQuery("#image-now").css("width", "50%");
-            jQuery("#component-data").css("width", "50%");
+            jQuery("#image-now").css("width", "40%");
+            jQuery("#component-data").css("width", "60%");
             jQuery(".select2-search ." + config.Definition).remove();
           })
         .on("select2-removed", function(e) {

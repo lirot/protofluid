@@ -97,8 +97,8 @@ var jwt = (function() {
         var pagerOptions = {
             container: jQuery(".pager"),
             output: '{startRow} - {endRow} / {filteredRows} ({totalRows})',
-            fixedHeight: true,
-            size: 25,
+            fixedHeight: false,
+            size: 10,
             removeRows: false,
             cssGoto: '.gotoPage'
         };
@@ -156,10 +156,10 @@ var jwt = (function() {
 		   + (jQuery(this).parent().index())).addClass('displayBlock')
 		.tablesorterPager(pagerOptions);
             jQuery('#work-list-menu  li')
-                .css('background-color', 'yellow')
-		.css('color', 'white');
-            jQuery(this).parent().css('background-color', 'blue')
-		.css('color', 'white');
+                .css('background-color', 'yellow').
+	    find('a').css('color', 'blue');
+            jQuery(this).css('color', 'white').parent().css('background-color', 'blue')
+		;
             jQuery('section#work-lists , .wlHeader').css('display', 'block');
         });
         var that = this;

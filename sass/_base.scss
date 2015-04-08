@@ -1,0 +1,203 @@
+@import url('http://fonts.googleapis.com/css?family=Bree+Serif|Merriweather');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
+
+
+html{
+
+}
+
+body {
+//  font-family: $font-primary;
+//  font-size: 1.2rem;
+//  line-height: 160%;
+//  color: $blue;
+}
+
+
+#{headings()} {
+  font-family: $font-secondary;
+  font-weight: normal;
+  color: $darkgray;
+  @include text-shadow($paleryellow 1px 1px);
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: lighten($darkblue, 25);
+  margin-bottom: 10px;
+  }
+
+label{
+    color:black;
+        font-size:12px;
+            display: block;
+            }
+            i {
+
+    margin-right:6px;
+    }
+
+.small {
+  font-size: 1rem;
+    color: $blue;
+}
+ul.navlist
+    {
+        margin-left: 0;
+            padding: 0 16px;
+                white-space: nowrap;
+                    clear:both;
+                    }
+                    .navlist li
+                    {
+
+                        display: inline-block;
+                            list-style-type: none;
+                            }
+                            .button:hover  {
+                                            background-color:#fafafa;
+                                                            color:#207cca;
+                                                            }
+ 
+.nav-action {
+
+    font-size:10px;
+    }
+
+.wlClose {
+
+        color: blue;
+            line-height: 25px;
+                position: absolute;
+                    right: 1px;
+                        text-align: center;
+                            top: 1px;
+                                width: 18px;
+                                    text-decoration: none;
+
+                                                                &:hover {
+                                                                            color: red;
+                                                                                }
+                                                                                }
+
+
+section table { display : none }
+
+section.approvers-table table { display : block }
+
+.displayBlock{ display :block }
+
+.displayHidden{ display :none }
+
+
+#work-list-menu .navlist li{
+background-color:yellow;
+a{
+color: blue;
+}
+}
+
+
+#work-list-menu, #row-header-menu
+                     {
+                         .navlist a { padding: 3px 10px; }
+                     }
+
+#row-header-menu {
+a, span{
+color:blue;
+}
+}
+#work-list-menu > .navlist a:link
+//, .navlist a:visited
+{
+    color: #fff;
+
+//background-color: #036;
+
+            text-decoration: none;
+            }
+#work-list-menu , #row-header-menu{
+.navlist a:hover{
+                color: #fff !important;
+                    background-color: red !important;
+     text-decoration: none !important;
+}
+}
+.active-tab{
+                            color: #fff;
+                                background-color: red;
+                                    text-decoration: none;
+                                    }
+                                    .ps-hidden{
+
+    display:none;
+    }
+
+.textareaBackground {
+    width: 100%;
+        height: 100%;
+            position: relative;
+                padding:0px 10px 2px 15px;
+                }
+                .textareaBackground textarea {
+                    width: inherit;
+                        height: inherit;
+                            border-radius: 10px;
+                                height:83px;
+                                }
+                                .textareaBackground .background {
+                                    position: absolute;
+                                        top: 0;
+                                            left: 0;
+                                                color: gray;
+                                                }
+
+section#rf-hdr-messages   {
+h1{
+    line-height:1.4em;
+    }
+li{
+        padding:0.15em 0 0.5em 0.5em; 
+        margin-bottom:0.0em;
+            text-indent:0.4em;
+                font-weight:bold;
+                    font-size:0.6em;
+                        list-style:none;
+                            background-repeat:no-repeat;
+
+}
+.bold-green{
+    font-size:20px;
+        font-weight:bold;
+            color:green;
+
+}
+
+.fa-exclamation
+{
+   color: rgba( $cyan, .7 );
+      text-shadow: 1px 1px 1px #ccc;
+         font-size: 1.5em;
+            margin-right: 10px;
+               margin-left: 7px;
+               }
+               .fa-exclamation-triangle {
+                   color: rgba( $red, .7 );
+                       text-shadow: 1px 1px 1px #ccc;
+                           font-size: 1.5em;
+                           }
+                           .fa-check{
+                               color: rgba( green    , .7 );
+                                   text-shadow: 1px 1px 1px #ccc;
+                                   /*    font-size: 1.5em; */
+                                   }
+
+}
+
+.fa-lock{
+    color: rgba( red    , .7 );
+        margin-left: 7px;
+            text-shadow: 1px 1px 1px #ccc;
+            /*    font-size: 1.5em; */
+            }

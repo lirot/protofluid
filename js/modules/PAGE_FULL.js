@@ -255,7 +255,7 @@ jwt.jwtComponentConfigFull = (function() {
 
         // running edit loader here will display all the server errors
 	// using the error conroller logic
-            jwt.routes.run_Edits('jwtComponentConfigFull', jwt.invoice);
+            jwt.routes.run_Edits( jwt.invoice);
 
 	// bind the clicks to those buttons based on the routes
 	// that are configured
@@ -347,7 +347,7 @@ jwt.jwtComponentConfigFull = (function() {
                 // also disable the line one ma field..monetary amount
                 if (obj.XX_LIN_AO == "N") {
                       //change the icon used
-		      jQuery(".show-qty[data-row-id'" + rowID + "']")
+		      jQuery(".show-qty[data-row-id='" + rowID + "']")
 		      .children().removeClass("fa-check-square-o")
 		      .addClass("fa-check-square");
                     //display fields
@@ -369,7 +369,7 @@ jwt.jwtComponentConfigFull = (function() {
                             return this.value
                         }).length > 0) {
                       //change the icon used
-		      jQuery(".show-asset[data-row-id'" + rowID + "']")
+		      jQuery(".show-asset[data-row-id='" + rowID + "']")
 		      .children().removeClass("fa-check-square-o")
 		      .addClass("fa-check-square");
 		      //enable
