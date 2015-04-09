@@ -1,11 +1,18 @@
-jwt.o.S2Functions = (function() {
+  jwt.o.S2Functions = (function() {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    return {
+      //The functions in this object will get moved to the jwt.functions object
+      //They re used to handle select two events except for the build function
+      //defined here and called from the each pages callback.  it is a creational
+      //method it sets up each select2 defined in the markup and used the default
+      //s2optionsDO object
+  return {
   init: function() {
-       //add all the methods to the functions object
-       jQuery.extend(jwt.functions,
 
-           {formatVal: function(item) {
+      //add all the methods to the functions object
+      jQuery.extend(jwt.functions,
+
+                     {
+formatVal: function(item) {
 
             var tblName = jQuery(this.element).data('ps-tbl-name');
             var isLine = jQuery(this.element).data('line');
@@ -30,25 +37,25 @@ jwt.o.S2Functions = (function() {
             return display || "."
           },
 
-   formatRes: function(result, container, query, escapeMarkup) {
+formatRes: function(result, container, query, escapeMarkup) {
             var markup = [];
               jwt.functions.mymarkMatch(
 		  result.text, query.term, markup, escapeMarkup);
             return markup.join("");
           },
 
-    mymarkMatch: function(text, term, markup, escapeMarkup) {
+mymarkMatch: function(text, term, markup, escapeMarkup) {
             //wrapper to handle highlighing text
             var wordArray = term.split(" ");
             wordArray.push(term);
             markup.push(jQuery(text).children().highlight(wordArray).html());
           },
 
-    format: function(item) {
+format: function(item) {
             return item.tag
           },
 
-    select2PreQuery: function(that) {
+select2PreQuery: function(that) {
             var tblName = jQuery(that).data('ps-tbl-name');
             var config = jwt.jwtData.Configs[tblName];
 
@@ -70,7 +77,7 @@ jwt.o.S2Functions = (function() {
             }
           },
 
-          // select2 will run this method to search through
+          // select2 will run select2query to search through
           // the drop down data pulled via the data object drop down
           // it some cases a query term is added to the user inputs
           // allow for the same logic to handle drop downs that have
@@ -78,7 +85,7 @@ jwt.o.S2Functions = (function() {
           // the vendor drop down can only show vendor location for
           // the vendor associated with the PO.
 
-   select2query: function(query) {
+select2query: function(query) {
             var elem = jQuery(this.element);
             var tblName = elem.data('ps-tbl-name');
             var data = {
@@ -128,9 +135,9 @@ jwt.o.S2Functions = (function() {
             query.callback(data);
    },
 	    
-	    //d is the build wrapper for all the select2 on the header for
+	    //builds for all the select2 for both header and line
 	    //both pages
-    createS2_header: function() {
+createS2_header: function() {
         var elemArray = [];
 
 	//select2 for payment and handling  create the object
@@ -160,21 +167,19 @@ jwt.o.S2Functions = (function() {
               }
          }
 
-            setTimeout(f, 1000)
+        setTimeout(f, 1000)
 
 	// builds all the custom select2 objects marked with data attribute
-      function dothis() {
+        function dothis() {
           elemArray = jQuery("input.select2-offscreen[data-ps-tbl-name]");
           //when this build loop is entered it is safe to show the page however
-	  // for certain actions the page is hidden and in these cases
-	  //the page continue to be display none
-          // a common use case is for the approval moodal
+	  //for certain actions the page is hidden and in these cases
 	  (!jwt.invoice.keepHidden)
 		    ? jQuery("#full-section , #quick-section")
 		    .css('display', 'block'): null;
 
 		//loop builds select2 for elements with data objects driven off
-		// database views
+
               _.each(elemArray, function(obj) {
                 var $obj = jQuery(obj);
                 var tblName = $obj.data('ps-tbl-name');
@@ -193,7 +198,15 @@ jwt.o.S2Functions = (function() {
 
       //defaults for select2 objects 
    var s2optionsDO = {};
-    s2optionsDO.s2optionsDO = {
+      //this object maps custom functions to the S2 event model
+      //the S2 event model framework is leveraged to handle the
+      //user interaction with the select2 drop downs.  There are
+      //events that the system needs to capture mainly
+      //  The user clicks on a select2
+      //  The user starts typing
+      //  The user chooses a result from the drop down
+      //  The user clears the drop down 
+      s2optionsDO.s2optionsDO = {
         dropdownCssClass: function() {
           return jQuery(this).data("s2-drop-class");
         },
@@ -208,9 +221,10 @@ jwt.o.S2Functions = (function() {
         query: jwt.functions.select2query
       };
 
-      //copy the  defualts on the data object
+      //copy the  defualts object to our own data objects
       jQuery.extend(jwt.jwtData, s2optionsDO);
 
+      
     }
   }
 })()

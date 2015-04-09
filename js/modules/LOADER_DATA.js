@@ -1,9 +1,9 @@
-jwt.jwtData = (function() {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// filename: 
 
-//any of the data objectsa will pull defaults off this object
 //data objects make ajax calls to pull json data primarily for the drop downs
-    
+jwt.jwtData = (function() {
+    //any of the data objectsa will pull defaults off this object    
     var s2optionsDO = {};
     var defaults = {
         init: function() {},
@@ -38,10 +38,10 @@ jwt.jwtData = (function() {
 	                                         .join(z) + n;
     }
 
-    //lunr search is used to search the drop downs
-    //the system will build a lunr search this mehtod and properties from the
-    //config is a data object data objects
-    var create_Lunr_search = function(config) {
+//lunr search is used to search the drop downs
+//the system will build a lunr search this mehtod and properties from the
+//config is a data object data objects
+var create_Lunr_search = function(config) {
 
         var that = config,
             vals, field = {};
@@ -72,11 +72,11 @@ jwt.jwtData = (function() {
             vals = val.split(":");
             that.lunr_index.field(vals[1] + ":" + vals[0], 100);
         })
-    }
+}
 
-    //when the ajax data is process the system will use this method to add
-    //fields to the lunr search index
-    var add_fields_lunr_search = function(config, data) {
+//when the ajax data is process the system will use this method to add
+//fields to the lunr search index
+var add_fields_lunr_search = function(config, data) {
         var that = config;
         var vals;
         var field = {};
@@ -101,10 +101,10 @@ jwt.jwtData = (function() {
 
         that.lunr_index.add(field);
 
-    };
+};
 
-    //the main ajax callback for the data objects
-    var parse = function(config, response, key, jqXHR) {
+//the main ajax callback for the data objects
+var parse = function(config, response, key, jqXHR) {
         var jsonObj = {},
             hashKey, totalKeys,
             indexKey, jsonObj = response,
@@ -115,29 +115,23 @@ jwt.jwtData = (function() {
         }
 
         var start = moment();
-
         var xhr = arguments[3];
-
         if (config.hasOwnProperty('is_lunr_search')
 	    && !config.hasOwnProperty("lunr_index")) {
             this.create_Lunr_search(config);
         }
 
         for (var i = 0, line = {}; i < totalLines; i++) {
-
             line = jsonObj.VIEW[0].LINE[i];
             line.number = i;
-
             if (config.hasOwnProperty('is_lunr_search')) {
                 this.add_fields_lunr_search(config, line);
                 key = jsonObj.VIEW[0].LINE[i][config.reference];
             }
-
             //the data is stored in the dom with a hash key
             //the entire line is stored using jquery data object
             hashKey = key.hashCode().toString();
             config.xxData.data("_" + hashKey, line);
-
         }
 
         totalKeys = Object.keys(config.xxData.data()).length;
@@ -165,7 +159,7 @@ jwt.jwtData = (function() {
 
     };
 
-    var xxAjax = function(config, value, def) {
+var xxAjax = function(config, value, def) {
         var dfd = def;
 
         if (config.requestType == 'J') {
@@ -237,9 +231,9 @@ jwt.jwtData = (function() {
         console.log('prompt not ready' + tblname)
     }
 
-    //init actually runs the ajax request and when done the data is fully
-    //cached and available for a lunr search
-    var init = function(key, obj, value, def) {
+//init runs the ajax request and when done the data is fully
+//cached and available for a lunr search
+var init = function(key, obj, value, def) {
 
         var newDefaults = jQuery.extend(true, {}, this.defaults);
         var config = jQuery.extend(obj, newDefaults);
@@ -255,15 +249,19 @@ jwt.jwtData = (function() {
             function(indx, value) {
                 return that.getData(config, value, dfd);
             });
+}
 
-    }
-
-    //this is the set of data we get on load of the application
-    var initAllData = function() {
+//this is the set of data we get on load of the application
+var initAllData = function() {
 
         //project data is loaded on the call back for business unit
         jwt.jwtData['XX_289_D_PRJ_01'] = {};
 
+        jwt.jwtData['XX_289_D_PRJ_01'].s2optionsDO = jQuery.extend(true,
+					       {}, jwt.jwtData.s2optionsDO);
+
+    jwt.jwtData['XX_289_D_PRJ_01'].s2optionsDO.query = function(){};
+    
         if (jwt.user.isSAS) {
             jwt.jwtData.init('XX_289_D_VND_LC',
 			     jwt.jwtData.Configs['XX_289_D_VND_LC'], ['SHARE']);
@@ -300,9 +298,9 @@ jwt.jwtData = (function() {
         jwt.jwtData.init('PROFILE_TBL',
 			 jwt.jwtData.Configs['PROFILE_TBL'], ['SHARE']);
 
-    }
+}
 
-    return {
+return {
         s2optionsDO: s2optionsDO,
         defaults: defaults,
         getData: xxAjax,
@@ -314,5 +312,5 @@ jwt.jwtData = (function() {
         create_Lunr_search: create_Lunr_search,
         add_fields_lunr_search: add_fields_lunr_search
 
-    }
+}
 })();

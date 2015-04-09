@@ -1,5 +1,20 @@
 #full-section {
-  .detail {
+   .detail > :not(:first-child)
+                   {
+
+
+  padding-top: 8px;
+  display: inline-block;
+  border-top-color: black;
+  border-top-style: solid;
+  border-top-width: 2px;
+  margin-top: 3px;
+  margin-left:2px;
+
+    }
+ 
+
+    .detail {
 
   display: inline-block;
   border-width: 1px;
@@ -7,20 +22,18 @@
    margin: 4px; 
    #row-key-menu ul li {
        background-color: initial;
+       padding:4px;
    }
       #row-key-menu ul li:nth-child(1) div{
-          width:160px;
+          width:120px;
 
       }
       #row-key-menu ul li:nth-child(2) div{
-          width:160px;
+          width:120px;
         }
       #row-key-menu ul li:nth-child(3) div{
-          width:100px;
+          width:123px;
           display:inline-block;
-      }
-       #row-key-menu ul li:nth-child(3) div{
-          width:127px;
       }
     input, a , div , span, li
            {
@@ -30,7 +43,12 @@
       @include border-radius( 0px);
     }
     #line1-header {
+        ul > li > div{
+            text-decoration:underline;
+        }
+        background-color:lemonchiffon;
         .hdr1 {
+            padding-top:8px;
             width:19px;
       }
       .hdr2 {
@@ -48,7 +66,7 @@
           width: 90px;
       }
       .hdr6 {
-          width:125px;
+          width:65px;
       }
     }
     .line2 {
@@ -76,7 +94,8 @@
         }
     .group {
 
-      .line1 {
+        .line1 {
+            
           line-height:30px;
         .XX_LIN_SC,
         .XX_LIN_SO {
@@ -106,7 +125,8 @@
         }
         .row-buttons {
             background-color:initial;
-            width:125px;
+            width:65px;
+            
         }
 
       }

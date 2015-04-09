@@ -11,6 +11,7 @@ body {
 //  font-size: 1.2rem;
 //  line-height: 160%;
 //  color: $blue;
+    padding-right:16px;
 }
 
 
@@ -44,7 +45,7 @@ label{
 ul.navlist
     {
         margin-left: 0;
-            padding: 0 16px;
+            padding-left: 16px;
                 white-space: nowrap;
                     clear:both;
                     }

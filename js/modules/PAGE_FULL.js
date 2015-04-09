@@ -39,7 +39,7 @@ jwt.jwtComponentConfigFull = (function() {
 	//witht the pop up data another call is made to retrieve po data used in
 	//the pop up
 	
-   getPO_SubCat_Data_Add_Links: function(config) {
+getPO_SubCat_Data_Add_Links: function(config) {
             var promises = [];
             var that = this;
             jwt.user.hasPO = false;
@@ -140,7 +140,7 @@ jwt.jwtComponentConfigFull = (function() {
                   }); /*end the done for all the project data */
         }/*end the sub cat method*/ ,
 
-   controller: function(elem) {
+controller: function(elem) {
             //function called by page loader before post.
 	    // handles updating form elements
             // with values before trip to server.
@@ -156,7 +156,7 @@ jwt.jwtComponentConfigFull = (function() {
             )
         },
 
-   callbackAlternate: function(config) {
+callbackAlternate: function(config) {
        // alternate call back is used to pop up the approval model
        // the page build will happen exactly the same as the user may
        // decide to cancel out of the modal
@@ -167,7 +167,7 @@ jwt.jwtComponentConfigFull = (function() {
        jwt.templates.loadTemplate(jwt.jwtComponentConfigApprove);
         },
 
-    callback: function(config) {
+callback: function(config) {
        //main callback for final display related activities
 	//the template has rendered the page its now time for a final logic
 	//for display

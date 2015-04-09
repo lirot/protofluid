@@ -28,7 +28,7 @@ jwt.jwtData.Configs['XX_289_WL_SAS9'] = (function() {
         "Operator": ">"
       }]
     }
-  }
+  };
 })();
 
 jwt.jwtData.Configs['XX_289_D_VND_LC_SINGLE'] = (function() {
@@ -51,27 +51,27 @@ jwt.jwtData.Configs['XX_289_D_VND_LC_SINGLE'] = (function() {
       var outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
       jQuery('#loc_vendorInfo #addressInfo').html(outHTML);
     }
-  }
+  };
 })();
 
 jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
-  return {
-    Definition: 'XX_289_D_VND_LC',
-    xxData: jQuery({}),
+return {
+Definition: 'XX_289_D_VND_LC',
+xxData: jQuery({}),
     /* properties used by lunr search library
     * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not
     // as bright - 0.5.7
     * Copyright (C) 2014 Oliver Nightingale
     */
-    reference: "KEY1",
-    is_lunr_search: true,
+reference: "KEY1",
+is_lunr_search: true,
 
     //used to pad leading zeros if number is entered to the search
-    LunrNumKey: "VENDOR_ID:10",
+LunrNumKey: "VENDOR_ID:10",
 
     // key fields used to create lunr searchable keys...the boost value is
     // the second split value
-      keyfields: [
+keyfields: [
 	  'VENDOR_ID:100',
 	  'NAME1:100',
 	  'VENDOR_NAME_SHORT',
@@ -82,20 +82,20 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
 	  'POSTAL'],
       
       // a drict key will allow direct access to a value with the
-      //prefix...to find an esact match on vendor id type 'v:'' and the vednor id
-    directkeyfields: ['VENDOR_ID:v'],
+    //prefix...to find an esact match on vendor id type 'v:'' and the vednor id
+directkeyfields: ['VENDOR_ID:v'],
 
       // object set with default values in the parse routine and those
       //values used by s2 constructor on page build
       // options will instruct constructor to use a data query for the
       //source of the drop down
       // the lunar config will aid in seraching the indexes for the live searches
-    s2optionsDO: {},
+s2optionsDO: {},
 
       // used by xxAJAX function column list can have two column_Name
       //objects and or use a function see  XX_289_D_PRJ_01 for
       // a two field query string
-    qryString1: {
+qryString1: {
       "ViewName": "XX_289_D_VND_LC",
       "CoumnList": [{
         "Column_Name": "VENDOR_SETID",
@@ -108,7 +108,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       //the user is typeing in to the input field
       //the data returned by the search will pass through the template
       //before being displayed to the user
-    select2Callback: function(data) {
+select2Callback: function(data) {
          jwt.jwtData.decode(data);
         data.VENDOR_STATUS = (data.VENDOR_STATUS == "I") ? "Inactive" : "Active"
       var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_VENDOR'], data);
@@ -118,7 +118,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       //after the user selects a value from the select2 list this function is
       //called the return value is placed in the
       //select box and displayed to the userd
-    select2Display: function(data) {
+select2Display: function(data) {
       if (jwt.jwtWorkList.isFullPage) {
         jQuery('.ps-no-loc').removeClass("ps-hidden");
           return 'Location';
@@ -129,7 +129,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
     },
 
     //the user clears the select2 drop down and this function is called
-    clear: function() {
+clear: function() {
       jQuery('#XX_HDR_VI').val("");
       jQuery('#XX_HDR_VL').val("");
       jwt.invoice.header.XX_HDR_VI = "";
@@ -141,7 +141,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
 
     // the user selects a value from the drop down and this function is called
     // the developer must set the inputs sent back to the server here
-    select2setKeys: function(data) {
+select2setKeys: function(data) {
       jQuery(".vl-check").removeClass("displayHidden");
       jQuery('.NL-check').prop('checked', false);
       jQuery('#XX_HDR_VI').val(data.VENDOR_ID);
@@ -170,7 +170,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       pipeline funtion makes this functionality
      easier to implement */
 
-  loc_S2_XX_HDR_VI: function() {
+loc_S2_XX_HDR_VI: function() {
       //create the select2 with defaults
       var config = jwt.jwtData.Configs['XX_289_D_VND_LC'];
 
@@ -180,7 +180,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
             jwt.functions.select2PreQuery(this);
           }).on("select2-removed", function(e) {
           jwt.jwtData.Configs['XX_289_D_VND_LC'].clear();
-          })
+          });
       
       //now add data source dependent on the elements configuration
       if (jwt.invoice.header.XX_HDR_VI
@@ -203,7 +203,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       }
     },
 
-    select2lunrPreQuery: function(config, elem) {
+select2lunrPreQuery: function(config, elem) {
 	//at this point the user has just clicked the drop down.
 	// these conditions are then checked
 	if ((config.Definition == "XX_289_D_VND_LC"
@@ -217,7 +217,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
       }
     },
 
-    lunrPipelineFunction: function(token) {
+lunrPipelineFunction: function(token) {
       // lunar will run this function
 	// adding a funtction with this name on any data object will create
 	// a call from within the lunr pipeline
@@ -234,13 +234,13 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
           return jwt.functions.pad(token, config.LunrNumKey.split(':')[1]);
         }
       }
-
+   
       
       if (token.length <= 2) return undefined; //tokens of length less then 3
 
       return token;
     }
-  }
+};
 })();
 
 
@@ -275,7 +275,7 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
             "Column_Value": "",
             "Operator": "="
           }]
-        }
+        };
       } else {
         return {
           "ViewName": "XX_289_D_PRJ_01",
@@ -288,7 +288,7 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
             "Column_Value": "N",
             "Operator": "="
           }]
-        }
+        };
       }
     },
 
@@ -307,11 +307,27 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
     },
 
    loc_S2_XX_LIN_PI: function() {
-      var config = jwt.jwtData.Configs['XX_289_D_PRJ_01'];
-      jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO);
+       function f(){
+                dothis();
+         }
+       //short wait here makes a difference as the definitions
+       //catch up with the data on a user who is quick to the
+       //first invoice.
+        setTimeout(f, 500)
+
+	// builds all the custom select2 objects marked with data attribute
+        function dothis() {
+
+       var config = jwt.jwtData.Configs['XX_289_D_PRJ_01'];
+       jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO);
+
+
+
+
+        }
     }
 
-  }
+  };
 })();
 
 jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
@@ -478,7 +494,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
 		  'RESOURCE_CATEGORY',
 		  'RES_CAT_DESCR'],
       
-      s2optionsDO: {},
+    s2optionsDO: {},
       
     qryString1: {
 	"ViewName": "XX_289_D_SC_01",
@@ -520,28 +536,27 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
       }
     },
 
-    lin_S2_XX_LIN_SC: function(obj) {
+   lin_S2_XX_LIN_SC: function(obj) {
       var config = jwt.jwtData.Configs['XX_289_D_SC_01'];
-      obj.select2(jwt.jwtData.s2optionsDO).on("select2-open",
-        function(e) {
-          jwt.functions.select2PreQuery(this);
-        }).on("select2-clearing",
-        function(e) {
-          jwt.jwtData.Configs['XX_289_D_SC_01'].clear(this);
-        })
-      if (obj.next().val()) {
-        obj.select2("data",
-		    jwt.jwtData.setPromptVal(encodeURIComponent(
-			obj.next().val()), 'XX_289_D_SC_01')
-        );}
+    //build the select2 drop down with the configuration
+                          
+       obj.select2(jwt.jwtData.s2optionsDO)
+           .on("select2-open",  function(e) {
+               jwt.functions.select2PreQuery(this);})
+           .on("select2-clearing", function(e) {
+               //call the clear function on the object
+               jwt.jwtData.Configs['XX_289_D_SC_01'].clear(this); });
+               if (obj.next().val()) {
+                   obj.select2("data", jwt.jwtData.setPromptVal(
+                       encodeURIComponent(obj.next().val()), 'XX_289_D_SC_01')
+                );}
     }
       
-  }
+  };
 })();
 
 jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
   return {
-
     Definition: 'XX_289_D_APPROV',
     xxData: jQuery({}),
     reference: "OPRID",
