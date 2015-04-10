@@ -110,6 +110,9 @@
                 display:inline-block;
                 text-align:right;
         }
+ .line2 >div > :nth-child(3 ) > ul > li  >:nth-child(2) input{
+                text-align:right;
+        }
 
        .line2  > div >  div {
             display:inline-block;

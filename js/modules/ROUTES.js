@@ -581,7 +581,7 @@ jwt.routes['loc_XX_HPB_PRI'] = (function() {
   return {
     Definition     : 'loc_XX_HPB_PRI',
     Description    : "Print button",
-    editArray      : ["msg-requires-Comment"],
+    editArray      : [],
     beforeFunction : function(data) {},
     serverFunction : "",
     afterFunction  : function() {},
