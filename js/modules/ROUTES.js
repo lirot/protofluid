@@ -582,8 +582,11 @@ jwt.routes['loc_XX_HPB_PRI'] = (function() {
     Definition     : 'loc_XX_HPB_PRI',
     Description    : "Print button",
     editArray      : [],
-    beforeFunction : function(data) {},
-    serverFunction : "",
+      beforeFunction : function(data) {jwt.functions.printButton()},
+    serverFunction : 
+
+function(){}
+,
     afterFunction  : function() {},
     canViewFunc    : function(){ return true},
       buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel

@@ -172,8 +172,8 @@ body {
   /* line 134, ../sass/_layout.scss */
   #body-anchor #content #component-data {
     height: 100%;
-    overflow: scroll;
-    position: absolute;
+    overflow: auto;
+    position: fixed;
     top: 38px;
     right: 0px;
     width: 60%; }
@@ -1714,13 +1714,16 @@ a:hover {
 #full-section .vl-check {
   margin-bottom: 0;
   height: 0px; }
-/* line 82, ../sass/_PAGE_FULL.scss */
+/* line 81, ../sass/_PAGE_FULL.scss */
+#full-section .header0 {
+  page-break-before: always; }
+/* line 84, ../sass/_PAGE_FULL.scss */
 #full-section .header3 {
   overflow: hidden;
   display: inline-block;
   float: left;
   width: 100%; }
-  /* line 88, ../sass/_PAGE_FULL.scss */
+  /* line 90, ../sass/_PAGE_FULL.scss */
   #full-section .header3 .rf-hdr-vendor {
     width: 50%;
     position: relative;
@@ -1728,10 +1731,10 @@ a:hover {
     margin-top: 20px;
     margin-right: -20px;
     display: inline-block; }
-    /* line 101, ../sass/_PAGE_FULL.scss */
+    /* line 103, ../sass/_PAGE_FULL.scss */
     #full-section .header3 .rf-hdr-vendor label {
       margin: 0; }
-  /* line 107, ../sass/_PAGE_FULL.scss */
+  /* line 109, ../sass/_PAGE_FULL.scss */
   #full-section .header3 .messages {
     border-color: red;
     border-style: groove;
@@ -1744,136 +1747,136 @@ a:hover {
     margin-top: 20px;
     display: inline-block;
     padding: 5px 20px 13px 0; }
-    /* line 121, ../sass/_PAGE_FULL.scss */
+    /* line 123, ../sass/_PAGE_FULL.scss */
     #full-section .header3 .messages div {
       font-size: 12px !important;
       line-height: 100%; }
 
-/* line 129, ../sass/_PAGE_FULL.scss */
+/* line 131, ../sass/_PAGE_FULL.scss */
 #full-section {
   display: none; }
-  /* line 131, ../sass/_PAGE_FULL.scss */
+  /* line 133, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-sc {
     width: 33.33333%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 134, ../sass/_PAGE_FULL.scss */
+  /* line 136, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-ii {
     width: 33.33333%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 136, ../sass/_PAGE_FULL.scss */
+    /* line 138, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-ii label {
       display: inline;
       margin-right: 5px; }
-    /* line 140, ../sass/_PAGE_FULL.scss */
+    /* line 142, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-ii span {
       font-size: 12px;
       margin-right: 3px; }
-  /* line 146, ../sass/_PAGE_FULL.scss */
+  /* line 148, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-bu {
     line-height: 30px;
     width: 33.33333%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 150, ../sass/_PAGE_FULL.scss */
+  /* line 152, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-id {
     width: 25%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 152, ../sass/_PAGE_FULL.scss */
+    /* line 154, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-id input {
       width: 80%; }
-  /* line 156, ../sass/_PAGE_FULL.scss */
+  /* line 158, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-in {
     width: 50%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 159, ../sass/_PAGE_FULL.scss */
+  /* line 161, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-ga {
     width: 33.33333%;
     float: right;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 161, ../sass/_PAGE_FULL.scss */
+    /* line 163, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-ga input {
       text-align: right; }
-  /* line 165, ../sass/_PAGE_FULL.scss */
+  /* line 167, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-st {
     width: 25%;
     float: right;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 167, ../sass/_PAGE_FULL.scss */
+    /* line 169, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-st input {
       text-align: right; }
-  /* line 171, ../sass/_PAGE_FULL.scss */
+  /* line 173, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-so {
     line-height: 30px;
     width: 33.33333%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 175, ../sass/_PAGE_FULL.scss */
+  /* line 177, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-fa {
     width: 100%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 178, ../sass/_PAGE_FULL.scss */
+  /* line 180, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-fa > div {
     line-height: 30px; }
-  /* line 181, ../sass/_PAGE_FULL.scss */
+  /* line 183, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-ra {
     width: 33.33333%;
     float: right;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 183, ../sass/_PAGE_FULL.scss */
+    /* line 185, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-ra input {
       text-align: right; }
-  /* line 187, ../sass/_PAGE_FULL.scss */
+  /* line 189, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-lt {
     width: 33.33333%;
     float: right;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 189, ../sass/_PAGE_FULL.scss */
+    /* line 191, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-lt input {
       text-align: right; }
-  /* line 193, ../sass/_PAGE_FULL.scss */
+  /* line 195, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-cc {
     width: 16.66667%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 196, ../sass/_PAGE_FULL.scss */
+  /* line 198, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-ut {
     width: 25%;
     float: right;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-    /* line 198, ../sass/_PAGE_FULL.scss */
+    /* line 200, ../sass/_PAGE_FULL.scss */
     #full-section .rf-hdr-ut input {
       text-align: right; }
-  /* line 203, ../sass/_PAGE_FULL.scss */
+  /* line 205, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-wi {
     width: 16.66667%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 206, ../sass/_PAGE_FULL.scss */
+  /* line 208, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-sb {
     width: 25%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 209, ../sass/_PAGE_FULL.scss */
+  /* line 211, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-hc {
     line-height: 30px;
     float: left;
@@ -1881,19 +1884,19 @@ a:hover {
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 214, ../sass/_PAGE_FULL.scss */
+  /* line 216, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-mu {
     width: 16.66667%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 217, ../sass/_PAGE_FULL.scss */
+  /* line 219, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-hf {
     width: 16.66667%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 220, ../sass/_PAGE_FULL.scss */
+  /* line 222, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-py {
     line-height: 30px;
     float: right;
@@ -1901,14 +1904,14 @@ a:hover {
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 225, ../sass/_PAGE_FULL.scss */
+  /* line 227, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-pn {
     float: right;
     width: 100%;
     float: left;
     padding-left: 0.19841%;
     padding-right: 0.19841%; }
-  /* line 229, ../sass/_PAGE_FULL.scss */
+  /* line 231, ../sass/_PAGE_FULL.scss */
   #full-section .rf-hdr-wf {
     width: 100%;
     float: left;
@@ -2795,60 +2798,82 @@ a.tooltip span {
   .po-drop1 .header span:nth-child(15) {
     width: 10%; }
 
-/* line 9, ../sass/_base.scss */
+@media print {
+  /* line 8, ../sass/_base.scss */
+  body > :not(:first-child) {
+    display: none; }
+
+  /* line 16, ../sass/_base.scss */
+  body #image-now,
+  body .remove-add,
+  body #page-header {
+    display: none; } }
+/* line 36, ../sass/_base.scss */
+body, html {
+  width: 100%;
+  height: 100%; }
+
+/* line 41, ../sass/_base.scss */
+.print {
+  background-color: white;
+  z-index: 100000;
+  /* CSS doesn't support infinity */
+  /* Any other Print Properties */ }
+
+/* line 54, ../sass/_base.scss */
 body {
   padding-right: 16px; }
 
-/* line 18, ../sass/_base.scss */
+/* line 63, ../sass/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: Bree Serif, serif;
   font-weight: normal;
   color: #475B62;
   text-shadow: #FCF4DC 1px 1px; }
 
-/* line 25, ../sass/_base.scss */
+/* line 70, ../sass/_base.scss */
 h1 {
   font-size: 2.2rem;
   color: #1f7f9e;
   margin-bottom: 10px; }
 
-/* line 31, ../sass/_base.scss */
+/* line 76, ../sass/_base.scss */
 label {
   color: black;
   font-size: 12px;
   display: block; }
 
-/* line 36, ../sass/_base.scss */
+/* line 81, ../sass/_base.scss */
 i {
   margin-right: 6px; }
 
-/* line 41, ../sass/_base.scss */
+/* line 86, ../sass/_base.scss */
 .small {
   font-size: 1rem;
   color: #2176C7; }
 
-/* line 45, ../sass/_base.scss */
+/* line 90, ../sass/_base.scss */
 ul.navlist {
   margin-left: 0;
   padding-left: 16px;
   white-space: nowrap;
   clear: both; }
 
-/* line 52, ../sass/_base.scss */
+/* line 97, ../sass/_base.scss */
 .navlist li {
   display: inline-block;
   list-style-type: none; }
 
-/* line 58, ../sass/_base.scss */
+/* line 103, ../sass/_base.scss */
 .button:hover {
   background-color: #fafafa;
   color: #207cca; }
 
-/* line 63, ../sass/_base.scss */
+/* line 108, ../sass/_base.scss */
 .nav-action {
   font-size: 10px; }
 
-/* line 68, ../sass/_base.scss */
+/* line 113, ../sass/_base.scss */
 .wlClose {
   color: blue;
   line-height: 25px;
@@ -2858,88 +2883,88 @@ ul.navlist {
   top: 1px;
   width: 18px;
   text-decoration: none; }
-  /* line 79, ../sass/_base.scss */
+  /* line 124, ../sass/_base.scss */
   .wlClose:hover {
     color: red; }
 
-/* line 85, ../sass/_base.scss */
+/* line 130, ../sass/_base.scss */
 section table {
   display: none; }
 
-/* line 87, ../sass/_base.scss */
+/* line 132, ../sass/_base.scss */
 section.approvers-table table {
   display: block; }
 
-/* line 89, ../sass/_base.scss */
+/* line 134, ../sass/_base.scss */
 .displayBlock {
   display: block; }
 
-/* line 91, ../sass/_base.scss */
+/* line 136, ../sass/_base.scss */
 .displayHidden {
   display: none; }
 
-/* line 94, ../sass/_base.scss */
+/* line 139, ../sass/_base.scss */
 #work-list-menu .navlist li {
   background-color: yellow; }
-  /* line 96, ../sass/_base.scss */
+  /* line 141, ../sass/_base.scss */
   #work-list-menu .navlist li a {
     color: blue; }
 
-/* line 104, ../sass/_base.scss */
+/* line 149, ../sass/_base.scss */
 #work-list-menu .navlist a, #row-header-menu .navlist a {
   padding: 3px 10px; }
 
-/* line 108, ../sass/_base.scss */
+/* line 153, ../sass/_base.scss */
 #row-header-menu a, #row-header-menu span {
   color: blue; }
 
-/* line 112, ../sass/_base.scss */
+/* line 157, ../sass/_base.scss */
 #work-list-menu > .navlist a:link
  {
   color: #fff;
   text-decoration: none; }
 
-/* line 122, ../sass/_base.scss */
+/* line 167, ../sass/_base.scss */
 #work-list-menu .navlist a:hover, #row-header-menu .navlist a:hover {
   color: #fff !important;
   background-color: red !important;
   text-decoration: none !important; }
 
-/* line 128, ../sass/_base.scss */
+/* line 173, ../sass/_base.scss */
 .active-tab {
   color: #fff;
   background-color: red;
   text-decoration: none; }
 
-/* line 133, ../sass/_base.scss */
+/* line 178, ../sass/_base.scss */
 .ps-hidden {
   display: none; }
 
-/* line 138, ../sass/_base.scss */
+/* line 183, ../sass/_base.scss */
 .textareaBackground {
   width: 100%;
   height: 100%;
   position: relative;
   padding: 0px 10px 2px 15px; }
 
-/* line 144, ../sass/_base.scss */
+/* line 189, ../sass/_base.scss */
 .textareaBackground textarea {
   width: inherit;
   height: inherit;
   border-radius: 10px;
   height: 83px; }
 
-/* line 150, ../sass/_base.scss */
+/* line 195, ../sass/_base.scss */
 .textareaBackground .background {
   position: absolute;
   top: 0;
   left: 0;
   color: gray; }
 
-/* line 158, ../sass/_base.scss */
+/* line 203, ../sass/_base.scss */
 section#rf-hdr-messages h1 {
   line-height: 1.4em; }
-/* line 161, ../sass/_base.scss */
+/* line 206, ../sass/_base.scss */
 section#rf-hdr-messages li {
   padding: 0.15em 0 0.5em 0.5em;
   margin-bottom: 0.0em;
@@ -2948,30 +2973,30 @@ section#rf-hdr-messages li {
   font-size: 0.6em;
   list-style: none;
   background-repeat: no-repeat; }
-/* line 171, ../sass/_base.scss */
+/* line 216, ../sass/_base.scss */
 section#rf-hdr-messages .bold-green {
   font-size: 20px;
   font-weight: bold;
   color: green; }
-/* line 178, ../sass/_base.scss */
+/* line 223, ../sass/_base.scss */
 section#rf-hdr-messages .fa-exclamation {
   color: rgba(37, 146, 134, 0.7);
   text-shadow: 1px 1px 1px #ccc;
   font-size: 1.5em;
   margin-right: 10px;
   margin-left: 7px; }
-/* line 186, ../sass/_base.scss */
+/* line 231, ../sass/_base.scss */
 section#rf-hdr-messages .fa-exclamation-triangle {
   color: rgba(209, 28, 36, 0.7);
   text-shadow: 1px 1px 1px #ccc;
   font-size: 1.5em; }
-/* line 191, ../sass/_base.scss */
+/* line 236, ../sass/_base.scss */
 section#rf-hdr-messages .fa-check {
   color: rgba(0, 128, 0, 0.7);
   text-shadow: 1px 1px 1px #ccc;
   /*    font-size: 1.5em; */ }
 
-/* line 199, ../sass/_base.scss */
+/* line 244, ../sass/_base.scss */
 .fa-lock {
   color: rgba(255, 0, 0, 0.7);
   margin-left: 7px;

@@ -135,9 +135,9 @@ li {
  //    @include span( 6 );
  //     background: rgba( $purple , .9 );
       height: 100%;
-      overflow: scroll;
+      overflow: auto;
  //     float:right!important;
-      position:absolute;
+      position:fixed;
       top:38px;
       right:0px;
       width:60%;

@@ -2,10 +2,55 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css');
 
 
-html{
+@media print{
+
+
+  body > :not( :first-child ){
+
+        display:none;
+    }
+
+    
+    body{
+
+        #image-now,
+        .remove-add,
+        #page-header{
+            display:none;
+        }
+
+        #component-data{
+        //    display:block;
+    //        background-color:green;
+      //      width:100%;
+          //  height:100%;
+         //   overflow:auto;
+         //   position:fixed;
+        }
+      
+    }
 
 }
 
+
+body, html {
+    width: 100%;
+    height: 100%;
+}
+
+.print {
+  
+    
+  //  display:none!important;
+    background-color:white;
+  //  position: fixed;
+  //   overflow: none !important;
+//     width: 100%;
+  //   height: 100%;
+     z-index: 100000; /* CSS doesn't support infinity */
+
+     /* Any other Print Properties */
+}
 body {
 //  font-family: $font-primary;
 //  font-size: 1.2rem;

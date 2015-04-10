@@ -55,7 +55,29 @@ jwt.functions = (function() {
 //functions are available off the namespace jwt.functions
       jQuery.extend(jwt.functions,
         {
-   hasVendor: function() {
+
+
+            printButton : function(){
+                
+    var $print = jQuery("#component-data")
+        .clone()
+        .addClass('print')
+        .prependTo('body');
+
+    //window.print() stops JS execution
+    window.print();
+
+    //Remove div once printed
+    $print.remove();
+
+        
+
+
+
+                 },
+
+            
+       hasVendor: function() {
             var vendorID = jQuery('#XX_HDR_VI').val();
             if (!vendorID) {
               vendorID = jwt.invoice.header.XX_HDR_VI;
