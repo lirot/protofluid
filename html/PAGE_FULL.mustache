@@ -41,7 +41,21 @@
         {{/user.isLocked}}
         </span>
         <span id="XX_HDR_SS" >{{header.XX_HDR_SS}}</span>
-      </div>
+{{#user.isSAS}}
+{{#header.XX_HDR_VL}}
+            <div class="vl-check">
+              <input class="NL-check" type="checkbox" {{Locked}} value="" data-label="Remove location" tabindex="3" />
+            </div>
+{{/header.XX_HDR_VL}}
+{{^header.XX_HDR_VL}}
+          <div class="vl-check displayHidden">
+            <input class="NL-check" {{Locked}} type="checkbox" value="" data-label="Remove location" tabindex="3" />
+          </div>
+{{/header.XX_HDR_VL}}
+{{/user.isSAS}}
+</div>
+
+
       <div class="rf-hdr-bu">
         <label for="XX_HDR_BU ">Business Unit</label>
         <input type="hidden" class="select2-offscreen" data-ps-tbl-name="XX_289_D_BU_SEC" data-s2-drop-class="s2-drop-bu" {{user.canEdit.rf_hdr_bu}} {{isBULocked}} {{Locked}} {{header.Approverdisabled}} data-linked-field="XX_HDR_BU" tabindex="1" id="loc_S2_XX_HDR_BU" />
@@ -67,18 +81,6 @@
 {{/header.XX_HDR_VI}}
           </div>
         </div>
-{{#user.isSAS}}
-{{#header.XX_HDR_VL}}
-            <div class="vl-check">
-              <input class="NL-check" type="checkbox" {{Locked}} value="" data-label="Remove location" tabindex="3" />
-            </div>
-{{/header.XX_HDR_VL}}
-{{^header.XX_HDR_VL}}
-          <div class="vl-check displayHidden">
-            <input class="NL-check" {{Locked}} type="checkbox" value="" data-label="Remove location" tabindex="3" />
-          </div>
-{{/header.XX_HDR_VL}}
-{{/user.isSAS}}
     </section>
     <section id="rf-hdr-messages" class="messages" title="errors and warnings">
         <ul>
@@ -186,13 +188,13 @@
   <div id="row-key-menu" class="navcontainer nav-action">
     <ul class="navlist">
       <li>
-        <div>Projet ID: {{SectionHeader.pi}}</div>
-                          <a href="#" class="xx-pop-pi tooltip" data-link-id="{{SectionHeader.pi}}"> Pop PJ </a>
+        <div>   <a href="#" class="xx-pop-pi tooltip" data-link-id="{{SectionHeader.pi}}"> Pop PJ </a> {{SectionHeader.pi}}</div>
+                       
       </li>
 {{#SectionHeader.po}}
               <li>
-                <div>PO ID:&nbsp{{SectionHeader.po}}</div>
-                    <a href="#" class="xx-pop-po tooltip" data-link-id="{{SectionHeader.po}}"> Pop PO </a>
+                <div> <a href="#" class="xx-pop-po tooltip" data-link-id="{{SectionHeader.po}}"> Pop PO </a>{{SectionHeader.po}}</div>
+                   
               </li>
               <li><div>Remaining Anount :&nbsp</div>
               <div class="open-po">
@@ -244,8 +246,16 @@
                   <i class="fa fa-lock"></i>
                 </span>
 {{^user.isLocked}}
-                  <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}"   ><i class="fa fa-check-square-o"></i></a>
-                  <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}"  ><i class="fa fa-square-o"></i></a>
+  <a href="#" title="show asset" class="show-asset" data-row-id="{{ROW}}"   >
+    <i class="fa fa-square-o">
+    </i>
+  </a>
+  <input id="XX_LIN_AF{{ROW}}" class="XX_LIN_AF" name="XX_LIN_AF{{ROW}}"  />
+  <a href="#" title="show quantity" class="show-qty" data-row-id="{{ROW}}"  >
+      <i class="fa fa-square-o">
+      </i>
+  </a>
+    <input id="XX_LIN_AO{{ROW}}" class="XX_LIN_AO" name="XX_LIN_AO{{ROW}}"  />
 {{/user.isLocked}}
               </span></li>
 {{/SectionHeader.section_ce}}
@@ -253,11 +263,17 @@
 {{#SectionHeader.section_ce}}
 {{^user.isLocked}}
     <li>    <div class="row-buttons">
-      <a href="#" title="show asset information" class="show-asset" data-row-id="{{ROW}}">
-        <i class="fa fa-square-o"></i></a>
-        <a href="#" title="show quantity PO inforation" class="show-qty" data-row-id="{{ROW}}">
-          <i class="fa fa-square-o"></i></a>
-          <a href="#" id="loc_XX_ACTIVE_GRID$new${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$new{{ROW}}$$0" data-route-id="loc_row_new" class="ps-new">
+  <a href="#" title="show asset" class="show-asset" data-row-id="{{ROW}}"   >
+    <i class="fa fa-square-o">
+    </i>
+  </a>
+    <input id="XX_LIN_AF{{ROW}}" class="XX_LIN_AF" name="XX_LIN_AF{{ROW}}"  />
+  <a href="#" title="show quantity" class="show-qty" data-row-id="{{ROW}}"  >
+      <i class="fa fa-square-o">
+      </i>
+  </a>
+    <input id="XX_LIN_AO{{ROW}}" class="XX_LIN_AO" name="XX_LIN_AO{{ROW}}"  />
+  <a href="#" id="loc_XX_ACTIVE_GRID$new${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$new{{ROW}}$$0" data-route-id="loc_row_new" class="ps-new">
             <i class="fa fa-plus-square"></i>
           </a>
           <a href="#" id="loc_XX_ACTIVE_GRID$delete${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$delete{{ROW}}$$0" data-route-id="loc_row_delete" class="ps-delete">
@@ -339,9 +355,9 @@
 </section>
 
   <section class="payment">
-      <label> Payment Information</label>
+  
         <div class="rf-hdr-pm">
-          <label for="XX_HDR_PM">Message</label>
+          <label for="XX_HDR_PM">Payment Message</label>
           <input id="XX_HDR_PM" name="XX_HDR_PM" {{Locked}} value="{{header.XX_HDR_PM}}" />
         </div>
         <div class="rf-hdr-wi">
@@ -357,7 +373,7 @@
           <input name="XX_HDR_HF" id="loc_XX_HDR_HF" data-label="Hold" {{Locked}} class="ps-check" type="checkbox" data-ps-id="XX_HDR_HF"></input>
         </div>
         <div class="rf-hdr-hc">
-          <label for="XX_HDR_HC">Handling</label>
+          <label for="XX_HDR_HC">Handling Code</label>
 	   <select id="loc_XX_HDR_HC" data-ps-id="XX_HDR_HC" {{Locked}} title="Select" name="XX_HDR_HC" placeholder="select">
             <option> None </option>
             <option value="HD">High Dollar Payment</option>
@@ -367,7 +383,7 @@
           </select>
         </div>
         <div class="rf-hdr-py">
-          <label for="XX_HDR_PY">Instructions</label>
+          <label for="XX_HDR_PY">Payment Instructions</label>
           <select name="XX_HDR_PY" id="loc_XX_HDR_PY" {{Locked}} data-ps-id="XX_HDR_PY" title="Select" placeholder="select">
             <option value="none" > None </option>
             <option value="P">Employee Pickup</option>
@@ -377,7 +393,7 @@
           </select>
         </div>
         <div class="rf-hdr-pn">
-          <label for="XX_HDR_PN" id="psInstlbl"></label>
+          <label for="XX_HDR_PN" id="psInstlbl">Enter special handling Instructions below</label>
           <input id="XX_HDR_PN" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" {{Locked}} name="XX_HDR_PN" value="{{header.XX_HDR_PN}}" />
         </div>
   </section>

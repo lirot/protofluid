@@ -286,21 +286,21 @@ callback: function(config) {
             }
 
             if (jQuery('#loc_XX_HDR_PY').val() != "none") {
-                jQuery("#XX_HDR_PN").show();
-
-            } else {
-                jQuery("#XX_HDR_PN").hide();
+                jQuery(".rf-hdr-pn").show();
+            } else {  
+                jQuery(".rf-hdr-pn").hide();
             }
 
             jQuery('#loc_XX_HDR_PY').change(function() {
                 if (jQuery('#loc_XX_HDR_PY').val() != "none") {
-                    jQuery("#XX_HDR_PN").show();
+                    jQuery(".rf-hdr-pn").show();
                 } else {
-                    jQuery("#XX_HDR_PN").hide();
+                    jQuery(".rf-hdr-pn").hide();
+                    jQuery("#XX_HDR_PN").val("");
                 }
             });
 
-            // if we are sas Do some special stuff
+            // if user is sas Do some special stuff
             if (!jwt.user.isSAS) {
                 jQuery(".rf-hdr-pm").hide();
                 jQuery(".rf-hdr-sb").hide();
@@ -400,11 +400,27 @@ callback: function(config) {
             if (jwt.user.isSAS) {
               jQuery(".show-asset").on("click", function() {
                 var obj = jQuery(this);
-                var rowID = obj.data("row-id");
+                  var rowID = obj.data("row-id");
+                  
+                      //toggle 
+		  if ( obj.children().hasClass("fa-check-square") ){
+                      obj.next().val("");
+		      obj.children().removeClass("fa-check-square")
+		          .addClass("fa-square-o");
 
-                      //change the icon used
-		      jQuery(".show-asset[data-row-id='" + rowID + "']")
-		      .children().removeClass("fa-square-o")
+                //  jQuery(".line2[data-row-id='" + rowID + "']").show();
+                  jQuery(".line2[data-row-id='" + rowID + "']")
+		      .find(".rf-lin-ai > input,  .rf-lin-ap > input")
+		          .prop("disabled", true).
+                          val("");
+                  jQuery(".line2[data-row-id='" + rowID + "']")
+		      .find(".rf-lin-ai > div,  .rf-lin-ap > div")
+		          .select2("enable", false)
+                          .val("");
+                      
+                  }else{
+                      obj.next().val("Y");                      
+		      obj.children().removeClass("fa-square-o")
 		      .addClass("fa-check-square");
 
                   jQuery(".line2[data-row-id='" + rowID + "']").show();
@@ -414,6 +430,8 @@ callback: function(config) {
                   jQuery(".line2[data-row-id='" + rowID + "']")
 		      .find(".rf-lin-ai > div,  .rf-lin-ap > div")
 		      .select2("enable", true);
+                  }
+                  
                 });
             }
 	
@@ -421,9 +439,29 @@ callback: function(config) {
         jQuery(".show-qty").on("click", function() {
             var obj = jQuery(this);
               var rowID = obj.data("row-id");
-                      //change the icon used
-		      jQuery(".show-qty[data-row-id='" + rowID + "']")
-		      .children().removeClass("fa-square-o")
+
+            //toggle
+             if ( obj.children().hasClass("fa-check-square") ){
+                 obj.next().val("Y");
+       		      obj.children().removeClass("fa-check-square")
+		          .addClass("fa-square-o");
+
+              //jQuery(".line2[data-row-id='" + rowID + "']").hide();
+	      jQuery(".line2[data-row-id='" + rowID + "']")
+		    .find(".rf-lin-ii > input , .rf-lin-um > input , "
+			  + ".rf-lin-lq > input , .rf-lin-up > input")
+		     .attr("disabled", true)
+                     .val("");
+		jQuery(".line2[data-row-id='" + rowID + "']")
+		    .find(".rf-lin-ii > div , .rf-lin-um > div")
+		    .select2("enable",false)
+                     .val("");
+                 jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
+		      .prop("disabled", false);
+                 
+                  }else{
+                      obj.next().val("N");
+	               obj.children().removeClass("fa-square-o")
 		      .addClass("fa-check-square");
 
               jQuery(".line2[data-row-id='" + rowID + "']").show();
@@ -433,7 +471,8 @@ callback: function(config) {
 		    .attr("disabled", false);
 		jQuery(".line2[data-row-id='" + rowID + "']")
 		    .find(".rf-lin-ii > div , .rf-lin-um > div")
-		    .select2("enable", true);
+		          .select2("enable", true);
+                  }
         });
     }
     }

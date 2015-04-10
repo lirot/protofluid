@@ -12,14 +12,18 @@
   margin-left:2px;
 
     }
- 
+  .detail {
 
-    .detail {
+   margin: 4px; 
+  padding-top: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
 
   display: inline-block;
   border-width: 1px;
   border-style: solid;
-   margin: 4px; 
+
    #row-key-menu ul li {
        background-color: initial;
        padding:4px;
@@ -62,7 +66,7 @@
           width:85px;
       }
       .hdr5 {
-          text-align:right;
+          text-align:center;
           width: 90px;
       }
       .hdr6 {
@@ -72,7 +76,7 @@
     .line2 {
 
             padding-top:10px;
-            padding-left:10px;
+            padding-right:10px;
             margin-left:20px;
             border:solid;
             border-color:yellow;
@@ -82,12 +86,30 @@
                 padding-bottom:4px;
                 line-height:30px;
             }
-            li > div{
-                width: 90px;
-            display:inline-block;
-        }
+
 
     }
+          .line2 > div > div  > ul >  li > :first-child{
+                padding-left:5px;
+                width: 60px;
+            display:inline-block;
+            }
+       .line2 >div > div > :first-child  >  li  >:nth-child(2){
+                padding-left:5px;
+                width: 130px;
+            display:inline-block;
+       }
+       .line2 >div > :nth-child(2 ) > ul > li  >:nth-child(2){
+                padding-left:5px;
+                width: 100px;
+            display:inline-block;
+        }
+ .line2 >div > :nth-child(3 ) > ul > li  >:nth-child(2){
+                padding-left:5px;
+                width: 80px;
+                display:inline-block;
+                text-align:right;
+        }
 
        .line2  > div >  div {
             display:inline-block;
@@ -96,7 +118,9 @@
 
         .line1 {
             
-          line-height:30px;
+            line-height:30px;
+            .XX_LIN_AF,
+            .XX_LIN_AO,
         .XX_LIN_SC,
         .XX_LIN_SO {
           display: none !important;
@@ -124,15 +148,16 @@
             width:85px;
         }
         .row-buttons {
+            padding-left:3px;
             background-color:initial;
-            width:65px;
+            width:69px;
             
         }
 
       }
       .line2 {
 
-
+        
         .XX_LIN_AB,
         .XX_LIN_II,
         .XX_LIN_UM,

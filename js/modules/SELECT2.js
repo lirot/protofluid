@@ -70,6 +70,7 @@ select2PreQuery: function(that) {
               select2lunrPreQuery(config, that)
             }
 
+          //Can approve logic for approvers
             if (config.Definition == "XX_APPROVERS") {
               jQuery(".select2-input").val("CA:Y");
               jQuery(that).select2("updateResults", true);

@@ -33,7 +33,7 @@ jwt.jwtComponentConfigQuick = (function() {
     },
 
     callback: function(config) {
-
+        jwt.invoice.user.hasPO = false;
       jwt.functions.createS2_header();
       jQuery('#XX_HDR_ID').datepicker().change(function() {
         jQuery(this).val(jwt.functions.getDateFormatted(jQuery(this).val()));

@@ -234,8 +234,6 @@ lunrPipelineFunction: function(token) {
           return jwt.functions.pad(token, config.LunrNumKey.split(':')[1]);
         }
       }
-   
-      
       if (token.length <= 2) return undefined; //tokens of length less then 3
 
       return token;
@@ -320,10 +318,6 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
 
        var config = jwt.jwtData.Configs['XX_289_D_PRJ_01'];
        jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO);
-
-
-
-
         }
     }
 
@@ -332,14 +326,13 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
 
 jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
   return {
-
     Definition: 'XX_289_D_PO_02',
     xxData: jQuery({}),
     reference: "PO_ID",
     is_lunr_search: true,
     LunrNumKey: "",
 
-      keyfields: ['PO_ID:100',
+    keyfields: [  'PO_ID:100',
 		  'VENDOR_ID:100',
 		  'NAME1',
 		  'XX_PO_ENTERED_BY',
@@ -358,11 +351,11 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     directkeyfields: ['VENDOR_ID:v'],
     s2optionsDO: {},
     qryString1: {
-      "ViewName": "XX_289_D_PO_02",
-      "CoumnList": [{
-        "Column_Name": "KEY1",
-        "Column_Value": "",
-        "Operator": "="
+        "ViewName"    : "XX_289_D_PO_02",
+        "CoumnList"   : [{
+        "Column_Name" : "KEY1"   ,
+        "Column_Value": ""       , 
+        "Operator"    : "="
       }]
     },
 
@@ -379,8 +372,8 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     clear: function() {
       jwt.jwtData.Configs['XX_289_D_VND_LC'].clear()
       jQuery('#loc_XX_HDR_FA').select2("val", "");
-      jQuery('#loc_XX_HDR_SO').select2("val", "");
-	jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
+        jQuery('#loc_XX_HDR_SO').select2("val", "");
+        jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
 	    .css("right", "24px");
     },
 
@@ -479,7 +472,7 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
       return token;
     }
 
-  }
+  };
 })();
 
 jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
@@ -489,7 +482,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
     reference: "RESOURCE_SUB_CAT",
     is_lunr_search: true,
     LunrNumKey: "",
-      keyfields: ['RESOURCE_SUB_CAT:100',
+    keyfields: ['RESOURCE_SUB_CAT:100',
 		  'RES_SUB_CAT_DESCR:100',
 		  'RESOURCE_CATEGORY',
 		  'RES_CAT_DESCR'],
@@ -506,7 +499,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
     },
 
     clear: function(elem) {
-      jQuery(elem).next().val("")
+        jQuery(elem).next().val("");
     },
 
     select2Display: function(data, $elem) {
@@ -523,7 +516,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
 		+ "</div></div>");
     },
 
-    select2setKeys: function(data, $elem) {
+    select2setkeys: function(data, $elem) {
       if (data) {
         if (data.RESOURCE_SUB_CAT != $elem.next().val()) {
           $elem.next().val(data.RESOURCE_SUB_CAT);
@@ -623,7 +616,7 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
         .on("select2-clearing",
           function(e) {
             jwt.jwtData.Configs['XX_289_D_APPROV'].clear();
-          })
+          });
 
       if (jwt.invoice.header.XX_HDR_FA) {
           jQuery("#loc_S2_XX_HDR_FA")
@@ -632,7 +625,7 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
 		  'XX_289_D_APPROV'));
       }
     }
-  }
+  };
 })();
 
 // approver drop down is on the approval modal page
