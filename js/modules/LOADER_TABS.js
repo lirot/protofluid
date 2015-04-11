@@ -13,7 +13,7 @@ jwt.jwtWorkList = (function() {
     var wlSpinner = {};
     var wlActiveTabFirst = true;
 
-    var reset_Tabs = function(response, worklist) {
+var reset_Tabs = function(response, worklist) {
         jQuery(".close-image-now").show();
         jQuery(".component").css("display" , "block");
         
@@ -28,7 +28,7 @@ jwt.jwtWorkList = (function() {
       jwt.stopCount();
     }
 
-    var wlCreatTable = function(response, worklist) {
+var wlCreatTable = function(response, worklist) {
       var jsondata = jQuery.parseJSON(response),
         tblheader = '',
         wlRow = '',
@@ -38,16 +38,19 @@ jwt.jwtWorkList = (function() {
         wlTableID = worklist.type + "-tbl-" + worklist.id,
         jsondata = jsondata.VIEW[0].LINE;
 
+      //row count on tab
       var elem = jQuery(" [data-count-wlid= '" + worklist.id + "']");
       elem.text(jsondata.length.toString())
 
+     //table header
       jQuery.each(worklist.fldlist, function(index, field) {
         tblheader = tblheader + '<th>' + field.fdescr + '</th>';
         rowtmplt = rowtmplt + field.fname;
       });
 
       var flag, important, locked, buttonHTML;
-  jQuery.each(jsondata, function(index, item) {
+
+    jQuery.each(jsondata, function(index, item) {
 
 	  locked = decodeURIComponent(item[worklist.wlLockField])
 	      == jwt.user.operDescr ? 'N' : 'Y';
@@ -119,7 +122,8 @@ jwt.jwtWorkList = (function() {
         }
 
       if (jwt.user.isApprover) {
-            buttonHTML = "<button class='loc_WL_OPEN_APPROVER' data-wl="
+     if (jwt.user.isIA) {
+          buttonHTML = "<button class='loc_WL_OPEN_APPROVER' data-wl="
 		+ worklist.id + "  data-imgNowKey="
 		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_OPEN_"
 	        + "APPROVER' type='button' data-key=" + item[worklist.key]
@@ -131,8 +135,18 @@ jwt.jwtWorkList = (function() {
 	        + "_APPROVER' type='button' data-key=" + item[worklist.key]
 		+ " data-imgNowKey=" + item[worklist.imgNowKey]
 		+ " data-locked=" + locked + "></button>";
-        }
+     }else{
+            buttonHTML = "<button class='loc_WL_VIEW_APPROVER'"
+	        + "data-wl=" + worklist.id + "  data-imgNowKey="
+		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_VIEW"
+	        + "_APPROVER' type='button' data-key=" + item[worklist.key]
+		+ " data-imgNowKey=" + item[worklist.imgNowKey]
+		+ " data-locked=" + locked + "></button>";
 
+
+
+     }
+      }
        wlRow = wlRow + '<tr data-imgNowKey=' + item[worklist.imgNowKey]
 	      + ' data-locked=' + locked + '  data-class=' + worklist.class
 	      + ' data-key=' + item[worklist.key] + ' data-wl='

@@ -5,6 +5,15 @@
 //    height: 570px;
   }
 
+  .remove-add{
+
+      .rf-hdr-vi{
+
+          width:105px;
+      }
+  }
+
+  
   input {
     @include border-radius( 6px);
     height: 30px !important;
@@ -19,9 +28,6 @@
   line-height: 35px;
   display: inline-block;
   width: 100%;
-
-
-
   }
 
   .header1,
