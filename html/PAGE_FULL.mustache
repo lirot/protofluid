@@ -407,7 +407,28 @@
         </div>
     </section>
   <section id="workflow" class="workflow">
-        <label> Workflow Information</label>
+    <label> Workflow Information</label>
+
+<ul class="navlist workflow">
+{{#workflowLines}}
+<li>
+<div>{{descr}}</div>
+<div> Status : {{action}} </div>
+<div>{{col4}}</div>
+<div>{{col5}}</div>
+<div>{{dateCreated}} </div>
+<div>{{dateSaved}}</div>
+</li>
+{{#comments}}
+<li>
+<div class="comment bubble">    
+ <p> {{.}}<p/>
+  </div>
+</li>
+{{/comments}}
+{{/workflowLines}}
+</ul>
+    
   </section>
 </section>
 {{#user.isSAS}}

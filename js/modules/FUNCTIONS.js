@@ -57,7 +57,7 @@ jwt.functions = (function() {
         {
 
 
-            printButton : function(){
+printButton : function(){
                 
     var $print = jQuery("#component-data")
         .clone()
@@ -71,13 +71,10 @@ jwt.functions = (function() {
     $print.remove();
 
         
-
-
-
                  },
 
             
-       hasVendor: function() {
+hasVendor: function() {
             var vendorID = jQuery('#XX_HDR_VI').val();
             if (!vendorID) {
               vendorID = jwt.invoice.header.XX_HDR_VI;
@@ -118,26 +115,12 @@ jwt.functions = (function() {
    cleanWorkFlowData: function(xml) {
 
             //function builds the table show to the user
-
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Area');
-            data.addColumn('string', 'User');
-            data.addColumn('string', 'Action');
-            if (jwt.user.isSAS) {
-              data.addColumn('string', 'Open Status');
-              data.addColumn('string', 'End Status');
-            }
-
-            data.addColumn('string', 'Entered Date/Time');
-            data.addColumn('string', 'End Date/Time');
-            data.addColumn('string', 'Comment');
-
-       var table = new google.visualization
-	   .Table(document.getElementById('workflow'));
             var moreRows = [];
        var userType, action, startDate, status, EndDate, action
        , comment, area;
             var comments = [];
+
+       var  workflowData = [] ;
 
        _.each(jwt.invoice.workflowLines, function(Obj, index) {
 
@@ -176,10 +159,29 @@ jwt.functions = (function() {
                   status = " ";
                   action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
                   }
-          moreRows.push(["SAS", Obj.fld_oprdefndesc.text, action,
+
+      /*moreRows.push(["SAS", Obj.fld_oprdefndesc.text, action,
 		           jwt.constants.keys[Obj.fld_ptafadhoc_by.text], status
 			 , Obj.Created_Date, Obj.Saved_Date, comments.join()]);
+*/
+                    moreRows.push(
+                        {
+                        "area" : "SAS",
 
+                     "descr" : Obj.fld_oprdefndesc.text,
+	             "action"  :  action ,
+                     "col4"  : jwt.constants.keys[Obj.fld_ptafadhoc_by.text],
+                            "col5"  :status,
+                            "dateCreated" : Obj.Created_Date,
+                            "dateSaved" : Obj.Saved_Date,
+                            "comments" : comments
+                        });
+
+
+
+
+
+      
           comments = [];
 
    } else {
@@ -217,26 +219,29 @@ jwt.functions = (function() {
 		      jwt.invoice.user.aAweID)) {
                   action = "Fincially Approved!"
                 }
-                if (jwt.user.isSAS) {
-                    moreRows.push([area, Obj.fld_oprdefndesc.text
-				   , action, '', '', Obj.Created_Date
-				   , Obj.Saved_Date, comments.join()]);
-                } else {
-                    moreRows.push([area, Obj.fld_oprdefndesc.text
-				   , action, Obj.Created_Date
-				   , Obj.Saved_Date, comments.join()]);
-                }
+
+                    moreRows.push(
+                        {
+                        "area" : area,
+
+                        "descr" : Obj.fld_oprdefndesc.text,
+			    "action"  :  action ,
+                            "col4"  : "" ,
+                            "col5"  :"",
+                            "dateCreated" : Obj.Created_Date,
+                            "dateSaved" : Obj.Saved_Date,
+                            "comments" : comments
+                        });
+
                 comments = [];
               } else {
                 Obj.isApprover = false;
               }
 
-            })
-            data.addRows(moreRows);
+       });
 
-            table.draw(data, {
-              showRowNumber: true
-            });
+           jwt.invoice.workflowLines = moreRows;
+
           },
 
   xmlToJson: function(xml) {

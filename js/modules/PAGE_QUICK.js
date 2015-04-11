@@ -32,6 +32,11 @@ jwt.jwtComponentConfigQuick = (function() {
 
     },
 
+beforeTemplateCallback: function(config){
+    
+  
+    
+        },
     callback: function(config) {
         jwt.invoice.user.hasPO = false;
       jwt.functions.createS2_header();

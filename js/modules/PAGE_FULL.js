@@ -167,6 +167,12 @@ callbackAlternate: function(config) {
        jwt.templates.loadTemplate(jwt.jwtComponentConfigApprove);
         },
 
+
+beforeTemplateCallback: function(config){
+    
+    jwt.functions.cleanWorkFlowData();
+    
+        },
 callback: function(config) {
        //main callback for final display related activities
 	//the template has rendered the page its now time for a final logic
@@ -231,10 +237,6 @@ callback: function(config) {
             //render the date picker...
  	    //this is the only jquery ui control being used
             jQuery("#XX_HDR_ID").datepicker();
-
-            //try to make sense out of the back end table delivered
-	    //as xml and rendered as a googl visualization table
-            jwt.functions.cleanWorkFlowData();
 
 	    //approvers get only the vendor for the invoice
             if (jwt.user.isApprover) {

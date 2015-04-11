@@ -97,13 +97,19 @@ jwt.templates = (function() {
 
     loadFullTemplate: function(config) {
 
-      var _config = config,
-        template = jwt.templates[config.templateName],
+      var _config = config
+
+      jwt.jwtComponent
+        .Configs['jwt.' + _config.Definition]
+        .beforeTemplateCallback(_config);
+
+
+var        template = jwt.templates[config.templateName],
         outHTML = jwt.Mustache.to_html(template, jwt.invoice);
 
       jQuery("#component-data").html(outHTML);
 
-      jwt.jwtComponent
+       jwt.jwtComponent
         .Configs['jwt.' + _config.Definition]
         .callback(_config);
 
