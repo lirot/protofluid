@@ -77,20 +77,8 @@ jwt.jwtWorkListConfig_APR = (function() {
         fname: 'INSTANCEID',
         fdescr: 'ID'
       }, {
-        fname: 'XX_WL_DESCR',
-        fdescr: 'Save Reason'
-      }, {
         fname: 'INVOICE_ID',
         fdescr: 'Invoice Number'
-      }, {
-        fname: 'XX_DTTM_RECV_CHAR',
-        fdescr: 'Date/Time Received'
-      }, {
-        fname: 'XX_DTTM_ROUTE_CHAR',
-        fdescr: 'Date Routed'
-      }, {
-        fname: 'XX_CUST_NAME_LONG',
-        fdescr: 'Customer'
       }, {
         fname: 'VENDOR_NAME',
         fdescr: 'Vendor Name'
@@ -98,8 +86,8 @@ jwt.jwtWorkListConfig_APR = (function() {
         fname: 'AMOUNT',
         fdescr: 'Invoice Amount'
       }, {
-        fname: 'XX_REVIEW_DESCR',
-        fdescr: 'Review'
+        fname: 'NAME',
+        fdescr: 'Worked by'
       }]
     },
 
