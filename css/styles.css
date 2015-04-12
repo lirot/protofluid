@@ -2594,63 +2594,68 @@ caption {
     font-size: 14px;
     margin-right: 30px; }
 
-/* line 2, ../sass/_WORKLISTS.scss */
+/* line 1, ../sass/_WORKLISTS.scss */
+.ps-AMOUNT {
+  text-align: right;
+  padding-right: 4px; }
+
+/* line 5, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_SAS_FULL[data-locked="Y"] {
   display: none; }
 
-/* line 5, ../sass/_WORKLISTS.scss */
+/* line 8, ../sass/_WORKLISTS.scss */
 .loc_WL_UNLOCK_SAS_FULL[data-locked="N"] {
   display: none; }
 
-/* line 8, ../sass/_WORKLISTS.scss */
+/* line 11, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_SAS_QUICK[data-locked="Y"] {
   display: none; }
 
-/* line 11, ../sass/_WORKLISTS.scss */
+/* line 14, ../sass/_WORKLISTS.scss */
 .loc_WL_UNLOCK_SAS_QUICK[data-locked="N"] {
   display: none; }
 
-/* line 15, ../sass/_WORKLISTS.scss */
+/* line 18, ../sass/_WORKLISTS.scss */
 .loc_WL_UNLOCK_SAS_QUICK[data-status="DEN"] {
   display: none; }
 
-/* line 19, ../sass/_WORKLISTS.scss */
+/* line 22, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_SAS_FULL[data-status="DEN"] {
   display: none; }
 
-/* line 23, ../sass/_WORKLISTS.scss */
+/* line 26, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_SAS_FULL[data-status="TBV"] {
   display: none; }
 
-/* line 27, ../sass/_WORKLISTS.scss */
+/* line 30, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_SAS_FULL[data-status="VIP"] {
   display: none; }
 
-/* line 31, ../sass/_WORKLISTS.scss */
+/* line 34, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_SAS_FULL[data-status="VCH"] {
   display: none; }
 
-/* line 35, ../sass/_WORKLISTS.scss */
+/* line 38, ../sass/_WORKLISTS.scss */
 .loc_WL_VIEW_APPROVER[data-wl="2"] {
   display: none; }
 
-/* line 39, ../sass/_WORKLISTS.scss */
+/* line 42, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_APPROVER[data-wl="3"] {
   display: none; }
 
-/* line 42, ../sass/_WORKLISTS.scss */
+/* line 45, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_APPROVER[data-locked="Y"][data-wl="0"] {
   display: none; }
 
-/* line 45, ../sass/_WORKLISTS.scss */
+/* line 48, ../sass/_WORKLISTS.scss */
 .loc_WL_UNLOCK_APR_FULL[data-locked="N"] {
   display: none; }
 
-/* line 49, ../sass/_WORKLISTS.scss */
+/* line 52, ../sass/_WORKLISTS.scss */
 .loc_WL_OPEN_APPROVER[data-wl="1"] {
   display: none; }
 
-/* line 52, ../sass/_WORKLISTS.scss */
+/* line 55, ../sass/_WORKLISTS.scss */
 #work-lists button {
   font-size: 16px !important;
   width: 50% !important;

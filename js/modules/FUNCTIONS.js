@@ -144,10 +144,12 @@ hasVendor: function() {
                 Obj.Created_Date = ""
               }
 
-              if (Obj.fld_comments_254.text) {
+             if (Obj.fld_comments_254.text) {
                 comments.push(Obj.Saved_Date + " " + Obj.fld_comments_254.text);
-                return
+                         return
               }
+
+       
               // these are SAS rows
   if (Obj.fld_ptafstage_nbr.text == "10" && jwt.user.isSAS) {
                 action = "Complete";
@@ -159,11 +161,6 @@ hasVendor: function() {
                   status = " ";
                   action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
                   }
-
-      /*moreRows.push(["SAS", Obj.fld_oprdefndesc.text, action,
-		           jwt.constants.keys[Obj.fld_ptafadhoc_by.text], status
-			 , Obj.Created_Date, Obj.Saved_Date, comments.join()]);
-*/
                     moreRows.push(
                         {
                         "area" : "SAS",
@@ -174,15 +171,10 @@ hasVendor: function() {
                             "col5"  :status,
                             "dateCreated" : Obj.Created_Date,
                             "dateSaved" : Obj.Saved_Date,
-                            "comments" : comments
+                            "comments" : comments.slice()
                         });
-
-
-
-
-
       
-          comments = [];
+//          comments = [];
 
    } else {
                 Obj.isSAS = false;
@@ -230,10 +222,10 @@ hasVendor: function() {
                             "col5"  :"",
                             "dateCreated" : Obj.Created_Date,
                             "dateSaved" : Obj.Saved_Date,
-                            "comments" : comments
+                            "comments" : comments.slice()
                         });
 
-                comments = [];
+               // comments = [];
               } else {
                 Obj.isApprover = false;
               }
