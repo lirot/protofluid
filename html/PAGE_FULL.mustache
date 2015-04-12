@@ -158,6 +158,7 @@
       </div>
     </section>
 
+{{^user.isNoLines}}
   <section class="detail">
 {{#sections}}
     <section class="group" data-key="{{SectionHeader.key}}" data-project_id="{{SectionHeader.pi}}" data-po_id="{{SectionHeader.po}}" data-can_edit="{{SectionHeader.section_ce}}" >
@@ -353,6 +354,8 @@
     </section>
 {{/sections}}
 </section>
+{{/user.isNoLines}}
+
 
   <section class="payment">
   
