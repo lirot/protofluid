@@ -30,6 +30,7 @@ jwt.routes['loc_WL_OPEN_SAS_FULL'] = (function() {
     buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel    : "Open" }
   }
 })();
+
 jwt.routes['loc_WL_UNLOCK_SAS_FULL'] = (function() {
   return {
     runPageEdit    : false,
@@ -150,12 +151,32 @@ jwt.routes['loc_WL_OPEN_APPROVER'] = (function() {
 	    'jwt.jwtComponentConfigFull', jQuery(elem)
 		.data("key") + "&UNLOCK=N");
                         },
-
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
       buttonDefn     : { buttonClass : "alizarin-flat-button"
 			 , buttonLabel    : "Open" }
+  }
+})();
 
+jwt.routes['loc_WL_UNLOCK_APR_FULL'] = (function() {
+  return {
+    runPageEdit    : false,
+    runRefresh     : true,
+    updateImageNow : true,
+    showProcess    : true,
+    Definition     : 'Click to unlock an invoice',
+    Description    : "Unlock Invoice Button",
+    editArray      : ["msg-isDirty"],
+    beforeFunction : function(data) {},
+    serverFunction : function(elem){
+                       window.unlock = true;
+        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
+				 , jQuery(elem).data("key") );
+                        },
+    afterFunction  : function() {    },
+    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
+      buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
+			 : "Unlock" }
   }
 })();
 
@@ -176,7 +197,7 @@ jwt.routes['loc_WL_VIEW_APPROVER'] = (function() {
                         },
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "sun-flower-button"
+      buttonDefn     : { buttonClass : "alizarin-flat-button"
 			 , buttonLabel    : "View" }
 
   }

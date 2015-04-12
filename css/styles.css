@@ -2639,14 +2639,18 @@ caption {
   display: none; }
 
 /* line 42, ../sass/_WORKLISTS.scss */
-.oldloc_WL_OPEN_APPROVER[data-wl="0"] {
+.loc_WL_OPEN_APPROVER[data-locked="Y"][data-wl="0"] {
   display: none; }
 
-/* line 46, ../sass/_WORKLISTS.scss */
-.loc_WL_OPEN_APPROVER[data-wl="1"] {
+/* line 45, ../sass/_WORKLISTS.scss */
+.loc_WL_UNLOCK_APR_FULL[data-locked="N"] {
   display: none; }
 
 /* line 49, ../sass/_WORKLISTS.scss */
+.loc_WL_OPEN_APPROVER[data-wl="1"] {
+  display: none; }
+
+/* line 52, ../sass/_WORKLISTS.scss */
 #work-lists button {
   font-size: 16px !important;
   width: 50% !important;

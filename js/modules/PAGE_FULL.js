@@ -307,7 +307,7 @@ callback: function(config) {
                 jQuery(".rf-hdr-pm").hide();
                 jQuery(".rf-hdr-sb").hide();
                 jQuery(".rf-hdr-hc").hide();
-                jquery(".rf-hdr-hf").hide();
+                jQuery(".rf-hdr-hf").hide();
             }
 
             if (jwt.user.isLocked || !jwt.user.isSAS) {
@@ -321,7 +321,6 @@ callback: function(config) {
 // the line quantity and unit price inputs are added and stored
 // in the ma field on the first l
 // ma is monetary amount
-	 
          //start with the lines hiddens
         jQuery(".line2").hide();
 

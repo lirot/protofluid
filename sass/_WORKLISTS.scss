@@ -39,7 +39,10 @@
 .loc_WL_OPEN_APPROVER[data-wl="3"] {
     display:none;
 }
-.oldloc_WL_OPEN_APPROVER[data-wl="0"] {
+.loc_WL_OPEN_APPROVER[data-locked="Y"][data-wl="0"]  {
+    display:none;
+}
+.loc_WL_UNLOCK_APR_FULL[data-locked="N"] {
     display:none;
 }
 

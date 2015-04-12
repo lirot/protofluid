@@ -120,32 +120,49 @@ var wlCreatTable = function(response, worklist) {
 		  + " data-locked=" + locked + "></button>";
           }
         }
-
+      
       if (jwt.user.isApprover) {
-     if (jwt.user.isIA) {
-          buttonHTML = "<button class='loc_WL_OPEN_APPROVER' data-wl="
+          if(  worklist.id == "0" ){
+          if (jwt.user.isIA ) {
+         buttonHTML = "<button class='loc_WL_UNLOCK_APR_FULL' data-wl="
 		+ worklist.id + "  data-imgNowKey="
-		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_OPEN_"
-	        + "APPROVER' type='button' data-key=" + item[worklist.key]
+		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_UNLOCK_"
+	        + "APR_FULL' type='button' data-key=" + item[worklist.key]
 		+ " data-imgNowKey=" + item[worklist.imgNowKey]
 		+ " data-locked=" + locked + "></button>";
-            buttonHTML = buttonHTML + "<button class='loc_WL_VIEW_APPROVER'"
+          }
+		buttonHTML = buttonHTML + "<button class='loc_WL_OPEN_APPROVER'"
+		    + "data-wl=" + worklist.id + "  data-status="
+		    + item["SHEET_STATUS"] + " data-imgNowKey="
+		    + item[worklist.imgNowKey] + " data-route-id='loc_WL_OPEN"
+		    + "_APPROVER' type='button' data-key=" + item[worklist.key]
+		    + " data-imgNowKey=" + item[worklist.imgNowKey]
+		    + " data-locked=" + locked + "></button>";
+
+         buttonHTML = buttonHTML + "<button class='loc_WL_VIEW_APPROVER'"
 	        + "data-wl=" + worklist.id + "  data-imgNowKey="
 		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_VIEW"
 	        + "_APPROVER' type='button' data-key=" + item[worklist.key]
 		+ " data-imgNowKey=" + item[worklist.imgNowKey]
 		+ " data-locked=" + locked + "></button>";
-     }else{
+     }else {
+          if ( worklist.id == 2){
+            buttonHTML = "<button class='loc_WL_OPEN_APPROVER'"
+	        + "data-wl=" + worklist.id + "  data-imgNowKey="
+		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_OPEN"
+	        + "_APPROVER' type='button' data-key=" + item[worklist.key]
+		+ " data-imgNowKey=" + item[worklist.imgNowKey]
+		+ " data-locked=" + locked + "></button>";           
+          }else{
+
             buttonHTML = "<button class='loc_WL_VIEW_APPROVER'"
 	        + "data-wl=" + worklist.id + "  data-imgNowKey="
 		+ item[worklist.imgNowKey] + " data-route-id='loc_WL_VIEW"
 	        + "_APPROVER' type='button' data-key=" + item[worklist.key]
 		+ " data-imgNowKey=" + item[worklist.imgNowKey]
 		+ " data-locked=" + locked + "></button>";
-
-
-
-     }
+          }
+          }
       }
        wlRow = wlRow + '<tr data-imgNowKey=' + item[worklist.imgNowKey]
 	      + ' data-locked=' + locked + '  data-class=' + worklist.class
