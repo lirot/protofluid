@@ -356,9 +356,7 @@
 </section>
 {{/user.isNoLines}}
 
-
   <section class="payment">
-  
         <div class="rf-hdr-pm">
           <label for="XX_HDR_PM">Payment Message</label>
           <input id="XX_HDR_PM" name="XX_HDR_PM" {{Locked}} value="{{header.XX_HDR_PM}}" />
@@ -407,6 +405,7 @@
         <div class="textareaBackground xx-comment">
           <div class="background"></div>
           <textarea {{Locked}} id="XX_HDR_CT" name="XX_HDR_CT"></textarea>
+          
         </div>
     </section>
   <section id="workflow" class="workflow">
@@ -415,6 +414,7 @@
 <ul class="navlist workflow">
 {{#workflowLines}}
 <li>
+<div>{{area}}<div>
 <div>{{descr}}</div>
 <div> Status : {{action}} </div>
 <div>{{col4}}</div>

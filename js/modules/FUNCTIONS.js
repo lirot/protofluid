@@ -2,7 +2,6 @@ jwt.functions = (function() {
   return {
     init: function() {
 
-
       String.prototype.hashCode = function() {
         var hash = 0,
           strlen = this.length,
@@ -56,23 +55,16 @@ jwt.functions = (function() {
       jQuery.extend(jwt.functions,
         {
 
-
 printButton : function(){
-                
     var $print = jQuery("#component-data")
         .clone()
         .addClass('print')
         .prependTo('body');
-
     //window.print() stops JS execution
     window.print();
-
     //Remove div once printed
     $print.remove();
-
-        
                  },
-
             
 hasVendor: function() {
             var vendorID = jQuery('#XX_HDR_VI').val();
@@ -82,17 +74,18 @@ hasVendor: function() {
             return vendorID
           },
 
-   padout: function(number) {
+padout: function(number) {
             return (number < 10) ? '0' + number : number;
           },
-   pad: function(n, width, z) {
+
+pad: function(n, width, z) {
             z = z || '0';
             n = n + '';
               return n.length >= width ? n :
 		  new Array(width - n.length + 1).join(z) + n;
           },
 
-    editApproverList: function() {
+editApproverList: function() {
             jwt.invoice.user.isAddFinAppr = false;
             jwt.invoice.user.hasApproverOnChain = false;
             var approverArray = [];
@@ -112,20 +105,18 @@ hasVendor: function() {
             jwt.invoice.user.approverList = approverArray;
           },
 
-   cleanWorkFlowData: function(xml) {
+cleanWorkFlowData: function(xml) {
 
             //function builds the table show to the user
             var moreRows = [];
        var userType, action, startDate, status, EndDate, action
        , comment, area;
             var comments = [];
-
        var  workflowData = [] ;
 
        _.each(jwt.invoice.workflowLines, function(Obj, index) {
 
            var tempRow = [];
-
            if (Obj.fld_oprid.text == "XX_SAS_START")
                return
 		
@@ -148,7 +139,6 @@ hasVendor: function() {
                 comments.push(Obj.Saved_Date + " " + Obj.fld_comments_254.text);
                          return
               }
-
        
               // these are SAS rows
   if (Obj.fld_ptafstage_nbr.text == "10" && jwt.user.isSAS) {
@@ -161,6 +151,13 @@ hasVendor: function() {
                   status = " ";
                   action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
                   }
+          
+      if (comments.length > 0){
+          var nArray = comments.slice();
+      }else{
+          var nArray = [];
+      }
+      
                     moreRows.push(
                         {
                         "area" : "SAS",
@@ -171,30 +168,27 @@ hasVendor: function() {
                             "col5"  :status,
                             "dateCreated" : Obj.Created_Date,
                             "dateSaved" : Obj.Saved_Date,
-                            "comments" : comments.slice()
+                            "comments" : nArray
                         });
       
-//          comments = [];
+         comments = [];
 
    } else {
                 Obj.isSAS = false;
    }
 
-              if (Obj.fld_ptafstage_nbr.text == "20") {
+   if (Obj.fld_ptafstage_nbr.text == "20") {
                 area = "Approver"
 
 		  if (Obj.fld_ptafadhoc_by.text == "RET"
 		      || Obj.fld_ptafadhoc_by.text == "ADM") {
                   area = "SAS"
                 }
-
                 action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
-
                   if (Obj.fld_ptafadhoc_by.text
 		      == "ADM" && Obj.fld_ptafstep_status.text == "M") {
                   action = "Rerouted"
                 }
-
                   if (Obj.fld_ptafadhoc_by.text != "ADM"
 		      && Obj.fld_ptafadhoc_by.text != "ROUTE"
 		      && Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text
@@ -215,7 +209,6 @@ hasVendor: function() {
                     moreRows.push(
                         {
                         "area" : area,
-
                         "descr" : Obj.fld_oprdefndesc.text,
 			    "action"  :  action ,
                             "col4"  : "" ,
@@ -225,7 +218,7 @@ hasVendor: function() {
                             "comments" : comments.slice()
                         });
 
-               // comments = [];
+           comments = [];
               } else {
                 Obj.isApprover = false;
               }
@@ -236,11 +229,9 @@ hasVendor: function() {
 
           },
 
-  xmlToJson: function(xml) {
-
+xmlToJson: function(xml) {
             // Create the return object
             var obj = {};
-
             if (xml.nodeType == 1) { // element
               // do attributes
               if (xml.attributes.length > 0) {
@@ -253,7 +244,6 @@ hasVendor: function() {
             } else if (xml.nodeType == 3) { // text
               obj = xml.nodeValue;
             }
-
             // do children
             if (xml.hasChildNodes()) {
               for (var i = 0; i < xml.childNodes.length; i++) {
@@ -275,8 +265,8 @@ hasVendor: function() {
             return obj;
           },
 
-          setupNLCheck: function(config) {
-
+//NL no location for vendor
+setupNLCheck: function(config) {
             jQuery('.NL-check').change(function() {
               cb = jQuery(this);
               cb.val(cb.prop('checked'));
@@ -298,7 +288,7 @@ hasVendor: function() {
 
           },
 
-   getHashValue: function(key) {
+getHashValue: function(key) {
        if (window.location.hash.indexOf("WL") != -1) {
            return window.location.hash.match(new RegExp(key + '=([^&]*)'))[1];
             } else {
@@ -306,8 +296,7 @@ hasVendor: function() {
             }
           },
 
-   formatNumbersQF: function() {
-
+formatNumbersQF: function() {
             var elem = jQuery("#XX_HDR_ST");
        var initial_value = elem.val()
 	   .replace(/,/g, "").replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -317,27 +306,23 @@ hasVendor: function() {
        initial_value = elem.val().replace(/,/g, "")
 	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_GA").val(initial_value);
-
           },
 
-   isValidDate: function(dateString) {
+isValidDate: function(dateString) {
             var date = moment(dateString, ["MM-DD-YYYY", "YYYY-MM-DD"]);
-
             if (date._i) {
               return true
             }
             return false
-
           },
 
-   addlines: function() {
+addlines: function() {
 
             var $summands = jQuery("[id^='XX_LIN_MA']");
             var $sumDisplay = jQuery("#XX_HDR_LT");
        var invTotalAmt = Number(jQuery("#XX_HDR_GA")
 				.val().replace(/,/g, ""));
             var sum = 0;
-
             $summands.each(function() {
               var value = Number(jQuery(this).val().replace(/,/g, ''));
               if (!isNaN(value)) {
@@ -349,53 +334,42 @@ hasVendor: function() {
                 jQuery(this).val(initial_value);
               }
             });
-
             $sumDisplay.val(sum.toFixed(2));
-
        var netAmt = Number(jQuery("#XX_HDR_GA").val()
 			   .replace(/,/g, "")) - Number(jQuery("#XX_HDR_ST")
 				.val().replace(/,/g, ""));
 
             var difference = netAmt - $sumDisplay.val();
-
             jQuery("#XX_HDR_RA").val(difference.toFixed(2));
-
             if (difference != 0) {
               $sumDisplay.css('color', 'red');
 
             } else {
               $sumDisplay.css('color', 'black');
             }
-
             var elem = jQuery($sumDisplay);
        var initial_value = elem.val().replace(/,/g, "")
 	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             $sumDisplay.val(initial_value);
-
             elem = jQuery("#XX_HDR_GA");
             initial_value = elem.val().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_GA").val(initial_value);
-
             elem = jQuery("#XX_HDR_RA");
        initial_value = elem.val().replace(/,/g, "")
 	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_RA").val(initial_value);
-
             elem = jQuery("#XX_HDR_ST");
        initial_value = elem.val().replace(/,/g, "")
 	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_ST").val(initial_value);
-
             elem = jQuery("#XX_HDR_UT");
        initial_value = elem.val().replace(/,/g, "")
 	   .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
             jQuery("#XX_HDR_UT").val(initial_value);
-
           },
 
-          saveWarning: function(targetfunction) {
+saveWarning: function(targetfunction) {
             jwt.jwtWorkList.reset_Tabs();
-
             if (jwt.isDirty) {
               var parms = {
                 cancel: true,
@@ -410,15 +384,12 @@ hasVendor: function() {
                 }
               };
               jwt.templates.loadTemplate(parms);
-
             } else {
-
               targetfunction();
             }
           },
 
-    getDateFormatted: function(datestring) {
-
+getDateFormatted: function(datestring) {
             var separator = "/";
             var val = datestring;
             var dmy = "MDY";
@@ -427,17 +398,14 @@ hasVendor: function() {
             var sepstr = "\\-\/\\.";
             if (sepchars.indexOf(sep) == -1)
               sepstr += sep;
-
             var restr;
             restr = "(\\d{1,2})[";
             restr += sepstr;
             restr += "]?(\\d{1,2})[";
             restr += sepstr;
             restr += "]?(\\d{4}|\\d{2})";
-
             var re = new RegExp("^ *" + restr + " *$");
             var parts = re.exec(val);
-
             if (parts != null) {
               mnt = parseInt(parts[1], 10);
               day = parseInt(parts[2], 10);
@@ -450,7 +418,6 @@ hasVendor: function() {
 		    + jwt.functions.padout(yr);
               return formattedDate;
             }
-
             return false;
           }
         })
