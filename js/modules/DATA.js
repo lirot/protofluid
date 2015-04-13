@@ -1,4 +1,4 @@
- jwt.jwtData.Configs = {};
+jwt.jwtData.Configs = {};
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 jwt.jwtData.Configs['XX_289_WL_SAS9'] = (function() {
@@ -66,6 +66,15 @@ xxData: jQuery({}),
     */
 reference: "KEY1",
 is_lunr_search: true,
+
+qry_term_overide: function(term ){
+            // only show vendor locations for a prarticular vendor on the page
+     if ( jwt.functions.hasVendor()) {
+              var vendorID = jwt.functions.hasVendor();
+              return "v:" + vendorID.toString();
+     }
+    return term
+},
 
     //used to pad leading zeros if number is entered to the search
 LunrNumKey: "VENDOR_ID:10",
@@ -378,7 +387,16 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     xxData: jQuery({}),
     reference: "PO_ID",
     is_lunr_search: true,
-    LunrNumKey: "",
+      LunrNumKey: "",
+
+      qry_term_overide: function( term ){
+      //only show po for the vendor on the page
+              if ( jwt.functions.hasVendor()) {
+              var vendorID = jwt.functions.hasVendor();
+              return  "v:" + vendorID.toString();
+              }
+          return term
+      },
 
     keyfields: [  'PO_ID:100',
 		  'VENDOR_ID:100',
@@ -565,7 +583,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
       return outHTML
     },
 
-    select2setkeys: function(data, $elem) {
+    select2setKeys: function(data, $elem) {
       if (data) {
         if (data.RESOURCE_SUB_CAT != $elem.next().val()) {
           $elem.next().val(data.RESOURCE_SUB_CAT);

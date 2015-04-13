@@ -98,20 +98,11 @@ select2query: function(query) {
             var config = jwt.jwtData.Configs[tblName];
             var dataObject = jwt.jwtData[config.Definition];
 
-            // only show vendor locations for a prarticular vendor on the page
-              if (config.Definition == "XX_289_D_VND_LC"
-		  && jwt.functions.hasVendor()) {
-              var vendorID = jwt.functions.hasVendor();
-              query.term = "v:" + vendorID.toString();
+            //if the data object is has  all property  show all values
+            if (config.hasOwnProperty("qry_term_overide")) {
+                query.term = config.qry_term_overide(query.term);
             }
-
-            //only show po for the vendor on the page
-              if (config.Definition == "XX_289_D_PO_02"
-		  && jwt.functions.hasVendor()) {
-              var vendorID = jwt.functions.hasVendor();
-              query.term = "v:" + vendorID.toString();
-            }
-
+    
             //if the data object is has  all property  show all values
             if (config.hasOwnProperty("is_lunr_show_all") && query.term == "") {
               query.term = "all:all"
@@ -125,9 +116,8 @@ select2query: function(query) {
             //call sort routine on data object if defined
             if (config.hasOwnProperty("lunrSortFunction" )){
                var arrayRET = config.lunrSortFunction( newArray );
-            }
+            }else{arrayRET = newArray }
 
-    
             _.each(arrayRET, function(obj) {
               hashkey = obj.ref.hashCode().toString();
               s = config.select2Callback(dataObject["_" + hashkey]);
