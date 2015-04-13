@@ -136,7 +136,12 @@ cleanWorkFlowData: function(xml) {
               }
 
              if (Obj.fld_comments_254.text) {
-                comments.push(Obj.Saved_Date + " " + Obj.fld_comments_254.text);
+                 var commentObj = {}
+                 commentObj = {"name" : Obj.fld_oprdefndesc.text    ,
+                                "date"  :Obj.Saved_Date   ,
+                                "text"  :  Obj.fld_comments_254.text      }   
+                
+                 comments.push( commentObj );
                          return
               }
        
@@ -153,7 +158,7 @@ cleanWorkFlowData: function(xml) {
                   }
           
       if (comments.length > 0){
-          var nArray = comments.slice();
+          var nArray =  comments.slice();
       }else{
           var nArray = [];
       }
@@ -161,7 +166,6 @@ cleanWorkFlowData: function(xml) {
                     moreRows.push(
                         {
                         "area" : "SAS",
-
                      "descr" : Obj.fld_oprdefndesc.text,
 	             "action"  :  action ,
                      "col4"  : jwt.constants.keys[Obj.fld_ptafadhoc_by.text],
@@ -170,7 +174,6 @@ cleanWorkFlowData: function(xml) {
                             "dateSaved" : Obj.Saved_Date,
                             "comments" : nArray
                         });
-      
          comments = [];
 
    } else {
@@ -179,7 +182,7 @@ cleanWorkFlowData: function(xml) {
 
    if (Obj.fld_ptafstage_nbr.text == "20") {
                 area = "Approver"
-
+                action = "Pending"
 		  if (Obj.fld_ptafadhoc_by.text == "RET"
 		      || Obj.fld_ptafadhoc_by.text == "ADM") {
                   area = "SAS"
@@ -204,6 +207,9 @@ cleanWorkFlowData: function(xml) {
                   if (Obj.fld_ptafustep_inst_id.text.indexOf(
 		      jwt.invoice.user.aAweID)) {
                   action = "Fincially Approved!"
+                  }
+        if ( Obj.fld_ptafstep_status.text == "P") {
+                  action = "Pending"
                 }
 
                     moreRows.push(

@@ -1978,7 +1978,7 @@ a:hover {
   border-top-width: 2px;
   margin-top: 3px;
   margin-left: 2px; }
-/* line 15, ../sass/_PAGE_FULL_LINE.scss */
+/* line 13, ../sass/_PAGE_FULL_LINE.scss */
 #full-section .detail {
   margin: 4px;
   padding-top: 10px;
@@ -1988,55 +1988,55 @@ a:hover {
   display: inline-block;
   border-width: 1px;
   border-style: solid; }
-  /* line 27, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 25, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail #row-key-menu ul li {
     background-color: initial;
     padding: 4px; }
-  /* line 31, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 29, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail #row-key-menu ul li:nth-child(1) div {
     width: 120px; }
-  /* line 35, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 33, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail #row-key-menu ul li:nth-child(2) div {
     width: 120px; }
-  /* line 38, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 36, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail #row-key-menu ul li:nth-child(3) div {
     width: 123px;
     display: inline-block; }
-  /* line 44, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 41, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail input, #full-section .detail a, #full-section .detail div, #full-section .detail span, #full-section .detail li {
     font-size: 10pt; }
-  /* line 48, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 45, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail input {
     -moz-border-radius: 0px;
     -webkit-border-radius: 0px;
     border-radius: 0px; }
-  /* line 51, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 48, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail #line1-header {
     background-color: lemonchiffon; }
-    /* line 52, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 49, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header ul > li > div {
       text-decoration: underline; }
-    /* line 56, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 53, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header .hdr1 {
       padding-top: 8px;
       width: 19px; }
-    /* line 60, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 57, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header .hdr2 {
       width: 75px; }
-    /* line 63, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 60, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header .hdr3 {
       width: 180px; }
-    /* line 67, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 64, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header .hdr4 {
       width: 85px; }
-    /* line 70, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 67, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header .hdr5 {
       text-align: center;
       width: 90px; }
-    /* line 74, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 71, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail #line1-header .hdr6 {
       width: 65px; }
-  /* line 78, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 75, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 {
     padding-top: 10px;
     padding-right: 10px;
@@ -2044,79 +2044,79 @@ a:hover {
     border: solid;
     border-color: yellow;
     border-width: 1px; }
-    /* line 87, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 84, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .line2 li {
       padding-bottom: 4px;
       line-height: 30px; }
-  /* line 94, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 90, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 > div > div > ul > li > :first-child {
     padding-left: 5px;
     width: 60px;
     display: inline-block; }
-  /* line 99, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 95, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 > div > div > :first-child > li > :nth-child(2) {
     padding-left: 5px;
     width: 130px;
     display: inline-block; }
-  /* line 104, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 100, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 > div > :nth-child(2) > ul > li > :nth-child(2) {
     padding-left: 5px;
     width: 100px;
     display: inline-block; }
-  /* line 109, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 105, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 > div > :nth-child(3) > ul > li > :nth-child(2) {
     padding-left: 5px;
     width: 80px;
     display: inline-block;
     text-align: right; }
-  /* line 115, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 111, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 > div > :nth-child(3) > ul > li > :nth-child(2) input {
     text-align: right; }
-  /* line 119, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 115, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .line2 > div > div {
     display: inline-block; }
-  /* line 124, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 120, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .group .line1 {
     line-height: 30px; }
-    /* line 127, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 123, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .XX_LIN_AF,
     #full-section .detail .group .line1 .XX_LIN_AO,
     #full-section .detail .group .line1 .XX_LIN_SC,
     #full-section .detail .group .line1 .XX_LIN_SO {
       display: none !important; }
-    /* line 133, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 129, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .rf-lin-pl {
       width: 19px;
       background-color: initial;
       color: initial; }
-    /* line 139, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 135, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .rf-lin-ma {
       width: 90px; }
-      /* line 141, ../sass/_PAGE_FULL_LINE.scss */
+      /* line 137, ../sass/_PAGE_FULL_LINE.scss */
       #full-section .detail .group .line1 .rf-lin-ma input {
         text-align: right; }
-    /* line 146, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 142, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .rf-lin-ld {
       width: 180px; }
-    /* line 149, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 145, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .rf-lin-sc {
       width: 75px; }
-    /* line 152, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 148, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .rf-lin-so {
       width: 85px; }
-    /* line 155, ../sass/_PAGE_FULL_LINE.scss */
+    /* line 151, ../sass/_PAGE_FULL_LINE.scss */
     #full-section .detail .group .line1 .row-buttons {
       padding-left: 3px;
       background-color: initial;
       width: 73px; }
-  /* line 166, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 162, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .group .line2 .XX_LIN_AB,
   #full-section .detail .group .line2 .XX_LIN_II,
   #full-section .detail .group .line2 .XX_LIN_UM,
   #full-section .detail .group .line2 .XX_LIN_AP,
   #full-section .detail .group .line2 .XX_LIN_AI {
     display: none !important; }
-  /* line 173, ../sass/_PAGE_FULL_LINE.scss */
+  /* line 169, ../sass/_PAGE_FULL_LINE.scss */
   #full-section .detail .group .line2 .rf-lin-ab {
     display: none !important; }
 

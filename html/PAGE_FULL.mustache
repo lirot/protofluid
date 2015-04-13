@@ -410,7 +410,7 @@
     </section>
   <section id="workflow" class="workflow">
     <label> Workflow Information</label>
-
+<div>
 <ul class="navlist workflow">
 {{#workflowLines}}
 <li>
@@ -422,10 +422,13 @@
 <div>{{dateCreated}} </div>
 <div>{{dateSaved}}</div>
 </li>
+
 {{#comments}}
-<li>
+  <li>
+    <div>{{name}} </div>
+      <div>{{date}}</div>
 <div class="comment bubble">    
- <p> {{.}}<p/>
+ <p> {{text}}<p/>
   </div>
 </li>
 {{/comments}}

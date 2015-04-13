@@ -1,8 +1,6 @@
 #full-section {
    .detail > :not(:first-child)
                    {
-
-
   padding-top: 8px;
   display: inline-block;
   border-top-color: black;
@@ -39,7 +37,6 @@
           width:123px;
           display:inline-block;
       }
-
 
       input, a , div , span, li
            {
@@ -88,10 +85,9 @@
                 padding-bottom:4px;
                 line-height:30px;
             }
-
-
     }
-          .line2 > div > div  > ul >  li > :first-child{
+
+    .line2 > div > div  > ul >  li > :first-child{
                 padding-left:5px;
                 width: 60px;
             display:inline-block;
