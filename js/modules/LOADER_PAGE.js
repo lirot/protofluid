@@ -219,7 +219,7 @@ jwt.jwtComponent = (function() {
     jwt.invoice.totalLines = totalLines;
     jwt.invoice.lineNumberAdd = totalLines - 1;
     jwt.invoice.user = jwt.user;
-
+      jwt.invoice.isNoLines = true;
     jwt.invoice.workflowLines = ( jwt.workflow.hasOwnProperty(
 	  'rs_xx_289_awe_m_vw' ) ) ? jwt.workflow.rs_xx_289_awe_m_vw
 	  .row_xx_289_awe_m_vw : "";
@@ -240,6 +240,7 @@ jwt.jwtComponent = (function() {
         jwt.invoice.sections[index]["SectionHeader"] = keyObj;
         jwt.invoice.sections[index]["lines"] = [];
         _.each(jwt.lines, function(obj2, index2) {
+                  jwt.invoice.isNoLines = false;
             (obj2.key == keyObj.key)
 		? jwt.invoice.sections[index]["lines"].push(obj2): null;
         })

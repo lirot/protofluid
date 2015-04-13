@@ -431,7 +431,7 @@ jwt.o.ErrorStore =  [
                 type: "fa fa-exclamation-triangle",
                 text: 'Vendor Not Active!',
                 field: ['rf-hdr-vi'],
-                desc: 'An active vendor will be requried for route',
+                desc: '',
                 context : ["S"]
             }
             ,
