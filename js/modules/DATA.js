@@ -58,6 +58,7 @@ jwt.jwtData.Configs['XX_289_D_VND_LC'] = (function() {
 return {
 Definition: 'XX_289_D_VND_LC',
 xxData: jQuery({}),
+    searchText: "Vendor Search",
     /* properties used by lunr search library
     * lunr - http://lunrjs.com - A bit like Solr, but much smaller and not
     // as bright - 0.5.7
@@ -176,10 +177,32 @@ loc_S2_XX_HDR_VI: function() {
 
       jQuery("#loc_S2_XX_HDR_VI")
 	  .select2(config.s2optionsDO)
-	  .on("select2-open",  function(e) {
-            jwt.functions.select2PreQuery(this);
-          }).on("select2-removed", function(e) {
+        .off("select2-open")
+        .on("select2-removed", function(e) {
           jwt.jwtData.Configs['XX_289_D_VND_LC'].clear();
+          })
+        .on("select2-open",
+          function(e) {
+            jwt.functions.select2PreQuery(this);
+            jQuery("#image-now").css("width", "0%");
+            jQuery(".vi-drop1").css("left", "10%");
+            jQuery(".vi-drop1").css("width", "90%");
+            var outHTML =
+            jwt.Mustache.to_html(
+		      jwt.templates['SELECT2_ADD_HEADER'], config);
+            jQuery('.select2-input').before(outHTML);
+              var outHTML =
+		  jwt.Mustache.to_html(
+		      jwt.templates['SELECT2_ADD_FOOTER'], config);
+            jQuery('.select2-input').after(outHTML);
+            jwt.functions.select2PreQuery(this);
+            jQuery(".select2-input").focus();
+          })
+        .on("select2-close",
+          function(e) {
+            jQuery("#image-now").css("width", "40%");
+            jQuery("#component-data").css("width", "60%");
+            jQuery(".select2-search ." + config.Definition).remove();
           });
       
       //now add data source dependent on the elements configuration
@@ -246,6 +269,7 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
   return {
 
     Definition: 'XX_289_D_PRJ_01',
+    searchText: "Project Search",
     xxData: jQuery({}),
     reference: "PROJECT_ID",
     is_lunr_search: true,
@@ -317,7 +341,30 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
         function dothis() {
 
        var config = jwt.jwtData.Configs['XX_289_D_PRJ_01'];
-       jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO);
+            jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO)
+        .off("select2-open")
+        .on("select2-open",
+          function(e) {
+            jQuery("#image-now").css("width", "0%");
+            jQuery(".p1-drop1").css("left", "10%");
+            jQuery(".p1-drop1").css("width", "90%");
+            var outHTML =
+            jwt.Mustache.to_html(
+		      jwt.templates['SELECT2_ADD_HEADER'], config);
+            jQuery('.select2-input').before(outHTML);
+              var outHTML =
+		  jwt.Mustache.to_html(
+		      jwt.templates['SELECT2_ADD_FOOTER'], config);
+            jQuery('.select2-input').after(outHTML);
+            jwt.functions.select2PreQuery(this);
+            jQuery(".select2-input").focus();
+          })
+        .on("select2-close",
+          function(e) {
+            jQuery("#image-now").css("width", "40%");
+            jQuery("#component-data").css("width", "60%");
+            jQuery(".select2-search ." + config.Definition).remove();
+          });
         }
     }
 
@@ -327,6 +374,7 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
 jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
   return {
     Definition: 'XX_289_D_PO_02',
+    searchText: "PO Search",
     xxData: jQuery({}),
     reference: "PO_ID",
     is_lunr_search: true,
@@ -421,11 +469,9 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
         .on("select2-open",
           function(e) {
             jQuery("#image-now").css("width", "0%");
-           // jQuery("#component-data").css("width", "90%");
             jQuery(".po-drop1").css("left", "10%");
             jQuery(".po-drop1").css("width", "90%");
-           // jQuery(".select2-drop-mask").css("opacity", ".95")
-              var outHTML =
+            var outHTML =
 		  jwt.Mustache.to_html(
 		      jwt.templates['SELECT2_ADD_HEADER'], config);
             jQuery('.select2-input').before(outHTML);

@@ -1,9 +1,8 @@
-.s2-vendor-drop , .po-drop1 {
+.vi-drop1 , .po-drop1,.pi-drop1 {
     width:90%!important;
     left:0!important;
     margin-left:5%;
     margin-right:5%;
-//    overflow-x: scroll;
   ul{
       padding:0px;
   }
@@ -19,11 +18,6 @@
   .select2-no-results{
       display:none;
   }
-  /*position: fixed;
-  top: 60px !important;
-  left:15px !important; */
-  /*width : 65% !important;*/
-
 }
 .po-drop1 span {
   font-size: 12px;
@@ -32,19 +26,12 @@
 }
 
 .po-drop1 .select2-result-label span {
-//  font-size: 12px;
   margin-right: 5px;
   padding-top: 2px;
   padding-bottom: 2px;
   float:left;
-
 }
 
-
-.po-drop1 .select2-results {
-//  width: 1300px;
-//  overflow-x:scroll;
-}
 .po-drop1 .select2-result-label {
   line-height: 17px !important;
   overflow-x: overlay;
