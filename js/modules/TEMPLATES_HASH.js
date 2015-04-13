@@ -9,6 +9,9 @@ jwt.templates = (function() {
         'name': 'FullTemplate',
         'target': jwt.templates.PAGE_FULL
       }, {
+        'name': 'SELECT2_SC',
+        'target': jwt.templates.SELECT2_SC
+      }, {
         'name': 'UnlockTemplate',
         'target': jwt.templates.ms_01_dialog_unlock
       }, {

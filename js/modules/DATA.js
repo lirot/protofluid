@@ -533,6 +533,12 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
 		  'RESOURCE_CATEGORY',
 		  'RES_CAT_DESCR'],
       
+      lunrSortFunction : function(arr ){
+       var arrRET  =  _.sortBy(arr ,'ref');
+
+          return arrRET
+      },
+      
     s2optionsDO: {},
       
     qryString1: {
@@ -554,12 +560,9 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
     },
 
     select2Callback: function(data) {
-	return decodeURIComponent(
-	    "<div><div>" + data.RESOURCE_CATEGORY
-		+ data.RES_CAT_DESCR
-		+ data.RESOURCE_SUB_CAT
-		+ data.RES_SUB_CAT_DESCR
-		+ "</div></div>");
+      jwt.jwtData.decode(data);
+      var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_SC'], data);
+      return outHTML
     },
 
     select2setkeys: function(data, $elem) {

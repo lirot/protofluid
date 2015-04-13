@@ -117,12 +117,18 @@ select2query: function(query) {
               query.term = "all:all"
             }
 
+            //  the user inputs are feed to the lunr search routine
             results = config.lunr_index.search(query.term);
             newArray = results.slice(0, 25);
             var hashkey = "";
 
-            //  the user inputs are feed to the lunr search routine
-            _.each(newArray, function(obj) {
+            //call sort routine on data object if defined
+            if (config.hasOwnProperty("lunrSortFunction" )){
+               var arrayRET = config.lunrSortFunction( newArray );
+            }
+
+    
+            _.each(arrayRET, function(obj) {
               hashkey = obj.ref.hashCode().toString();
               s = config.select2Callback(dataObject["_" + hashkey]);
               data.results.push({
