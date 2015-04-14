@@ -18,7 +18,6 @@
   }
 
   .header1{
-
   line-height: 35px;
   display: inline-block;
   width: 100%;
@@ -46,33 +45,107 @@
     padding: 5px 20px 13px 0;
   }
 
+  .workflow-actions{
+      width:40%;
+      display:inline-block;
+      float:left;
+  }
+  
+  .workflow-comments{
+      padding:10px;
+      width:60%;
+      display:inline-block;
+  }
+  
   .workflow {
+
+
+.bubble 
+{
+position: relative;
+width: 100%;
+height: 100%;
+padding:3px;
+margin-top:20px;
+background: #FFFFFF;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+border: #0000E2 solid 2px;
+}
+
+.bubble:after 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 11px 18px;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+top: -18px;
+left: 32px;
+}
+
+.bubble:before 
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 0 13px 20px;
+border-color: #0000E2 transparent;
+display: block;
+width: 0;
+z-index: 0;
+top: -23px;
+left: 30px;
+}
+
+
     position: relative;
-    margin-top: 20px;
-    padding: 5px 20px 13px 0;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    //  padding: 5px 20px 13px 0;
     .navlist li{
         display:block;
-
+  display: block;
+  border-top-style: solid;
+  border-top-width: 1px;
+  margin-top: 6px;
+  clear:both;
     }
-   li > div{
+   li > div > div{
         font-size:10pt;
         display:inline-block;
-    }   li :first-child{
-//        width: 140px;
-        
-    }
-   li div:nth-child(2){
-        width: 140px;
-        
+   }
+   li > div{
+       display:inline-block;
+   }
+
+   li > .workflow-actions > div:nth-child(1){
+        width: 90%;
+   }
+   
+   li > .workflow-actions > div:nth-child(2){
+        width: 10%;
         }
-   li div:nth-child(3){
-//        width: 140px;
-        display:block;
+   li > .workflow-actions > div:nth-child(3){
+       width: 100%;
             }
-   li div:nth-child(4){
-        width: 140px;
+   li > .workflow-actions > div:nth-child(4){
+        width: 30%;
     }
     
+   li > .workflow-actions > div:nth-child(5){
+        width: 70%;
+   }
+  li > .workflow-actions > div:nth-child(6){
+        width: 30%;
+    }
+  li > .workflow-actions > div:nth-child(7){
+        width: 70%;
+    }
   }
    .vl-check {
         margin-bottom: 0;

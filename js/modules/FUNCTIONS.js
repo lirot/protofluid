@@ -177,7 +177,8 @@ cleanWorkFlowData: function(xml) {
          comments = [];
 
    } else {
-                Obj.isSAS = false;
+
+       Obj.isSAS = false;
    }
 
    if (Obj.fld_ptafstage_nbr.text == "20") {

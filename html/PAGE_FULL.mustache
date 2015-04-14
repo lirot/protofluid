@@ -410,31 +410,31 @@
     </section>
   <section id="workflow" class="workflow">
     <label> Workflow Information</label>
-<div>
+
 <ul class="navlist workflow">
 {{#workflowLines}}
 <li>
-<div>{{area}}<div>
-<div>{{descr}}</div>
+<div class="workflow-actions">
+  <div>{{descr}}</div>
+<div>{{area}}</div>
 <div> Status : {{action}} </div>
 <div>{{col4}}</div>
-<div>{{col5}}</div>
 <div>{{dateCreated}} </div>
+<div>{{col5}}</div>
 <div>{{dateSaved}}</div>
-</li>
-
+</div>
+<div class="workflow-comments">
 {{#comments}}
-  <li>
-    <div>{{name}} </div>
-      <div>{{date}}</div>
-<div class="comment bubble">    
- <p> {{text}}<p/>
+  <div>{{name}} </div>
+  <div>{{date}}</div>
+  <div class="bubble">    
+   <p> {{text}}<p/>
   </div>
-</li>
 {{/comments}}
+</div>
+</li>
 {{/workflowLines}}
-</ul>
-    
+</ul>  
   </section>
 </section>
 {{#user.isSAS}}
