@@ -107,7 +107,7 @@ jwt.templates = (function() {
         .beforeTemplateCallback(_config);
 
 
-var        template = jwt.templates[config.templateName],
+       var template = jwt.templates[config.templateName],
         outHTML = jwt.Mustache.to_html(template, jwt.invoice);
 
       jQuery("#component-data").html(outHTML);

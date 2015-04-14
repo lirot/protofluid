@@ -191,8 +191,8 @@ cleanWorkFlowData: function(xml) {
 
        _.findWhere(comments, {"stage": "10"}) ? comments = [] : true ;
 
-       area = "Approver"
-                action = "Pending"
+       area = "Approver";
+       action = "Pending";
 		  if (Obj.fld_ptafadhoc_by.text == "RET"
 		      || Obj.fld_ptafadhoc_by.text == "ADM") {
                   area = "SAS"
@@ -214,7 +214,7 @@ cleanWorkFlowData: function(xml) {
                 if (Obj.fld_ptaforig_oprid.text == "RET") {
                   action = "Returned to SAS"
                 }
-                  if (Obj.fld_ptafustep_inst_id.text.indexOf(
+       if (jwt.invoice.user.aAweID.toString() != "" && Obj.fld_ptafustep_inst_id.text.indexOf(
 		      jwt.invoice.user.aAweID) != -1) {
                   action = "Fincially Approved!"
                   }

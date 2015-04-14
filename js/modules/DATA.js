@@ -46,7 +46,14 @@ jwt.jwtData.Configs['XX_289_D_VND_LC_SINGLE'] = (function() {
     callback: function(jsonObj, config) {
       //on the return set the page value for display
       var data = jwt.jwtData.XX_289_D_VND_LC_SINGLE["_" + encodeURIComponent(jwt.invoice.header.XX_HDR_VI + jwt.invoice.header.XX_HDR_VL).hashCode().toString()];
-      data.VENDOR_STATUS = (data.VENDOR_STATUS == "I") ? "Inactive" : "Active"
+
+    if ( data.VENDOR_STATUS == "I"){
+        data.VENDOR_STATUS = "Inactive";
+       }
+ if ( data.VENDOR_STATUS == "A"){
+        data.VENDOR_STATUS = "Active";
+       }
+
       var ret = jwt.jwtData.decode(data);
       var outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
       jQuery('#loc_vendorInfo #addressInfo').html(outHTML);
@@ -120,7 +127,13 @@ qryString1: {
       //before being displayed to the user
 select2Callback: function(data) {
          jwt.jwtData.decode(data);
-        data.VENDOR_STATUS = (data.VENDOR_STATUS == "I") ? "Inactive" : "Active"
+    if ( data.VENDOR_STATUS == "I"){
+        data.VENDOR_STATUS = "Inactive";
+       }
+ if ( data.VENDOR_STATUS == "A"){
+        data.VENDOR_STATUS = "Active";
+       }
+
       var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_VENDOR'], data);
       return outHTML
      },
@@ -156,7 +169,8 @@ select2setKeys: function(data) {
       jQuery('.NL-check').prop('checked', false);
       jQuery('#XX_HDR_VI').val(data.VENDOR_ID);
       jQuery('.NL-check').prettyCheckable('uncheck');
-      jQuery('#XX_HDR_VL').val(decodeURIComponent(data.VNDR_LOC));
+    jQuery('#XX_HDR_VL').val(decodeURIComponent(data.VNDR_LOC));
+
       if (jwt.jwtWorkList.sActivePage == 'jwt.jwtComponentConfigFull') {
         var outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
         jQuery('#loc_vendorInfo #addressInfo').html(outHTML);
@@ -587,8 +601,8 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
       if (data) {
         if (data.RESOURCE_SUB_CAT != $elem.next().val()) {
           $elem.next().val(data.RESOURCE_SUB_CAT);
-          if ($elem.parent().next().find("input[id^='XX_LIN_LD']").val() == "") {
-              $elem.parent().next()
+            if ($elem.parent().parent().next().find("input[id^='XX_LIN_LD']").val() == "") {
+                $elem.parent().parent().next()
 		  .find("input[id^='XX_LIN_LD']")
 		  .val(decodeURIComponent(data.RES_SUB_CAT_DESCR));
           }
