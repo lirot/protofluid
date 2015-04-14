@@ -113,7 +113,7 @@ cleanWorkFlowData: function(xml) {
        , comment, area;
             var comments = [];
        var  workflowData = [] ;
-
+      var firstComment = true
        _.each(jwt.invoice.workflowLines, function(Obj, index) {
 
            var tempRow = [];
@@ -134,16 +134,22 @@ cleanWorkFlowData: function(xml) {
                 Obj.Saved_Date = "";
                 Obj.Created_Date = ""
               }
-
-             if (Obj.fld_comments_254.text) {
+           if ( Obj.fld_ptafstage_nbr.text == "999") {
+               if ( firstComment ){
+                   comments =[];
+                   firstComment = false;
+               }
                  var commentObj = {}
-                 commentObj = {"name" : Obj.fld_oprdefndesc.text    ,
+               commentObj = {   "stage": Obj.fld_ptafadhoc_by.text ,  
+                                "name" : Obj.fld_oprdefndesc.text    ,
                                 "date"  :Obj.Saved_Date   ,
                                 "text"  :  Obj.fld_comments_254.text      }   
                 
                  comments.push( commentObj );
                          return
-              }
+           }else{
+               firstComment = true
+           }
        
               // these are SAS rows
   if (Obj.fld_ptafstage_nbr.text == "10" && jwt.user.isSAS) {
@@ -182,7 +188,10 @@ cleanWorkFlowData: function(xml) {
    }
 
    if (Obj.fld_ptafstage_nbr.text == "20") {
-                area = "Approver"
+
+       _.findWhere(comments, {"stage": "10"}) ? comments = [] : true ;
+
+       area = "Approver"
                 action = "Pending"
 		  if (Obj.fld_ptafadhoc_by.text == "RET"
 		      || Obj.fld_ptafadhoc_by.text == "ADM") {
@@ -206,7 +215,7 @@ cleanWorkFlowData: function(xml) {
                   action = "Returned to SAS"
                 }
                   if (Obj.fld_ptafustep_inst_id.text.indexOf(
-		      jwt.invoice.user.aAweID)) {
+		      jwt.invoice.user.aAweID) != -1) {
                   action = "Fincially Approved!"
                   }
         if ( Obj.fld_ptafstep_status.text == "P") {
@@ -218,8 +227,8 @@ cleanWorkFlowData: function(xml) {
                         "area" : area,
                         "descr" : Obj.fld_oprdefndesc.text,
 			    "action"  :  action ,
-                            "col4"  : "" ,
-                            "col5"  :"",
+                            "col4"  : "Assigned" ,
+                            "col5"  :"Took Action",
                             "dateCreated" : Obj.Created_Date,
                             "dateSaved" : Obj.Saved_Date,
                             "comments" : comments.slice()
