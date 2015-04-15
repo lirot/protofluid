@@ -2321,8 +2321,7 @@ td {
 /* line 7, ../sass/_table-sorter.scss */
 tr:hover td {
   text-decoration: underline;
-  background-color: #EAE3CB !important;
-  cursor: pointer; }
+  background-color: #EAE3CB !important; }
 
 /* line 14, ../sass/_table-sorter.scss */
 .tablesorter-default {
@@ -2334,7 +2333,7 @@ tr:hover td {
   text-align: left; }
 
 /* header */
-/* line 29, ../sass/_table-sorter.scss */
+/* line 24, ../sass/_table-sorter.scss */
 .tablesorter-default th,
 .tablesorter-default thead td {
   font: bold 12px/18px Arial, Sans-serif;
@@ -2344,43 +2343,42 @@ tr:hover td {
   border-bottom: #ccc 2px solid;
   padding: 0; }
 
-/* line 39, ../sass/_table-sorter.scss */
+/* line 34, ../sass/_table-sorter.scss */
 .tablesorter-default tfoot th,
 .tablesorter-default tfoot td {
   border: 0; }
 
-/* line 44, ../sass/_table-sorter.scss */
+/* line 39, ../sass/_table-sorter.scss */
 .tablesorter-default .header,
 .tablesorter-default .tablesorter-header {
   background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
   background-position: center right;
   background-repeat: no-repeat;
-  cursor: pointer;
   white-space: normal;
   padding: 4px 20px 4px 4px; }
 
-/* line 54, ../sass/_table-sorter.scss */
+/* line 49, ../sass/_table-sorter.scss */
 .tablesorter-default thead .headerSortUp,
 .tablesorter-default thead .tablesorter-headerSortUp,
 .tablesorter-default thead .tablesorter-headerAsc {
   background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjI8Bya2wnINUMopZAQA7);
   border-bottom: #000 2px solid; }
 
-/* line 61, ../sass/_table-sorter.scss */
+/* line 56, ../sass/_table-sorter.scss */
 .tablesorter-default thead .headerSortDown,
 .tablesorter-default thead .tablesorter-headerSortDown,
 .tablesorter-default thead .tablesorter-headerDesc {
   background-image: url(data:image/gif;base64,R0lGODlhFQAEAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAQAAAINjB+gC+jP2ptn0WskLQA7);
   border-bottom: #000 2px solid; }
 
-/* line 68, ../sass/_table-sorter.scss */
+/* line 63, ../sass/_table-sorter.scss */
 .tablesorter-default thead .sorter-false {
   background-image: none;
   cursor: default;
   padding: 4px; }
 
 /* tfoot */
-/* line 75, ../sass/_table-sorter.scss */
+/* line 70, ../sass/_table-sorter.scss */
 .tablesorter-default tfoot .tablesorter-headerSortUp,
 .tablesorter-default tfoot .tablesorter-headerSortDown,
 .tablesorter-default tfoot .tablesorter-headerAsc,
@@ -2388,7 +2386,7 @@ tr:hover td {
   border-top: #000 2px solid; }
 
 /* tbody */
-/* line 83, ../sass/_table-sorter.scss */
+/* line 78, ../sass/_table-sorter.scss */
 .tablesorter-default td {
   background-color: #fff;
   border-bottom: #ccc 1px solid;
@@ -2396,7 +2394,7 @@ tr:hover td {
   vertical-align: top; }
 
 /* hovered row colors */
-/* line 91, ../sass/_table-sorter.scss */
+/* line 86, ../sass/_table-sorter.scss */
 .tablesorter-default tbody > tr:hover > td,
 .tablesorter-default tbody > tr.even:hover > td,
 .tablesorter-default tbody > tr.odd:hover > td {
@@ -2404,7 +2402,7 @@ tr:hover td {
   color: #000; }
 
 /* table processing indicator */
-/* line 99, ../sass/_table-sorter.scss */
+/* line 94, ../sass/_table-sorter.scss */
 .tablesorter-default .tablesorter-processing {
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -2412,49 +2410,49 @@ tr:hover td {
   background-image: url("data:image/gif;base64,R0lGODlhFAAUAKEAAO7u7lpaWgAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQBCgACACwAAAAAFAAUAAACQZRvoIDtu1wLQUAlqKTVxqwhXIiBnDg6Y4eyx4lKW5XK7wrLeK3vbq8J2W4T4e1nMhpWrZCTt3xKZ8kgsggdJmUFACH5BAEKAAIALAcAAAALAAcAAAIUVB6ii7jajgCAuUmtovxtXnmdUAAAIfkEAQoAAgAsDQACAAcACwAAAhRUIpmHy/3gUVQAQO9NetuugCFWAAAh+QQBCgACACwNAAcABwALAAACE5QVcZjKbVo6ck2AF95m5/6BSwEAIfkEAQoAAgAsBwANAAsABwAAAhOUH3kr6QaAcSrGWe1VQl+mMUIBACH5BAEKAAIALAIADQALAAcAAAIUlICmh7ncTAgqijkruDiv7n2YUAAAIfkEAQoAAgAsAAAHAAcACwAAAhQUIGmHyedehIoqFXLKfPOAaZdWAAAh+QQFCgACACwAAAIABwALAAACFJQFcJiXb15zLYRl7cla8OtlGGgUADs=") !important; }
 
 /* Zebra Widget - row alternating colors */
-/* line 107, ../sass/_table-sorter.scss */
+/* line 102, ../sass/_table-sorter.scss */
 .tablesorter-default tr.odd > td {
   background-color: #dfdfdf; }
 
-/* line 111, ../sass/_table-sorter.scss */
+/* line 106, ../sass/_table-sorter.scss */
 .tablesorter-default tr.even > td {
   background-color: #efefef; }
 
 /* Column Widget - column sort colors */
-/* line 116, ../sass/_table-sorter.scss */
+/* line 111, ../sass/_table-sorter.scss */
 .tablesorter-default tr.odd td.primary {
   background-color: #bfbfbf; }
 
-/* line 120, ../sass/_table-sorter.scss */
+/* line 115, ../sass/_table-sorter.scss */
 .tablesorter-default td.primary,
 .tablesorter-default tr.even td.primary {
   background-color: #d9d9d9; }
 
-/* line 125, ../sass/_table-sorter.scss */
+/* line 120, ../sass/_table-sorter.scss */
 .tablesorter-default tr.odd td.secondary {
   background-color: #d9d9d9; }
 
-/* line 129, ../sass/_table-sorter.scss */
+/* line 124, ../sass/_table-sorter.scss */
 .tablesorter-default td.secondary,
 .tablesorter-default tr.even td.secondary {
   background-color: #e6e6e6; }
 
-/* line 134, ../sass/_table-sorter.scss */
+/* line 129, ../sass/_table-sorter.scss */
 .tablesorter-default tr.odd td.tertiary {
   background-color: #e6e6e6; }
 
-/* line 138, ../sass/_table-sorter.scss */
+/* line 133, ../sass/_table-sorter.scss */
 .tablesorter-default td.tertiary,
 .tablesorter-default tr.even td.tertiary {
   background-color: #f2f2f2; }
 
 /* caption */
-/* line 144, ../sass/_table-sorter.scss */
+/* line 139, ../sass/_table-sorter.scss */
 caption {
   background: #fff; }
 
 /* filter widget */
-/* line 149, ../sass/_table-sorter.scss */
+/* line 144, ../sass/_table-sorter.scss */
 .tablesorter-default .tablesorter-filter-row td {
   background: #eee;
   border-bottom: #ccc 1px solid;
@@ -2467,14 +2465,14 @@ caption {
   transition: line-height 0.1s ease; }
 
 /* optional disabled input styling */
-/* line 161, ../sass/_table-sorter.scss */
+/* line 156, ../sass/_table-sorter.scss */
 .tablesorter-default .tablesorter-filter-row .disabled {
   opacity: 0.5;
   filter: alpha(opacity=50);
   cursor: not-allowed; }
 
 /* hidden filter row */
-/* line 168, ../sass/_table-sorter.scss */
+/* line 163, ../sass/_table-sorter.scss */
 .tablesorter-default .tablesorter-filter-row.hideme td {
   /*** *********************************************** ***/
   /*** change this padding to modify the thickness     ***/
@@ -2482,10 +2480,9 @@ caption {
   padding: 2px;
   /*** *********************************************** ***/
   margin: 0;
-  line-height: 0;
-  cursor: pointer; }
+  line-height: 0; }
 
-/* line 179, ../sass/_table-sorter.scss */
+/* line 174, ../sass/_table-sorter.scss */
 .tablesorter-default .tablesorter-filter-row.hideme * {
   height: 1px;
   min-height: 0;
@@ -2497,7 +2494,7 @@ caption {
   filter: alpha(opacity=0); }
 
 /* filters */
-/* line 191, ../sass/_table-sorter.scss */
+/* line 186, ../sass/_table-sorter.scss */
 .tablesorter-default input.tablesorter-filter,
 .tablesorter-default select.tablesorter-filter {
   width: 95%;
@@ -2516,15 +2513,14 @@ caption {
   transition: height 0.1s ease; }
 
 /* rows hidden by filtering (needed for child rows) */
-/* line 210, ../sass/_table-sorter.scss */
+/* line 205, ../sass/_table-sorter.scss */
 .tablesorter .filtered {
   display: none; }
 
 /* ajax error row */
-/* line 215, ../sass/_table-sorter.scss */
+/* line 210, ../sass/_table-sorter.scss */
 .tablesorter .tablesorter-errorRow td {
   text-align: center;
-  cursor: pointer;
   background-color: #e6bf99; }
 
 /* line 1, ../sass/_SELECT2.scss */
@@ -2857,76 +2853,76 @@ a.tooltip span {
   body > :not(:first-child) {
     display: none; }
 
-  /* line 16, ../sass/_base.scss */
+  /* line 14, ../sass/_base.scss */
   body #image-now,
   body .remove-add,
   body #page-header {
     display: none; } }
-/* line 36, ../sass/_base.scss */
+/* line 23, ../sass/_base.scss */
 body, html {
   width: 100%;
   height: 100%; }
 
-/* line 41, ../sass/_base.scss */
+/* line 28, ../sass/_base.scss */
 .print {
   background-color: white;
   z-index: 100000;
   /* CSS doesn't support infinity */
   /* Any other Print Properties */ }
 
-/* line 54, ../sass/_base.scss */
+/* line 41, ../sass/_base.scss */
 body {
   padding-right: 16px; }
 
-/* line 63, ../sass/_base.scss */
+/* line 50, ../sass/_base.scss */
 h1, h2, h3, h4, h5, h6 {
   font-family: Bree Serif, serif;
   font-weight: normal;
   color: #475B62;
   text-shadow: #FCF4DC 1px 1px; }
 
-/* line 70, ../sass/_base.scss */
+/* line 57, ../sass/_base.scss */
 h1 {
   font-size: 2.2rem;
   color: #1f7f9e;
   margin-bottom: 10px; }
 
-/* line 76, ../sass/_base.scss */
+/* line 63, ../sass/_base.scss */
 label {
   color: black;
   font-size: 12px;
   display: block; }
 
-/* line 81, ../sass/_base.scss */
+/* line 68, ../sass/_base.scss */
 i {
   margin-right: 6px; }
 
-/* line 86, ../sass/_base.scss */
+/* line 73, ../sass/_base.scss */
 .small {
   font-size: 1rem;
   color: #2176C7; }
 
-/* line 90, ../sass/_base.scss */
+/* line 77, ../sass/_base.scss */
 ul.navlist {
   margin-left: 0;
   padding-left: 16px;
   clear: both; }
 
-/* line 97, ../sass/_base.scss */
+/* line 84, ../sass/_base.scss */
 .navlist li {
   display: inline-block;
   list-style-type: none; }
 
-/* line 103, ../sass/_base.scss */
+/* line 90, ../sass/_base.scss */
 .button:hover {
   background-color: #fafafa;
   color: #207cca; }
 
-/* line 108, ../sass/_base.scss */
+/* line 95, ../sass/_base.scss */
 .nav-action {
   font-size: 10px; }
 
-/* line 113, ../sass/_base.scss */
+/* line 100, ../sass/_base.scss */
 .wlClose {
   color: blue;
   line-height: 25px;
@@ -2936,88 +2932,88 @@ ul.navlist {
   top: 1px;
   width: 18px;
   text-decoration: none; }
-  /* line 124, ../sass/_base.scss */
+  /* line 111, ../sass/_base.scss */
   .wlClose:hover {
     color: red; }
 
-/* line 130, ../sass/_base.scss */
+/* line 117, ../sass/_base.scss */
 section table {
   display: none; }
 
-/* line 132, ../sass/_base.scss */
+/* line 119, ../sass/_base.scss */
 section.approvers-table table {
   display: block; }
 
-/* line 134, ../sass/_base.scss */
+/* line 121, ../sass/_base.scss */
 .displayBlock {
   display: block; }
 
-/* line 136, ../sass/_base.scss */
+/* line 123, ../sass/_base.scss */
 .displayHidden {
   display: none; }
 
-/* line 139, ../sass/_base.scss */
+/* line 126, ../sass/_base.scss */
 #work-list-menu .navlist li {
   background-color: yellow; }
-  /* line 141, ../sass/_base.scss */
+  /* line 128, ../sass/_base.scss */
   #work-list-menu .navlist li a {
     color: blue; }
 
-/* line 149, ../sass/_base.scss */
+/* line 136, ../sass/_base.scss */
 #work-list-menu .navlist a, #row-header-menu .navlist a {
   padding: 3px 10px; }
 
-/* line 153, ../sass/_base.scss */
+/* line 140, ../sass/_base.scss */
 #row-header-menu a, #row-header-menu span {
   color: blue; }
 
-/* line 157, ../sass/_base.scss */
+/* line 144, ../sass/_base.scss */
 #work-list-menu > .navlist a:link
  {
   color: #fff;
   text-decoration: none; }
 
-/* line 167, ../sass/_base.scss */
+/* line 154, ../sass/_base.scss */
 #work-list-menu .navlist a:hover, #row-header-menu .navlist a:hover {
   color: #fff !important;
   background-color: red !important;
   text-decoration: none !important; }
 
-/* line 173, ../sass/_base.scss */
+/* line 160, ../sass/_base.scss */
 .active-tab {
   color: #fff;
   background-color: red;
   text-decoration: none; }
 
-/* line 178, ../sass/_base.scss */
+/* line 165, ../sass/_base.scss */
 .ps-hidden {
   display: none; }
 
-/* line 183, ../sass/_base.scss */
+/* line 170, ../sass/_base.scss */
 .textareaBackground {
   width: 100%;
   height: 100%;
   position: relative;
   padding: 0px 10px 2px 15px; }
 
-/* line 189, ../sass/_base.scss */
+/* line 176, ../sass/_base.scss */
 .textareaBackground textarea {
   width: inherit;
   height: inherit;
   border-radius: 10px;
   height: 83px; }
 
-/* line 195, ../sass/_base.scss */
+/* line 182, ../sass/_base.scss */
 .textareaBackground .background {
   position: absolute;
   top: 0;
   left: 0;
   color: gray; }
 
-/* line 203, ../sass/_base.scss */
+/* line 190, ../sass/_base.scss */
 section#rf-hdr-messages h1 {
   line-height: 1.4em; }
-/* line 206, ../sass/_base.scss */
+/* line 193, ../sass/_base.scss */
 section#rf-hdr-messages li {
   padding: 0.15em 0 0.5em 0.5em;
   margin-bottom: 0.0em;
@@ -3026,30 +3022,30 @@ section#rf-hdr-messages li {
   font-size: 0.6em;
   list-style: none;
   background-repeat: no-repeat; }
-/* line 216, ../sass/_base.scss */
+/* line 203, ../sass/_base.scss */
 section#rf-hdr-messages .bold-green {
   font-size: 20px;
   font-weight: bold;
   color: green; }
-/* line 223, ../sass/_base.scss */
+/* line 210, ../sass/_base.scss */
 section#rf-hdr-messages .fa-exclamation {
   color: rgba(37, 146, 134, 0.7);
   text-shadow: 1px 1px 1px #ccc;
   font-size: 1.5em;
   margin-right: 10px;
   margin-left: 7px; }
-/* line 231, ../sass/_base.scss */
+/* line 218, ../sass/_base.scss */
 section#rf-hdr-messages .fa-exclamation-triangle {
   color: rgba(209, 28, 36, 0.7);
   text-shadow: 1px 1px 1px #ccc;
   font-size: 1.5em; }
-/* line 236, ../sass/_base.scss */
+/* line 223, ../sass/_base.scss */
 section#rf-hdr-messages .fa-check {
   color: rgba(0, 128, 0, 0.7);
   text-shadow: 1px 1px 1px #ccc;
   /*    font-size: 1.5em; */ }
 
-/* line 244, ../sass/_base.scss */
+/* line 231, ../sass/_base.scss */
 .fa-lock {
   color: rgba(255, 0, 0, 0.7);
   margin-left: 7px;

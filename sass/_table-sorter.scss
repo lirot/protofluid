@@ -7,22 +7,17 @@ td {text-decoration:none;}
 tr:hover td {
     text-decoration: underline;
     background-color: $paleyellow !important;
-    cursor: pointer;
+ //   cursor: pointer;
 }
 
 
 .tablesorter-default {
-
     font: 12px/18px Arial, Sans-serif;
     color: #333;
     border-spacing: 0;
     border:2px;
-
     max-height: $page-height;
     text-align: left;
-//    overflow-x:auto;
-//    overflow-y:scroll;
-
 }
 
 /* header */
@@ -46,7 +41,7 @@ tr:hover td {
     background-image: url(data:image/gif;base64,R0lGODlhFQAJAIAAACMtMP///yH5BAEAAAEALAAAAAAVAAkAAAIXjI+AywnaYnhUMoqt3gZXPmVg94yJVQAAOw==);
     background-position: center right;
     background-repeat: no-repeat;
-    cursor: pointer;
+   // cursor: pointer;
     white-space: normal;
     padding: 4px 20px 4px 4px;
 }
@@ -173,7 +168,7 @@ caption {
     /*** *********************************************** ***/
     margin: 0;
     line-height: 0;
-    cursor: pointer;
+  //  cursor: pointer;
 }
 
 .tablesorter-default .tablesorter-filter-row.hideme * {
@@ -214,6 +209,6 @@ caption {
 /* ajax error row */
 .tablesorter .tablesorter-errorRow td {
     text-align: center;
-    cursor: pointer;
+    // cursor: pointer;
     background-color: #e6bf99;
 }

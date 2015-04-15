@@ -50,7 +50,7 @@ var wlCreatTable = function(response, worklist) {
 
       var flag, important, locked, buttonHTML;
 
-    jQuery.each(jsondata, function(index, item) {
+  jQuery.each(jsondata, function(index, item) {
 
 	  locked = decodeURIComponent(item[worklist.wlLockField])
 	      == jwt.user.operDescr ? 'N' : 'Y';

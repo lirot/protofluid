@@ -42,6 +42,9 @@ jwt.jwtWorkListConfig_SAS = (function() {
         fname: 'XX_DTTM_CHAR',
         fdescr: 'Date Time Received'
       }, {
+        fname: 'XX_FLAG',
+        fdescr: ''
+      }, {
         fname: 'INVOICE_ID',
         fdescr: 'Invoice Number'
       }, {

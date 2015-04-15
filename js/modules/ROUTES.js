@@ -362,7 +362,7 @@ jwt.routes['loc_XX_HPB_600'] = (function() {
   return {
     Definition     : 'loc_XX_HPB_600',
     Description    : "Release button for SAS",
-    editArray      : [""],
+    editArray      : [],
     runRefresh     : true,
     blankImageNow  : true,
     beforeFunction : function(data) {},
