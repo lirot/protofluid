@@ -1,3 +1,10 @@
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// file:
+// Desc:  The time out and header-links are created immedtly on load of the app
+//        An init function is called by requrie after the init object is load
+//        for the user.  the main job of the init is to get the containing
+//        html ready to be populated, set up the links and required functions
+
 var jwt = (function() {
 
     var isDirty = false;
@@ -62,9 +69,8 @@ var jwt = (function() {
             jQuery(this).show()
         })
 
-        // the user really doesn't need to wait for anything the obects
-	// can be loaded in to the page without any consistency issues
-	
+        //wait here for these objects to load.
+        
         function f() {
             if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
 		&& jwt.jwtData.hasOwnProperty('XX_APPROVERS')

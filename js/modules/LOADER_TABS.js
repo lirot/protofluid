@@ -1,4 +1,9 @@
-//tablesorter plugin documentation here http://mottie.github.io/tablesorter/docs/
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// file:
+// Descr:  Worklist tabs are defined specific to user type, sas or approver
+//         Those definitions are read and the tabs and tables are created by
+//          this loader object
+//tablesorter plugin docs here http://mottie.github.io/tablesorter/docs/
 jwt.jwtWorkList = (function() {
 
     //object builds the tabs and adds the events to the buttons

@@ -183,14 +183,15 @@ require(
 
         var url_jwt = document.URL.replace(/\/\s*$/, '').split('/');
 
+        //do some housekeeping to get global objects in a handy place
         jwt.Mustache = Mustache;
         jwt.handlebars = handlebars;
         jwt.lunr = lunr;
         jwt.functions.init();
-
+        //build the references for the functions
         jwt.o.ErrorStoreFunctions.init();
         jwt.o.S2Functions.init();
-
+        //make the call for the users global object
         var tourl = "http://" + location.host + "/psc/" + url_jwt[4]
             + '/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.'
             + 'FieldFormula.iScript_xxGetInitObject_289';
@@ -200,13 +201,19 @@ require(
             contentType: "application/json; charset=utf-8"
         };
 
+        //once the user object is returned build the app
         jQuery.ajax(jqXHRoptions2).done(
             function(data, textStatus, jqXHR, Mustache, handlebars) {
                 jwt.user = jQuery.extend({}, jQuery.parseJSON(data));
+                //the html templates
                 jwt.templates.init();
+                //set up the timer and misc functions
                 jwt.init();
+                //grab worklist data and build the tables for worklists
                 jwt.jwtWorkList.init();
+                //reference data...projects, po, vendords, get it
                 jwt.jwtData.initAllData();
+                //the page definitions need to be set up
                 jwt.jwtComponent.init('jwt.jwtComponentConfigQuick'
                                       , jwt.jwtComponentConfigQuick);
                 jwt.jwtComponent.init('jwt.jwtComponentConfigFull'
