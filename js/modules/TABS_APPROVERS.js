@@ -31,7 +31,7 @@ jwt.jwtWorkListConfig_APR = (function() {
   var UserWorkList = [{
       name: 'Search',
       wlLockField: 'NAME',
-      wlID: '1',
+      wlID: '0',
       qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA","CoumnList"'
           + ':[{"Column_Name":"OPRID","Column_Value": "%USER%"'
           + ',"Operator":"="}]}',

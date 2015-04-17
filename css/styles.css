@@ -2544,7 +2544,7 @@ caption {
 
 /* line 25, ../sass/_SELECT2.scss */
 .sc-drop1 {
-  width: 440px !important;
+  width: 480px !important;
   font-size: 12px; }
 
 /* line 29, ../sass/_SELECT2.scss */
@@ -2781,13 +2781,13 @@ a.tooltip span {
   overflow: hidden; }
   /* line 51, ../sass/_SELECT2_PO_1.scss */
   .sc-drop1 .select2-result-label > span:nth-child(1) {
-    width: 15%; }
+    width: 10%; }
   /* line 54, ../sass/_SELECT2_PO_1.scss */
   .sc-drop1 .select2-result-label > span:nth-child(2) {
-    width: 45%; }
+    width: 40%; }
   /* line 57, ../sass/_SELECT2_PO_1.scss */
   .sc-drop1 .select2-result-label > span:nth-child(3) {
-    width: 15%;
+    width: 10%;
     overflow: hidden; }
   /* line 61, ../sass/_SELECT2_PO_1.scss */
   .sc-drop1 .select2-result-label span:nth-child(4) {

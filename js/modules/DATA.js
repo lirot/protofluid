@@ -559,6 +559,29 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
     xxData: jQuery({}),
     reference: "RESOURCE_SUB_CAT",
     is_lunr_search: true,
+    is_lunr_show_all: true,
+    dropDownMax: true,
+
+    postSearchFunction : function( results , elem ){
+
+          var row = jQuery( elem ).data("row-id") ;
+          var listsubCat  = _.find( jwt.invoice.user.subCatValidArray , function(str){
+              return str.indexOf( row ) != -1 
+          });
+          
+          var subCatArray = listsubCat.split(":")[1].split(",");
+
+          console.log( "Valid sub cats for row: " + row + "  "  + subCatArray.length );
+    
+          var arraySC =  _.filter( results , function( obj ){
+              return subCatArray.indexOf( obj.ref ) != -1
+          } );
+          
+          console.log( "Valid sub cats for row: " + row + "  "  + arraySC.length );
+          
+          return arraySC
+
+                },
     LunrNumKey: "",
     keyfields: ['RESOURCE_SUB_CAT:100',
 		  'RES_SUB_CAT_DESCR:100',
@@ -609,6 +632,20 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
         }
       }
     },
+
+    select2lunrPreQuery: function(config, elem) {
+
+// 
+
+        if ((config.Definition == "XX_289_D_VND_LC"
+	     || config.Definition == "XX_289_D_PO_02")
+	    && jwt.functions.hasVendor()) {
+        jQuery(".select2-input").val("v:" + jwt.functions.hasVendor());
+        jQuery(elem).select2("updateResults", true);
+        jQuery(".select2-input").val("");
+      }
+    },
+
 
    lin_S2_XX_LIN_SC: function(obj) {
       var config = jwt.jwtData.Configs['XX_289_D_SC_01'];

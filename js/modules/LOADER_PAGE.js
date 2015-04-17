@@ -220,6 +220,7 @@ jwt.jwtComponent = (function() {
     jwt.invoice.lineNumberAdd = totalLines - 1;
     jwt.invoice.user = jwt.user;
       jwt.invoice.isNoLines = true;
+      jwt.invoice.routeError = false;
     jwt.invoice.workflowLines = ( jwt.workflow.hasOwnProperty(
 	  'rs_xx_289_awe_m_vw' ) ) ? jwt.workflow.rs_xx_289_awe_m_vw
 	  .row_xx_289_awe_m_vw : "";

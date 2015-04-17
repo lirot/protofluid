@@ -22,7 +22,7 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
 
     var url_xx = document.URL.replace(/\/\s*$/, '').split('/');
 
-    var run_Edits = function( obj) {
+    var run_Edits = function( obj , callback) {
         var error_Array = obj.editArray;
         var ret = [];
         var that = this;
@@ -37,9 +37,16 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
             errorObject.route = obj;
             ret.push(jwt.error.createError.call(that, errorObject))
         });
-	
+
+        if ( typeof callback === 'function' ){
+
+            callback();
+        }
+        
         jQuery(".messages").trigger("hasError");
         return !_.contains(ret, !true);
+
+      
     };
 
   var xx_bind_buttons = function(row) {

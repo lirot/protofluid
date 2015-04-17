@@ -205,7 +205,7 @@ jwt.routes['loc_WL_VIEW_APPROVER'] = (function() {
 
 jwt.routes['XX_HPB_200'] = (function() {
   return {
-
+      
     Definition     : 'XX_HPB_200',
     Description    : "Unlock Quick Page",
     editArray      : [],
@@ -350,7 +350,7 @@ jwt.routes['loc_XX_HPB_400'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_400",
     afterFunction  : function() {},
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
+    canViewFunc    : function(){ return !jwt.invoice.user.isLocked
 				   && jwt.invoice.user.isSAS
 				   && !jwt.invoice.user.isRET },
       buttonDefn     : { buttonClass : "concrete-flat-button"
@@ -383,7 +383,8 @@ jwt.routes['loc_XX_HPB_520'] = (function() {
       Description    : "Approve Pass button for invoice end users routes"
 	  + "to approve pass page where they can add more users on the approval"
       +  "chain, approve and add a comment ",
-    editArray      : [],
+      editArray      : [],
+          runPageEdit    : true,
     beforeFunction : function() {
                     jwt.jwtComponentConfigFull.useAlternateCallback = true;
                         },
@@ -398,7 +399,8 @@ jwt.routes['loc_XX_HPB_520'] = (function() {
 
 jwt.routes['loc_XX_HPB_521'] = (function() {
   return {
-    Definition     : 'loc_XX_HPB_521',
+      Definition     : 'loc_XX_HPB_521',
+          runPageEdit    : true,
       Description    : "Reroute Button on main page -- this button pops up"
      +  "the reoute approval modal used by SAS ",
     editArray      : [],
@@ -457,11 +459,14 @@ jwt.routes['loc_XX_HPB_500'] = (function() {
     blankImageNow  : true,
     destroyPopUp   : true,
     runRefresh     : true,
-    editArray      : ["msg-valFA-Approve"],
+    editArray      : ["msg-valFA-Approve","msg-short-pay"],
     beforeFunction : function(data) {
-                     jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
-        jQuery( "#XX_HDR_LO" ).val(
-	    jwt.invoice.user.approverList.join(",") );
+            //comments go back to server
+            jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
+            //the approver list goes back to the server
+            jQuery( "#XX_HDR_LO" ).val(
+	        jwt.invoice.user.approverList.join(",")
+                );
                      },
     serverFunction : "XX_HPB_500",
     afterFunction  : function() {},
@@ -583,8 +588,6 @@ jwt.routes['loc_row_delete'] = (function() {
 
 jwt.routes['loc_row_new'] = (function() {
   return {
-
-
     Description    : "User adds a row",
     editArray      : [],
     showProcess    : true,

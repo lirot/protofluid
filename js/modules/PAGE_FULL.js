@@ -161,10 +161,14 @@ callbackAlternate: function(config) {
        // the page build will happen exactly the same as the user may
        // decide to cancel out of the modal
        // that would unhide the page
-       jwt.invoice.keepHidden = true;
+
        //load the template for this page but hide the page
        //now run the pop template
-       jwt.templates.loadTemplate(jwt.jwtComponentConfigApprove);
+    //check for route-rquired errors
+    if( jwt.invoice.routeError !=  true){
+       jwt.invoice.keepHidden = true;
+        jwt.templates.loadTemplate(jwt.jwtComponentConfigApprove);
+    }
         },
 
 
@@ -177,7 +181,10 @@ callback: function(config) {
        //main callback for final display related activities
 	//the template has rendered the page its now time for a final logic
 	//for display
-       jwt.functions.addlines();
+        jwt.functions.addlines();
+
+    jwt.invoice.user.subCatValidArray =   jwt.invoice.user.subCatValid.split("[");
+
 
 	jQuery("[id^='XX_LIN_MA'] , #XX_HDR_GA , #XX_HDR_RA, #XX_HDR_UT"
 	       + ", #XX_HDR_ST")
@@ -249,15 +256,15 @@ callback: function(config) {
                 jwt.functions.setupNLCheck(jwt.functions.setupNLCheck);
             }
 
-            //the alternate branch is followed and then reset
+            // running edit loader here will display all the server errors
+	// using the error conroller logic
+    jwt.routes.run_Edits( jwt.invoice , function(){
+                //the alternate branch is followed and then reset
             if (config.useAlternateCallback == true) {
                 config.useAlternateCallback = false;
                 config.callbackAlternate();
             }
-
-        // running edit loader here will display all the server errors
-	// using the error conroller logic
-            jwt.routes.run_Edits( jwt.invoice);
+    });
 
 	// bind the clicks to those buttons based on the routes
 	// that are configured
@@ -475,6 +482,8 @@ callback: function(config) {
 		          .select2("enable", true);
                   }
         });
+
+
     }
     }
 })();

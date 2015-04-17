@@ -26,6 +26,8 @@ jwt.jwtData = (function() {
     var decode = function(data) {
         for (var property in data) {
             if (data.hasOwnProperty(property)) {
+                console.log( data[property] );
+                
                 data[property] = decodeURIComponent(data[property]);
             }
         }

@@ -47,7 +47,13 @@ jwt.error = (function() {
     if (obj.hasOwnProperty("context")) {
       //server message we dont test  server already did the test
       if (_.contains(obj.context, "S")) {
-        found = true;
+          found = true;
+              if (obj.hasOwnProperty("routeRequired")) {
+          //surface reroute errors to the invoice
+          if ( obj.routeRequired == true){
+              jwt.invoice.routeError = true;
+          }
+      }
       }
     }
 

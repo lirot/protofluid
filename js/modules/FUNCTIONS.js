@@ -169,7 +169,8 @@ cleanWorkFlowData: function(xml) {
           var nArray = [];
       }
       
-                    moreRows.push(
+
+      moreRows.push(
                         {
                         "area" : "SAS",
                      "descr" : Obj.fld_oprdefndesc.text,
@@ -180,29 +181,29 @@ cleanWorkFlowData: function(xml) {
                             "dateSaved" : Obj.Saved_Date,
                             "comments" : nArray
                         });
-         comments = [];
+      comments = [];
 
    } else {
-
        Obj.isSAS = false;
    }
 
    if (Obj.fld_ptafstage_nbr.text == "20") {
 
-       _.findWhere(comments, {"stage": "10"}) ? comments = [] : true ;
+         _.findWhere(comments, {"stage": "10"}) ? comments = [] : true ;
+         area = "Approver";
+         action = "Pending";
 
-       area = "Approver";
-       action = "Pending";
-		  if (Obj.fld_ptafadhoc_by.text == "RET"
+         if (Obj.fld_ptafadhoc_by.text == "RET"
 		      || Obj.fld_ptafadhoc_by.text == "ADM") {
                   area = "SAS"
                 }
                 action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
-                  if (Obj.fld_ptafadhoc_by.text
+         if (Obj.fld_ptafadhoc_by.text
 		      == "ADM" && Obj.fld_ptafstep_status.text == "M") {
                   action = "Rerouted"
-                }
-                  if (Obj.fld_ptafadhoc_by.text != "ADM"
+                  }
+       
+         if (Obj.fld_ptafadhoc_by.text != "ADM"
 		      && Obj.fld_ptafadhoc_by.text != "ROUTE"
 		      && Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text
 		      && Obj.fld_ptafstep_status.text !== "F"
@@ -211,18 +212,19 @@ cleanWorkFlowData: function(xml) {
                   action = "Forced Unlock"
                 }
 
-                if (Obj.fld_ptaforig_oprid.text == "RET") {
+         if (Obj.fld_ptaforig_oprid.text == "RET") {
                   action = "Returned to SAS"
-                }
-       if (jwt.invoice.user.aAweID.toString() != "" && Obj.fld_ptafustep_inst_id.text.indexOf(
+                  }
+       
+         if (jwt.invoice.user.aAweID.toString() != "" && Obj.fld_ptafustep_inst_id.text.indexOf(
 		      jwt.invoice.user.aAweID) != -1) {
                   action = "Fincially Approved!"
                   }
-        if ( Obj.fld_ptafstep_status.text == "P") {
+         if ( Obj.fld_ptafstep_status.text == "P") {
                   action = "Pending"
                 }
 
-                    moreRows.push(
+         moreRows.push(
                         {
                         "area" : area,
                         "descr" : Obj.fld_oprdefndesc.text,

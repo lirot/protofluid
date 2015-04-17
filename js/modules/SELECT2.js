@@ -108,17 +108,32 @@ select2query: function(query) {
               query.term = "all:all"
             }
 
+    
             //  the user inputs are feed to the lunr search routine
-            results = config.lunr_index.search(query.term);
-            newArray = results.slice(0, 25);
+    results = config.lunr_index.search(query.term);
+
+    if ( config.hasOwnProperty("postSearchFunction")){
+        results = config.postSearchFunction( results , elem );
+
+    }
+
+    if ( config.hasOwnProperty("dropDownMax")){
+   
+    }else{
+            results  = results.slice(0, 25);
+
+    }
+
+         
             var hashkey = "";
-
-            //call sort routine on data object if defined
+         //call sort routine on data object if defined
             if (config.hasOwnProperty("lunrSortFunction" )){
-               var arrayRET = config.lunrSortFunction( newArray );
-            }else{arrayRET = newArray }
+               results  = config.lunrSortFunction( results );
+            }
 
-            _.each(arrayRET, function(obj) {
+   // data = {};
+    
+            _.each(results, function(obj) {
               hashkey = obj.ref.hashCode().toString();
               s = config.select2Callback(dataObject["_" + hashkey]);
               data.results.push({

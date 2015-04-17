@@ -8,7 +8,7 @@ jwt.jwtComponentConfigApprove = (function() {
     loadTemplate: jwt.templates.loadApproveTemplate,
     modal: "#approve-dialog",
     formAction: '../../../EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_FCM289_APPR.GBL',
-    editArray: ["msg-requires-Comment"],
+      editArray: ["msg-requires-Comment","msg-short-pay"],
     conroller: function(elem) {},
     callback: function(config) {
       //initialize

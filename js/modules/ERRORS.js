@@ -237,6 +237,18 @@ jwt.o.ErrorStore =  [
 
             },
             {
+                id        : 'msg-short-pay',
+                class     : 'W',
+                type      : "fa fa-exclamation",
+                text      : 'Are you sure you want to short pay the invoice',
+                test      : function( val ){
+                    return true
+                },
+                field     : [ ] ,
+                desc      : "Short Pay warning",
+
+            },
+            {
                 id        : 'msg-val-id-001',
                 class     : 'W',
                 type      : "fa fa-exclamation",
@@ -402,6 +414,7 @@ jwt.o.ErrorStore =  [
                 id: 'msg-hst-001',
                 class: 'W',
                 type: "fa fa-check",
+                routeRequired: true,
                 text: 'Invoice Header Ship to required for route',
                 desc: 'Please add a ship to before routing',
                 field: [ "rf-hdr-so"],
@@ -438,6 +451,7 @@ jwt.o.ErrorStore =  [
             {
                 id: 'msg-009',
                 type: "fa fa-exclamation-triangle",
+                routeRequired: true,
                 text: 'Vendor Location required for route.',
                 field: 'rf-hdr-vi',
                 desc: 'Please Select a vendor location',
@@ -447,6 +461,7 @@ jwt.o.ErrorStore =  [
             {
                 id: 'msg-006',
                 type: "fa fa-exclamation-triangle",
+                routeRequired: true,
                 text: 'Vendor Required for Route!',
                 field: ['rf-hdr-vi'],
                 desc: '',

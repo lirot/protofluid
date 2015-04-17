@@ -47,11 +47,15 @@ var wlCreatTable = function(response, worklist) {
       var elem = jQuery(" [data-count-wlid= '" + worklist.id + "']");
       elem.text(jsondata.length.toString())
 
-     //table header
+       //table header
       jQuery.each(worklist.fldlist, function(index, field) {
-        tblheader = tblheader + '<th>' + field.fdescr + '</th>';
-        rowtmplt = rowtmplt + field.fname;
+
+          if (  field.fdescr ){
+          tblheader = tblheader + '<th>' + field.fdescr + '</th>';
+              rowtmplt = rowtmplt + field.fname;
+          }
       });
+  
 
       var flag, important, locked, buttonHTML;
 
@@ -61,6 +65,7 @@ var wlCreatTable = function(response, worklist) {
 	      == jwt.user.operDescr ? 'N' : 'Y';
         locked = item[worklist.wlLockField] == '' ? 'N' : locked;
         important = item['XX_FLAG'] == 'Y' ? 'Y' : 'N';
+        delete item.XX_FLAG;
         buttonHTML = "";
 
      if (jwt.user.isSAS) {
@@ -194,6 +199,9 @@ var wlCreatTable = function(response, worklist) {
         wlRow = wlRow + '</tr>';
       });  /* end each row returned from parse data */
 
+
+
+    
       if (worklist.wlID == "1") {
           hdricon = "<th ><i class='fa fa-flag'></i></th>";
       }
@@ -230,7 +238,7 @@ var wlCreatTable = function(response, worklist) {
 	  //view the differnce is the SAS IA will have edit privelages on
 	  //all invoice from the SAS9 view
         var xlink, xqrystring
-        if ( !jwt.user.isSAS && jwt.user.isIA && worklist.wlID == '1') {
+        if ( !jwt.user.isSAS && jwt.user.isIA && worklist.wlID == '0') {
            var qrystring = 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA"'
 	          + ',"CoumnList":[]}'
           xlink = worklist.urlBase + worklist.iScript + qrystring;
