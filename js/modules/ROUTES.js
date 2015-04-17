@@ -371,6 +371,7 @@ jwt.routes['loc_XX_HPB_600'] = (function() {
       canViewFunc    : function(){ return  (
 	  jwt.invoice.user.isRET && jwt.invoice.user.isFinApproved
 	      && jwt.invoice.user.isSAS
+          && ! jwt.invoice.user.isLocked
 	      && jwt.invoice.user.isValidforSASRelease )},
       buttonDefn     : { buttonClass : "wet-asphalt-flat-button"
 			 , buttonLabel    : "Release" }

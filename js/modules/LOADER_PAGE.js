@@ -107,7 +107,8 @@ jwt.jwtComponent = (function() {
     }).appendTo(jqForm);
 
     jwt.form = jqForm;
-
+    
+    
     //return to the server to unlock document
     if (jQInvComp.find('#XX_HDR_SS').val() == 'IMG' || window.unlock) {
 	if (jQInvComp.find('#XX_HDR_SS').val() == 'IMG'
@@ -232,8 +233,15 @@ jwt.jwtComponent = (function() {
       jwt.invoice.header.Approverdisabled = jwt.user.isApprover
 	  ?  "disabled" : "";
 
+      if (  window.view ){
+          window.view = false;
+          jwt.invoice.user.isLocked = true;
+      }
+      
     jwt.invoice.Locked = jwt.invoice.user.isLocked ?  "disabled" : "";
 
+
+      
     jwt.invoice.sections = [];
 
     //add the secitons and the lines
