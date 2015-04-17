@@ -123,8 +123,9 @@ jwt.jwtWorkListConfig_APR = (function() {
         fname: 'XX_REVIEW_DESCR',
         fdescr: 'Review'
       }]
-    }, {
-      name: 'Invoices Sent Back',
+    },
+
+{ name: 'Invoices Sent Back',
       wlLockField: '',
       wlID: '3',
       qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR3"'

@@ -49,13 +49,17 @@ var wlCreatTable = function(response, worklist) {
 
        //table header
       jQuery.each(worklist.fldlist, function(index, field) {
+          var stitle;
+          if (field.hasOwnProperty("title") ){
 
+              stitle = field.title;
+          }
+          
           if (  field.fdescr ){
-          tblheader = tblheader + '<th>' + field.fdescr + '</th>';
+          tblheader = tblheader + '<th title="' + stitle +   '" >' + field.fdescr + '</th>';
               rowtmplt = rowtmplt + field.fname;
           }
       });
-  
 
       var flag, important, locked, buttonHTML;
 

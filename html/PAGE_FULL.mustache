@@ -64,7 +64,7 @@
 
       <div class="rf-hdr-so">
         <label for="XX_HDR_SO">Ship To</label>
-        <input type="hidden" class="select2-offscreen" data-linked-field="XX_HDR_SO" data-s2-drop-class="s2-drop-shipto" {{Locked}} {{header.Approverdisabled}} data-ps-tbl-name="XX_289_D_SHIPTO" tabindex="2" id="loc_S2_XX_HDR_SO" />
+        <input type="hidden" class="select2-offscreen" data-linked-field="XX_HDR_SO" data-s2-drop-class="st-drop1" {{Locked}} {{header.Approverdisabled}} data-ps-tbl-name="XX_289_D_SHIPTO" tabindex="2" id="loc_S2_XX_HDR_SO" />
         <input id="XX_HDR_SO" name="XX_HDR_SO" value="{{header.XX_HDR_SO}}" />
       </div>
   </section>
@@ -231,7 +231,7 @@
             </li>
             <li>
               <div class="rf-lin-so">
-                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO"  {{SectionHeader.section_disabled}} {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
+                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO" {{SectionHeader.section_disabled}} {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="st-drop1" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
                 <input class="XX_LIN_SO" id="XX_LIN_SO{{ROW}}" name="XX_LIN_SO{{ROW}}" value="{{XX_LIN_SO}}" />
               </div></li>
               <li>
@@ -239,35 +239,23 @@
                   <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}"  {{SectionHeader.section_disabled}} {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
                 </div>
               </li>
-{{^SectionHeader.section_ce}}
+
+
               <li>  <span class="row-buttons">
+                {{^XX_LIN_CE}}
                 <span class="lockDialog-line">
                   <i class="fa fa-lock"></i>
                 </span>
+{{/XX_LIN_CE}}
+{{#XX_LIN_CE}}
 {{^user.isLocked}}
-  <a href="#" title="show asset" class="show-asset" data-row-id="{{ROW}}"   >
-    <i class="fa fa-square-o">
-    </i>
-  </a>
-  <input id="XX_LIN_AF{{ROW}}" class="XX_LIN_AF" name="XX_LIN_AF{{ROW}}" value="{{XX_LIN_AF}}"  />
-  <a href="#" title="show quantity" class="show-qty" data-row-id="{{ROW}}"  >
-      <i class="fa fa-square-o">
-      </i>
-  </a>
-    <input id="XX_LIN_AO{{ROW}}" class="XX_LIN_AO" name="XX_LIN_AO{{ROW}}" value="{{XX_LIN_AO}}"  />
-{{/user.isLocked}}
-              </span></li>
-{{/SectionHeader.section_ce}}
-
-{{#SectionHeader.section_ce}}
-{{^user.isLocked}}
-    <li>    <div class="row-buttons">
-  <a href="#" title="show asset" class="show-asset" data-row-id="{{ROW}}"   >
+  <li>    <div class="row-buttons">
+  <a href="#" title="show asset" class="show-asset" data-row-id="{{ROW}}"  {{SectionHeader.section_disabled}} >
     <i class="fa fa-square-o">
     </i>
   </a>
     <input id="XX_LIN_AF{{ROW}}" class="XX_LIN_AF" name="XX_LIN_AF{{ROW}}" value="{{XX_LIN_AF}}" />
-  <a href="#" title="show quantity" class="show-qty" data-row-id="{{ROW}}"  >
+  <a href="#" title="show quantity" class="show-qty" data-row-id="{{ROW}}"  {{SectionHeader.section_disabled}} >
       <i class="fa fa-square-o">
       </i>
   </a>
@@ -278,11 +266,10 @@
           <a href="#" id="loc_XX_ACTIVE_GRID$delete${{ROW}}$${{ROW}}" name="XX_ACTIVE_GRID$delete{{ROW}}$$0" data-route-id="loc_row_delete" class="ps-delete">
             <i class="fa fa-minus-square"></i>
           </a>
-    </li>
+  </li>
 {{/user.isLocked}}
-{{/SectionHeader.section_ce}}
-
-        </ul></div>
+{{/XX_LIN_CE}}
+   </ul></div>
     </section>
     <section class="line line2" data-row-id="{{ROW}}" data-can-edit="{{XX_LIN_CE}}">
   <div>
@@ -299,7 +286,7 @@
           <li>
             <div class="hdr2">Asset ID</div> 
             <div class="rf-lin-ai">
-              <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_AI" disabled="disabled" data-ps-tbl-name="ASSET" data-s2-drop-class="s2-drop-shipto"  data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_AI" placeholder="Asset ID">
+              <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_AI" disabled="disabled" data-ps-tbl-name="ASSET" data-s2-drop-class="st-drop1"  data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_AI" placeholder="Asset ID">
                 <input class="XX_LIN_AI" id="XX_LIN_AI{{ROW}}" name="XX_LIN_AI{{ROW}}" value="{{XX_LIN_AI}}" />
               </div>
             </li>
@@ -314,7 +301,7 @@
               <div class="hdr3">Item
               </div>
               <div class="rf-lin-ii">
-                <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_II" disabled="disabled" data-ps-tbl-name="MASTER_ITEM_TBL" data-s2-drop-class="s2-drop-shipto" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_II" placeholder="item">
+                <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_II" disabled="disabled" data-ps-tbl-name="MASTER_ITEM_TBL" data-s2-drop-class="st-drop1" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_II" placeholder="item">
                   <input class="XX_LIN_II" id="XX_LIN_II{{ROW}}" name="XX_LIN_II{{ROW}}" value="{{XX_LIN_II}}" />
                 </div>
               </li>
@@ -322,7 +309,7 @@
               <li>
                 <div class="hdr4">Unit</div>
                 <div class="rf-lin-um">
-                  <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_UM" disabled="disabled" data-ps-tbl-name="XX_289_D_UNIT" data-s2-drop-class="s2-drop-shipto" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_UM" placeholder="Unit">
+                  <input type="hidden" class="select2-offscreen loc_S2_XX_LIN_UM" disabled="disabled" data-ps-tbl-name="XX_289_D_UNIT" data-s2-drop-class="st-drop1" data-pi="{{SectionHeader.pi}}" id="loc_S2_XX_LIN_UM" placeholder="Unit">
                     <input class="XX_LIN_UM" id="XX_LIN_UM{{ROW}}" name="XX_LIN_UM{{ROW}}" value="{{XX_LIN_UM}}" />
                   </div>
               </li>

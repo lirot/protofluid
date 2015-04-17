@@ -228,8 +228,9 @@ jwt.jwtWorkListConfig_SAS = (function() {
         fname: 'XX_TIME_DURATION',
         fdescr: 'Duration'
       }]
-    }, {
-      name: 'Review',
+    },
+
+{ name: 'Review',
       wlLockField: 'NAME',
       wlID: '7',
       qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_SAS7","CoumnList":[]}',
@@ -265,24 +266,31 @@ jwt.jwtWorkListConfig_SAS = (function() {
         fdescr: 'Duration'
       }, {
         fname: 'USER1',
-        fdescr: 'W'
+          title:'Domestic wire',
+          fdescr: 'W'
       }, {
-        fname: 'USER2',
+          fname: 'USER2',
+          title: 'Marked Urgent',
         fdescr: 'U'
       }, {
-        fname: 'USER3',
+          fname: 'USER3',
+          title: 'fixed Asset',
         fdescr: 'FA'
       }, {
-        fname: 'USER5',
+          fname: 'USER5',
+          title:'payment instructions',
         fdescr: 'I'
       }, {
-        fname: 'USER6',
+          fname: 'USER6',
+          title:'Invoice Financially approved for short pay',
         fdescr: '$'
       }, {
-        fname: 'USER7',
+          fname: 'USER7',
+          title:'Marked for return by SAS',
         fdescr: 'R'
       }, {
-        fname: 'USER8',
+          fname: 'USER8',
+          title: 'Sent back by Approver',
         fdescr: 'B'
       }, {
         fname: 'USER9',
@@ -292,15 +300,12 @@ jwt.jwtWorkListConfig_SAS = (function() {
         fdescr: 'Comment'
       }]
     }
-
   ];
 
   var init = (function() {
-
     for (var i = 0; i < 7; i++) {
       UserWorkListNew[i] = new WorkList(i, UserWorkListBase, UserWorkList[i]);
     }
-
       var tourl = "http://" + location.host + "/psc/" + url_jwt[4]
 	  + '/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.'
           + 'FieldFormula.iScript_xxSweepImageNow';
