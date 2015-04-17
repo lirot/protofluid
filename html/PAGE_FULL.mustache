@@ -146,12 +146,10 @@
         </div>
 
 {{/user.isApprover}}
-
       <div class="rf-hdr-ra">
         <label for="XX_HDR_RA">Remaining Amount</label>
         <input id="XX_HDR_RA" name="XX_HDR_RA" tabindex="10" disabled="disabled" value="{{header.XX_HDR_RA}}" />
       </div>
-
       <div class="rf-hdr-ut">
         <label for="XX_HDR_UT">Use Tax</label>
         <input id="XX_HDR_UT" name="XX_HDR_UT" tabindex="11" disabled="disabled" value="{{header.XX_HDR_UT}}" />
@@ -192,10 +190,10 @@
         <div>   <a href="#" class="xx-pop-pi tooltip" data-link-id="{{SectionHeader.pi}}"> Pop PJ </a> {{SectionHeader.pi}}</div>
                        
       </li>
+
 {{#SectionHeader.po}}
               <li>
                 <div> <a href="#" class="xx-pop-po tooltip" data-link-id="{{SectionHeader.po}}"> Pop PO </a>{{SectionHeader.po}}</div>
-                   
               </li>
               <li><div>Remaining Anount :&nbsp</div>
               <div class="open-po">
@@ -223,22 +221,22 @@
           <li><div class="rf-lin-pl">{{XX_LIN_PL}}</div></li>
           <li>
             <div class="rf-lin-sc">
-              <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SC" data-s2-drop-class="sc-drop1" {{Locked}} data-ps-tbl-name="XX_289_D_SC_01" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SC" placeholder="Subcat" data-row-id="{{ROW}}">
+              <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SC" data-s2-drop-class="sc-drop1" {{SectionHeader.section_disabled}} {{Locked}} data-ps-tbl-name="XX_289_D_SC_01" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SC" placeholder="Subcat" data-row-id="{{ROW}}">
               <input class="XX_LIN_SC" id="XX_LIN_SC{{ROW}}" name="XX_LIN_SC{{ROW}}" value="{{XX_LIN_SC}}" />
             </div>
           </li>
           <li><div class="rf-lin-ld">
-              <input id="XX_LIN_LD{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_LD{{ROW}}" {{Locked}} value="{{XX_LIN_LD}}" placeholder="Description" />
+              <input id="XX_LIN_LD{{ROW}}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" name="XX_LIN_LD{{ROW}}" {{SectionHeader.section_disabled}} {{Locked}} value="{{XX_LIN_LD}}" placeholder="Description" />
             </div>
             </li>
             <li>
               <div class="rf-lin-so">
-                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO" {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
+                <input type="hidden" class="select2-offscreen lin_S2_XX_LIN_SO"  {{SectionHeader.section_disabled}} {{Locked}} data-ps-tbl-name="XX_289_D_SHIPTO" data-s2-drop-class="s2-drop-shipto" data-line="SO" data-pi="{{SectionHeader.pi}}" id="lin_S2_XX_LIN_SO" placeholder="Ship To">
                 <input class="XX_LIN_SO" id="XX_LIN_SO{{ROW}}" name="XX_LIN_SO{{ROW}}" value="{{XX_LIN_SO}}" />
               </div></li>
               <li>
                 <div class="rf-lin-ma">
-                  <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}" {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+                  <input id="XX_LIN_MA{{ROW}}" data-row-id="{{ROW}}"  {{SectionHeader.section_disabled}} {{Locked}} name="XX_LIN_MA{{ROW}}" value="{{XX_LIN_MA}}" placeholder="Amount" class="XX_LIN_MA" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
                 </div>
               </li>
 {{^SectionHeader.section_ce}}

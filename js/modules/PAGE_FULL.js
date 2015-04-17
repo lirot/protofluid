@@ -185,7 +185,6 @@ callback: function(config) {
 
     jwt.invoice.user.subCatValidArray =   jwt.invoice.user.subCatValid.split("[");
 
-
 	jQuery("[id^='XX_LIN_MA'] , #XX_HDR_GA , #XX_HDR_RA, #XX_HDR_UT"
 	       + ", #XX_HDR_ST")
 	    .change(function() {

@@ -85,9 +85,6 @@ jwt.jwtWorkListConfig_APR = (function() {
       }, {
         fname: 'AMOUNT',
         fdescr: 'Invoice Amount'
-      }, {
-        fname: 'NAME',
-        fdescr: 'Worked by'
       }]
     },
 
