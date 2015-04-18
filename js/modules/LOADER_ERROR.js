@@ -14,8 +14,8 @@ jwt.error = (function() {
 
     //clean up from last run
     jQuery("div .ps-error-text-" + obj.id).remove();
-    jQuery("div .ps-error-" + obj.id).removeClass("ps-error-" + obj.id)
-      .removeAttr("data-error-" + obj.id);
+    jQuery("div.ps-error-" + obj.id).removeClass("ps-error-" + obj.id)
+      .removeAttr("data-error");
     jQuery(".messages li#" + obj.id).remove();
 
     //run over fields on definition
