@@ -131,8 +131,6 @@ select2query: function(query) {
                results  = config.lunrSortFunction( results );
             }
 
-   // data = {};
-    
             _.each(results, function(obj) {
               hashkey = obj.ref.hashCode().toString();
               s = config.select2Callback(dataObject["_" + hashkey]);
