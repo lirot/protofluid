@@ -14,8 +14,8 @@ jwt.jwtComponentConfigQuick = (function() {
     lineMatch: /\d+/g,
     saveMethods: "",
     formAction: '/EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_FCM289_APPR.GBL',
-      editArray: ["msg-req-001", "msg-val-in-001",
-		  "msg-val-id-001", "msg-val-numbers"],
+    editArray: ["msg-req-001", "msg-val-in-001",
+		,  "msg-val-id-001", "msg-val-numbers"],
     controller: function(elem) {
 
 //commented code was used for locking worklist items over a socket io call with\// a node js listener and custom messaging code.  in an effort to reduce overall

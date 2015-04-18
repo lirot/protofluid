@@ -10,7 +10,6 @@ jwt.o.ErrorStoreFunctions = (function() {
                 return jwt.constants.ERRORS[id];
         }
     })
-
 }}})();
 
 jwt.o.ErrorStore =  [
@@ -140,8 +139,8 @@ jwt.o.ErrorStore =  [
             desc        : 'required Field',
             template    : "<ul> {{#list}}<li> <span>{{id}}</span><span>{{text}}</span></li>{{/list}}<ul>",
             pageEdit    : true
-
         },
+
         {
             id          : 'msg-requires-Comment',
             type        : "fa fa-exclamation",
@@ -208,14 +207,16 @@ jwt.o.ErrorStore =  [
                 type       : "fa fa-exclamation",
                 text       : 'Field Required ',
                 test       : function( val ){
-                             return !val.value || val.value == "0.00"  || val.value == "0"
+                             return val.value == "false" || !val.value || val.value == "0.00"  || val.value == "0"
                               },
                 field      : [ "rf-hdr-bu" , "qf-hdr-bu" , "qf-hdr-in" , "qf-hdr-id"  , "qf-hdr-ga" ,"rf-hdr-in" , "rf-hdr-id"  , "rf-hdr-ga" ] ,
                 desc       : 'required Field',
                 pageEdit   : true,
 
             },
-            {
+
+
+    {
                 id: 'msg-val-in-001',
                 class: 'W',
                 type: "fa fa-exclamation",

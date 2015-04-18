@@ -246,7 +246,6 @@ jwt.routes['loc_XX_HPB_001'] = (function() {
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
       buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
 			 : "Save" }
-
   }
 })();
 
