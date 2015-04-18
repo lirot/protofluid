@@ -239,9 +239,6 @@ jwt.jwtComponent = (function() {
       }
       
     jwt.invoice.Locked = jwt.invoice.user.isLocked ?  "disabled" : "";
-
-
-      
     jwt.invoice.sections = [];
 
     //add the secitons and the lines
@@ -342,7 +339,6 @@ jwt.jwtComponent = (function() {
 
      if (config.saveMethods.indexOf( name ) )
          jwt.isDirty = false;
-
     } else {
       //clicks off the worklists
     	
@@ -377,7 +373,12 @@ jwt.jwtComponent = (function() {
             }
         }else{
           jQuery('#processing').trigger('hide.processing');
-          jQuery('#image-now').html('');
+
+
+            if ( jwt.user.imageNowDocID != jwt.user.oldimageNowDocID ){
+            jQuery('#image-now').html('');
+            }
+
         }
       });
   }
