@@ -24,13 +24,13 @@ jwt.constants.keys = {};
     for (i = 0; i < jwt.constants.keysIndex.length; i++) {
         jwt.constants.keys[ jwt.constants.keysIndex[i].key ] = jwt.constants.keysIndex[i].value;
     }
-})()
+})();
 jwt.constants.datepickerDefaults =
 {
       showOn: "button",
       buttonImage: "images/calendar.gif",
       buttonImageOnly: true,
       buttonText: "Select date"
-    }
+};
 
-jwt.constants.imgNowURL = "http://nyc0psfs07.na.corp.jwt.com:8080/webnow/index.jsp?action=document&docid="
+jwt.constants.imgNowURL = "http://nyc0psfs07.na.corp.jwt.com:8080/webnow/index.jsp?action=document&docid=";

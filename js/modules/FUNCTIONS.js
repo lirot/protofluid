@@ -21,15 +21,15 @@ jwt.functions = (function() {
 
       Number.prototype.formatMoney = function(c, d, t) {
         var n = this,
-          c = isNaN(c = Math.abs(c)) ? 2 : c,
-          d = d == undefined ? "." : d,
-          t = t == undefined ? "," : t,
           s = n < 0 ? "-" : "",
           i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
           j = (j = i.length) > 3 ? j % 3 : 0;
-          return s + (j ? i.substr(0, j) + t : "")
-	      + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t)
-	      + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+          c = isNaN(c = Math.abs(c)) ? 2 : c;
+          d = d === undefined ? "." : d;
+          t = t === undefined ? "," : t;
+          return s + (j ? i.substr(0, j) + t : "") +
+	      i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) +
+	      (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
       };
 
 	  //runs immeiately
@@ -40,7 +40,7 @@ jwt.functions = (function() {
       });
 
       jQuery("#image-now").on("mouseover", function() {
-        jQuery("input").blur()
+          jQuery("input").blur();
       });
 
       function stopRKey(evt) {
@@ -71,7 +71,7 @@ hasVendor: function() {
             if (!vendorID) {
               vendorID = jwt.invoice.header.XX_HDR_VI;
             }
-            return vendorID
+    return vendorID;
           },
 
 padout: function(number) {
@@ -92,13 +92,13 @@ editApproverList: function() {
             jQuery("#APPROVER_ADD_LIST li").each(
               function() {
                 jwt.invoice.user.hasApproverOnChain = true;
-                var elem = jQuery(this)
+                  var elem = jQuery(this);
                 if (elem.data('can-approve') == "Y") {
                   jwt.invoice.user.isAddFinAppr = true;
                 }
                 approverArray.push(jQuery(this).attr("id"));
               }
-            )
+            );
             if (jwt.invoice.user.isNoLines) {
               jwt.invoice.user.isAddFinAppr = true;
             }
@@ -113,12 +113,12 @@ cleanWorkFlowData: function(xml) {
        , comment, area;
             var comments = [];
        var  workflowData = [] ;
-      var firstComment = true
+    var firstComment = true;
        _.each(jwt.invoice.workflowLines, function(Obj, index) {
 
            var tempRow = [];
            if (Obj.fld_oprid.text == "XX_SAS_START")
-               return
+               return;
 		
            var m = moment(Obj.fld_dttm_created.text, "YYYY-MM-DD[T]hh:mm:ss");
               Obj.Created_Date = m.format("MMMM Do YYYY hh:mm:ss").toString();
@@ -127,28 +127,28 @@ cleanWorkFlowData: function(xml) {
               Obj.Saved_Date = n.format("MMMM Do YYYY hh:mm:ss").toString();
 
               if (Obj.fld_ptafstep_status.text == 'P') {
-                Obj.Saved_Date = ""
+                  Obj.Saved_Date = "";
               }
 
               if (Obj.fld_ptafstep_status.text == 'N') {
                 Obj.Saved_Date = "";
-                Obj.Created_Date = ""
+                  Obj.Created_Date = "";
               }
            if ( Obj.fld_ptafstage_nbr.text == "999") {
                if ( firstComment ){
                    comments =[];
                    firstComment = false;
                }
-                 var commentObj = {}
+               var commentObj = {};
                commentObj = {   "stage": Obj.fld_ptafadhoc_by.text ,  
                                 "name" : Obj.fld_oprdefndesc.text    ,
                                 "date"  :Obj.Saved_Date   ,
                                 "text"  :  Obj.fld_comments_254.text      }   
                 
                  comments.push( commentObj );
-                         return
+               return;
            }else{
-               firstComment = true
+               firstComment = true;
            }
        
               // these are SAS rows
@@ -156,17 +156,17 @@ cleanWorkFlowData: function(xml) {
                 action = "Complete";
                 status = jwt.constants.keys[Obj.fld_ptaforig_oprid.text];
                 if (Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text) {
-                  status = "Forced Unlock"
+                    status = "Forced Unlock";
                 }
                 if (Obj.fld_ptafstep_status.text == 'P') {
                   status = " ";
                   action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
                   }
-          
+      var nArray;
       if (comments.length > 0){
-          var nArray =  comments.slice();
+          nArray =  comments.slice();
       }else{
-          var nArray = [];
+          nArray = [];
       }
       
 
@@ -193,35 +193,35 @@ cleanWorkFlowData: function(xml) {
          area = "Approver";
          action = "Pending";
 
-         if (Obj.fld_ptafadhoc_by.text == "RET"
-		      || Obj.fld_ptafadhoc_by.text == "ADM") {
-                  area = "SAS"
+         if (Obj.fld_ptafadhoc_by.text == "RET" ||
+		      Obj.fld_ptafadhoc_by.text == "ADM") {
+             area = "SAS";
                 }
                 action = jwt.constants.keys[Obj.fld_ptafstep_status.text];
-         if (Obj.fld_ptafadhoc_by.text
-		      == "ADM" && Obj.fld_ptafstep_status.text == "M") {
-                  action = "Rerouted"
+         if (Obj.fld_ptafadhoc_by.text ==
+		      "ADM" && Obj.fld_ptafstep_status.text == "M") {
+             action = "Rerouted";
                   }
        
-         if (Obj.fld_ptafadhoc_by.text != "ADM"
-		      && Obj.fld_ptafadhoc_by.text != "ROUTE"
-		      && Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text
-		      && Obj.fld_ptafstep_status.text !== "F"
-		      && Obj.fld_ptafstep_status.text !== "P"
-		      && Obj.fld_ptafstep_status.text !== "I") {
-                  action = "Forced Unlock"
+         if (Obj.fld_ptafadhoc_by.text != "ADM" &&
+		      Obj.fld_ptafadhoc_by.text != "ROUTE" &&
+		      Obj.fld_ptaforig_oprid.text == Obj.fld_oprid.text && 
+		      Obj.fld_ptafstep_status.text !== "F" &&
+		      Obj.fld_ptafstep_status.text !== "P" && 
+		      Obj.fld_ptafstep_status.text !== "I") {
+             action = "Forced Unlock";
                 }
 
          if (Obj.fld_ptaforig_oprid.text == "RET") {
-                  action = "Returned to SAS"
+             action = "Returned to SAS";
                   }
        
-         if (jwt.invoice.user.aAweID.toString() != "" && Obj.fld_ptafustep_inst_id.text.indexOf(
+         if (jwt.invoice.user.aAweID.toString() !== "" && Obj.fld_ptafustep_inst_id.text.indexOf(
 		      jwt.invoice.user.aAweID) != -1) {
-                  action = "Fincially Approved!"
+             action = "Fincially Approved!";
                   }
          if ( Obj.fld_ptafstep_status.text == "P") {
-                  action = "Pending"
+             action = "Pending";
                 }
 
          moreRows.push(
@@ -292,13 +292,13 @@ setupNLCheck: function(config) {
                 if (cb.prop('checked')) {
                     config.oldAddress = jQuery('#loc_vendorInfo #addressInfo')
 			.html();
-                  jQuery('#loc_vendorInfo #addressInfo').html("REMOVED ")
+                    jQuery('#loc_vendorInfo #addressInfo').html("REMOVED ");
                 } else {
                     jQuery('#loc_vendorInfo #addressInfo')
 			.html(config.oldAddress);
                 }
               } else {
-                jQuery('#loc_vendorInfo #addressInfo').html("")
+                  jQuery('#loc_vendorInfo #addressInfo').html("");
               }
             }).prettyCheckable({
               labelPosition: 'left'
@@ -359,7 +359,7 @@ addlines: function() {
 
             var difference = netAmt - $sumDisplay.val();
             jQuery("#XX_HDR_RA").val(difference.toFixed(2));
-            if (difference != 0) {
+            if (difference !== 0) {
               $sumDisplay.css('color', 'red');
 
             } else {
@@ -397,7 +397,7 @@ saveWarning: function(targetfunction) {
                 loadTemplate: jwt.templates.loadPopUp,
                 popCallback: function(elem) {
                   if (jQuery(elem).hasClass('btn-cancel')) {
-                    targetfunction()
+                      targetfunction();
                   }
                 }
               };
@@ -429,16 +429,16 @@ getDateFormatted: function(datestring) {
               day = parseInt(parts[2], 10);
               yr = parseInt(parts[3], 10);
               if (yr < 50) {
-                yr = 2000 + yr
+                  yr = 2000 + yr;
               }
-		var formattedDate = '' + jwt.functions.padout(mnt)
-		    + separator + jwt.functions.padout(day) + separator
-		    + jwt.functions.padout(yr);
+		var formattedDate = '' + jwt.functions.padout(mnt) +
+		    separator + jwt.functions.padout(day) + separator +
+		    jwt.functions.padout(yr);
               return formattedDate;
             }
             return false;
           }
-        })
+        });
     }
-  }
+  };
 })();

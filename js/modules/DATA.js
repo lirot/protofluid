@@ -80,7 +80,7 @@ qry_term_overide: function(term ){
               var vendorID = jwt.functions.hasVendor();
               return "v:" + vendorID.toString();
      }
-    return term
+    return term;
 },
 
     //used to pad leading zeros if number is entered to the search
@@ -135,7 +135,7 @@ select2Callback: function(data) {
        }
 
       var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_VENDOR'], data);
-      return outHTML
+    return outHTML;
      },
       
       //after the user selects a value from the select2 list this function is
@@ -170,12 +170,12 @@ select2setKeys: function(data) {
       jQuery('#XX_HDR_VI').val(data.VENDOR_ID);
       jQuery('.NL-check').prettyCheckable('uncheck');
     jQuery('#XX_HDR_VL').val(decodeURIComponent(data.VNDR_LOC));
-
+    var outHTML;
       if (jwt.jwtWorkList.sActivePage == 'jwt.jwtComponentConfigFull') {
-        var outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
+        outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
         jQuery('#loc_vendorInfo #addressInfo').html(outHTML);
       } else {
-        var outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
+        outHTML = jwt.Mustache.to_html(jwt.templates['VENDOR_INFO'], data);
         jQuery('#loc_vendorInfo #addressInfo').html(outHTML);
       }
     },
@@ -229,13 +229,13 @@ loc_S2_XX_HDR_VI: function() {
           });
       
       //now add data source dependent on the elements configuration
-      if (jwt.invoice.header.XX_HDR_VI
-	  && jwt.invoice.header.XX_HDR_VL) {
+      if (jwt.invoice.header.XX_HDR_VI &&
+	  jwt.invoice.header.XX_HDR_VL) {
           jQuery("#loc_S2_XX_HDR_VI")
 	      .select2("data",
 		       jwt.jwtData.setPromptVal(
-			   encodeURIComponent(jwt.invoice.header.XX_HDR_VI
-					      + jwt.invoice.header.XX_HDR_VL),
+			   encodeURIComponent(jwt.invoice.header.XX_HDR_VI +
+					       jwt.invoice.header.XX_HDR_VL),
 			   'XX_289_D_VND_LC'));
       }
 
@@ -252,9 +252,9 @@ loc_S2_XX_HDR_VI: function() {
 select2lunrPreQuery: function(config, elem) {
 	//at this point the user has just clicked the drop down.
 	// these conditions are then checked
-	if ((config.Definition == "XX_289_D_VND_LC"
-	     || config.Definition == "XX_289_D_PO_02")
-	    && jwt.functions.hasVendor) {
+	if ((config.Definition == "XX_289_D_VND_LC" ||
+	      config.Definition == "XX_289_D_PO_02") &&
+	    jwt.functions.hasVendor) {
         //run a quick function to pre populate the drop down
         jQuery(".select2-input").val("all:all");
         jQuery(elem).select2("updateResults", true);
@@ -339,16 +339,16 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
 
     select2Callback: function(data) {
       jwt.jwtData.decode(data);
-      var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_PROJECT'], data);
-      return outHTML
+      var outHTML = jwt.Mustache.to_html(jwt.templates.SELECT2_PROJECT, data);
+        return outHTML;
     },
 
    select2Display: function(data) {
-      return data.PROJECT_ID
+       return data.PROJECT_ID;
     },
 
    select2setKeys: function(data) {
-      jwt.routes['loc_S2_XX_LIN_PI'].serverFunction(data);
+      jwt.routes.loc_S2_XX_LIN_PI.serverFunction(data);
     },
 
    loc_S2_XX_LIN_PI: function() {
@@ -358,12 +358,12 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
        //short wait here makes a difference as the definitions
        //catch up with the data on a user who is quick to the
        //first invoice.
-        setTimeout(f, 500)
+       setTimeout(f, 500);
 
 	// builds all the custom select2 objects marked with data attribute
         function dothis() {
 
-       var config = jwt.jwtData.Configs['XX_289_D_PRJ_01'];
+       var config = jwt.jwtData.Configs.XX_289_D_PRJ_01;
             jQuery("#loc_S2_XX_LIN_PI").select2(config.s2optionsDO)
         .off("select2-open")
         .on("select2-open",
@@ -373,11 +373,11 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
             jQuery(".p1-drop1").css("width", "90%");
             var outHTML =
             jwt.Mustache.to_html(
-		      jwt.templates['SELECT2_ADD_HEADER'], config);
+		      jwt.templates.SELECT2_ADD_HEADER, config);
             jQuery('.select2-input').before(outHTML);
               var outHTML =
 		  jwt.Mustache.to_html(
-		      jwt.templates['SELECT2_ADD_FOOTER'], config);
+		      jwt.templates.SELECT2_ADD_FOOTER, config);
             jQuery('.select2-input').after(outHTML);
             jwt.functions.select2PreQuery(this);
             jQuery(".select2-input").focus();
@@ -394,7 +394,7 @@ jwt.jwtData.Configs['XX_289_D_PRJ_01'] = (function() {
   };
 })();
 
-jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
+jwt.jwtData.Configs.XX_289_D_PO_02 = (function() {
   return {
     Definition: 'XX_289_D_PO_02',
     searchText: "PO Search",
@@ -409,7 +409,7 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
               var vendorID = jwt.functions.hasVendor();
               return  "v:" + vendorID.toString();
               }
-          return term
+          return term;
       },
 
     keyfields: [  'PO_ID:100',
@@ -441,16 +441,16 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
 
     select2Callback: function(data) {
       jwt.jwtData.decode(data);
-      var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_PO'], data);
-      return outHTML
+      var outHTML = jwt.Mustache.to_html(jwt.templates.SELECT2_PO, data);
+        return outHTML;
     },
 
     select2Display: function(data) {
-      return data.PO_ID
+        return data.PO_ID;
     },
 
     clear: function() {
-      jwt.jwtData.Configs['XX_289_D_VND_LC'].clear()
+        jwt.jwtData.Configs.XX_289_D_VND_LC.clear();
       jQuery('#loc_XX_HDR_FA').select2("val", "");
         jQuery('#loc_XX_HDR_SO').select2("val", "");
         jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
@@ -460,7 +460,7 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     select2setKeys: function(data) {
 
       //the change of the po id will call a server function	
-	jwt.routes['loc_S2_XX_LIN_PO'].serverFunction(data);
+	jwt.routes.loc_S2_XX_LIN_PO.serverFunction(data);
 
 	//the first approver value is set
 	jQuery('#loc_XX_HDR_FA').select2();
@@ -474,9 +474,9 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
 	    .select2("data", jwt.jwtData.setPromptVal(
 		data.SHIPTO_ID, 'XX_289_D_SHIPTO'));
 
-     if (jwt.jwtData['XX_289_D_APPROV']
-	    .hasOwnProperty("_"
-		+ data.XX_BILL_TO_CONTACT.hashCode().toString())) {
+     if (jwt.jwtData.XX_289_D_APPROV
+	    .hasOwnProperty("_" +
+		 data.XX_BILL_TO_CONTACT.hashCode().toString())) {
             jQuery('#loc_S2_XX_HDR_FA')
 		.select2("data",
 			 jwt.jwtData.setPromptVal(
@@ -486,8 +486,8 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
 
       jQuery('#loc_S2_XX_HDR_VI')
 	    .select2("data", jwt.jwtData.setPromptVal(
-		encodeURIComponent(data.VENDOR_ID
-				   + data.VNDR_LOC), 'XX_289_D_VND_LC'));
+		encodeURIComponent(data.VENDOR_ID +
+				    data.VNDR_LOC), 'XX_289_D_VND_LC'));
 	
       jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
 	    .css("right", "0px");
@@ -495,7 +495,7 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     },
 
     loc_S2_XX_LIN_PO: function() {
-      var config = jwt.jwtData.Configs['XX_289_D_PO_02'];
+      var config = jwt.jwtData.Config.XX_289_D_PO_02;
       jQuery("#loc_S2_XX_LIN_PO").select2(config.s2optionsDO)
         .off("select2-open")
         .on("select2-open",
@@ -505,11 +505,11 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
             jQuery(".po-drop1").css("width", "90%");
             var outHTML =
 		  jwt.Mustache.to_html(
-		      jwt.templates['SELECT2_ADD_HEADER'], config);
+		      jwt.templates.SELECT2_ADD_HEADER, config);
             jQuery('.select2-input').before(outHTML);
               var outHTML =
 		  jwt.Mustache.to_html(
-		      jwt.templates['SELECT2_ADD_FOOTER'], config);
+		      jwt.templates.SELECT2_ADD_FOOTER, config);
             jQuery('.select2-input').after(outHTML);
             jwt.functions.select2PreQuery(this);
             jQuery(".select2-input").focus();
@@ -521,14 +521,14 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
             jQuery(".select2-search ." + config.Definition).remove();
           })
         .on("select2-removed", function(e) {
-          jwt.jwtData.Configs['XX_289_D_PO_02'].clear();
+          jwt.jwtData.Configs.XX_289_D_PO_02.clear();
         });
     },
 
     select2lunrPreQuery: function(config, elem) {
-	if ((config.Definition == "XX_289_D_VND_LC"
-	     || config.Definition == "XX_289_D_PO_02")
-	    && jwt.functions.hasVendor()) {
+	if ((config.Definition == "XX_289_D_VND_LC" ||
+	     config.Definition == "XX_289_D_PO_02") &&
+	     jwt.functions.hasVendor()) {
         jQuery(".select2-input").val("v:" + jwt.functions.hasVendor());
         jQuery(elem).select2("updateResults", true);
         jQuery(".select2-input").val("");
@@ -536,7 +536,7 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
     },
 
     lunrPipelineFunction: function(token) {
-      var config = jwt.jwtData.Configs['XX_289_D_PO_02'];
+      var config = jwt.jwtData.Configs.XX_289_D_PO_02;
       var elements = '000000 00000 000 00 0 0000'.split(' ');
       if (elements.indexOf(token) !== -1) {
         return undefined;
@@ -553,7 +553,7 @@ jwt.jwtData.Configs['XX_289_D_PO_02'] = (function() {
   };
 })();
 
-jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
+jwt.jwtData.Configs.XX_289_D_SC_01 = (function() {
   return {
     Definition: 'XX_289_D_SC_01',
     xxData: jQuery({}),
@@ -566,7 +566,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
 
           var row = jQuery( elem ).data("row-id") ;
           var listsubCat  = _.find( jwt.invoice.user.subCatValidArray , function(str){
-              return str.indexOf( row ) != -1 
+              return str.indexOf( row ) != -1;
           });
           
           var subCatArray = listsubCat.split(":")[1].split(",");
@@ -574,12 +574,12 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
           console.log( "Valid sub cats for row: " + row + "  "  + subCatArray.length );
     
           var arraySC =  _.filter( results , function( obj ){
-              return subCatArray.indexOf( obj.ref ) != -1
+              return subCatArray.indexOf( obj.ref ) != -1;
           } );
           
           console.log( "Valid sub cats for row: " + row + "  "  + arraySC.length );
           
-          return arraySC
+        return arraySC;
 
                 },
     LunrNumKey: "",
@@ -591,7 +591,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
       lunrSortFunction : function(arr ){
        var arrRET  =  _.sortBy(arr ,'ref');
 
-          return arrRET
+          return arrRET;
       },
       
     s2optionsDO: {},
@@ -610,21 +610,21 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
     },
 
     select2Display: function(data, $elem) {
-	return (data)
-	    ? decodeURIComponent(data.RESOURCE_SUB_CAT) : $elem.next().val();
+	return (data) ?
+	    decodeURIComponent(data.RESOURCE_SUB_CAT) : $elem.next().val();
     },
 
     select2Callback: function(data) {
       jwt.jwtData.decode(data);
-      var outHTML = jwt.Mustache.to_html(jwt.templates['SELECT2_SC'], data);
-      return outHTML
+      var outHTML = jwt.Mustache.to_html(jwt.templates.SELECT2_SC, data);
+        return outHTML;
     },
 
     select2setKeys: function(data, $elem) {
       if (data) {
         if (data.RESOURCE_SUB_CAT != $elem.next().val()) {
           $elem.next().val(data.RESOURCE_SUB_CAT);
-            if ($elem.parent().parent().next().find("input[id^='XX_LIN_LD']").val() == "") {
+            if ($elem.parent().parent().next().find("input[id^='XX_LIN_LD']").val() === "") {
                 $elem.parent().parent().next()
 		  .find("input[id^='XX_LIN_LD']")
 		  .val(decodeURIComponent(data.RES_SUB_CAT_DESCR));
@@ -637,9 +637,9 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
 
 // 
 
-        if ((config.Definition == "XX_289_D_VND_LC"
-	     || config.Definition == "XX_289_D_PO_02")
-	    && jwt.functions.hasVendor()) {
+        if ((config.Definition == "XX_289_D_VND_LC" ||
+	     config.Definition == "XX_289_D_PO_02") &&
+	    jwt.functions.hasVendor()) {
         jQuery(".select2-input").val("v:" + jwt.functions.hasVendor());
         jQuery(elem).select2("updateResults", true);
         jQuery(".select2-input").val("");
@@ -648,7 +648,7 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
 
 
    lin_S2_XX_LIN_SC: function(obj) {
-      var config = jwt.jwtData.Configs['XX_289_D_SC_01'];
+      var config = jwt.jwtData.Configs.XX_289_D_SC_01;
     //build the select2 drop down with the configuration
                           
        obj.select2(jwt.jwtData.s2optionsDO)
@@ -656,17 +656,16 @@ jwt.jwtData.Configs['XX_289_D_SC_01'] = (function() {
                jwt.functions.select2PreQuery(this);})
            .on("select2-clearing", function(e) {
                //call the clear function on the object
-               jwt.jwtData.Configs['XX_289_D_SC_01'].clear(this); });
+               jwt.jwtData.Configs.XX_289_D_SC_01.clear(this); });
                if (obj.next().val()) {
                    obj.select2("data", jwt.jwtData.setPromptVal(
                        encodeURIComponent(obj.next().val()), 'XX_289_D_SC_01')
                 );}
     }
-      
   };
 })();
 
-jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
+jwt.jwtData.Configs.XX_289_D_APPROV = (function() {
   return {
     Definition: 'XX_289_D_APPROV',
     xxData: jQuery({}),
@@ -697,43 +696,43 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
       
     select2Callback: function(data) {
       if (!data) {
-        return
+          return;
       }
-	var outofofficevar = data.REASSIGNOPRID
-	    ? ' <font color="red"><b> ! office </b></font>'
-	    + decodeURIComponent(data.DESCR120) : ' ';
-	return decodeURIComponent("<div><div>"
-	    + data.PERSON_NAME) + ' - '
-	    + decodeURIComponent(data.STATUS_DESCR)
-	    + ' - ' + decodeURIComponent(data.BUSINESS_UNIT)
-	    + outofofficevar + "</div></div>";
+	var outofofficevar = data.REASSIGNOPRID ?
+	    ' <font color="red"><b> ! office </b></font>' +
+	    decodeURIComponent(data.DESCR120) : ' ';
+	return decodeURIComponent("<div><div>" +
+	    data.PERSON_NAME) + ' - ' +
+	    decodeURIComponent(data.STATUS_DESCR) +
+	    ' - ' + decodeURIComponent(data.BUSINESS_UNIT) +
+	    outofofficevar + "</div></div>";
     },
       
     select2setKeys: function(data) {
-	return (data)
-	    ? jQuery("input[name='XX_HDR_FA']").val(data.OPRID)
-	    : jQuery("input[name='XX_HDR_FA']").val("");
+	return (data) ?
+	    jQuery("input[name='XX_HDR_FA']").val(data.OPRID) :
+	    jQuery("input[name='XX_HDR_FA']").val("");
     },
       
     select2Display: function(data) {
       if (!data) {
-        return
+          return;
       }
-	var outofofficevar = data.REASSIGNOPRID
-	    ? ' <font color="red"><b> out of office  </b></font>'
-	    + decodeURIComponent(data.DESCR120) : ' ';
-	return decodeURIComponent(data.PERSON_NAME)
-	    + ' - ' + decodeURIComponent(data.STATUS_DESCR)
-	    + ' - ' + decodeURIComponent(data.BUSINESS_UNIT);
+	var outofofficevar = data.REASSIGNOPRID ?
+	    ' <font color="red"><b> out of office  </b></font>' +
+	    decodeURIComponent(data.DESCR120) : ' ';
+	return decodeURIComponent(data.PERSON_NAME) +
+	    ' - ' + decodeURIComponent(data.STATUS_DESCR) +
+	    ' - ' + decodeURIComponent(data.BUSINESS_UNIT);
     },
 
     loc_S2_XX_HDR_FA: function() {
-      var config = jwt.jwtData.Configs['XX_289_D_APPROV']
+        var config = jwt.jwtData.Configs.XX_289_D_APPROV;
 
       jQuery('#loc_S2_XX_HDR_FA').select2(config.s2optionsDO)
         .on("select2-clearing",
           function(e) {
-            jwt.jwtData.Configs['XX_289_D_APPROV'].clear();
+            jwt.jwtData.Configs.XX_289_D_APPROV.clear();
           });
 
       if (jwt.invoice.header.XX_HDR_FA) {
@@ -747,7 +746,7 @@ jwt.jwtData.Configs['XX_289_D_APPROV'] = (function() {
 })();
 
 // approver drop down is on the approval modal page
-jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
+jwt.jwtData.Configs.XX_APPROVERS = (function() {
   return {
     Definition: 'XX_APPROVERS',
     xxData: jQuery({}),
@@ -775,12 +774,12 @@ jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
 
     select2Callback: function(data) {
       if (!data) {
-        return
+          return;
       }
       jwt.jwtData.decode(data);
 	var outHTML = jwt.Mustache
-	    .to_html(jwt.templates['SELECT2_XX_APPROVER'], data);
-      return outHTML
+	    .to_html(jwt.templates.SELECT2_XX_APPROVER, data);
+        return outHTML;
     },
       
     select2setKeys: function(data) {
@@ -788,15 +787,15 @@ jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
         'name': decodeURIComponent(data.OPRDEFNDESC),
         'id': data.OPRID,
         'canApprove': data.canApprove
-      }
-      var template = jwt.templates["APPROVER_ADD_LIST"];
+      };
+      var template = jwt.templates.APPROVER_ADD_LIST;
       var outHTML = jwt.Mustache.to_html(template, obj);
       jQuery("#APPROVER_ADD_LIST").append(outHTML);
       jwt.functions.editApproverList();
     },
       
     select2Display: function(data) {
-      return '<font color="blue"><b> Add another approver  </b></font>'
+        return '<font color="blue"><b> Add another approver  </b></font>';
     },
 
     loc_S2_APPROVER: function() {
@@ -804,13 +803,13 @@ jwt.jwtData.Configs['XX_APPROVERS'] = (function() {
       jQuery('#loc_S2_APPROVER').select2(config.s2optionsDO).on("select2-open",
         function(e) {
           jwt.functions.select2PreQuery(this);
-        })
+        });
 
     }
-  }
+  };
 })();
 
-jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
+jwt.jwtData.Configs.XX_289_D_BU_SEC = (function() {
   return {
 
     Definition: 'XX_289_D_BU_SEC',
@@ -826,11 +825,12 @@ jwt.jwtData.Configs['XX_289_D_BU_SEC'] = (function() {
     callback: function(config) {
       //on the return gets the projects
       var buArray = [];
-      for (p in jwt.jwtData['XX_289_D_BU_SEC']) {
-        buArray.push(jwt.jwtData['XX_289_D_BU_SEC'][p].BUSINESS_UNIT);
+        for (p in jwt.jwtData.XX_289_D_BU_SEC) {
+            //projects are fetched by business unit build an array
+        buArray.push(jwt.jwtData.XX_289_D_BU_SEC[p].BUSINESS_UNIT);
       }
 	jwt.jwtData.init('XX_289_D_PRJ_01',
-			 jwt.jwtData.Configs['XX_289_D_PRJ_01'], buArray);
+			 jwt.jwtData.Configs.XX_289_D_PRJ_01, buArray);
     },
 
     qryString1: {

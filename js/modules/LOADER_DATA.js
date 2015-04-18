@@ -12,12 +12,12 @@ jwt.jwtData = (function() {
         requestType: 'J',
         contentTypeResponse: 'json',
         SelectData: [],
-        url:   '/EMPLOYEE/ERP/s/WEBLIB_XX_MJSON.ISCRIPT1.FieldFormula.'
-	     + 'iScript_xxGet_Json_Data?',
+        url:   '/EMPLOYEE/ERP/s/WEBLIB_XX_MJSON.ISCRIPT1.FieldFormula.' +
+	     'iScript_xxGet_Json_Data?',
         indexKey: function(data) {
-            return ''
+            return '';
         }
-    }
+    };
 
     var Configs = {};
     var url_xx = document.URL.replace(/\/\s*$/, '').split('/');
@@ -27,7 +27,6 @@ jwt.jwtData = (function() {
         for (var property in data) {
             if (data.hasOwnProperty(property)) {
                 console.log( data[property] );
-                
                 data[property] = decodeURIComponent(data[property]);
             }
         }
@@ -61,7 +60,7 @@ var create_Lunr_search = function(config) {
 	//the vendor
         if (config.hasOwnProperty("lunrPipelineFunction")) {
             var pipelinefunction = config.lunrPipelineFunction;
-            config.lunr_index.pipeline.add(pipelinefunction)
+            config.lunr_index.pipeline.add(pipelinefunction);
         }
 
         //key fields will come off the data objects
@@ -73,8 +72,8 @@ var create_Lunr_search = function(config) {
         _.each(that.directkeyfields, function(val) {
             vals = val.split(":");
             that.lunr_index.field(vals[1] + ":" + vals[0], 100);
-        })
-}
+        });
+};
 
 //when the ajax data is process the system will use this method to add
 //fields to the lunr search index
@@ -89,16 +88,16 @@ var add_fields_lunr_search = function(config, data) {
         _.each(that.keyfields, function(val) {
             vals = val.split(":");
             field[vals[0]] = decodeURIComponent(data[vals[0]]);
-        })
+        });
 
         _.each(that.directkeyfields, function(val) {
             vals = val.split(":");
             field[vals[1] + ":" + vals[0]] = vals[1] + ":" +
 		            decodeURIComponent(data[vals[0]]);
-        })
+        });
 
         if (config.hasOwnProperty('is_lunr_show_all')) {
-            field["all"] = "all:all"
+            field.all = "all:all";
         }
 
         that.lunr_index.add(field);
@@ -109,17 +108,19 @@ var add_fields_lunr_search = function(config, data) {
 var parse = function(config, response, key, jqXHR) {
         var jsonObj = {},
             hashKey, totalKeys,
-            indexKey, jsonObj = response,
-            totalLines = jsonObj.VIEW[0].LINE.length;
+            indexKey,totalLines = jsonObj.VIEW[0].LINE.length;
+    
+            jsonObj = response;
+            
 
-        if (totalLines == 0) {
-            return
+        if (totalLines === 0) {
+            return;
         }
 
         var start = moment();
         var xhr = arguments[3];
-        if (config.hasOwnProperty('is_lunr_search')
-	    && !config.hasOwnProperty("lunr_index")) {
+        if (config.hasOwnProperty('is_lunr_search') &&
+	    !config.hasOwnProperty("lunr_index")) {
             this.create_Lunr_search(config);
         }
 
@@ -148,8 +149,8 @@ var parse = function(config, response, key, jqXHR) {
         var end = moment();
 
         //display stuff around the data being cached...comment in prd
-        console.log("complete " + config.Definition + ": "
-		    + Math.round(Number(xhr.getResponseHeader(
+        console.log("complete " + config.Definition + ": " +
+		    Math.round(Number(xhr.getResponseHeader(
 			'Content-Length')) / 1000) + "kb lines: " +
 		    totalLines + " keys: " + totalKeys + " s: " +
 		    moment(end - start).format("ss") + " ms: " +
@@ -180,8 +181,8 @@ var xxAjax = function(config, value, def) {
             }
         }
 
-        var tourl = "http://" + location.host + "/psc/" + url_xx[4]
-	    + config.url + 'DATA_REQUEST[1]=' + JSON.stringify(
+        var tourl = "http://" + location.host + "/psc/" + url_xx[4] +
+	    config.url + 'DATA_REQUEST[1]=' + JSON.stringify(
 		config.qryString1);
 
         var jqXHRoptions2 = {
@@ -209,8 +210,8 @@ var xxAjax = function(config, value, def) {
             }).fail(
             function(data, textStatus, jqXHR) {
                 console.log('fail' + data.responseText);
-            })
-    }
+            });
+};
 
     //simple helper function to get the data object by hash key
     var setPromptVal = function(val, tblname) {
@@ -226,12 +227,12 @@ var xxAjax = function(config, value, def) {
                 return {
                     id: hash,
                     text: s
-                }
+                };
             }
 
         }
-        console.log('prompt not ready' + tblname)
-    }
+        console.log('prompt not ready' + tblname);
+    };
 
 //init runs the ajax request and when done the data is fully
 //cached and available for a lunr search
@@ -251,56 +252,56 @@ var init = function(key, obj, value, def) {
             function(indx, value) {
                 return that.getData(config, value, dfd);
             });
-}
+};
 
 //this is the set of data we get on load of the application
 var initAllData = function() {
 
         //project data is loaded on the call back for business unit
-        jwt.jwtData['XX_289_D_PRJ_01'] = {};
+        jwt.jwtData.XX_289_D_PRJ_01 = {};
 
-        jwt.jwtData['XX_289_D_PRJ_01'].s2optionsDO = jQuery.extend(true,
+        jwt.jwtData.XX_289_D_PRJ_01.s2optionsDO = jQuery.extend(true,
 					       {}, jwt.jwtData.s2optionsDO);
 
-    jwt.jwtData['XX_289_D_PRJ_01'].s2optionsDO.query = function(){};
+    jwt.jwtData.XX_289_D_PRJ_01.s2optionsDO.query = function(){};
     
         if (jwt.user.isSAS) {
             jwt.jwtData.init('XX_289_D_VND_LC',
-			     jwt.jwtData.Configs['XX_289_D_VND_LC'], ['SHARE']);
+			     jwt.jwtData.Configs.XX_289_D_VND_LC, ['SHARE']);
         }
 	
         jwt.jwtData.init('XX_289_D_APPROV',
-			 jwt.jwtData.Configs['XX_289_D_APPROV'], ['KEY'], '');
+			 jwt.jwtData.Configs.XX_289_D_APPROV, ['KEY'], '');
         jwt.jwtData.init('XX_APPROVERS',
-			 jwt.jwtData.Configs['XX_APPROVERS'], ['KEY'], '');
+			 jwt.jwtData.Configs.XX_APPROVERS, ['KEY'], '');
         jwt.jwtData.init('XX_289_D_PO_02',
-			 jwt.jwtData.Configs['XX_289_D_PO_02'], ['ALL']);
+			 jwt.jwtData.Configs.XX_289_D_PO_02, ['ALL']);
         jwt.jwtData.init('XX_289_D_SHIPTO',
-			 jwt.jwtData.Configs['XX_289_D_SHIPTO'], ['SHARE']);
+			 jwt.jwtData.Configs.XX_289_D_SHIPTO, ['SHARE']);
 
         jwt.jwtData.init('XX_289_D_SC_01',
-			 jwt.jwtData.Configs['XX_289_D_SC_01'], ['ALL']);
+			 jwt.jwtData.Configs.XX_289_D_SC_01, ['ALL']);
 
         //jwt.jwtData.init('XX_289_D_BU_SEC',
 	//jwt.jwtData.Configs['XX_289_D_BU_SEC'], [jwt.user.operID]);
 
 	jwt.jwtData.init('XX_289_D_BU_SEC',
-			 jwt.jwtData.Configs['XX_289_D_BU_SEC'],
+			 jwt.jwtData.Configs.XX_289_D_BU_SEC,
 			     ["JWTJSUFFEL01"]);
 
         //used for second row of grid lines
         jwt.jwtData.init('XX_289_D_UNIT',
-			 jwt.jwtData.Configs['XX_289_D_UNIT'], ['KEY']);
+			 jwt.jwtData.Configs.XX_289_D_UNIT, ['KEY']);
 
         jwt.jwtData.init('MASTER_ITEM_TBL',
-			 jwt.jwtData.Configs['MASTER_ITEM_TBL'], ['SHARE']);
+			 jwt.jwtData.Configs.MASTER_ITEM_TBL, ['SHARE']);
 	
-        jwt.jwtData.init('ASSET', jwt.jwtData.Configs['ASSET'], ['10050']);
+        jwt.jwtData.init('ASSET', jwt.jwtData.Configs.ASSET, ['10050']);
 	
         jwt.jwtData.init('PROFILE_TBL',
-			 jwt.jwtData.Configs['PROFILE_TBL'], ['SHARE']);
+			 jwt.jwtData.Configs.PROFILE_TBL, ['SHARE']);
 
-}
+};
 
 return {
         s2optionsDO: s2optionsDO,
@@ -314,5 +315,6 @@ return {
         create_Lunr_search: create_Lunr_search,
         add_fields_lunr_search: add_fields_lunr_search
 
-}
+};
+    
 })();

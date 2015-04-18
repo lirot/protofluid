@@ -1,5 +1,5 @@
 jwt.o = {};
-jwt.o.fieldStore = [ ]
+jwt.o.fieldStore = [ ];
 
 
 jwt.o.ErrorStoreFunctions = (function() {
@@ -9,8 +9,10 @@ jwt.o.ErrorStoreFunctions = (function() {
          {  getError: function(id) {
                 return jwt.constants.ERRORS[id];
         }
-    })
-}}})();
+         });
+        }};
+        }
+                            )();
 
 jwt.o.ErrorStore =  [
         {
@@ -19,7 +21,7 @@ jwt.o.ErrorStore =  [
             text          : 'Invoice is Dirty',
             test          : function(  ){
                             if ( jwt.isDirty ){
-                                return true}
+                                return true; }
                             },
             field         : [  ] ,
             desc          : 'You have unsaved data on the page',
@@ -31,7 +33,9 @@ jwt.o.ErrorStore =  [
                                  if ( typeof obj.route.serverFunction == "function"){
                                      continueFunction = obj.route.serverFunction;
                                  }else{
-                                     continueFunction = function( continueFunction ) { jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, continueFunction ) }
+                                     continueFunction = function( continueFunction ) {
+                                         jwt.jwtComponent.getData('jwt.jwtComponentConfigFull', null, this.form, continueFunction );
+                                     };
                                  }
                                  var that = this;
                                  var parms = {
@@ -41,7 +45,7 @@ jwt.o.ErrorStore =  [
                                   loadTemplate: jwt.templates.loadPopUp,
                                   popCallback: function(elem) {
                                     if (jQuery(elem).hasClass('btn-cancel')) {
-                                        continueFunction( that )
+                                        continueFunction( that );
                                     }
                                   }
                                 };
@@ -55,7 +59,8 @@ jwt.o.ErrorStore =  [
             text        : 'Invoice is FD Approved',
             test        : function(  ){
                             if ( jwt.invoice.user.isFDApproved ){
-                                return true}
+                                return true;
+                            }
                             },
             field       : [] ,
             desc        : 'required Field',
@@ -68,8 +73,9 @@ jwt.o.ErrorStore =  [
             text        : 'There must be a Finance approver on the approval chain',
             test        : function(  ){
                             if ( jwt.invoice.user.hasApproverOnChain ){
-                                return false}else{
-                                return true
+                                return false;
+                            }else{
+                                return true;
                             }
                             },
             field       : [] ,
@@ -88,8 +94,10 @@ jwt.o.ErrorStore =  [
                                 jwt.invoice.user.isPNDUserFinanceApprover ||
                                 jwt.invoice.user.isPOInvoice )
                             {
-                                false }else{
-                             return true}
+                                return false;
+                            }else{
+                                return true;
+                            }
                             },
             field       : [] ,
             desc        : 'required Field',
@@ -103,8 +111,9 @@ jwt.o.ErrorStore =  [
                             //cant pass without a valid approver
                             if ( jwt.invoice.user.hasApproverOnChain ){
 
-                                return false}else{
-                                return true
+                                return false;
+                            }else{
+                                return true;
                             }
                             },
             field       : [] ,
@@ -133,7 +142,7 @@ jwt.o.ErrorStore =  [
             type        : "fa fa-exclamation",
             text        : 'Comment Required',
             test        : function( val ){
-                              return !val.value
+                return !val.value;
                              },
             field       : [ "xx-comment-approver"  ] ,
             desc        : 'required Field',
@@ -146,7 +155,7 @@ jwt.o.ErrorStore =  [
             type        : "fa fa-exclamation",
             text        : 'Comment Required',
             test        : function( val ){
-                                           return !val.value
+                return !val.value;
                                          },
             field       : [ "xx-comment"  ] ,
             desc        : 'required Field',
@@ -175,7 +184,7 @@ jwt.o.ErrorStore =  [
                                           jQuery( "#XX_HDR_CT" ).val( jQuery("#user-pop-up #temp-comment").val());
                                           jQuery( that ).click();
                                         }
-                                    }
+                                    };
                                 }
 
                                 var outHTML = jwt.Mustache.to_html(jwt.templates['COMMENT']);
@@ -189,7 +198,7 @@ jwt.o.ErrorStore =  [
                                   loadTemplate: jwt.templates.loadPopUp,
                                   popCallback: function(elem) {
                                     if (jQuery(elem).hasClass('btn-ok')) {
-                                        continueFunction()
+                                        continueFunction();
                                     }else{
                                         jQuery("#user-pop-up").hide();
                                     }
@@ -207,7 +216,7 @@ jwt.o.ErrorStore =  [
                 type       : "fa fa-exclamation",
                 text       : 'Field Required ',
                 test       : function( val ){
-                             return val.value == "false" || !val.value || val.value == "0.00"  || val.value == "0"
+                    return val.value == "false" || !val.value || val.value == "0.00"  || val.value == "0";
                               },
                 field      : [ "rf-hdr-bu" , "qf-hdr-bu" , "qf-hdr-in" , "qf-hdr-id"  , "qf-hdr-ga" ,"rf-hdr-in" , "rf-hdr-id"  , "rf-hdr-ga" ] ,
                 desc       : 'required Field',
@@ -225,7 +234,7 @@ jwt.o.ErrorStore =  [
                     var regx = /^[A-Za-z0-9 ]+$/;
                     if (jQuery(  val ).val()) {
                       if (  !regx.test(jQuery(val).val())){
-                          jwt.constants.ERRORS['msg-val-in-001'].desc = "Invalid value " + val.value
+                          jwt.constants.ERRORS['msg-val-in-001'].desc = "Invalid value " + val.value;
                           val.value ="";
                           return val;
                       }
@@ -243,7 +252,7 @@ jwt.o.ErrorStore =  [
                 type      : "fa fa-exclamation",
                 text      : 'Are you sure you want to short pay the invoice',
                 test      : function( val ){
-                    return true
+                    return true;
                 },
                 field     : [ ] ,
                 desc      : "Short Pay warning",
@@ -272,7 +281,7 @@ jwt.o.ErrorStore =  [
                 text      : 'Invalid Number',
                 test      : function( val ){
                               if ( ! jQuery.isNumeric( val.value.replace(/,/g,'') ) ) {
-                              jwt.constants.ERRORS['msg-val-numbers'].desc = "Invalid Number  " + val.value
+                                  jwt.constants.ERRORS['msg-val-numbers'].desc = "Invalid Number  " + val.value;
                               val.value =0;
                               return val;}
                               },
@@ -457,8 +466,7 @@ jwt.o.ErrorStore =  [
                 field: 'rf-hdr-vi',
                 desc: 'Please Select a vendor location',
                 context : ["S"]
-            }
-            ,
+            },
             {
                 id: 'msg-006',
                 type: "fa fa-exclamation-triangle",
@@ -467,8 +475,7 @@ jwt.o.ErrorStore =  [
                 field: ['rf-hdr-vi'],
                 desc: '',
                 context : ["S"]
-            }
-            ,
+            },
             {
                 id: 'msg-fa-001',
                 class: 'W',
@@ -476,25 +483,19 @@ jwt.o.ErrorStore =  [
                 text: 'Invoice Financially approved!',
                 desc: 'A valid first approver required for route',
                 context : ["S"]
-            }
-
-            ,
+            },
             {
                 id: 'msg-st-001',
                 text: 'Sales Tax entered is more than the calculated amount',
                 desc: 'Sales Tax entered is more than the calculated amount',
                 context : ["S"]
-            }
-
-
-            ,
+            },
             {
                 id: 'msg-024',
                 text: 'You may approve PO only invoice!',
                 desc: 'You may approve PO only invoice',
                 context : ["S"]
-            }
-            ,
+            },
             {
                 id: 'msg-011',
                 type: "fa fa-exclamation-triangle",
@@ -502,8 +503,7 @@ jwt.o.ErrorStore =  [
                 field: [ 'rf-hdr-fa'],
                 desc: 'A valid first approver required for route',
                 context : ["S"]
-            }
-            ,
+            },
             {
                 id: 'msg-list-return-fd',
                 type: "fa fa-exclamation-triangle",
@@ -532,13 +532,13 @@ jwt.o.ErrorStore =  [
                 type: "fa fa-exclamation-triangle",
                 text: 'Message Text',
                 desc: 'Detailed message info'
-
             }
-        ]
+];
 
 jwt.constants.ERRORS = {};
 (function () {
     for (i = 0; i < jwt.o.ErrorStore.length; i++) {
         jwt.constants.ERRORS[ jwt.o.ErrorStore[i].id ] = jwt.o.ErrorStore[i];
     }
-})()
+})();
+
