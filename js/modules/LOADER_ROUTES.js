@@ -16,9 +16,9 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
         url: '/EMPLOYEE/ERP/s/WEBLIB_XX_MJSON.ISCRIPT1.'
              + 'iScript_xxGet_Json_Data?',
         indexKey: function(data) {
-            return ''
+            return '';
         }
-    }
+    };
 
     var url_xx = document.URL.replace(/\/\s*$/, '').split('/');
 
@@ -35,7 +35,7 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
                 errorObject = val;
             }
             errorObject.route = obj;
-            ret.push(jwt.error.createError.call(that, errorObject))
+            ret.push(jwt.error.createError.call(that, errorObject));
         });
 
         if ( typeof callback === 'function' ){
@@ -45,8 +45,6 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
         
         jQuery(".messages").trigger("hasError");
         return !_.contains(ret, !true);
-
-      
     };
 
   var xx_bind_buttons = function(row) {
@@ -73,11 +71,11 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
 
 	 jQuery(obj)
 	     .off("click." + routeID)
-             .on("click." + routeID
-		 , function(event) {
-                   var retPageEdits = true
-		     ,   retRouteEdits = true
-		     ,   ret = false;
+             .on("click." + routeID ,
+		  function(event) {
+                      var retPageEdits = true,
+		          retRouteEdits = true,
+		       ret = false;
 		     
                     event.preventDefault();
                     routeID = jQuery(this).attr('data-route-id');
@@ -120,9 +118,9 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
 			      if ( jwt.user.oldimageNowDocID !=
 				jwt.user.imageNowDocID){
                                  jQuery("#image-now").html(
-"<iframe id='INiframe' class='imageNowIframe' src='"
- 		        + jwt.constants.imgNowURL
-			+ jQuery(this).data("imgnowkey") + "' ></iframe>");
+"<iframe id='INiframe' class='imageNowIframe' src='" +
+ 		        jwt.constants.imgNowURL +
+			jQuery(this).data("imgnowkey") + "' ></iframe>");
                         jwt.user.oldimageNowDocID = jwt.user.imageNowDocID;
                                     }
                                 }
@@ -130,8 +128,8 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
                       } else {
 		       /* the second possibility will call up to the server
 			  with the server function string on the route object*/
-                         jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
-			       , null, this.form, routeObj.serverFunction);
+                          jwt.jwtComponent.getData('jwt.jwtComponentConfigFull',
+			       null, this.form, routeObj.serverFunction);
                       }
 
 			/* routes called from the approval page need to do
@@ -149,7 +147,7 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
                           setTimeout( function() {
 		            jQuery("section#work-lists table")
 				    .remove();
-                                jwt.jwtWorkList.reset_Tabs()
+                              jwt.jwtWorkList.reset_Tabs();
                                 jwt.jwtWorkList.init();
                                     }, 2000);
                             }
@@ -161,7 +159,7 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
             if (routeObj.hasOwnProperty("buttonDefn")) {
                 jQuery(obj).addClass(routeObj.buttonDefn.buttonClass)
                     .prop('title', routeObj.Description)
-                    .html(routeObj.buttonDefn.buttonLabel)
+                    .html(routeObj.buttonDefn.buttonLabel);
             }
         }); /* end of the each to find eleemts to bind */
     };
@@ -169,5 +167,5 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
     return {
         run_Edits: run_Edits,
         xx_bind_buttons: xx_bind_buttons
-    }
+    };
 })();

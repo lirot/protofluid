@@ -3,7 +3,7 @@ jwt.jwtComponentConfigApprove = (function() {
   return {
     Definition: 'jwtComponentConfigApprove',
     init: function() {
-      jQuery(jwt.jwtModalApprove.modalHTML).appendTo("body")
+        jQuery(jwt.jwtModalApprove.modalHTML).appendTo("body");
     },
     loadTemplate: jwt.templates.loadApproveTemplate,
     modal: "#approve-dialog",
@@ -25,19 +25,19 @@ jwt.jwtComponentConfigApprove = (function() {
         config[funName]($obj);
       }
 
-      jwt.jwtData.Configs['XX_APPROVERS'].lunr_index = null;
+      jwt.jwtData.Configs.XX_APPROVERS.lunr_index = null;
 
-      jwt.jwtData.create_Lunr_search(jwt.jwtData.Configs['XX_APPROVERS']);
+      jwt.jwtData.create_Lunr_search(jwt.jwtData.Configs.XX_APPROVERS);
 	
         //go through the list of approvers and mark if they can approve
-      _.each(jwt.jwtData['XX_APPROVERS'], function(obj) {
+      _.each(jwt.jwtData.XX_APPROVERS, function(obj) {
         if (jwt.invoice.user.validApprovers.indexOf(obj.OPRID) > 0) {
-          obj.canApprove = "Y"
+            obj.canApprove = "Y";
         }
 	  
         jwt.jwtData.add_fields_lunr_search(
-	      jwt.jwtData.Configs['XX_APPROVERS'], obj)
-      })
+	    jwt.jwtData.Configs.XX_APPROVERS, obj);
+      });
 
           //handle remove clicks to take user of the chain
       jQuery(document).off('click', '.remove-approver')
@@ -50,5 +50,5 @@ jwt.jwtComponentConfigApprove = (function() {
         placeholder: "ui-state-highlight"
       });
     }
-  }
+  };
 })();

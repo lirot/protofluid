@@ -27,15 +27,11 @@ jwt.jwtComponentConfigQuick = (function() {
 	//jwt.Chat.processWorkListClick(tempclickObject);
         //}else{ console.log('Warning - Node Server not available')}
 
-      (jQuery('.NL-check').val()) ? jQuery('#XX_HDR_VL').val(""): null;
-      console.log("run you!")
+        if (jQuery('.NL-check').val()) { jQuery('#XX_HDR_VL').val(""); }
 
     },
 
 beforeTemplateCallback: function(config){
-    
-  
-    
         },
     callback: function(config) {
         jwt.invoice.user.hasPO = false;
@@ -46,11 +42,11 @@ beforeTemplateCallback: function(config){
       jwt.functions.setupNLCheck(jwt.functions.setupNLCheck);
 
       jQuery('#XX_HDR_GA, #XX_HDR_ST').on('change', function(event) {
-        jwt.functions.formatNumbersQF()
+          jwt.functions.formatNumbersQF();
       });
 
       jwt.routes.xx_bind_buttons();
     }
-  }
+  };
 
 })();

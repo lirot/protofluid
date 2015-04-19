@@ -100,11 +100,10 @@ jwt.templates = (function() {
 
     loadFullTemplate: function(config) {
 
-      var _config = config
 
       jwt.jwtComponent
-        .Configs['jwt.' + _config.Definition]
-        .beforeTemplateCallback(_config);
+        .Configs['jwt.' + config.Definition]
+        .beforeTemplateCallback(config);
 
 
        var template = jwt.templates[config.templateName],
@@ -113,13 +112,13 @@ jwt.templates = (function() {
       jQuery("#component-data").html(outHTML);
 
        jwt.jwtComponent
-        .Configs['jwt.' + _config.Definition]
-        .callback(_config);
+        .Configs['jwt.' + config.Definition]
+        .callback(config);
 
     },
     loadApproveTemplate: function(config) {
 
-      var source = jwt.templates['ApproveTemplate'];
+      var source = jwt.templates.ApproveTemplate;
       var templateC = jwt.handlebars.compile(source);
       var outHTML = templateC(jwt.invoice);
 
@@ -145,14 +144,14 @@ jwt.templates = (function() {
 
     },
     loadPopUp: function(obj) {
-
+        var template;
       if (obj.hasOwnProperty("template")) {
-        var template = obj.template,
+          template = obj.template;
           subTemplate = jwt.Mustache.to_html(template, obj.view);
         obj.subTemplate = subTemplate;
       }
 
-      var template = jwt.templates['PopUp'],
+        template = jwt.templates.PopUp;
         outHTML = jwt.Mustache.to_html(template, obj);
 
       jQuery("#popModal").html(outHTML);
@@ -171,5 +170,5 @@ jwt.templates = (function() {
             obj.popCallback(result);
           });
     }
-  }
+  };
 }());

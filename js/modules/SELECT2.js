@@ -16,7 +16,7 @@ formatVal: function(item) {
 
             var tblName = jQuery(this.element).data('ps-tbl-name');
             var isLine = jQuery(this.element).data('line');
-            var dataDefn = jwt.jwtData.Configs[tblName]
+    var dataDefn = jwt.jwtData.Configs[tblName];
             var lookup = item.id;
 
             if (typeof dataDefn.select2Display === 'function') {
@@ -34,7 +34,7 @@ formatVal: function(item) {
 		      jwt.jwtData[tblName]["_" + lookup], this.element);
               }
             }
-            return display || "."
+    return display || ".";
           },
 
 formatRes: function(result, container, query, escapeMarkup) {
@@ -67,7 +67,7 @@ select2PreQuery: function(that) {
 
             if (config.hasOwnProperty("select2lunrPreQuery")) {
               var select2lunrPreQuery = config.select2lunrPreQuery;
-              select2lunrPreQuery(config, that)
+                select2lunrPreQuery(config, that);
             }
 
           //Can approve logic for approvers
@@ -104,8 +104,8 @@ select2query: function(query) {
             }
     
             //if the data object is has  all property  show all values
-            if (config.hasOwnProperty("is_lunr_show_all") && query.term == "") {
-              query.term = "all:all"
+            if (config.hasOwnProperty("is_lunr_show_all") && query.term === "") {
+                query.term = "all:all";
             }
 
     
@@ -124,8 +124,7 @@ select2query: function(query) {
 
     }
 
-         
-            var hashkey = "";
+                     var hashkey = "";
          //call sort routine on data object if defined
             if (config.hasOwnProperty("lunrSortFunction" )){
                results  = config.lunrSortFunction( results );
@@ -139,7 +138,7 @@ select2query: function(query) {
                 text: s
               });
 
-            })
+            });
 
             //the S2 select continues with the data
             query.callback(data);
@@ -152,7 +151,7 @@ createS2_header: function() {
 
 	//select2 for payment and handling  create the object
 	//then set the values
-	    jQuery("#loc_XX_HDR_PY").select2()
+    jQuery("#loc_XX_HDR_PY").select2();
             if (jwt.invoice.header.XX_HDR_PY) {
 		jQuery("#loc_XX_HDR_PY")
 		    .select2("val", jwt.invoice.header.XX_HDR_PY);
@@ -167,40 +166,39 @@ createS2_header: function() {
             //this is a wait check protection only relevant for the first  on a
             // session
         function f() {
-		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV')
-		    && jwt.jwtData.hasOwnProperty('XX_APPROVERS')
-    		    && jwt.jwtData.hasOwnProperty('XX_289_D_PRJ_01')
+		if (jwt.jwtData.hasOwnProperty('XX_289_D_APPROV') &&
+		    jwt.jwtData.hasOwnProperty('XX_APPROVERS') &&
+    		    jwt.jwtData.hasOwnProperty('XX_289_D_PRJ_01')
 		  ) {
                 dothis();
               } else {
-                setTimeout(f, 1000)
+                  setTimeout(f, 1000);
               }
          }
 
-        setTimeout(f, 1000)
+    setTimeout(f, 1000);
 
 	// builds all the custom select2 objects marked with data attribute
         function dothis() {
           elemArray = jQuery("input.select2-offscreen[data-ps-tbl-name]");
           //when this build loop is entered it is safe to show the page however
 	  //for certain actions the page is hidden and in these cases
-	  (!jwt.invoice.keepHidden)
-		    ? jQuery("#full-section , #quick-section")
-		    .css('display', 'block'): null;
+	    if (!jwt.invoice.keepHidden ){
+		    jQuery("#full-section , #quick-section")
+		    .css('display', 'block');}
 
 		//loop builds select2 for elements with data objects driven off
 
               _.each(elemArray, function(obj) {
-                var $obj = jQuery(obj);
-                var tblName = $obj.data('ps-tbl-name');
-                var config = jwt.jwtData.Configs[tblName];
+                  var $obj = jQuery(obj), tblName = $obj.data('ps-tbl-name'),
+                      config = jwt.jwtData.Configs[tblName];
                   //the id is used as the method name which is used to build the
 		  //object
                 if (config.hasOwnProperty($obj.attr('id'))) {
                   var funName = $obj.attr('id');
                   config[funName]($obj);
                 }
-              })
+              });
             }
           }
 
@@ -233,8 +231,6 @@ createS2_header: function() {
 
       //copy the  defualts object to our own data objects
       jQuery.extend(jwt.jwtData, s2optionsDO);
-
-      
     }
-  }
-})()
+  };
+  })();

@@ -1,11 +1,12 @@
 jwt.jwtWorkListConfig_APR = (function() {
 
   var WorkList = function(i, obj1, obj2) {
-    this.id = i;
-    for (var attrname in obj1) {
+      this.id = i;
+      var attrname;
+    for (attrname in obj1) {
       this[attrname] = obj1[attrname];
     }
-    for (var attrname in obj2) {
+    for (attrname in obj2) {
       this[attrname] = obj2[attrname];
     }
   };
@@ -18,23 +19,23 @@ jwt.jwtWorkListConfig_APR = (function() {
     type: 'wl',
     class: 'wl-appr',
     wldivtab: 'work-lists',
-    sweepWebLib: '/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.'
-                   + 'WEBLIB_FUNCTION.FieldFormula.iScript_xxSweepImageNow',
+    sweepWebLib: '/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.' +
+                   'WEBLIB_FUNCTION.FieldFormula.iScript_xxSweepImageNow',
     imgNowKey: 'XX_IMAGENOW_DOC_ID',
-    iScript: '/EMPLOYEE/ERP/s/WEBLIB_XX_MJSON.ISCRIPT1.'
-               + 'FieldFormula.iScript_xxGet_Json_Data?',
+    iScript: '/EMPLOYEE/ERP/s/WEBLIB_XX_MJSON.ISCRIPT1.' +
+               'FieldFormula.iScript_xxGet_Json_Data?',
     urlBase: "http://" + location.host + "/psc/" + url_jwt[4],
-    imgNowURL: 'http://nyc0psfs07.na.corp.jwt.com:8080/webnow'
-                +  '/index.jsp?action=document&docid=' ,
+    imgNowURL: 'http://nyc0psfs07.na.corp.jwt.com:8080/webnow'  +
+               '/index.jsp?action=document&docid=' ,
   };
 
   var UserWorkList = [{
       name: 'Search',
       wlLockField: 'NAME',
       wlID: '0',
-      qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA","CoumnList"'
-          + ':[{"Column_Name":"OPRID","Column_Value": "%USER%"'
-          + ',"Operator":"="}]}',
+      qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APRA","CoumnList"' +
+         ':[{"Column_Name":"OPRID","Column_Value": "%USER%"' +
+         ',"Operator":"="}]}',
       fldlist: [{
         fname: 'INSTANCEID',
         fdescr: 'ID'
@@ -70,9 +71,9 @@ jwt.jwtWorkListConfig_APR = (function() {
       name: 'In Process',
       wlLockField: '',
       wlID: '1',
-      qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR2","CoumnList"'
-	    + ':[{"Column_Name":"OPRID","Column_Value": "%USER%","'
-	    + 'Operator":"="}]}',
+      qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR2","CoumnList"' +
+	    ':[{"Column_Name":"OPRID","Column_Value": "%USER%","' +
+	    'Operator":"="}]}',
       fldlist: [{
         fname: 'INSTANCEID',
         fdescr: 'ID'
@@ -92,9 +93,9 @@ jwt.jwtWorkListConfig_APR = (function() {
       name: 'To Approve',
       wlLockField: '',
       wlID: '2',
-      qrystring:   'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR1",'
-	         + '"CoumnList":[{"Column_Name":"OPRID","Column_Value"'
-	         +  ':"%USER%","Operator":"="}]}',
+      qrystring:   'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR1",' +
+	        '"CoumnList":[{"Column_Name":"OPRID","Column_Value"' +
+	        ':"%USER%","Operator":"="}]}',
       fldlist: [{
         fname: 'INSTANCEID',
         fdescr: 'ID'
@@ -128,9 +129,9 @@ jwt.jwtWorkListConfig_APR = (function() {
 { name: 'Invoices Sent Back',
       wlLockField: '',
       wlID: '3',
-      qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR3"'
-	    + ',"CoumnList":[{"Column_Name":"OPRID","Column_Value"'
-	    + ':"%USER%","Operator":"="}]}',
+      qrystring: 'DATA_REQUEST[1]={"ViewName":"XX_289_WL_APR3"' +
+	    ',"CoumnList":[{"Column_Name":"OPRID","Column_Value "'+
+	    ':"%USER%","Operator":"="}]}',
       fldlist: [{
           fname: 'INSTANCEID',
           fdescr: 'ID'

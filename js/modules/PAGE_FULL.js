@@ -24,8 +24,8 @@ jwt.jwtComponentConfigFull = (function() {
         //url string for the server component controller
         formAction: '/EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_FCM289_APPR.GBL',
         //url for direct links
-        url: ['/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.FieldFormula'
-	      +'.iScript_xxViewRPayInvoice?INSTANCEID='],
+        url: ['/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.FieldFormula' +
+	      '.iScript_xxViewRPayInvoice?INSTANCEID='],
         //page level edits
         editArray: ["msg-req-001", "msg-val-in-001", "msg-val-id-001"
 		    , "msg-val-numbers", "msg-isFDApprove"],
@@ -48,15 +48,15 @@ getPO_SubCat_Data_Add_Links: function(config) {
            var def = new jQuery.Deferred();
 	   //the system via the initial parse callback has determined this value
               if (obj.SectionHeader.po) {
-                  jwt.user.hasPO = true
+                  jwt.user.hasPO = true;
 		  //lock down any vendor canges when PO exists
                   jQuery("#s2id_loc_S2_XX_HDR_VI .select2-search-choice-close")
 		      .css("right", "0px");
               }
 	        //request project data and set up promise
-		jwt.jwtData.init('xx_proj_attrtbl'
-				 , jwt.jwtData.Configs['xx_proj_attrtbl']
-				 , [obj.SectionHeader.pi], def);
+	   jwt.jwtData.init('xx_proj_attrtbl',
+			    jwt.jwtData.Configs.xx_proj_attrtbl,
+				 [obj.SectionHeader.pi], def);
                 promises.push(def);
             });
 
@@ -69,13 +69,13 @@ getPO_SubCat_Data_Add_Links: function(config) {
                   function f() {
                        dothis();
                     }
-                  setTimeout(f, 2000)
+                  setTimeout(f, 2000);
 
 		  function dothis() {
                   _.each(jwt.invoice.sections, function(obj) {
                     var piData = jwt.jwtData
-			    .xx_proj_attrtbl["_"
-					     + obj.SectionHeader.pi.hashCode()];
+			    .xx_proj_attrtbl["_" +
+					obj.SectionHeader.pi.hashCode()];
 		      
 		//these data are what was needed to populate the iScripts for
 	        //the clikcs on the links below
@@ -88,42 +88,42 @@ getPO_SubCat_Data_Add_Links: function(config) {
 
                       //project tooltip
                 var outHTML = jwt.Mustache.to_html(
-			  jwt.templates['TOOLTIP_PROJECT_INFO'], piData);
+			  jwt.templates.TOOLTIP_PROJECT_INFO, piData);
                       jQuery('[data-link-id="' + obj.SectionHeader.pi + '"]')
 			  .html(outHTML);
 
                       // make an ajax call to get the po data
 		      // display the the tooltip information
-                      jwt.jwtData.init('xx_po_rpt', jwt.jwtData.Configs[
-			  'xx_po_rpt'], [obj.SectionHeader.po]);
+                      jwt.jwtData.init('xx_po_rpt',
+                          jwt.jwtData.Configs.xx_po_rpt, [obj.SectionHeader.po]);
 
                       //the project type and business unit will be needed when
 		      //the drop down is clicked by the user
                       //put it here so we can have it later
 	        var key = obj.SectionHeader.bu + obj.SectionHeader.pt;
-                      jQuery(".loc_XX_LIN_SC[data-pi='" + obj.SectionHeader.pi
-			     + "']").attr('data-pt-bu', key);
+                      jQuery(".loc_XX_LIN_SC[data-pi='" + obj.SectionHeader.pi +
+			     "']").attr('data-pt-bu', key);
 
-                var urlqryString = "?BUSINESS_UNIT="
-			  + obj.SectionHeader.bu + "&OPERATING_UNIT="
-			  + obj.SectionHeader.ou + "&PROJECT_ID="
-			  + obj.SectionHeader.pi + "&PO_ID="
-			  + obj.SectionHeader.po;
+                var urlqryString = "?BUSINESS_UNIT=" +
+			  obj.SectionHeader.bu + "&OPERATING_UNIT=" +
+			  obj.SectionHeader.ou + "&PROJECT_ID=" +
+			  obj.SectionHeader.pi + "&PO_ID=" +
+			  obj.SectionHeader.po;
 		      
 		//add click events for links for line  section groups
-                jQuery(".group[data-key='" + obj.SectionHeader.key
-			     + "']").find(".xx-link-pi-setup ,"
-                             + " .xx-link-po-modify, .xx-link-pj"
-                             + " , .xx-link-estimate")
+                jQuery(".group[data-key='" + obj.SectionHeader.key +
+			     "']").find(".xx-link-pi-setup ," +
+                             " .xx-link-po-modify, .xx-link-pj" +
+                             " , .xx-link-estimate")
                          .click(
                             function(event) {
                               event.preventDefault();
-			      window.open("http://" + location.host + "/psc/"
-		              + url_jwt[4]
-		 + "_newwin/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION."
-					  + "FieldFormula.iScript_"
+			      window.open("http://" + location.host + "/psc/" +
+		              url_jwt[4] +
+		 "_newwin/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION." +
+					  "FieldFormula.iScript_" +
 		//the html has the name of the script we call on the server
-		 + jQuery(this).attr("data-script-id") + urlqryString, '', '');
+		                          jQuery(this).attr("data-script-id") + urlqryString, '', '');
                                 });
 		      //po link click event
                       jQuery(".group[data-key='" + obj.SectionHeader.key
@@ -146,14 +146,14 @@ controller: function(elem) {
             // with values before trip to server.
         jQuery('#XX_HDR_HC').val(jQuery('#loc_XX_HDR_HC').val());
         jQuery('#XX_HDR_PY').val(jQuery('#loc_XX_HDR_PY').val());
-        (jQuery('.NL-check').val()) ? jQuery('#XX_HDR_VL').val(""): null;
+    if (jQuery('.NL-check').val() ) {jQuery('#XX_HDR_VL').val("");}
         jQuery(".ps-check").each(
            function(index) {
                var valcheck = (
-		   (jQuery(this).next().hasClass("checked")) ? "Y" : "N")
+		   (jQuery(this).next().hasClass("checked")) ? "Y" : "N");
                     jQuery(this).val(valcheck);
                 }
-            )
+        );
         },
 
 callbackAlternate: function(config) {
@@ -165,7 +165,7 @@ callbackAlternate: function(config) {
        //load the template for this page but hide the page
        //now run the pop template
     //check for route-rquired errors
-    if( jwt.invoice.routeError !=  true){
+    if( jwt.invoice.routeError !==  true){
        jwt.invoice.keepHidden = true;
         jwt.templates.loadTemplate(jwt.jwtComponentConfigApprove);
     }
@@ -185,8 +185,8 @@ callback: function(config) {
 
     jwt.invoice.user.subCatValidArray =   jwt.invoice.user.subCatValid.split("[");
 
-	jQuery("[id^='XX_LIN_MA'] , #XX_HDR_GA , #XX_HDR_RA, #XX_HDR_UT"
-	       + ", #XX_HDR_ST")
+	jQuery("[id^='XX_LIN_MA'] , #XX_HDR_GA , #XX_HDR_RA, #XX_HDR_UT" +
+	       ", #XX_HDR_ST")
 	    .change(function() {
                 jwt.functions.addlines();
             });
@@ -214,30 +214,30 @@ callback: function(config) {
             });
 
             // the wire flag drive the display of the hold flag
-        (jQuery('#loc_XX_HDR_WI').val() == "on")
-	    ? jQuery('#loc_XX_HDR_HF').attr("disabled", true): false;
+        if (jQuery('#loc_XX_HDR_WI').val() == "on")
+    {  jQuery('#loc_XX_HDR_HF').attr("disabled", true)}
 
         //all the check boxes need to be rendered as pretty checkable
 	//controls and their values set
         jQuery(".ps-check").each(
             function(index) {
                jQuery(this).prettyCheckable();
-		(jwt.invoice.header[jQuery(this).data('ps-id')] == "Y")
-		    ? jQuery(this).prettyCheckable('check')
-		    : jQuery(this).prettyCheckable('uncheck');
+		if (jwt.invoice.header[jQuery(this).data('ps-id')] == "Y") {
+		    jQuery(this).prettyCheckable('check'); }else{
+		        jQuery(this).prettyCheckable('uncheck');}
                 });
 
             //changing the wire flag has impacts on other elements
             jQuery('#loc_XX_HDR_WI').on('change', function(event) {
-                (jQuery('#loc_XX_HDR_WI').prop("checked") == true)
-		    ? jQuery('#loc_XX_HDR_HF').prettyCheckable('check')
-		    : jQuery('#loc_XX_HDR_HF').prettyCheckable('uncheck');
-                (jQuery('#loc_XX_HDR_WI').prop("checked") == true)
-		    ? jQuery('#loc_XX_HDR_HF').prettyCheckable('disable')
-		    : jQuery('#loc_XX_HDR_HF').prettyCheckable('enable');
-                (jQuery('#loc_XX_HDR_WI').prop("checked") == true)
-		    ? jQuery('#loc_XX_HDR_HF').val("Y")
-		    : jQuery('#loc_XX_HDR_HF').val("N");
+                if (jQuery('#loc_XX_HDR_WI').prop("checked") === true)
+		{ jQuery('#loc_XX_HDR_HF').prettyCheckable('check');}else{
+		        jQuery('#loc_XX_HDR_HF').prettyCheckable('uncheck');}
+                if (jQuery('#loc_XX_HDR_WI').prop("checked") === true)
+		{ jQuery('#loc_XX_HDR_HF').prettyCheckable('disable');
+	    }else{ jQuery('#loc_XX_HDR_HF').prettyCheckable('enable');}
+                if (jQuery('#loc_XX_HDR_WI').prop("checked") == true)
+		{ jQuery('#loc_XX_HDR_HF').val("Y");}
+		    else { jQuery('#loc_XX_HDR_HF').val("N");}
             });
 
             //render the date picker...
@@ -246,10 +246,10 @@ callback: function(config) {
 
 	    //approvers get only the vendor for the invoice
             if (jwt.user.isApprover) {
-                jwt.jwtData.init('XX_289_D_VND_LC_SINGLE'
-		     , jwt.jwtData.Configs['XX_289_D_VND_LC_SINGLE']
-	             , [encodeURIComponent(jwt.invoice.header.XX_HDR_VI
-		      + jwt.invoice.header.XX_HDR_VL)]);
+                jwt.jwtData.init('XX_289_D_VND_LC_SINGLE' ,
+		                 jwt.jwtData.Configs.XX_289_D_VND_LC_SINGLE ,
+	                         [encodeURIComponent(jwt.invoice.header.XX_HDR_VI +
+		                                   jwt.invoice.header.XX_HDR_VL)]);
             } else {
                 //the no vendor location check box
                 jwt.functions.setupNLCheck(jwt.functions.setupNLCheck);
@@ -259,7 +259,7 @@ callback: function(config) {
 	// using the error conroller logic
     jwt.routes.run_Edits( jwt.invoice , function(){
                 //the alternate branch is followed and then reset
-            if (config.useAlternateCallback == true) {
+            if (config.useAlternateCallback === true) {
                 config.useAlternateCallback = false;
                 config.callbackAlternate();
             }
@@ -272,20 +272,18 @@ callback: function(config) {
         // functionality to configure fields to drive display
 	// and edit properties
 	var fieldList = _.filter(jwt.fields, function(obj) {
-                return obj.hasOwnProperty('canViewFunc')
+            return obj.hasOwnProperty('canViewFunc');
             });
             _.each(fieldList, function(obj) {
-                (obj.canViewFunc()) ? jQuery("." + obj.Definition).remove()
-		    : "";
+                if (obj.canViewFunc()) { jQuery("." + obj.Definition).remove();}
             });
           fieldList = _.filter(jwt.fields, function(obj) {
-                return obj.hasOwnProperty('canEditFunc')
+              return obj.hasOwnProperty('canEditFunc');
             });
             _.each(fieldList, function(obj) {
                 canEdit = obj.canEditFunc();
-                (canEdit) ?
-		    jwt.invoice.user.canEdit[obj.Definition] = "disabled"
-		    : "";
+                if(canEdit) {
+		    jwt.invoice.user.canEdit[obj.Definition] = "disabled"; }
             });
 
             //payent note needs some love
@@ -334,12 +332,12 @@ callback: function(config) {
         var foundlines = _.filter(jwt.lines, function(obj) {
                 return (
 		    //Amount only are also referred to as qty based
-		    obj.XX_LIN_AO == "N"
+		    obj.XX_LIN_AO == "N" ||
 		    //asset flag is on
-			|| obj.XX_LIN_AF == "Y"
+			obj.XX_LIN_AF == "Y" ||
                     //asset profile and asset id will also display lines
-			|| obj.XX_LIN_AP
-			|| obj.XX_LIN_AI)
+			obj.XX_LIN_AP ||
+			obj.XX_LIN_AI);
             });
 
 	  //do the work on the lines
@@ -347,7 +345,7 @@ callback: function(config) {
                 var rowID = obj.ROW;
                 //unhide the line 
                 jQuery(".line2[data-row-id='" + rowID + "']")
-                    .show()
+                    .show();
                 // AO or amount only is the equivalent of a quantity based PO
                 // quantity based PO will show the line two feilds as
 		// editable inputs
@@ -359,8 +357,8 @@ callback: function(config) {
 		      .addClass("fa-check-square");
                     //display fields
                     jQuery(".line2[data-row-id='" + rowID + "']")
-			.find(".rf-lin-ii > input , .rf-lin-um > input , "
-			      + ".rf-lin-lq > input , .rf-lin-up > input")
+			.find(".rf-lin-ii > input , .rf-lin-um > input , " +
+			      ".rf-lin-lq > input , .rf-lin-up > input")
                         .attr("disabled", false);
                     jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
 			.prop("disabled", true);
@@ -373,7 +371,7 @@ callback: function(config) {
 		      jQuery(".line2[data-row-id='" + rowID + "']")
 		      .find(".rf-lin-ai > input,  .rf-lin-ap > input")
 		      .filter(function() {
-                            return this.value
+                          return this.value;
                         }).length > 0) {
                       //change the icon used
 		      jQuery(".show-asset[data-row-id='" + rowID + "']")
@@ -391,11 +389,11 @@ callback: function(config) {
 	// and disable the monetary amount
         jQuery('.rf-lin-lq > input , .rf-lin-up > input')
 	     .on('change', function() {
-                var rowID = jQuery(this).data("row-id")
-                 var totamt = parseInt(jQuery(".rf-lin-lq > input[data-row-id='"
-					      + rowID + "']").val())
-		     * parseInt(jQuery(".rf-lin-up > input[data-row-id='"
-	             + rowID + "']").val());
+                 var rowID = jQuery(this).data("row-id");
+                 var totamt = parseInt(jQuery(".rf-lin-lq > input[data-row-id='" +
+					     rowID + "']").val()) *
+		     parseInt(jQuery(".rf-lin-up > input[data-row-id='" +
+	             rowID + "']").val());
                 totamt = isNaN(totamt) ? 0 : totamt;
                  jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
 		     .val(totamt.toFixed(2) ? totamt.toFixed(2) : 0)
@@ -455,8 +453,8 @@ callback: function(config) {
 
               //jQuery(".line2[data-row-id='" + rowID + "']").hide();
 	      jQuery(".line2[data-row-id='" + rowID + "']")
-		    .find(".rf-lin-ii > input , .rf-lin-um > input , "
-			  + ".rf-lin-lq > input , .rf-lin-up > input")
+		    .find(".rf-lin-ii > input , .rf-lin-um > input , " +
+			  ".rf-lin-lq > input , .rf-lin-up > input")
 		     .attr("disabled", true)
                      .val("");
 		jQuery(".line2[data-row-id='" + rowID + "']")
@@ -473,8 +471,8 @@ callback: function(config) {
 
               jQuery(".line2[data-row-id='" + rowID + "']").show();
 	      jQuery(".line2[data-row-id='" + rowID + "']")
-		    .find(".rf-lin-ii > input , .rf-lin-um > input , "
-			  + ".rf-lin-lq > input , .rf-lin-up > input")
+		    .find(".rf-lin-ii > input , .rf-lin-um > input , " +
+			  ".rf-lin-lq > input , .rf-lin-up > input")
 		    .attr("disabled", false);
 		jQuery(".line2[data-row-id='" + rowID + "']")
 		    .find(".rf-lin-ii > div , .rf-lin-um > div")
@@ -482,7 +480,6 @@ callback: function(config) {
                   }
         });
 
-
     }
-    }
+    };
 })();

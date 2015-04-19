@@ -12,9 +12,9 @@ jwt.jwtWorkList = (function() {
     var wlProcessedCnt = 0;
     var wlCounts = {};
     var wlActiveTab = 0;
-    var wlRedFlg = '<img name="ERROR_ICON$IMG$0" title="Attention"'
-        + 'alt="Attention" src="/cs/fsdev/cache/'
-        + 'PS_PENNANT_FLAG_ICN_1.gif" border="0">';
+    var wlRedFlg = '<img name="ERROR_ICON$IMG$0" title="Attention"' +
+        'alt="Attention" src="/cs/fsdev/cache/' +
+        'PS_PENNANT_FLAG_ICN_1.gif" border="0">';
     var wlSpinner = {};
     var wlActiveTabFirst = true;
 
@@ -31,7 +31,7 @@ var reset_Tabs = function(response, worklist) {
       jQuery('.wlHeader').css('display', 'none');
       jQuery('section#work-lists').css('display', 'none');
       jwt.stopCount();
-    }
+};
 
 var wlCreatTable = function(response, worklist) {
       var jsondata = jQuery.parseJSON(response),
@@ -40,18 +40,17 @@ var wlCreatTable = function(response, worklist) {
         wlTable,
         rowtmplt = '',
         hdricon = "",
-        wlTableID = worklist.type + "-tbl-" + worklist.id,
+          wlTableID = worklist.type + "-tbl-" + worklist.id;
         jsondata = jsondata.VIEW[0].LINE;
 
       //row count on tab
       var elem = jQuery(" [data-count-wlid= '" + worklist.id + "']");
-      elem.text(jsondata.length.toString())
+    elem.text(jsondata.length.toString());
 
        //table header
       jQuery.each(worklist.fldlist, function(index, field) {
           var stitle;
           if (field.hasOwnProperty("title") ){
-
               stitle = field.title;
           }
           
@@ -65,9 +64,9 @@ var wlCreatTable = function(response, worklist) {
 
   jQuery.each(jsondata, function(index, item) {
 
-	  locked = decodeURIComponent(item[worklist.wlLockField])
-	      == jwt.user.operDescr ? 'N' : 'Y';
-        locked = item[worklist.wlLockField] == '' ? 'N' : locked;
+	  locked = decodeURIComponent(item[worklist.wlLockField]) ==
+	      jwt.user.operDescr ? 'N' : 'Y';
+        locked = item[worklist.wlLockField] === '' ? 'N' : locked;
         important = item['XX_FLAG'] == 'Y' ? 'Y' : 'N';
         delete item.XX_FLAG;
         buttonHTML = "";
