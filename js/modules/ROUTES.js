@@ -1,4 +1,4 @@
-jwt.routes['loc_WL_OPEN_SAS_FULL'] = (function() {
+jwt.routes.loc_WL_OPEN_SAS_FULL = (function() {
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  return {
      //for page buttons this flag will force the page to run the error array
@@ -19,19 +19,19 @@ jwt.routes['loc_WL_OPEN_SAS_FULL'] = (function() {
     beforeFunction : function(data) {},
     //this si the server call when the system passes the edit routine
     serverFunction : function(elem){
-        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
-				 , jQuery(elem).data("key") + "&UNLOCK=Y" );
+        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull' ,
+				  jQuery(elem).data("key") + "&UNLOCK=Y" );
                         },
     afterFunction  : function() {
                         },
     //the system will hide the button if the function returns false
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
+     canViewFunc    :  function() {  return !jwt.invoice.user.isLocked; },
     //styling for the button
     buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel    : "Open" }
-  }
+ };
 })();
 
-jwt.routes['loc_WL_UNLOCK_SAS_FULL'] = (function() {
+jwt.routes.loc_WL_UNLOCK_SAS_FULL = (function() {
   return {
     runPageEdit    : false,
     runRefresh     : true,
@@ -43,17 +43,17 @@ jwt.routes['loc_WL_UNLOCK_SAS_FULL'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : function(elem){
                        window.unlock = true;
-        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull'
-				 , jQuery(elem).data("key") );
+        jwt.jwtComponent.getData('jwt.jwtComponentConfigFull',
+				  jQuery(elem).data("key") );
                         },
     afterFunction  : function() {    },
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
       buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
 			 : "Unlock" }
-  }
+  };
 })();
 
-jwt.routes['loc_WL_UNLOCK_SAS_QUICK'] = (function() {
+jwt.routes.loc_WL_UNLOCK_SAS_QUICK = (function() {
   return {
     runPageEdit    : false,
     runRefresh     : true,
@@ -69,7 +69,7 @@ jwt.routes['loc_WL_UNLOCK_SAS_QUICK'] = (function() {
                             id = jQuery( id ).data("key");
                         }
                         if ( typeof id == "undefined"){
-                            id = jwt.activeRouteContinuationID
+                            id = jwt.activeRouteContinuationID;
                         }
 
                         window.unlock = true;
@@ -79,14 +79,14 @@ jwt.routes['loc_WL_UNLOCK_SAS_QUICK'] = (function() {
                       },
 
     afterFunction  : function() {},
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "alizarin-flat-button"
-			 , buttonLabel    : "Unlock" }
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
+      buttonDefn     : { buttonClass : "alizarin-flat-button", 
+			 buttonLabel    : "Unlock" }
 
-  }
+  };
 })();
 
-jwt.routes['loc_WL_OPEN_SAS_QUICK'] = (function() {
+jwt.routes.loc_WL_OPEN_SAS_QUICK = (function() {
   return {
     runPageEdit    : false,
     runRefresh     : true,
@@ -101,7 +101,7 @@ jwt.routes['loc_WL_OPEN_SAS_QUICK'] = (function() {
                             id = jQuery( id ).data("key");
                         }
                         if ( typeof id == "undefined"){
-                            id = jwt.activeRouteContinuationID
+                            id = jwt.activeRouteContinuationID;
                         }
 
         jwt.jwtComponent.getData(
@@ -109,13 +109,13 @@ jwt.routes['loc_WL_OPEN_SAS_QUICK'] = (function() {
                      },
 
     afterFunction  : function() {},
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
       buttonDefn     : { buttonClass
 			 : "sun-flower-button", buttonLabel    : "Open" }
-  }
+  };
 })();
 
-jwt.routes['loc_WL_VIEW_SAS_FULL'] = (function() {
+jwt.routes.loc_WL_VIEW_SAS_FULL = (function() {
   return {
     runPageEdit    : false,
     runRefresh     : true,
@@ -127,17 +127,17 @@ jwt.routes['loc_WL_VIEW_SAS_FULL'] = (function() {
     serverFunction : function(elem){
                             window.view = true;
         jwt.jwtComponent.getData(
-	    'jwt.jwtComponentConfigFull', jQuery(elem).data("key")
-		+ "&UNLOCK=N");
+	    'jwt.jwtComponentConfigFull', jQuery(elem).data("key") +
+		"&UNLOCK=N");
                         },
     afterFunction  : function() {},
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "alizarin-flat-button"
-			 , buttonLabel    : "View" }
-  }
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
+      buttonDefn     : { buttonClass : "alizarin-flat-button",
+			 buttonLabel    : "View" }
+  };
 })();
 
-jwt.routes['loc_WL_OPEN_APPROVER'] = (function() {
+jwt.routes.loc_WL_OPEN_APPROVER = (function() {
   return {
     runPageEdit    : false,
     Definition     : '',
@@ -152,13 +152,13 @@ jwt.routes['loc_WL_OPEN_APPROVER'] = (function() {
 		.data("key") + "&UNLOCK=N");
                         },
     afterFunction  : function() {},
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "alizarin-flat-button"
-			 , buttonLabel    : "Open" }
-  }
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
+      buttonDefn     : { buttonClass : "alizarin-flat-button",
+			 buttonLabel    : "Open" }
+  };
 })();
 
-jwt.routes['loc_WL_UNLOCK_APR_FULL'] = (function() {
+jwt.routes.loc_WL_UNLOCK_APR_FULL = (function() {
   return {
     runPageEdit    : false,
     runRefresh     : true,
@@ -174,13 +174,13 @@ jwt.routes['loc_WL_UNLOCK_APR_FULL'] = (function() {
 				 , jQuery(elem).data("key") );
                         },
     afterFunction  : function() {    },
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
-			 : "Unlock" }
-  }
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
+      buttonDefn     : { buttonClass : "sun-flower-button",
+                         buttonLabel: "Unlock" }
+  };
 })();
 
-jwt.routes['loc_WL_VIEW_APPROVER'] = (function() {
+jwt.routes.loc_WL_VIEW_APPROVER = (function() {
   return {
     runPageEdit    : false,
     Definition     : '',
@@ -196,14 +196,14 @@ jwt.routes['loc_WL_VIEW_APPROVER'] = (function() {
 	    jQuery(elem).data("key") + "&UNLOCK=N");
                         },
     afterFunction  : function() {},
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "alizarin-flat-button"
-			 , buttonLabel    : "View" }
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
+      buttonDefn     : { buttonClass : "alizarin-flat-button",
+			 buttonLabel    : "View" }
 
-  }
+  };
 })();
 
-jwt.routes['XX_HPB_200'] = (function() {
+jwt.routes.XX_HPB_200 = (function() {
   return {
       
     Definition     : 'XX_HPB_200',
@@ -215,10 +215,10 @@ jwt.routes['XX_HPB_200'] = (function() {
 	    'jwt.jwtComponentConfigQuick', null, this.form, 'XX_HPB_200');
                         },
     afterFunction  : function() {},
-  }
+  };
 })();
 
-jwt.routes['XX_HPB_201'] = (function() {
+jwt.routes.XX_HPB_201 = (function() {
   return {
     Definition     : 'XX_HPB_201',
     Description    : "Unlock Full Page",
@@ -230,10 +230,10 @@ jwt.routes['XX_HPB_201'] = (function() {
 		     this.form, 'XX_HPB_200');
                         },
     afterFunction  : function() {},
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_001'] = (function() {
+jwt.routes.loc_XX_HPB_001 = (function() {
   return {
     runPageEdit    : true,
     Definition     : 'loc_XX_HPB_001',
@@ -244,12 +244,12 @@ jwt.routes['loc_XX_HPB_001'] = (function() {
     serverFunction : "XX_HPB_001",
     afterFunction  : function() {},
     canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "sun-flower-button", buttonLabel
-			 : "Save" }
-  }
+      buttonDefn     : { buttonClass : "sun-flower-button",
+                         buttonLabel: "Save" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_310'] = (function() {
+jwt.routes.loc_XX_HPB_310 = (function() {
   return {
     Definition     : 'loc_XX_HPB_310',
     runPageEdit    : true,
@@ -262,12 +262,12 @@ jwt.routes['loc_XX_HPB_310'] = (function() {
     serverFunction : "XX_HPB_310",
     canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
     afterFunction  : function() {},
-      buttonDefn     : { buttonClass : "concrete-flat-button"
-			 , buttonLabel    : "Add" }
-  }
+      buttonDefn     : { buttonClass : "concrete-flat-button",
+			  buttonLabel    : "Add" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_320'] = (function() {
+jwt.routes.loc_XX_HPB_320 = (function() {
   return {
     Definition     : 'loc_XX_HPB_320',
     runPageEdit    : true,
@@ -278,14 +278,14 @@ jwt.routes['loc_XX_HPB_320'] = (function() {
     blankImageNow  : true,
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_320",
-    canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
+      canViewFunc    : function(){  return !jwt.invoice.user.isLocked; },
     afterFunction  : function() {},
-      buttonDefn     : { buttonClass : "alizarin-flat-button"
-			 , buttonLabel    : "Invalid Vendor" }
-  }
+      buttonDefn     : { buttonClass : "alizarin-flat-button",
+			 buttonLabel    : "Invalid Vendor" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_330'] = (function() {
+jwt.routes.loc_XX_HPB_330 = (function() {
   return {
     Definition     : 'loc_XX_HPB_330',
     runPageEdit    : true,
@@ -296,14 +296,14 @@ jwt.routes['loc_XX_HPB_330'] = (function() {
     blankImageNow  : true,
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_330",
-    canViewFunc    :  function(){  return !jwt.invoice.user.isLocked },
+      canViewFunc    :  function(){  return !jwt.invoice.user.isLocked; },
     afterFunction  : function() {},
-      buttonDefn     : { buttonClass : "peter-river-flat-button"
-			 , buttonLabel    : "Use Tax" }
-  }
+      buttonDefn     : { buttonClass : "peter-river-flat-button",
+			 buttonLabel    : "Use Tax" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_340'] = (function() {
+jwt.routes.loc_XX_HPB_340 = (function() {
   return {
     Definition     : 'loc_XX_HPB_340',
     runPageEdit    : true,
@@ -315,13 +315,13 @@ jwt.routes['loc_XX_HPB_340'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_340",
     afterFunction  : function() {},
-    canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
-      buttonDefn     : { buttonClass : "wet-asphalt-flat-button"
-			 , buttonLabel    : "Pending" }
-  }
+      canViewFunc    : function(){  return !jwt.invoice.user.isLocked; },
+      buttonDefn     : { buttonClass : "wet-asphalt-flat-button",
+			 buttonLabel    : "Pending" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_350'] = (function() {
+jwt.routes.loc_XX_HPB_350 = (function() {
   return {
     Definition     : 'loc_XX_HPB_350',
     Description    : "Save as button click",
@@ -333,12 +333,12 @@ jwt.routes['loc_XX_HPB_350'] = (function() {
                         jQuery('#XX_HDR_SC').val(jQuery(elem).data("value"));
                      },
     serverFunction : "XX_HPB_350",
-    canViewFunc    : function(){  return !jwt.invoice.user.isLocked },
+      canViewFunc    : function(){  return !jwt.invoice.user.isLocked; },
     afterFunction  : function() {}
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_400'] = (function() {
+jwt.routes.loc_XX_HPB_400 = (function() {
   return {
     Definition     : 'loc_XX_HPB_400',
     runPageEdit    : true,
@@ -349,15 +349,15 @@ jwt.routes['loc_XX_HPB_400'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_400",
     afterFunction  : function() {},
-    canViewFunc    : function(){ return !jwt.invoice.user.isLocked
-				   && jwt.invoice.user.isSAS
-				   && !jwt.invoice.user.isRET },
-      buttonDefn     : { buttonClass : "concrete-flat-button"
-			 , buttonLabel    : "Route" }
-  }
+    canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+				   jwt.invoice.user.isSAS &&
+				 !jwt.invoice.user.isRET; },
+      buttonDefn     : { buttonClass : "concrete-flat-button",
+			 buttonLabel    : "Route" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_600'] = (function() {
+jwt.routes.loc_XX_HPB_600 = (function() {
   return {
     Definition     : 'loc_XX_HPB_600',
     Description    : "Release button for SAS",
@@ -368,20 +368,20 @@ jwt.routes['loc_XX_HPB_600'] = (function() {
     serverFunction : "XX_HPB_600",
     afterFunction  : function() {},
       canViewFunc    : function(){ return  (
-	  jwt.invoice.user.isRET && jwt.invoice.user.isFinApproved
-	      && jwt.invoice.user.isSAS
-	      && jwt.invoice.user.isValidforSASRelease )},
-      buttonDefn     : { buttonClass : "wet-asphalt-flat-button"
-			 , buttonLabel    : "Release" }
-  }
+	  jwt.invoice.user.isRET && jwt.invoice.user.isFinApproved &&
+	      jwt.invoice.user.isSAS &&
+	      jwt.invoice.user.isValidforSASRelease ) ; },
+      buttonDefn     : { buttonClass : "wet-asphalt-flat-button",
+			 buttonLabel    : "Release" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_520'] = (function() {
+jwt.routes.loc_XX_HPB_520 = (function() {
   return {
     Definition     : 'loc_XX_HPB_520',
-      Description    : "Approve Pass button for invoice end users routes"
-	  + "to approve pass page where they can add more users on the approval"
-      +  "chain, approve and add a comment ",
+      Description    : "Approve Pass button for invoice end users routes" +
+	 "to approve pass page where they can add more users on the approval" +
+      "chain, approve and add a comment ",
       editArray      : [],
           runPageEdit    : true,
     beforeFunction : function() {
@@ -389,35 +389,34 @@ jwt.routes['loc_XX_HPB_520'] = (function() {
                         },
     serverFunction : "XX_HPB_001",
     afterFunction  : function() {},
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
-				   && jwt.invoice.user.isApprover },
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+				   jwt.invoice.user.isApprover; },
       buttonDefn     : { buttonClass : "pumpkin-flat-button", buttonLabel
 			 : "Approve / Pass" }
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_521'] = (function() {
+jwt.routes.loc_XX_HPB_521 = (function() {
   return {
       Definition     : 'loc_XX_HPB_521',
           runPageEdit    : true,
-      Description    : "Reroute Button on main page -- this button pops up"
-     +  "the reoute approval modal used by SAS ",
+      Description    : "Reroute Button on main page -- this button pops up" +
+     "the reoute approval modal used by SAS ",
     editArray      : [],
     beforeFunction : function() {
-        jwt.jwtComponentConfigFull.useAlternateCallback
-	    = true;
+        jwt.jwtComponentConfigFull.useAlternateCallback = true;
                         },
     serverFunction : "XX_HPB_520",
     afterFunction  : function() {},
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
-				   && jwt.invoice.user.isSAS
-				   && jwt.invoice.user.isRET },
-      buttonDefn     : { buttonClass : "pomegranate-flat-button"
-			 , buttonLabel : "Reroute" }
-  }
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+				   jwt.invoice.user.isSAS &&
+				   jwt.invoice.user.isRET },
+      buttonDefn     : { buttonClass : "pomegranate-flat-button",
+			 buttonLabel : "Reroute" }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_530'] = (function() {
+jwt.routes.loc_XX_HPB_530 = (function() {
   return {
     Definition     : 'loc_XX_HPB_530',
     Description    : "Deny button",
@@ -427,14 +426,14 @@ jwt.routes['loc_XX_HPB_530'] = (function() {
     blankImageNow  : true,
     serverFunction : "XX_HPB_530",
     afterFunction  : function() {},
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
-				   && jwt.invoice.user.isSAS  },
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+				   jwt.invoice.user.isSAS ; },
       buttonDefn     : { buttonClass : "emerald-flat-button", buttonLabel
 			 : "Deny" }
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_540'] = (function() {
+jwt.routes.loc_XX_HPB_540 = (function() {
   return {
     Definition     : 'loc_XX_HPB_540',
     Description    : "Send to SAS",
@@ -444,14 +443,14 @@ jwt.routes['loc_XX_HPB_540'] = (function() {
     beforeFunction : function(data) {},
     serverFunction : "XX_HPB_540",
     afterFunction  : function() {},
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
-				   && jwt.invoice.user.isApprover },
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+				   jwt.invoice.user.isApprover; },
       buttonDefn     : { buttonClass : "wisteria-flat-button", buttonLabel
 			 : "Send to SAS" }
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_500'] = (function() {
+jwt.routes.loc_XX_HPB_500 = (function() {
   return {
     Definition: 'loc_XX_HPB_500',
     Description: "Approve button",
@@ -469,14 +468,14 @@ jwt.routes['loc_XX_HPB_500'] = (function() {
                      },
     serverFunction : "XX_HPB_500",
     afterFunction  : function() {},
-      canViewFunc    :  function(){ return !jwt.invoice.user.isLocked
-				    && jwt.invoice.user.isApprover },
+      canViewFunc    :  function(){ return !jwt.invoice.user.isLocked &&
+				    jwt.invoice.user.isApprover; },
       buttonDefn     : { buttonClass : "nephritis-flat-button", buttonLabel
 			 : "Approve" }
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_501'] = (function() {
+jwt.routes.loc_XX_HPB_501 = (function() {
   return {
     Definition     : 'loc_XX_HPB_501',
     Description    : "Pass button",
@@ -494,14 +493,14 @@ jwt.routes['loc_XX_HPB_501'] = (function() {
     serverFunction : "XX_HPB_500",
     afterFunction  : function() {
     },
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked
-				   && jwt.invoice.user.isApprover },
+      canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+				   jwt.invoice.user.isApprover; },
       buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel
 			 : "Pass" }
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_410'] = (function() {
+jwt.routes.loc_XX_HPB_410 = (function() {
   return {
     Definition     : 'loc_XX_HPB_410',
     Description    : "re Route button on the re-route approval modal",
@@ -517,17 +516,17 @@ jwt.routes['loc_XX_HPB_410'] = (function() {
                      },
     serverFunction : "XX_HPB_410",
     afterFunction  : function() {},
-      canViewFunc    :  function(){ return !jwt.invoice.user.isLocked
-				    && jwt.invoice.user.isSAS
-				    && jwt.invoice.user.isRET },
-      buttonDefn     : { buttonClass : "peter-river-flat-button"
-			 , buttonLabel    : "Re-route" }
+      canViewFunc    :  function(){ return !jwt.invoice.user.isLocked &&
+				    jwt.invoice.user.isSAS &&
+				    jwt.invoice.user.isRET; },
+      buttonDefn     : { buttonClass : "peter-river-flat-button",
+			 buttonLabel    : "Re-route" }
 
-  }
+  };
 })();
 
 
-jwt.routes['loc_S2_XX_LIN_PO'] = (function() {
+jwt.routes.loc_S2_XX_LIN_PO = (function() {
   return {
     Definition     : 'loc_S2_XX_LIN_PO',
     Description    : "Add PO",
@@ -535,24 +534,24 @@ jwt.routes['loc_S2_XX_LIN_PO'] = (function() {
     editArray      : ["msg-requires-Comment"],
     beforeFunction : function(data) {},
     serverFunction : function(data){
-        jQuery("<input name='XX_LIN_PO$"
-	       + jwt.invoice.lineNumberAdd + "'   value='"
-	       + data.PO_ID + "' >").appendTo(jwt.form);
-        jQuery("<input name='XX_LIN_BU$"
-	       + jwt.invoice.lineNumberAdd + "'   value='"
-	       + data.BUSINESS_UNIT + "' >").appendTo(jwt.form);
+        jQuery("<input name='XX_LIN_PO$" +
+	       jwt.invoice.lineNumberAdd + "'   value='" +
+	       data.PO_ID + "' >").appendTo(jwt.form);
+        jQuery("<input name='XX_LIN_BU$" +
+	       jwt.invoice.lineNumberAdd + "'   value='" +
+	       data.BUSINESS_UNIT + "' >").appendTo(jwt.form);
                         if (jwt.activePageConfig == "jwtComponentConfigFull"){
                             jwt.jwtComponent.getData(
-				'jwt.jwtComponentConfigFull', null
-				, this.form, 'XX_HDR_PX_PB');
+				'jwt.jwtComponentConfigFull', null,
+				this.form, 'XX_HDR_PX_PB');
                           }
                      },
     afterFunction  : function() {},
 
-  }
+  };
 })();
 
-jwt.routes['loc_S2_XX_LIN_PI'] = (function() {
+jwt.routes.loc_S2_XX_LIN_PI = (function() {
   return {
 
     Definition     : 'loc_S2_XX_LIN_PI',
@@ -560,17 +559,17 @@ jwt.routes['loc_S2_XX_LIN_PI'] = (function() {
     editArray      : [],
     beforeFunction : function(data) {                },
     serverFunction : function(data){
-        jQuery("<input name='XX_LIN_PI$"
-	       + jwt.invoice.lineNumberAdd + "'   value='"
-	       + data.PROJECT_ID + "' >").appendTo(jwt.form);
+        jQuery("<input name='XX_LIN_PI$" +
+	       jwt.invoice.lineNumberAdd + "'   value='" +
+	       data.PROJECT_ID + "' >").appendTo(jwt.form);
         jwt.jwtComponent.getData(
 	    'jwt.jwtComponentConfigFull', null, this.form, 'XX_HDR_PY_PB');
                         },
     afterFunction  : function() {},
-  }
+  };
 })();
 
-jwt.routes['loc_row_delete'] = (function() {
+jwt.routes.loc_row_delete = (function() {
   return {
     Description    : "User deletes row",
     editArray      : [],
@@ -582,10 +581,10 @@ jwt.routes['loc_row_delete'] = (function() {
 	    jQuery(data).attr("name") );
                         },
     afterFunction  : function() {},
-  }
+  };
 })();
 
-jwt.routes['loc_row_new'] = (function() {
+jwt.routes.loc_row_new = (function() {
   return {
     Description    : "User adds a row",
     editArray      : [],
@@ -593,26 +592,25 @@ jwt.routes['loc_row_new'] = (function() {
     beforeFunction : function(data) {                    },
     serverFunction : function(data){
         jwt.jwtComponent.getData(
-	    'jwt.jwtComponentConfigFull', null, this.form
-	    , jQuery(data).attr("name") );
+	    'jwt.jwtComponentConfigFull', null, this.form,
+	    jQuery(data).attr("name") );
                         },
     afterFunction  : function() {},
-  }
+  };
 })();
 
-jwt.routes['loc_XX_HPB_PRI'] = (function() {
+jwt.routes.loc_XX_HPB_PRI = (function() {
   return {
     Definition     : 'loc_XX_HPB_PRI',
     Description    : "Print button",
     editArray      : [],
-      beforeFunction : function(data) {jwt.functions.printButton()},
+      beforeFunction : function(data) {jwt.functions.printButton();},
     serverFunction : 
 
-function(){}
-,
+      function(){},
     afterFunction  : function() {},
-    canViewFunc    : function(){ return true},
+      canViewFunc    : function(){ return true;},
       buttonDefn     : { buttonClass : "peter-river-flat-button", buttonLabel
 			 : "Print" }
-  }
+  };
 })();
