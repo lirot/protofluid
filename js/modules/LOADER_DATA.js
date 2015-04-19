@@ -106,11 +106,12 @@ var add_fields_lunr_search = function(config, data) {
 
 //the main ajax callback for the data objects
 var parse = function(config, response, key, jqXHR) {
-        var jsonObj = {},
+        var jsonObj = response,
             hashKey, totalKeys,
-            indexKey,totalLines = jsonObj.VIEW[0].LINE.length;
+            indexKey,
+            totalLines = jsonObj.VIEW[0].LINE.length;
     
-            jsonObj = response;
+            
             
 
         if (totalLines === 0) {

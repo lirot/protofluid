@@ -3,7 +3,7 @@ jwt.jwtComponent = (function() {
   var Configs  = {};
   var url_xx   = document.URL.replace(/\/\s*$/, '').split('/');
 
-  !url_xx[4] ? url_xx[4] = 'fsdev' : '';
+//  !url_xx[4] ? url_xx[4] = 'fsdev' : '';
 
   var stopRKey = function(evt) {
     var evt = (evt) ? evt : ((event) ? event : null);
@@ -12,7 +12,7 @@ jwt.jwtComponent = (function() {
     if ((evt.keyCode == 13)) {
       return false;
     }
-  }
+  };
 
     // parse runs through the http post respones and builds a javascript object
     // the object is the invoice transaction document. the object is mostly
@@ -45,12 +45,12 @@ jwt.jwtComponent = (function() {
 
   var _parse = function(config, response, InstanceID) {
 
-    var isHdr, isLine, isText, doc, jQInvComp, inputs, formName
+      var isHdr, isLine,  doc, jQInvComp, inputs, formName;
 
     doc        = document.implementation.createHTMLDocument("xxx");
     jQInvComp  = jQuery(doc.documentElement.innerHTML).html(response);
     totalLines = jQInvComp.find(config.lineString).length;
-    inputs     = jQInvComp.find(config.filterString),
+    inputs     = jQInvComp.find(config.filterString);
     formName   = jQuery(response).filter("form").attr('name');
 
     config.formName   = formName;
@@ -58,21 +58,23 @@ jwt.jwtComponent = (function() {
 
     config.f_return = true;
 
-//++++++++++  START  CATCH SERVER ERROS++++++++++++++++++++++++++++++++++++++   
+//++++++++++  START  CATCH SERVER ERROS++++++++++++++++++++++++++++++++++++++
+      
     if (jQInvComp.find('#XX_HDR_SA').val() == 'F') {
         //server sends instructios to blank page
         config.f_return = false;
         jQuery('#component-data .component').remove();
         return false;
-    };
+    }
 
     document.onkeypress = stopRKey;
     var wLogin = response.indexOf(
 	  "<title>Oracle | PeopleSoft Enterprise 8 Sign-in</TITLE>");
 
-    (wLogin > 0) ? window.location.href
-	  = "http://" + location.host + "/psp/"
-	  + url_xx[4] + "/EMPLOYEE/ERP/?cmd=login": null;
+     if (wLogin > 0) { window.location.href =
+	   "http://" + location.host + "/psp/" +
+	               url_xx[4] + "/EMPLOYEE/ERP/?cmd=login" ;}
+      
 
     var wOpen = response.indexOf("window.open(");
 
@@ -102,7 +104,7 @@ jwt.jwtComponent = (function() {
     jQInvComp.find("input[type='hidden']")
 	       .filter( function() {
                    if (jQuery(this).attr('name').indexOf('XX')) {
-		       return true
+		       return true;
 		   }
     }).appendTo(jqForm);
 
@@ -111,23 +113,24 @@ jwt.jwtComponent = (function() {
     
     //return to the server to unlock document
     if (jQInvComp.find('#XX_HDR_SS').val() == 'IMG' || window.unlock) {
-	if (jQInvComp.find('#XX_HDR_SS').val() == 'IMG'
-	    || jQInvComp.find('#XX_HDR_SS').val() == 'NEW') {
-          jwt.routes['XX_HPB_200'].serverFunction( );
+	if (jQInvComp.find('#XX_HDR_SS').val() == 'IMG' ||
+	    jQInvComp.find('#XX_HDR_SS').val() == 'NEW') {
+          jwt.routes.XX_HPB_200.serverFunction( );
       } else {
-          jwt.routes['XX_HPB_201'].serverFunction( );
+          jwt.routes.XX_HPB_201.serverFunction( );
       }
 
       window.unlock = false;
       jQuery(".focusedInput").focus();
       return false;
 
-    };
+    }
+      
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // Below handles creating the invoice object
      
-     var  isHdr, isPrompt,
-      isNew, isText, isDelete, lastKey;
+     var  isPrompt,
+      isNew,  isDelete, lastKey;
 
       jwt.header = {},
       jwt.lines = [];
@@ -137,14 +140,14 @@ jwt.jwtComponent = (function() {
 
     for (var i = 0; i < totalLines; i++) {
       jwt.lines[i] = {};
-      jwt.lines[i]['ROW'] = "$" + i
+        jwt.lines[i].ROW = "$" + i;
     }
 
     inputs.each(function(index) {
         elem = jQuery(this);
         var promptElem, attributes, focus, change, classTo, idprefix, re;
-        var isHdr = "";
-        elem.isLine = "", tempHeader = {}, tempLine = {};
+        isHdr = "";
+        elem.isLine = ""; tempHeader = {}; tempLine = {};
 
         idprefix    = elem.attr('name').substring(0, 9);
         re          = new RegExp(config.headerMatch, 'g');
@@ -173,8 +176,8 @@ jwt.jwtComponent = (function() {
                 //grab the error id and merge it with the client side meta data
                 var retObj = jwt.functions.getError( jQuery(obj).attr('id') );
                 if (  retObj ) {
-                    console.log( jQuery(obj).attr('id')
-				 + " : " +  jQuery(obj).html() );
+                    console.log( jQuery(obj).attr('id') +
+				 " : " +  jQuery(obj).html() );
                    //more dynamic add whatever properties are defined
                    var obj = {};
                    for (p in retObj) {
@@ -183,8 +186,8 @@ jwt.jwtComponent = (function() {
                    jwt.ServerErrors.push( obj );
                    jwt.editArray.push( obj.id );
                }else{
-                   console.log("server error message not mapped!"
-			       + jQuery(obj).attr('id') + jQuery(obj).html());
+                   console.log("server error message not mapped!" +
+			        jQuery(obj).attr('id') + jQuery(obj).html());
                }
             });
         }
@@ -211,7 +214,7 @@ jwt.jwtComponent = (function() {
 		    section_ce : obj.XX_LIN_CE, 
                     section_disabled :  sec_disabled  }
       jQuery.extend( sectionHeader, temp );
-      ((lastkey !== obj.key) && obj.key != "") ? keys.push(sectionHeader): "";
+      ((lastkey !== obj.key) && obj.key !== "") ? keys.push(sectionHeader): "";
       lastkey = obj.key;
     });
 
@@ -230,8 +233,8 @@ jwt.jwtComponent = (function() {
 
     jwt.invoice.header = jwt.header;
 
-      jwt.invoice.header.Approverdisabled = jwt.user.isApprover
-	  ?  "disabled" : "";
+      jwt.invoice.header.Approverdisabled = jwt.user.isApprover ?
+	    "disabled" : "";
 
       if (  window.view ){
           window.view = false;
@@ -244,15 +247,15 @@ jwt.jwtComponent = (function() {
     //add the secitons and the lines
     _.each(keys, function(keyObj, index) {
         jwt.invoice.sections[index] = {};
-        jwt.invoice.sections[index]["key"] = keyObj.key;
-        jwt.invoice.sections[index]["SectionHeader"] = keyObj;
-        jwt.invoice.sections[index]["lines"] = [];
+        jwt.invoice.sections[index].key = keyObj.key;
+        jwt.invoice.sections[index].SectionHeader = keyObj;
+        jwt.invoice.sections[index].lines = [];
         _.each(jwt.lines, function(obj2, index2) {
                   jwt.invoice.isNoLines = false;
-            (obj2.key == keyObj.key)
-		? jwt.invoice.sections[index]["lines"].push(obj2): null;
-        })
-    })
+           if (obj2.key == keyObj.key) {
+	       jwt.invoice.sections[index].lines.push(obj2);}
+        });
+    });
 
 	// run the can view and can edit function to determine
 	// display settings for the route buttons
@@ -264,7 +267,7 @@ jwt.jwtComponent = (function() {
     jwt.invoice.user.canEdit = {};
 
     var buttonList = _.filter( jwt.routes , function(obj){
-        return obj.hasOwnProperty('canViewFunc' )
+        return obj.hasOwnProperty('canViewFunc' );
     });
 
     _.each( buttonList ,  function(obj){
@@ -277,7 +280,7 @@ jwt.jwtComponent = (function() {
       // on edit and display properties for fields
       
     var fieldList = _.filter( jwt.fields , function(obj){
-            return obj.hasOwnProperty('canViewFunc' )
+        return obj.hasOwnProperty('canViewFunc' );
     });
 
     _.each( fieldList ,  function(obj){
@@ -285,13 +288,13 @@ jwt.jwtComponent = (function() {
             jwt.invoice.user.canView[obj.Definition] = canView;  });
 
     fieldList = _.filter( jwt.fields , function(obj){
-            return obj.hasOwnProperty('canEditFunc' )
+        return obj.hasOwnProperty('canEditFunc' );
     });
 
     _.each( fieldList ,  function(obj){
             canEdit = obj.canEditFunc();
-        (canEdit)? jwt.invoice.user.canEdit[obj.Definition]
-	    = "disabled" : "" ;  });
+        (canEdit)? jwt.invoice.user.canEdit[obj.Definition] =
+	    "disabled" : "" ;  });
 
     return true;
 
@@ -300,7 +303,7 @@ jwt.jwtComponent = (function() {
   //convenience for addressing object members
   var init = function(name, obj) {
     this.Configs[name] = obj;
-  }
+  };
 
   var xxAjax = function(config, instanceid, theform, name) {
 
@@ -320,8 +323,8 @@ jwt.jwtComponent = (function() {
 
       var jqXHRoptions = {
         type: "POST",
-        url: "http://" + location.host + "/psc/" + url_xx[4]
-	      + config.formAction,
+        url: "http://" + location.host + "/psc/" + url_xx[4] +
+	      config.formAction,
         contentType: "application/x-www-form-urlencoded"
       };
 	
@@ -331,9 +334,9 @@ jwt.jwtComponent = (function() {
 
 	jQuery(" *[ name^='XX']" ).each( function( index){
           input = jQuery(this).val() ? jQuery(this).val()  : " ";
-            jQuery("<input name='" + jQuery(this).attr('name') + "'  value='"
-		   + input + "' >").appendTo( jwt.form);
-      })
+            jQuery("<input name='" + jQuery(this).attr('name') + "'  value='" +
+		    input + "' >").appendTo( jwt.form);
+        });
 
       jqXHRoptions.data = jwt.form.serialize();
 
@@ -346,8 +349,8 @@ jwt.jwtComponent = (function() {
       jqXHRoptions = {
         async: true,
         type: "POST",
-        url: "http://" + location.host + "/psc/" + url_xx[4]
-	      + config.url + instanceid,
+        url: "http://" + location.host + "/psc/" + url_xx[4] +
+	      config.url + instanceid,
         contentType: "application/x-www-form-urlencoded"
       };
     }
@@ -356,7 +359,7 @@ jwt.jwtComponent = (function() {
     jQuery.ajax(jqXHRoptions).done(
       function(data, textStatus, jqXHR) {
         //first callback call parse
-        ret =     _parse(config, data, instanceid)
+          ret =     _parse(config, data, instanceid);
       },
       //second call back
       function(data, textStatus, jqXHR) {
@@ -367,9 +370,9 @@ jwt.jwtComponent = (function() {
              if ( jwt.user.imageNowDocID != jwt.user.oldimageNowDocID ){
                 jwt.user.oldimageNowDocID = jwt.user.imageNowDocID;
                  jQuery("#image-now").html(
-		     "<iframe id='INiframe' class='imageNowIframe' src='"
-			 + jwt.constants.imgNowURL + jwt.user.imageNowDocID
-			 + "' ></iframe>");
+		     "<iframe id='INiframe' class='imageNowIframe' src='" +
+			 jwt.constants.imgNowURL + jwt.user.imageNowDocID +
+			 "' ></iframe>");
             }
         }else{
           jQuery('#processing').trigger('hide.processing');
@@ -381,10 +384,10 @@ jwt.jwtComponent = (function() {
 
         }
       });
-  }
+  };
   return {
     init: init,
     getData: xxAjax,
     Configs: Configs
-  }
+  };
 })();

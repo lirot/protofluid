@@ -7,7 +7,7 @@ jwt.error = (function() {
     //errors are stored in error objects see the js file ERRORS
     //the template for the list elements placed in the div on the top of the
     //full page
-    var source = jwt.templates['ms_error'];
+    var source = jwt.templates.ms_error;
     var templateC = jwt.handlebars.compile(source);
     var outHTML = templateC(obj);
     var found;
@@ -25,22 +25,23 @@ jwt.error = (function() {
         .filter(function() {
           if (!obj.hasOwnProperty("test")) {
             //true here allows for informational messages
-            return true
+              return true;
           }
           return obj.test(this) /*run the script on the definition */
         }).parent("." + item).addClass("ps-error-" + obj.id)
 	  .attr("data-error", "wrapper-" + obj.id) /* style the container */
-          .prepend("<div data-error='text-" + obj.id
-		   + "'  class='ps-error-text-" + obj.id + "'>" + obj.desc
-		   + "</div>").length > 0) {
+          .prepend("<div data-error='text-" + obj.id +
+		   "'  class='ps-error-text-" + obj.id + "'>" + obj.desc +
+		   "</div>").length > 0);
+        {
         found = true;
       }
-    })
+    });
 
     if (obj.hasOwnProperty("field")) {
       //if nothing check for the test not dependent on a dom element
-      if (!found && obj.field.length == 0) {
-        found = obj.test()
+      if (!found && obj.field.length === 0) {
+          found = obj.test();
       }
     }
 
@@ -50,7 +51,7 @@ jwt.error = (function() {
           found = true;
               if (obj.hasOwnProperty("routeRequired")) {
           //surface reroute errors to the invoice
-          if ( obj.routeRequired == true){
+          if ( obj.routeRequired === true){
               jwt.invoice.routeError = true;
           }
       }
@@ -74,11 +75,12 @@ jwt.error = (function() {
         'slow');
       return false;
     } else {
-      return true
+        return true;
     }
-
-  }
+  };
+    
   return {
     createError: createError
-  }
+  };
+    
 })();

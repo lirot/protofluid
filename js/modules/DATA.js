@@ -495,7 +495,7 @@ jwt.jwtData.Configs.XX_289_D_PO_02 = (function() {
     },
 
     loc_S2_XX_LIN_PO: function() {
-      var config = jwt.jwtData.Config.XX_289_D_PO_02;
+      var config = jwt.jwtData.Configs.XX_289_D_PO_02;
       jQuery("#loc_S2_XX_LIN_PO").select2(config.s2optionsDO)
         .off("select2-open")
         .on("select2-open",
