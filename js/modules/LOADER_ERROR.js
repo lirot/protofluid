@@ -21,18 +21,18 @@ jwt.error = (function() {
     //run over fields on definition
     _.each(obj.field, function(item) {
       //inputs and text areas in the containers
-      if (jQuery("." + item + " input  , ." + item + " textarea ")
+      if (jQuery("." + item + " input:not('.select2-offscreen , .select2-input') , ." + item + " textarea ")
         .filter(function() {
           if (!obj.hasOwnProperty("test")) {
             //true here allows for informational messages
               return true;
           }
-          return obj.test(this) /*run the script on the definition */
+            return obj.test(this); /*run the script on the definition */
         }).parent("." + item).addClass("ps-error-" + obj.id)
 	  .attr("data-error", "wrapper-" + obj.id) /* style the container */
           .prepend("<div data-error='text-" + obj.id +
 		   "'  class='ps-error-text-" + obj.id + "'>" + obj.desc +
-		   "</div>").length > 0);
+		   "</div>").length > 0)
         {
         found = true;
       }

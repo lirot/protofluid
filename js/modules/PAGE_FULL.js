@@ -27,8 +27,8 @@ jwt.jwtComponentConfigFull = (function() {
         url: ['/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.FieldFormula' +
 	      '.iScript_xxViewRPayInvoice?INSTANCEID='],
         //page level edits
-        editArray: ["msg-req-001", "msg-val-in-001", "msg-val-id-001"
-		    , "msg-val-numbers", "msg-isFDApprove"],
+        editArray: ["msg-req-full", "msg-val-in-001", "msg-val-id-001", 
+		     "msg-val-numbers", "msg-isFDApprove"],
 
         //could be used to do some initalization
         init: function() {},
@@ -355,11 +355,14 @@ callback: function(config) {
 		      jQuery(".show-qty[data-row-id='" + rowID + "']")
 		      .children().removeClass("fa-check-square-o")
 		      .addClass("fa-check-square");
-                    //display fields
+
+                    //display fields only id the user can edit
+                    if (obj.XX_LIN_CE){
                     jQuery(".line2[data-row-id='" + rowID + "']")
 			.find(".rf-lin-ii > input , .rf-lin-um > input , " +
 			      ".rf-lin-lq > input , .rf-lin-up > input")
-                        .attr("disabled", false);
+                            .attr("disabled", false);
+                    }
                     jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
 			.prop("disabled", true);
                 }
@@ -377,10 +380,12 @@ callback: function(config) {
 		      jQuery(".show-asset[data-row-id='" + rowID + "']")
 		      .children().removeClass("fa-check-square-o")
 		      .addClass("fa-check-square");
-		      //enable
+		      //enable if the user has bu project type access
+                      if ( obj.XX_LIN_CE) {
                       jQuery(".line2[data-row-id='" + rowID + "']")
                             .find(".rf-lin-ai > input,  .rf-lin-ap > input")
-                            .prop("disabled", false);
+                              .prop("disabled", false);
+                      }
                     }
                 }
             });
@@ -413,7 +418,6 @@ callback: function(config) {
 		      obj.children().removeClass("fa-check-square")
 		          .addClass("fa-square-o");
 
-                //  jQuery(".line2[data-row-id='" + rowID + "']").show();
                   jQuery(".line2[data-row-id='" + rowID + "']")
 		      .find(".rf-lin-ai > input,  .rf-lin-ap > input")
 		          .prop("disabled", true).
@@ -451,7 +455,6 @@ callback: function(config) {
        		      obj.children().removeClass("fa-check-square")
 		          .addClass("fa-square-o");
 
-              //jQuery(".line2[data-row-id='" + rowID + "']").hide();
 	      jQuery(".line2[data-row-id='" + rowID + "']")
 		    .find(".rf-lin-ii > input , .rf-lin-um > input , " +
 			  ".rf-lin-lq > input , .rf-lin-up > input")
@@ -468,7 +471,7 @@ callback: function(config) {
                       obj.next().val("N");
 	               obj.children().removeClass("fa-square-o")
 		      .addClass("fa-check-square");
-
+                     //allow access to the fields
               jQuery(".line2[data-row-id='" + rowID + "']").show();
 	      jQuery(".line2[data-row-id='" + rowID + "']")
 		    .find(".rf-lin-ii > input , .rf-lin-um > input , " +
@@ -477,6 +480,20 @@ callback: function(config) {
 		jQuery(".line2[data-row-id='" + rowID + "']")
 		    .find(".rf-lin-ii > div , .rf-lin-um > div")
 		          .select2("enable", true);
+                     //set the amounts and gray out the monetary amount field
+                     jQuery(".rf-lin-lq > input[data-row-id='" +
+			    rowID + "']").val("1");
+                     jQuery(".rf-lin-up > input[data-row-id='" +
+	             rowID + "']").val(
+                         jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']").val() );
+                      jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
+                          .prop("disable",true);
+                      //default the unit
+                     jQuery("#loc_S2_XX_LIN_UM[data-row-id='" + rowID + "']" )
+	                .select2("data",
+		            jwt.jwtData.setPromptVal(
+			   encodeURIComponent("EA"),
+			   'XX_289_D_UNIT'));                      
                   }
         });
 

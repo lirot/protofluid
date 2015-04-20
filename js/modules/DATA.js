@@ -45,7 +45,9 @@ jwt.jwtData.Configs['XX_289_D_VND_LC_SINGLE'] = (function() {
     },
     callback: function(jsonObj, config) {
       //on the return set the page value for display
-      var data = jwt.jwtData.XX_289_D_VND_LC_SINGLE["_" + encodeURIComponent(jwt.invoice.header.XX_HDR_VI + jwt.invoice.header.XX_HDR_VL).hashCode().toString()];
+        var data = jwt.jwtData.XX_289_D_VND_LC_SINGLE["_" +
+                     encodeURIComponent(jwt.invoice.header.XX_HDR_VI +
+                     jwt.invoice.header.XX_HDR_VL).hashCode().toString()];
 
     if ( data.VENDOR_STATUS == "I"){
         data.VENDOR_STATUS = "Inactive";
