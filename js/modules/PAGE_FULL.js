@@ -487,7 +487,7 @@ callback: function(config) {
 	             rowID + "']").val(
                          jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']").val() );
                       jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
-                          .prop("disable",true);
+                          .prop("disabled",true);
                       //default the unit
                      jQuery("#loc_S2_XX_LIN_UM[data-row-id='" + rowID + "']" )
 	                .select2("data",

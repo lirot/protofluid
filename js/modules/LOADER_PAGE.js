@@ -204,7 +204,8 @@ jwt.jwtComponent = (function() {
       lastkey = "";
     // loop build the section line structure grouping seen on the page
     _.each(jwt.lines, function(obj) {
-      obj.key = obj.XX_LIN_PI + obj.XX_LIN_PO;
+        obj.key = obj.XX_LIN_PI + obj.XX_LIN_PO;
+        //convert can edit to boolean for mustache template
         var sec_disabled = ( obj.XX_LIN_CE  == "Y" ) ? "" : "disabled"; 
           obj.XX_LIN_CE = ( obj.XX_LIN_CE  == "Y" ) ? true : false;
       var sectionHeader = {};
@@ -212,7 +213,7 @@ jwt.jwtComponent = (function() {
 		      pi : obj.XX_LIN_PI ,
 		      po : obj.XX_LIN_PO ,
 		    section_ce : obj.XX_LIN_CE, 
-                    section_disabled :  sec_disabled  }
+                    section_disabled :  sec_disabled  };
       jQuery.extend( sectionHeader, temp );
       ((lastkey !== obj.key) && obj.key !== "") ? keys.push(sectionHeader): "";
       lastkey = obj.key;
