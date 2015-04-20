@@ -28,7 +28,8 @@ jwt.o.ErrorStore =  [
             pageEdit      : false,
             popUp         : true ,
             popUpFunction :
-                            function( obj ){
+
+            function( obj ){
                                  var continueFunction ;
                                  if ( typeof obj.route.serverFunction == "function"){
                                      continueFunction = obj.route.serverFunction;
@@ -278,9 +279,17 @@ jwt.o.ErrorStore =  [
                 id        : 'msg-short-pay',
                 class     : 'W',
                 type      : "fa fa-exclamation",
-                text      : 'Are you sure you want to short pay the invoice',
+                text      : 'Are you sure you want to short pay the invoice?',
                 test      : function( val ){
-                    return true;
+                    if ( this.route.warningByPass )
+                    {
+                        this.route.warningByPass = false;
+                        return true;
+                    }
+                    else{
+                        this.route.warningByPass = true;
+
+                    }
                 },
                 field     : [ ] ,
                 desc      : "Short Pay warning",
@@ -293,7 +302,8 @@ jwt.o.ErrorStore =  [
                 text      : 'Invalid Invoice Data',
                 test      : function( val ){
                             if(  moment(val.value).isAfter(moment()) ){
-                              jwt.constants.ERRORS['msg-val-id-001'].desc = val.value + " Date greater than  " + moment().format()
+                                jwt.constants.ERRORS['msg-val-id-001'].desc = val.value +
+                                    " Date greater than  " + moment().format();
                               val.value ="";
                               return val;
                               }
@@ -336,6 +346,13 @@ jwt.o.ErrorStore =  [
                 context : ["S"]
             },
             {
+                id: 'msg-019',
+                class: 'W',
+                type: "fa fa-exclamation",
+                text: 'Invoice short pay condtion exists',
+                desc: 'Invoice short pay condition exists',
+                context : ["S"]
+            },  {
                 id: 'msg-018',
                 class: 'W',
                 type: "fa fa-exclamation",
@@ -428,10 +445,11 @@ jwt.o.ErrorStore =  [
             },
             {
                 id: 'msg-022',
-                class: 'ps-hidden',
+                class: 'W',
                 type: "fa fa-exclamation-triangle",
                 text: 'Invoice lines PO exception found',
-                desc: 'Invoice lines PO exception found'
+                desc: 'Invoice lines PO exception found',
+                context: ["S"]
             },
             {
                 id: 'msg-002',

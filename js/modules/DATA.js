@@ -573,13 +573,13 @@ jwt.jwtData.Configs.XX_289_D_SC_01 = (function() {
           
           var subCatArray = listsubCat.split(":")[1].split(",");
 
-          console.log( "Valid sub cats for row: " + row + "  "  + subCatArray.length );
+        //  console.log( "Valid sub cats for row: " + row + "  "  + subCatArray.length );
     
           var arraySC =  _.filter( results , function( obj ){
               return subCatArray.indexOf( obj.ref ) != -1;
           } );
           
-          console.log( "Valid sub cats for row: " + row + "  "  + arraySC.length );
+         //  console.log( "Valid sub cats for row: " + row + "  "  + arraySC.length );
           
         return arraySC;
 

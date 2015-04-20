@@ -34,7 +34,7 @@ formatVal: function(item) {
 		      jwt.jwtData[tblName]["_" + lookup], this.element);
               }
             }
-    return display || ".";
+   // return display | ".";
           },
 
 formatRes: function(result, container, query, escapeMarkup) {

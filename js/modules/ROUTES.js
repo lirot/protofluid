@@ -146,8 +146,7 @@ jwt.routes.loc_WL_OPEN_APPROVER = (function() {
     editArray      : ["msg-isDirty"],
     beforeFunction : function(data) {},
     serverFunction : function(elem){
-                            window.view = true;
-        jwt.jwtComponent.getData(
+                      jwt.jwtComponent.getData(
 	    'jwt.jwtComponentConfigFull', jQuery(elem)
 		.data("key") + "&UNLOCK=N");
                         },
@@ -410,7 +409,7 @@ jwt.routes.loc_XX_HPB_521 = (function() {
     afterFunction  : function() {},
       canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
 				   jwt.invoice.user.isSAS &&
-				   jwt.invoice.user.isRET },
+				   jwt.invoice.user.isRET; },
       buttonDefn     : { buttonClass : "pomegranate-flat-button",
 			 buttonLabel : "Reroute" }
   };
@@ -456,15 +455,18 @@ jwt.routes.loc_XX_HPB_500 = (function() {
     Description: "Approve button",
     blankImageNow  : true,
     destroyPopUp   : true,
-    runRefresh     : true,
+      runRefresh     : true,
+      warningByPass  : true,
     editArray      : ["msg-valFA-Approve","msg-short-pay"],
-    beforeFunction : function(data) {
+      beforeFunction : function(data) {
+          if ( ! this.warningsByPass ){
             //comments go back to server
             jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
             //the approver list goes back to the server
             jQuery( "#XX_HDR_LO" ).val(
 	        jwt.invoice.user.approverList.join(",")
-                );
+            );
+          }
                      },
     serverFunction : "XX_HPB_500",
     afterFunction  : function() {},

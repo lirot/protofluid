@@ -398,7 +398,7 @@ callback: function(config) {
                  var totamt = parseInt(jQuery(".rf-lin-lq > input[data-row-id='" +
 					     rowID + "']").val()) *
 		     parseInt(jQuery(".rf-lin-up > input[data-row-id='" +
-	             rowID + "']").val());
+	                             rowID + "']").val()[0].replace(/,/g , "" ) );
                 totamt = isNaN(totamt) ? 0 : totamt;
                  jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
 		     .val(totamt.toFixed(2) ? totamt.toFixed(2) : 0)
@@ -500,3 +500,4 @@ callback: function(config) {
     }
     };
 })();
+
