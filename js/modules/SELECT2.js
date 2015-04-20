@@ -16,11 +16,11 @@ formatVal: function(item) {
 
             var tblName = jQuery(this.element).data('ps-tbl-name');
             var isLine = jQuery(this.element).data('line');
-    var dataDefn = jwt.jwtData.Configs[tblName];
+            var dataDefn = jwt.jwtData.Configs[tblName];
             var lookup = item.id;
-
+    var display;
             if (typeof dataDefn.select2Display === 'function') {
-		var display = dataDefn.select2Display(
+		display = dataDefn.select2Display(
 		    jwt.jwtData[tblName]["_" + lookup], this.element);
             }
 
@@ -34,7 +34,7 @@ formatVal: function(item) {
 		      jwt.jwtData[tblName]["_" + lookup], this.element);
               }
             }
-   // return display | ".";
+   return display || ".";
           },
 
 formatRes: function(result, container, query, escapeMarkup) {

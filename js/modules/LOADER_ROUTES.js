@@ -118,7 +118,7 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
 			      if ( jwt.user.oldimageNowDocID !=
 				jwt.user.imageNowDocID){
                                  jQuery("#image-now").html(
-"<iframe id='INiframe' class='imageNowIframe' src='" +
+                        "<iframe id='INiframe' class='imageNowIframe' src='" +
  		        jwt.constants.imgNowURL +
 			jQuery(this).data("imgnowkey") + "' ></iframe>");
                         jwt.user.oldimageNowDocID = jwt.user.imageNowDocID;

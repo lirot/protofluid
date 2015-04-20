@@ -281,6 +281,7 @@ jwt.o.ErrorStore =  [
                 type      : "fa fa-exclamation",
                 text      : 'Are you sure you want to short pay the invoice?',
                 test      : function( val ){
+                    if (  jwt.invoice.user.isPNDUserFinanceApprover && jwt.invoice.user.transLineTotalLessThanInvoiceAmt ){
                     if ( this.route.warningByPass )
                     {
                         this.route.warningByPass = false;
@@ -289,6 +290,7 @@ jwt.o.ErrorStore =  [
                     else{
                         this.route.warningByPass = true;
 
+                    }
                     }
                 },
                 field     : [ ] ,
