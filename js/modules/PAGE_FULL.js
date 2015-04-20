@@ -27,7 +27,7 @@ jwt.jwtComponentConfigFull = (function() {
         url: ['/EMPLOYEE/ERP/s/WEBLIB_XX_NAV.WEBLIB_FUNCTION.FieldFormula' +
 	      '.iScript_xxViewRPayInvoice?INSTANCEID='],
         //page level edits
-        editArray: ["msg-req-full", "msg-val-in-001", "msg-val-id-001", 
+        editArray: ["msg-req-asset" , "msg-req-full", "msg-val-in-001", "msg-val-id-001", 
 		     "msg-val-numbers", "msg-isFDApprove"],
 
         //could be used to do some initalization

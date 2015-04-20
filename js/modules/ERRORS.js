@@ -224,7 +224,20 @@ jwt.o.ErrorStore =  [
 
             },
 
+    {
+                id         : 'msg-req-asset',
+                class      : 'W',
+                type       : "fa fa-exclamation",
+                text       : 'Asset ID Field Required ',
+                test       : function( val ){
+                    return !val.value && !jQuery(val).is("disabled");
+                              },
+                field      : [   "rf-lin-ap"   ] ,
+                desc       : 'required Field',
+                pageEdit   : true,
 
+    },
+    
             {
                 id         : 'msg-req-full',
                 class      : 'W',
