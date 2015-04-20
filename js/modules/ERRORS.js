@@ -230,7 +230,7 @@ jwt.o.ErrorStore =  [
                 type       : "fa fa-exclamation",
                 text       : 'Asset ID Field Required ',
                 test       : function( val ){
-                    return !val.value && !jQuery(val).is("disabled");
+                    return !val.value && !jQuery(val).prop("disabled");
                               },
                 field      : [   "rf-lin-ap"   ] ,
                 desc       : 'required Field',
