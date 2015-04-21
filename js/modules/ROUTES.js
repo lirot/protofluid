@@ -377,18 +377,18 @@ jwt.routes.loc_XX_HPB_600 = (function() {
 
 jwt.routes.loc_XX_HPB_520 = (function() {
   return {
-    Definition     : 'loc_XX_HPB_520',
-      Description    : "Approve Pass button for invoice end users routes" +
-	 "to approve pass page where they can add more users on the approval" +
-      "chain, approve and add a comment ",
-      editArray      : [],
-          runPageEdit    : true,
-    beforeFunction : function() {
+    Definition: 'loc_XX_HPB_520',
+      Description: "Approve Pass button for invoice end users routes" +
+	               "to approve pass page where they can add more users on the approval" +
+                       "chain, approve and add a comment ",
+    editArray: [],
+    runPageEdit: true,
+    beforeFunction: function() {
                     jwt.jwtComponentConfigFull.useAlternateCallback = true;
                         },
-    serverFunction : "XX_HPB_001",
-    afterFunction  : function() {},
-      canViewFunc    : function(){ return !jwt.invoice.user.isLocked &&
+    serverFunction: "XX_HPB_001",
+    afterFunction: function() {},
+      canViewFunc: function(){ return !jwt.invoice.user.isLocked &&
 				   jwt.invoice.user.isApprover; },
       buttonDefn     : { buttonClass : "pumpkin-flat-button", buttonLabel
 			 : "Approve / Pass" }

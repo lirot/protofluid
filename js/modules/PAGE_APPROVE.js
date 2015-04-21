@@ -8,7 +8,7 @@ jwt.jwtComponentConfigApprove = (function() {
     loadTemplate: jwt.templates.loadApproveTemplate,
     modal: "#approve-dialog",
     formAction: '../../../EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_FCM289_APPR.GBL',
-    editArray: ["msg-requires-Comment","msg-short-pay"],
+    editArray: [],
       conroller: function(elem) {
           //the loader route cold never reach here.
           //the loader will call the controller on the full page as the full

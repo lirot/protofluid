@@ -540,8 +540,8 @@ jwt.o.ErrorStore =  [
             },
             {
                 id: 'msg-024',
-                text: 'You may approve PO only invoice!',
-                desc: 'You may approve PO only invoice',
+                text: 'User may FD approve invoice.',
+                desc: 'User may FD approve invoice.',
                 context : ["S"]
             },
             {

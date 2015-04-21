@@ -99,8 +99,6 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
 
                     }
 
-                       
-
                     if (routeObj.hasOwnProperty("editArray")) {
                         retRouteEdits = jwt.routes.run_Edits
 			    .call(this,  routeObj );
