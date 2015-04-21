@@ -215,6 +215,11 @@ cleanWorkFlowData: function(xml) {
          if (Obj.fld_ptaforig_oprid.text == "RET") {
              action = "Returned to SAS";
                   }
+
+
+         if (Obj.fld_ptafadhoc_by.text == "RFD"  && Obj.fld_ptafstep_status.text == "M" ) {
+             action = "FD Appproved";
+                  }
        
          if (jwt.invoice.user.aAweID.toString() !== "" && Obj.fld_ptafustep_inst_id.text.indexOf(
 		      jwt.invoice.user.aAweID) != -1) {
