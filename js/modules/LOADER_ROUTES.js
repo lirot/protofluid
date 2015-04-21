@@ -83,17 +83,23 @@ Descr: xx_bind_buttons method iterates over a set of elements defined as routes
                     pageConfig = jwt[jwt.activePageConfig];
 
                     if (routeObj.hasOwnProperty("runPageEdit")) {
-			if (routeObj.runPageEdit == true) {
+			if (routeObj.runPageEdit === true) {
 			/* call with the element as 'this'*/
 			retPageEdits = jwt.routes.run_Edits
 				          .call(this,  pageConfig);
 			  if (retPageEdits) {
 			      /* the page may want to do some work if the 
 				 edits are passed */
-                                jwt[jwt.activePageConfig].controller();
+                              jwt[jwt.activePageConfig].controller();
+                             
                             }
                         }
+                    }else{
+                        console.log( jwt.activePageConfig );
+
                     }
+
+                       
 
                     if (routeObj.hasOwnProperty("editArray")) {
                         retRouteEdits = jwt.routes.run_Edits

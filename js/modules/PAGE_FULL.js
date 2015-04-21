@@ -235,7 +235,7 @@ callback: function(config) {
                 if (jQuery('#loc_XX_HDR_WI').prop("checked") === true)
 		{ jQuery('#loc_XX_HDR_HF').prettyCheckable('disable');
 	    }else{ jQuery('#loc_XX_HDR_HF').prettyCheckable('enable');}
-                if (jQuery('#loc_XX_HDR_WI').prop("checked") == true)
+                if (jQuery('#loc_XX_HDR_WI').prop("checked") === true)
 		{ jQuery('#loc_XX_HDR_HF').val("Y");}
 		    else { jQuery('#loc_XX_HDR_HF').val("N");}
             });
@@ -395,10 +395,10 @@ callback: function(config) {
         jQuery('.rf-lin-lq > input , .rf-lin-up > input')
 	     .on('change', function() {
                  var rowID = jQuery(this).data("row-id");
-                 var totamt = parseInt(jQuery(".rf-lin-lq > input[data-row-id='" +
+                 var totamt = Number(jQuery(".rf-lin-lq > input[data-row-id='" +
 					     rowID + "']").val()) *
-		     parseInt(jQuery(".rf-lin-up > input[data-row-id='" +
-	                             rowID + "']").val()[0].replace(/,/g , "" ) );
+		     Number(jQuery(".rf-lin-up > input[data-row-id='" +
+	                             rowID + "']").val().replace(/,/g , "" ) );
                 totamt = isNaN(totamt) ? 0 : totamt;
                  jQuery(".rf-lin-ma > input[data-row-id='" + rowID + "']")
 		     .val(totamt.toFixed(2) ? totamt.toFixed(2) : 0)

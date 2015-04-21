@@ -279,7 +279,7 @@ jwt.o.ErrorStore =  [
                 id        : 'msg-short-pay',
                 class     : 'W',
                 type      : "fa fa-exclamation",
-                text      : 'Are you sure you want to short pay the invoice?',
+                text      : 'Are you sure you want to short pay the invoice? ',
                 test      : function( val ){
                     if (  jwt.invoice.user.isPNDUserFinanceApprover && jwt.invoice.user.transLineTotalLessThanInvoiceAmt ){
                     if ( this.route.warningByPass )

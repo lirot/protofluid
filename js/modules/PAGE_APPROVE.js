@@ -8,9 +8,14 @@ jwt.jwtComponentConfigApprove = (function() {
     loadTemplate: jwt.templates.loadApproveTemplate,
     modal: "#approve-dialog",
     formAction: '../../../EMPLOYEE/ERP/c/XX_AP_CUSTOM_MENU.XX_FCM289_APPR.GBL',
-      editArray: ["msg-requires-Comment","msg-short-pay"],
-    conroller: function(elem) {},
-    callback: function(config) {
+    editArray: ["msg-requires-Comment","msg-short-pay"],
+      conroller: function(elem) {
+          //the loader route cold never reach here.
+          //the loader will call the controller on the full page as the full
+          //page is the active page.
+      },
+
+      callback: function(config) {
       //initialize
       jwt.invoice.isAddedUserFinanceApprover = false;
       jwt.invoice.user.hasApproverOnChain = false;
@@ -19,7 +24,7 @@ jwt.jwtComponentConfigApprove = (function() {
       //build the select2 drop of approvers
       var $obj = jQuery("#loc_S2_APPROVER");
       var tblName = $obj.data('ps-tbl-name');
-      var config = jwt.jwtData.Configs[tblName];
+      config = jwt.jwtData.Configs[tblName];
       if (config.hasOwnProperty($obj.attr('id'))) {
         var funName = $obj.attr('id');
         config[funName]($obj);

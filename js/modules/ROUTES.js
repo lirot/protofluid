@@ -457,15 +457,17 @@ jwt.routes.loc_XX_HPB_500 = (function() {
     destroyPopUp   : true,
       runRefresh     : true,
       warningByPass  : true,
+      runPageEdit:  true,
     editArray      : ["msg-valFA-Approve","msg-short-pay"],
       beforeFunction : function(data) {
-          if ( ! this.warningsByPass ){
+          if ( ! this.warningByPass ){
             //comments go back to server
             jQuery( "#XX_HDR_CT" ).val( jQuery("#temp-comment").val());
             //the approver list goes back to the server
             jQuery( "#XX_HDR_LO" ).val(
 	        jwt.invoice.user.approverList.join(",")
             );
+                           
           }
                      },
     serverFunction : "XX_HPB_500",
